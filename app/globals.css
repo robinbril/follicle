@@ -14,6 +14,10 @@
     font-family: 'Inter', sans-serif;
   }
 
+  img {
+    @apply max-w-full h-auto;
+  }
+
   h1,
   h2,
   h3,
