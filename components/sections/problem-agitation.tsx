@@ -21,13 +21,13 @@ export default function ProblemAgitation() {
                         <table className="w-full">
                             <thead>
                                 <tr className="border-b border-white/10">
-                                    <th className="px-6 py-4 text-left text-sm font-semibold text-white/60 uppercase tracking-wide">
+                                    <th className="px-3 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold text-white/60 uppercase tracking-wide">
                                         {/* Empty header */}
                                     </th>
-                                    <th className="px-6 py-4 text-center text-sm font-bold text-emerald-400 uppercase tracking-wide">
+                                    <th className="px-3 py-3 sm:px-6 sm:py-4 text-center text-xs sm:text-sm font-bold text-emerald-400 uppercase tracking-wide">
                                         REVIVE
                                     </th>
-                                    <th className="px-6 py-4 text-center text-sm font-medium text-white/40 uppercase tracking-wide">
+                                    <th className="px-3 py-3 sm:px-6 sm:py-4 text-center text-xs sm:text-sm font-medium text-white/40 uppercase tracking-wide">
                                         Minoxidil
                                     </th>
                                 </tr>
@@ -35,57 +35,57 @@ export default function ProblemAgitation() {
                             <tbody>
                                 {/* Effectiviteit */}
                                 <tr className="border-b border-white/5">
-                                    <td className="px-6 py-5 text-white/80 font-medium">
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-white/80 font-medium text-sm sm:text-base">
                                         Effectiviteit
                                     </td>
-                                    <td className="px-6 py-5 text-center">
-                                        <span className="text-2xl font-bold text-emerald-400">88.9%</span>
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-center whitespace-nowrap">
+                                        <span className="text-lg sm:text-2xl font-bold text-emerald-400">88.9%</span>
                                     </td>
-                                    <td className="px-6 py-5 text-center">
-                                        <span className="text-2xl font-bold text-white/40">60%</span>
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-center whitespace-nowrap">
+                                        <span className="text-lg sm:text-2xl font-bold text-white/40">60%</span>
                                     </td>
                                 </tr>
 
                                 {/* Bijwerkingen */}
                                 <tr className="border-b border-white/5">
-                                    <td className="px-6 py-5 text-white/80 font-medium">
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-white/80 font-medium text-sm sm:text-base">
                                         Bijwerkingen
                                     </td>
-                                    <td className="px-6 py-5 text-center">
-                                        <span className="text-2xl font-bold text-emerald-400">&lt; 5%</span>
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-center">
+                                        <span className="text-lg sm:text-2xl font-bold text-emerald-400">&lt; 5%</span>
                                     </td>
-                                    <td className="px-6 py-5 text-center">
-                                        <span className="text-2xl font-bold text-white/40">11-18%</span>
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-center">
+                                        <span className="text-lg sm:text-2xl font-bold text-white/40">11-18%</span>
                                     </td>
                                 </tr>
 
                                 {/* Afhankelijkheid */}
                                 <tr className="border-b border-white/5">
-                                    <td className="px-6 py-5 text-white/80 font-medium">
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-white/80 font-medium text-sm sm:text-base">
                                         Afhankelijkheid
                                     </td>
-                                    <td className="px-6 py-5 text-center">
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-center">
                                         <div className="flex justify-center">
-                                            <X className="w-6 h-6 text-emerald-400" />
+                                            <X className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400" />
                                         </div>
                                     </td>
-                                    <td className="px-6 py-5 text-center">
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-center">
                                         <div className="flex justify-center">
-                                            <Check className="w-6 h-6 text-white/40" />
+                                            <Check className="w-5 h-5 sm:w-6 sm:h-6 text-white/40" />
                                         </div>
                                     </td>
                                 </tr>
 
                                 {/* Eerste resultaat */}
                                 <tr>
-                                    <td className="px-6 py-5 text-white/80 font-medium">
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-white/80 font-medium text-sm sm:text-base">
                                         Eerste resultaat
                                     </td>
-                                    <td className="px-6 py-5 text-center">
-                                        <span className="text-lg font-semibold text-emerald-400">6 weken</span>
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-center">
+                                        <span className="text-base sm:text-lg font-semibold text-emerald-400">6 weken</span>
                                     </td>
-                                    <td className="px-6 py-5 text-center">
-                                        <span className="text-lg font-semibold text-white/40">8-12 weken</span>
+                                    <td className="px-3 py-4 sm:px-6 sm:py-5 text-center">
+                                        <span className="text-base sm:text-lg font-semibold text-white/40">8-12 weken</span>
                                     </td>
                                 </tr>
                             </tbody>

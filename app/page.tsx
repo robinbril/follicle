@@ -25,7 +25,7 @@ export default function Home() {
       <Footer />
       <ExitIntentPopup />
       <SocialProofToast />
-      <StickyMobileCTA />
+      <SocialProofToast />
       <FloatingCTA />
       <GDPRBanner />
     </main>

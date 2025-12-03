@@ -52,12 +52,9 @@ export default function Header() {
 
                     {/* Desktop CTA */}
                     <div className="hidden lg:flex items-center gap-4">
-                        <Button asChild variant="ghost" className={`transition-colors ${isScrolled ? 'text-gray-900 hover:text-emerald-600 hover:bg-emerald-50' : 'text-gray-900 hover:text-emerald-600 hover:bg-emerald-50'}`}>
-                            <Link href="/login">Inloggen</Link>
-                        </Button>
-                        <Button asChild className={`font-semibold px-6 transition-all ${isScrolled ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-emerald-600 hover:bg-emerald-700 text-white'}`}>
+                        <Button asChild className={`font-bold px-8 py-6 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 ${isScrolled ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-emerald-600 hover:bg-emerald-700 text-white'}`}>
                             <Link href="#prijzen">
-                                Start Nu
+                                BESTEL NU
                             </Link>
                         </Button>
                     </div>
@@ -86,9 +83,9 @@ export default function Header() {
                                 {item}
                             </Link>
                         ))}
-                        <Button asChild className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 text-lg mt-4">
+                        <Button asChild className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 text-lg mt-4 font-bold shadow-lg">
                             <Link href="#prijzen" onClick={() => setIsMobileMenuOpen(false)}>
-                                Start Je Behandeling
+                                BESTEL NU
                             </Link>
                         </Button>
                     </nav>

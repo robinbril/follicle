@@ -206,8 +206,8 @@ export default function Solution() {
 
                 {/* Formula Container - Unified */}
                 <div className="max-w-[850px] mx-auto bg-white/[0.02] border border-white/[0.06] rounded-3xl p-8 mb-16">
-                    {/* Ingredient Cards - Compact 2x3 Grid */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                    {/* Ingredient Cards - Compact Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                         {ingredientsData.map((ingredient, index) => {
                             const Icon = ingredient.icon
                             const isNew = ingredient.isNew

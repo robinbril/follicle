@@ -82,7 +82,7 @@ export default function Pricing() {
                     <label className="block text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wide">
                         Kuur Lengte
                     </label>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {plans.map((plan, index) => (
                             <button
                                 key={index}
@@ -93,7 +93,7 @@ export default function Pricing() {
                                     }`}
                             >
                                 {plan.popular && selectedPlan === index && (
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap">
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-2 py-1 sm:px-3 rounded-full text-[10px] sm:text-xs font-bold whitespace-nowrap shadow-sm">
                                         MEEST GEKOZEN
                                     </div>
                                 )}
@@ -116,12 +116,12 @@ export default function Pricing() {
                 </div>
 
                 {/* Price Display */}
-                <div className="bg-gray-50 rounded-xl p-6 mb-6">
-                    <div className="flex justify-between items-center mb-2">
+                <div className="bg-gray-50 rounded-xl p-4 sm:p-6 mb-6">
+                    <div className="flex flex-col sm:flex-row justify-between items-center mb-2 gap-1 sm:gap-0">
                         <span className="text-gray-600">Totaalprijs</span>
                         <span className="text-3xl font-bold text-gray-900">€{totalPrice}</span>
                     </div>
-                    <div className="flex justify-between items-center text-sm text-gray-500">
+                    <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500 gap-1 sm:gap-0 text-center sm:text-left">
                         <span>{selectedPlanData.months} {selectedPlanData.months === 1 ? 'maand' : 'maanden'} voorraad</span>
                         {selectedPlanData.discount && (
                             <span className="text-emerald-600 font-semibold">
@@ -133,16 +133,18 @@ export default function Pricing() {
 
                 {/* Golden Gradient CTA Button */}
                 <Button
-                    className="w-full py-7 text-lg font-bold bg-gradient-to-r from-[#D4A574] via-[#E8C89A] to-[#D4A574] hover:from-[#C69563] hover:via-[#D4AF37] hover:to-[#C69563] text-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300 mb-6"
+                    className="w-full py-7 text-lg font-bold bg-gradient-to-r from-[#D4A574] via-[#E8C89A] to-[#D4A574] hover:from-[#C69563] hover:via-[#D4AF37] hover:to-[#C69563] text-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300 mb-6 whitespace-normal h-auto leading-tight"
                 >
-                    <Package className="w-5 h-5 mr-2" />
-                    VOEG TOE AAN WINKELWAGEN
+                    <div className="flex items-center justify-center gap-2">
+                        <Package className="w-5 h-5 flex-shrink-0" />
+                        <span>VOEG TOE AAN WINKELWAGEN</span>
+                    </div>
                 </Button>
 
                 {/* Trust & Payment Grid */}
                 <div className="grid sm:grid-cols-2 gap-6 mt-6">
                     {/* Left: Trust Badges */}
-                    <div className="space-y-2 text-sm text-gray-700">
+                    <div className="space-y-2 text-sm text-gray-700 flex flex-col items-center sm:items-start">
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                             <span className="font-medium">Op voorraad</span>
@@ -158,11 +160,11 @@ export default function Pricing() {
                     </div>
 
                     {/* Right: Payment Methods */}
-                    <div className="flex flex-col justify-center">
+                    <div className="flex flex-col justify-center items-center sm:items-end">
                         <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
                             Veilig betalen met
                         </p>
-                        <div className="flex items-center gap-4 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                        <div className="flex flex-wrap justify-center sm:justify-end items-center gap-4 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
                             <img src="/images/payment/ideal.png" alt="iDEAL" className="h-5 object-contain" />
                             <img src="/images/payment/klarna.png" alt="Klarna" className="h-4 object-contain" />
                             <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-6 object-contain" />

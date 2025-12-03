@@ -30,20 +30,20 @@ export default function ExitIntentPopup() {
 
             setScrollDepth(depth)
 
-            // Trigger at 60% scroll
-            if (depth >= 60 && !hasShown) {
+            // Trigger at 75% scroll (less aggressive)
+            if (depth >= 75 && !hasShown) {
                 setIsVisible(true)
                 hasShown = true
             }
         }
 
-        // Time-based trigger (45 seconds)
+        // Time-based trigger (12 seconds)
         timeoutId = setTimeout(() => {
             if (!hasShown) {
                 setIsVisible(true)
                 hasShown = true
             }
-        }, 45000)
+        }, 12000)
 
         // Only activate on desktop
         if (window.innerWidth >= 768) {

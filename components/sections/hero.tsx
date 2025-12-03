@@ -7,9 +7,9 @@ import Link from 'next/link'
 
 export default function Hero() {
     return (
-        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
+        <section className="relative pt-24 pb-12 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
             <div className="section-container relative z-10">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
                     {/* LEFT - High Conversion Copy */}
                     <div className="max-w-2xl">
@@ -17,18 +17,34 @@ export default function Hero() {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-medium mb-6"
+                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs sm:text-sm font-medium mb-6"
                         >
-                            <ShieldCheck className="w-4 h-4" />
+                            <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4" />
                             <span>Bestel voor 23:59 → morgen in huis</span>
                         </motion.div>
 
                         <motion.h1
-                            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-6 text-balance"
+                            className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-4 sm:mb-6 text-balance"
                         >
                             Klinisch bewezen haarserum <br className="hidden sm:block" />
                             <span className="text-emerald-600">zonder Finasteride of Minoxidil</span>
                         </motion.h1>
+
+                        {/* Mobile Product Image - Visible only on mobile */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.2 }}
+                            className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden"
+                        >
+                            <Image
+                                src="/images/revive-hero-bottle.jpg"
+                                alt="Follicle Hair Growth Serum"
+                                fill
+                                className="object-contain drop-shadow-xl"
+                                priority
+                            />
+                        </motion.div>
 
                         <motion.p
                             className="text-lg text-gray-600 mb-6 leading-relaxed max-w-lg font-medium"
@@ -102,9 +118,9 @@ export default function Hero() {
                         </motion.div>
                     </div>
 
-                    {/* RIGHT - Product Visual */}
+                    {/* RIGHT - Product Visual - Desktop Only */}
                     <motion.div
-                        className="relative lg:h-[600px] flex items-center justify-center bg-gray-50 rounded-3xl p-8 lg:p-0 mt-10 lg:mt-0"
+                        className="hidden lg:flex relative lg:h-[600px] items-center justify-center bg-gray-50 rounded-3xl p-8 lg:p-0 mt-10 lg:mt-0"
                     >
                         <div className="relative w-full max-w-md aspect-[4/5]">
                             {/* Main Product Image */}

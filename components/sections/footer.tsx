@@ -14,10 +14,10 @@ export default function Footer() {
     }
 
     return (
-        <footer className="bg-[#050505] border-t border-white/5 pt-20 pb-10">
+        <footer className="bg-[#050505] border-t border-white/5 pt-12 lg:pt-20 pb-10">
             <div className="max-w-7xl mx-auto px-6">
 
-                <div className="grid lg:grid-cols-4 gap-12 mb-20">
+                <div className="grid lg:grid-cols-4 gap-10 lg:gap-12 mb-12 lg:mb-20">
                     {/* Brand Column */}
                     <div className="lg:col-span-1">
                         <p className="text-[#94A3B8] text-sm leading-relaxed mb-8 font-light">
