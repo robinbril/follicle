@@ -45,49 +45,49 @@ export default function Header() {
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-white">
-            {/* Urgency bar - emerald */}
-            <div className="bg-[#059669] text-white py-2.5 text-center text-sm font-medium">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-[#0F0F0F] border-b border-[#D4AF37]/20">
+            {/* Urgency bar - Bordeaux */}
+            <div className="bg-[#4A0E2A] text-white py-2.5 text-center text-sm font-medium tracking-wide">
                 <div className="flex items-center justify-center gap-2">
-                    <Timer className="w-4 h-4 animate-pulse" />
-                    Speciale introductieprijs eindigt over: <span className="font-bold">{timeLeft}</span>
-                    <span className="hidden md:inline">• 2.847 mannen gingen je voor vandaag</span>
+                    <Timer className="w-4 h-4 text-[#D4AF37]" />
+                    <span className="text-[#F8F5F0]">Exclusieve aanbieding eindigt over:</span>
+                    <span className="font-bold text-[#D4AF37] font-mono">{timeLeft}</span>
                 </div>
             </div>
 
-            {/* Main nav - wit met grijze onderlijn */}
-            <div className="px-6 py-5 border-b border-[#e2e8f0]">
+            {/* Main nav - Black */}
+            <div className="px-6 py-5">
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
-                    {/* Logo - altijd zwart */}
-                    <h1 className="text-2xl sm:text-3xl font-black tracking-tighter text-black">
-                        FOLLICLE
+                    {/* Logo - Gold Serif */}
+                    <h1 className="text-3xl font-serif tracking-widest text-[#D4AF37]">
+                        REVIVE
                     </h1>
 
-                    {/* Desktop menu - zwarte tekst, geen borders */}
+                    {/* Desktop menu - White with Gold hover */}
                     <nav className="hidden lg:flex items-center gap-10">
                         {['Ingrediënten', 'Wetenschap', 'Reviews', 'FAQ'].map((item) => (
                             <button
                                 key={item}
                                 onClick={() => scrollToSection(item.toLowerCase())}
-                                className="text-black font-medium hover:text-[#059669] transition"
+                                className="text-[#F8F5F0] font-light tracking-wide hover:text-[#D4AF37] transition border-b border-transparent hover:border-[#D4AF37] pb-1"
                             >
                                 {item}
                             </button>
                         ))}
                     </nav>
 
-                    {/* Bestel Nu - Solid Emerald voor max leesbaarheid */}
+                    {/* CTA - Bordeaux/Gold */}
                     <button
                         onClick={() => scrollToSection('prijzen')}
-                        className="bg-[#059669] text-white font-bold px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 cursor-pointer"
+                        className="bg-[#4A0E2A] text-[#D4AF37] border border-[#D4AF37] px-8 py-3 rounded-sm uppercase tracking-widest text-xs font-bold hover:bg-[#D4AF37] hover:text-[#4A0E2A] transition-all duration-300"
                     >
-                        Bestel Nu →
+                        Reserveer
                     </button>
 
                     {/* Mobile menu button */}
                     <button
                         onClick={() => setMobileMenu(!mobileMenu)}
-                        className="lg:hidden text-black"
+                        className="lg:hidden text-[#D4AF37]"
                     >
                         {mobileMenu ? <X size={28} /> : <Menu size={28} />}
                     </button>
@@ -96,22 +96,22 @@ export default function Header() {
 
             {/* Mobile dropdown */}
             {mobileMenu && (
-                <div className="lg:hidden bg-white border-t border-[#e2e8f0] shadow-lg">
-                    <div className="px-6 py-6 space-y-4">
+                <div className="lg:hidden bg-[#0F0F0F] border-t border-[#D4AF37]/20 shadow-2xl">
+                    <div className="px-6 py-8 space-y-6">
                         {['Ingrediënten', 'Wetenschap', 'Reviews', 'FAQ'].map(item => (
                             <button
                                 key={item}
                                 onClick={() => scrollToSection(item.toLowerCase())}
-                                className="block w-full text-left text-lg font-medium text-black hover:text-[#059669] transition"
+                                className="block w-full text-left text-lg font-light text-[#F8F5F0] hover:text-[#D4AF37] transition"
                             >
                                 {item}
                             </button>
                         ))}
                         <button
                             onClick={() => scrollToSection('prijzen')}
-                            className="block bg-[#059669] text-white text-center py-4 rounded-xl font-bold text-lg w-full"
+                            className="block bg-[#4A0E2A] text-[#D4AF37] border border-[#D4AF37] text-center py-4 rounded-sm uppercase tracking-widest font-bold text-sm w-full hover:bg-[#D4AF37] hover:text-[#4A0E2A] transition"
                         >
-                            Bestel Nu
+                            Reserveer Nu
                         </button>
                     </div>
                 </div>

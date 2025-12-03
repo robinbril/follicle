@@ -8,39 +8,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#FFFFFF',
-        foreground: '#0f172a',
-        primary: {
-          900: '#004d26',
-          800: '#006633',
-          700: '#007a3d',
-          600: '#00994d',
-          500: '#00b359',
-          400: '#33cc7a',
+        background: '#0F0F0F',
+        foreground: '#F8F5F0',
+        revive: {
+          black: '#0F0F0F',
+          bordeaux: '#4A0E2A',
+          gold: '#D4AF37',
+          cream: '#F8F5F0',
+          white: '#FFFFFF',
+          grey: '#94A3B8',
         },
-        neutral: {
-          950: '#0A0A0A',
-          900: '#0f172a',
-          800: '#1e293b',
-          700: '#334155',
-          400: '#94a3b8',
-          200: '#e2e8f0',
-          100: '#f1f5f9',
-          50: '#f8fafc',
-        },
-        accent: {
-          600: '#B8860B',
-          500: '#D4A574',
-          400: '#E5B896',
-        },
-        success: '#22C55E',
-        warning: '#F59E0B',
-        error: '#EF4444',
       },
       fontFamily: {
-        display: ['Inter', '-apple-system', 'sans-serif'],
-        body: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-        mono: ['Monaco', 'Courier New', 'monospace'],
+        serif: ['Playfair Display', 'serif'],
+        sans: ['Inter', 'sans-serif'],
       },
       fontSize: {
         'hero': ['clamp(3rem, 8vw, 6rem)', { lineHeight: '0.9', letterSpacing: '-0.02em', fontWeight: '900' }],
