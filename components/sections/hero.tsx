@@ -67,55 +67,98 @@ export default function Hero() {
                                 START NU – €39/maand (90 dagen garantie) →
                             </Button>
 
+                            {/* Payment Methods */}
+                            <div className="flex flex-col gap-2">
+                                <p className="text-xs text-neutral-500 font-medium">
+                                    Betaal met:
+                                </p>
+                                <div className="flex flex-wrap items-center gap-3">
+                                    {/* iDEAL */}
+                                    <div className="px-3 py-1.5 bg-white border border-neutral-200 rounded-md flex items-center justify-center">
+                                        <span className="text-xs font-bold text-pink-600">iDEAL</span>
+                                    </div>
+
+                                    {/* Apple Pay */}
+                                    <div className="px-3 py-1.5 bg-black rounded-md flex items-center justify-center">
+                                        <span className="text-xs font-semibold text-white">  Pay</span>
+                                    </div>
+
+                                    {/* Google Pay */}
+                                    <div className="px-3 py-1.5 bg-white border border-neutral-200 rounded-md flex items-center justify-center">
+                                        <span className="text-xs font-semibold">G Pay</span>
+                                    </div>
+
+                                    {/* Klarna */}
+                                    <div className="px-3 py-1.5 bg-pink-100 border border-pink-200 rounded-md flex items-center justify-center">
+                                        <span className="text-xs font-bold text-pink-600">Klarna</span>
+                                    </div>
+
+                                    {/* PayPal */}
+                                    <div className="px-3 py-1.5 bg-blue-600 rounded-md flex items-center justify-center">
+                                        <span className="text-xs font-bold text-white">PayPal</span>
+                                    </div>
+
+                                    {/* Credit Card */}
+                                    <div className="px-3 py-1.5 bg-white border border-neutral-200 rounded-md flex items-center justify-center">
+                                        <svg className="w-5 h-3" viewBox="0 0 24 16" fill="none">
+                                            <rect width="24" height="16" rx="2" fill="#E5E7EB" />
+                                            <rect x="2" y="3" width="8" height="1.5" rx="0.5" fill="#9CA3AF" />
+                                            <rect x="2" y="6" width="12" height="1.5" rx="0.5" fill="#9CA3AF" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Micro-copy - CRYSTAL CLEAR */}
                             <p className="text-sm text-neutral-500">
                                 ✓ Gratis verzending • Niet goed = geld terug • Stop wanneer je wilt
                             </p>
                         </div>
-
-                        {/* Trust Badges */}
-                        <div className="flex flex-wrap gap-6 pt-6 border-t border-neutral-200">
-                            <div className="flex items-center gap-2 text-neutral-600">
-                                <TrendingUp className="w-5 h-5 text-primary-600" />
-                                <span className="text-sm font-medium">Klinisch Getest</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-neutral-600">
-                                <Shield className="w-5 h-5 text-primary-600" />
-                                <span className="text-sm font-medium">EU Gecertificeerd</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-neutral-600">
-                                <Star className="w-5 h-5 text-primary-600 fill-primary-600" />
-                                <span className="text-sm font-medium">4.8/5 (2.847 reviews)</span>
-                            </div>
-                        </div>
                     </div>
 
-                    {/* Right Column - Product Image */}
-                    <div className="relative flex items-center justify-center">
-                        <div className="relative w-full max-w-md">
-                            {/* Product Stickers - DUTCH + RESULTS FOCUSED */}
-                            <div className="absolute -top-4 -left-4 bg-primary-600 text-white px-4 py-2 rounded-full font-black text-sm shadow-lg z-10 rotate-[-12deg]">
-                                ⭐ 2.847× VERKOCHT
-                            </div>
-                            <div className="absolute top-12 -right-4 bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg z-10 rotate-[8deg]">
-                                88.9% ZAG RESULTAAT
-                            </div>
-                            <div className="absolute bottom-8 -left-4 bg-neutral-900 text-white px-3 py-1.5 rounded-full font-bold text-xs shadow-lg z-10">
-                                90 DAGEN GARANTIE
-                            </div>
-
-                            <Image
-                                src="/images/product-hero.png"
-                                alt="FOLLICLE Hair Growth Serum - 18% actieve ingrediënten voor bewezen haargroei"
-                                width={500}
-                                height={600}
-                                className="w-full h-auto drop-shadow-2xl"
-                                priority
-                            />
+                    {/* Trust Badges */}
+                    <div className="flex flex-wrap gap-6 pt-6 border-t border-neutral-200">
+                        <div className="flex items-center gap-2 text-neutral-600">
+                            <TrendingUp className="w-5 h-5 text-primary-600" />
+                            <span className="text-sm font-medium">Klinisch Getest</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-neutral-600">
+                            <Shield className="w-5 h-5 text-primary-600" />
+                            <span className="text-sm font-medium">EU Gecertificeerd</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-neutral-600">
+                            <Star className="w-5 h-5 text-primary-600 fill-primary-600" />
+                            <span className="text-sm font-medium">4.8/5 (2.847 reviews)</span>
                         </div>
                     </div>
                 </div>
+
+                {/* Right Column - Product Image */}
+                <div className="relative flex items-center justify-center">
+                    <div className="relative w-full max-w-md">
+                        {/* Product Stickers - DUTCH + RESULTS FOCUSED */}
+                        <div className="absolute -top-4 -left-4 bg-primary-600 text-white px-4 py-2 rounded-full font-black text-sm shadow-lg z-10 rotate-[-12deg]">
+                            ⭐ 2.847× VERKOCHT
+                        </div>
+                        <div className="absolute top-12 -right-4 bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg z-10 rotate-[8deg]">
+                            88.9% ZAG RESULTAAT
+                        </div>
+                        <div className="absolute bottom-8 -left-4 bg-neutral-900 text-white px-3 py-1.5 rounded-full font-bold text-xs shadow-lg z-10">
+                            90 DAGEN GARANTIE
+                        </div>
+
+                        <Image
+                            src="/images/product-hero.png"
+                            alt="FOLLICLE Hair Growth Serum - 18% actieve ingrediënten voor bewezen haargroei"
+                            width={500}
+                            height={600}
+                            className="w-full h-auto drop-shadow-2xl"
+                            priority
+                        />
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+        </section >
     )
 }
