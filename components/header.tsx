@@ -33,7 +33,7 @@ export default function Header() {
                     {/* Logo */}
                     <Link href="/" className="relative z-50">
                         <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-                            FOLLICLE<span className="text-emerald-600">.</span>
+                            REVIVE<span className="text-emerald-600">.</span>
                         </h1>
                     </Link>
 
