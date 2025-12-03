@@ -82,31 +82,31 @@ export default function Pricing() {
                     <label className="block text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wide">
                         Kuur Lengte
                     </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                         {plans.map((plan, index) => (
                             <button
                                 key={index}
                                 onClick={() => setSelectedPlan(index)}
-                                className={`relative p-6 rounded-xl border-2 transition-all duration-200 text-center ${selectedPlan === index
+                                className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 text-center ${selectedPlan === index
                                     ? 'border-[#D4A574] bg-[#D4A574]/5 shadow-lg'
                                     : 'border-gray-200 hover:border-gray-300 bg-white'
                                     }`}
                             >
                                 {plan.popular && selectedPlan === index && (
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-2 py-1 sm:px-3 rounded-full text-[10px] sm:text-xs font-bold whitespace-nowrap shadow-sm">
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold whitespace-nowrap shadow-sm">
                                         MEEST GEKOZEN
                                     </div>
                                 )}
 
-                                <div className="font-bold text-gray-900 mb-2 text-sm">
+                                <div className="font-bold text-gray-900 mb-1 sm:mb-2 text-sm sm:text-base">
                                     {plan.label}
                                 </div>
-                                <div className={`text-2xl font-bold mb-1 ${selectedPlan === index ? 'text-[#D4A574]' : 'text-gray-900'
+                                <div className={`text-xl sm:text-2xl font-bold mb-0.5 sm:mb-1 ${selectedPlan === index ? 'text-[#D4A574]' : 'text-gray-900'
                                     }`}>
                                     {plan.priceLabel}
                                 </div>
                                 {plan.discount && (
-                                    <div className="text-[#D4A574] text-sm font-semibold">
+                                    <div className="text-[#D4A574] text-xs sm:text-sm font-semibold">
                                         {plan.discount}
                                     </div>
                                 )}
@@ -142,33 +142,35 @@ export default function Pricing() {
                 </Button>
 
                 {/* Trust & Payment Grid */}
-                <div className="grid sm:grid-cols-2 gap-6 mt-6">
-                    {/* Left: Trust Badges */}
-                    <div className="space-y-2 text-sm text-gray-700 flex flex-col items-center sm:items-start">
-                        <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                            <span className="font-medium">Op voorraad</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Truck className="w-4 h-4 text-gray-600" />
-                            <span>Voor 23:59 besteld = morgen in huis</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <ShieldCheck className="w-4 h-4 text-gray-600" />
-                            <span>180 dagen garantie</span>
+                {/* Trust & Payment Grid - Reordered for Mobile Priority */}
+                <div className="flex flex-col items-center gap-8 mt-8">
+
+                    {/* Payment Methods - Now First & Prominent */}
+                    <div className="flex flex-col items-center w-full">
+                        <p className="text-base font-extrabold text-gray-900 mb-4 uppercase tracking-wider text-center">
+                            Veilig betalen met
+                        </p>
+                        <div className="flex flex-wrap justify-center items-center gap-8 bg-gray-50 px-8 py-6 rounded-2xl border border-gray-200 w-full sm:w-auto shadow-sm">
+                            <img src="/images/payment/ideal.png" alt="iDEAL" className="h-8 object-contain" />
+                            <img src="/images/payment/klarna.png" alt="Klarna" className="h-7 object-contain" />
+                            <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-9 object-contain" />
+                            <img src="/images/payment/google-pay.png" alt="Google Pay" className="h-7 object-contain" />
                         </div>
                     </div>
 
-                    {/* Right: Payment Methods */}
-                    <div className="flex flex-col justify-center items-center sm:items-end">
-                        <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
-                            Veilig betalen met
-                        </p>
-                        <div className="flex flex-wrap justify-center sm:justify-end items-center gap-4 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-                            <img src="/images/payment/ideal.png" alt="iDEAL" className="h-5 object-contain" />
-                            <img src="/images/payment/klarna.png" alt="Klarna" className="h-4 object-contain" />
-                            <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-6 object-contain" />
-                            <img src="/images/payment/google-pay.png" alt="Google Pay" className="h-4 object-contain" />
+                    {/* Trust Badges - Now Second */}
+                    <div className="space-y-3 text-sm text-gray-600 flex flex-col items-center">
+                        <div className="flex items-center gap-2.5">
+                            <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full shadow-sm shadow-emerald-200"></div>
+                            <span className="font-semibold text-gray-900">Direct op voorraad</span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                            <Truck className="w-4 h-4 text-gray-500" />
+                            <span>Voor 23:59 besteld = morgen in huis</span>
+                        </div>
+                        <div className="flex items-center gap-2.5">
+                            <ShieldCheck className="w-4 h-4 text-gray-500" />
+                            <span>180 dagen niet-goed-geld-terug garantie</span>
                         </div>
                     </div>
                 </div>

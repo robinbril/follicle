@@ -147,7 +147,7 @@ export default function Solution() {
     ]
 
     return (
-        <section id="solution" className="pt-16 pb-8 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white relative">
+        <section id="solution" className="pt-10 pb-8 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white relative">
             {/* Subtle grain texture overlay */}
             <div className="absolute inset-0 opacity-[0.015] pointer-events-none"
                 style={{
@@ -158,14 +158,14 @@ export default function Solution() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* Section Label */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-4">
                     <span className="text-emerald-600 font-medium tracking-widest text-xs uppercase">
                         De Oplossing
                     </span>
                 </div>
 
                 {/* Headline */}
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-4 leading-tight text-gray-900">
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-4 leading-tight text-gray-900">
                     <span className="text-gray-900">6 gepatenteerde technologieën.</span>
                     <br />
                     <span className="text-emerald-600">1 krachtige formule.</span>
@@ -178,36 +178,13 @@ export default function Solution() {
                     </p>
                 </div>
 
-                {/* Product Hero - Compact */}
-                <div className="relative flex justify-center mb-8">
-                    <div className="relative">
-                        {/* Radial Glow */}
-                        <div className="absolute inset-0 bg-gradient-radial from-emerald-400/20 via-emerald-500/5 to-transparent rounded-full blur-2xl scale-125" />
 
-                        {/* Product Video - Smaller */}
-                        <div className="relative w-64 h-[380px]">
-                            <video
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="w-full h-full object-contain drop-shadow-xl"
-                                poster="/images/revive-hero-bottle.jpg"
-                            >
-                                <source src="/videos/revive-product-loop.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-
-                        {/* Reflection */}
-                        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-40 h-6 bg-gradient-to-b from-gray-300/40 to-transparent blur-sm rounded-full" />
-                    </div>
-                </div>
 
                 {/* Formula Container - Unified */}
-                <div className="max-w-[850px] mx-auto bg-white/[0.02] border border-white/[0.06] rounded-3xl p-8 mb-16">
-                    {/* Ingredient Cards - Compact Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                {/* Formula Container - Unified with Contrast Block */}
+                <div className="max-w-[850px] mx-auto bg-gray-100/50 border border-gray-200/60 rounded-3xl p-4 sm:p-8 mb-16 shadow-sm">
+                    {/* Ingredient Cards - Grid on Mobile (No Slider) */}
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mb-8">
                         {ingredientsData.map((ingredient, index) => {
                             const Icon = ingredient.icon
                             const isNew = ingredient.isNew
@@ -215,7 +192,7 @@ export default function Solution() {
                             return (
                                 <div
                                     key={index}
-                                    className={`group relative rounded-xl p-6 flex flex-col transition-all duration-300 cursor-pointer ${isNew
+                                    className={`group relative rounded-xl p-4 sm:p-6 flex flex-col transition-all duration-300 cursor-pointer ${isNew
                                         ? 'bg-gradient-to-br from-white via-amber-50/30 to-white border-2 border-[#D4A574]/60 shadow-md hover:shadow-lg hover:border-[#D4A574]'
                                         : 'bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300'
                                         }`}
@@ -223,31 +200,31 @@ export default function Solution() {
                                     {/* Info Button */}
                                     <button
                                         onClick={() => setSelectedIngredient(index)}
-                                        className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-600 hover:text-emerald-600 transition-all shadow-sm z-20"
+                                        className="absolute top-2 right-2 sm:top-3 sm:right-3 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/80 hover:bg-white flex items-center justify-center text-gray-600 hover:text-emerald-600 transition-all shadow-sm z-20"
                                         aria-label={`Info over ${ingredient.name}`}
                                     >
-                                        <Info className="w-4 h-4" />
+                                        <Info className="w-3 h-3 sm:w-4 sm:h-4" />
                                     </button>
 
                                     {/* NEW Badge */}
                                     {isNew && (
-                                        <div className="absolute -top-2 -right-2 bg-gradient-to-r from-[#D4AF37] to-[#F4C542] text-white text-[10px] font-extrabold px-2 py-1 rounded-full shadow-md z-20">
+                                        <div className="absolute -top-2 -right-2 bg-gradient-to-r from-[#D4AF37] to-[#F4C542] text-white text-[9px] sm:text-[10px] font-extrabold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full shadow-md z-20">
                                             NIEUW
                                         </div>
                                     )}
 
                                     {/* Percentage */}
-                                    <p className={`text-sm font-bold mb-2 ${isNew ? 'text-[#D4A574]' : 'text-emerald-600'}`}>
+                                    <p className={`text-xs sm:text-sm font-bold mb-1 sm:mb-2 ${isNew ? 'text-[#D4A574]' : 'text-emerald-600'}`}>
                                         {ingredient.percentage}
                                     </p>
 
                                     {/* Name */}
-                                    <h3 className="text-base font-bold text-gray-900 mb-3 uppercase tracking-wide leading-tight">
+                                    <h3 className="text-xs sm:text-base font-bold text-gray-900 mb-1 sm:mb-3 uppercase tracking-wide leading-tight">
                                         {ingredient.name}
                                     </h3>
 
                                     {/* Description */}
-                                    <p className="text-sm leading-relaxed text-gray-600">
+                                    <p className="text-[10px] sm:text-sm leading-relaxed text-gray-600 line-clamp-2 sm:line-clamp-none">
                                         {ingredient.description}
                                     </p>
                                 </div>

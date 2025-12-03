@@ -1,9 +1,10 @@
 "use client"
 
-import { Check, ArrowRight, ShieldCheck, Star } from 'lucide-react'
+import { ArrowRight, Check, Star, ShieldCheck } from 'lucide-react'
+import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 export default function Hero() {
     return (
@@ -12,12 +13,12 @@ export default function Hero() {
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
                     {/* LEFT - High Conversion Copy */}
-                    <div className="max-w-2xl">
+                    <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
                         {/* Trust Badge */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs sm:text-sm font-medium mb-6"
+                            className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs sm:text-sm font-medium mb-6"
                         >
                             <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4" />
                             <span>Bestel voor 23:59 → morgen in huis</span>
@@ -30,56 +31,80 @@ export default function Hero() {
                             <span className="text-emerald-600">zonder Finasteride of Minoxidil</span>
                         </motion.h1>
 
-                        {/* Mobile Product Image - Visible only on mobile */}
+                        {/* Mobile Product Visual - Video Loop (Warm/Premium) */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden"
+                            className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden rounded-2xl overflow-hidden shadow-2xl"
                         >
-                            <Image
-                                src="/images/revive-hero-bottle.jpg"
-                                alt="Follicle Hair Growth Serum"
-                                fill
-                                className="object-contain drop-shadow-xl"
-                                priority
-                            />
+                            <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="w-full h-full object-cover"
+                                poster="/images/revive-hero-bottle.jpg"
+                            >
+                                <source src="/videos/revive-product-loop.mp4" type="video/mp4" />
+                            </video>
                         </motion.div>
 
-                        <motion.p
-                            className="text-lg text-gray-600 mb-6 leading-relaxed max-w-lg font-medium"
-                        >
-                            88.9% zag duidelijke hergroei in een onafhankelijke studie (vs 60% met Minoxidil alleen).
-                        </motion.p>
+                        {/* Trust Block - Clean & Aligned */}
+                        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm mb-8 sm:mb-0 text-center sm:text-left">
+                            <motion.p
+                                className="text-base sm:text-lg text-gray-800 mb-6 leading-snug font-medium"
+                            >
+                                <span className="font-extrabold text-emerald-600 text-2xl sm:text-3xl">88.9%</span> zag duidelijke hergroei.
+                                <span className="block mt-1 text-gray-500 text-sm sm:text-base font-normal">Bewezen effectiever dan Minoxidil (60%).</span>
+                            </motion.p>
 
-                        {/* Benefits - Horizontal on desktop, vertical on mobile */}
-                        <motion.div
-                            className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 mb-8 text-sm sm:text-base text-gray-700 font-medium"
-                        >
-                            <span className="flex items-center gap-2">
-                                <Check className="w-5 h-5 text-emerald-500" /> Geen seksuele bijwerkingen
-                            </span>
-                            <span className="flex items-center gap-2">
-                                <Check className="w-5 h-5 text-emerald-500" /> Geen jeuk
-                            </span>
-                            <span className="flex items-center gap-2">
-                                <Check className="w-5 h-5 text-emerald-500" /> Geen levenslange afhankelijkheid
-                            </span>
-                        </motion.div>
+                            {/* Benefits - Vertical list, centered as a block but aligned left internally */}
+                            <div className="flex justify-center sm:justify-start mb-6">
+                                <motion.div
+                                    className="flex flex-col gap-3 text-sm sm:text-base text-gray-700 font-medium text-left"
+                                >
+                                    <span className="flex items-center gap-3">
+                                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                            <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
+                                        </div>
+                                        Geen seksuele bijwerkingen
+                                    </span>
+                                    <span className="flex items-center gap-3">
+                                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                            <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
+                                        </div>
+                                        Geen jeuk of irritatie
+                                    </span>
+                                    <span className="flex items-center gap-3">
+                                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                            <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
+                                        </div>
+                                        Geen levenslange afhankelijkheid
+                                    </span>
+                                </motion.div>
+                            </div>
 
-                        {/* Offer Text */}
-                        <motion.p className="text-sm font-medium text-gray-500 mb-6">
-                            Vanaf €39/maand · Annuleer wanneer je wilt · 180 dagen garantie
-                        </motion.p>
+                            {/* Offer Text */}
+                            <motion.div className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm font-semibold text-gray-500 border-t border-gray-100 pt-4">
+                                <ShieldCheck className="w-4 h-4 text-[#D4A574]" />
+                                <span>180 dagen garantie · Vanaf €39/maand</span>
+                            </motion.div>
+                        </div>
 
                         {/* CTA Buttons */}
                         <motion.div
-                            className="flex flex-col sm:flex-row gap-4"
+                            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                         >
-                            <Link href="#prijzen" className="btn-primary group text-lg px-10 py-4 shadow-emerald-200 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                                START NU
-                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                            </Link>
+                            <Button
+                                size="lg"
+                                className="w-full sm:w-auto px-8 py-6 text-lg font-bold bg-gradient-to-r from-[#D4A574] via-[#E8C89A] to-[#D4A574] hover:from-[#C69563] hover:via-[#D4AF37] hover:to-[#C69563] text-gray-900 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+                                asChild
+                            >
+                                <Link href="#prijzen">
+                                    BESTEL NU <ArrowRight className="ml-2 w-5 h-5" />
+                                </Link>
+                            </Button>
                         </motion.div>
 
                         {/* Social Proof */}
@@ -128,24 +153,29 @@ export default function Hero() {
                                 src="/images/revive-hero-bottle.jpg"
                                 alt="Follicle Hair Growth Serum"
                                 fill
-                                className="object-contain drop-shadow-xl"
+                                className="object-contain drop-shadow-2xl"
                                 priority
                             />
 
-                            {/* Floating Result Card */}
+                            {/* Floating Result Card - Desktop Only */}
                             <motion.div
-                                initial={{ y: 20, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.8 }}
-                                className="absolute bottom-8 left-8 right-8 bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex items-center gap-4"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.5 }}
+                                className="hidden lg:block absolute bottom-12 -left-12 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 max-w-[200px]"
                             >
-                                <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <Check className="w-6 h-6 text-emerald-600" />
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                                        <Check className="w-6 h-6 text-emerald-600" />
+                                    </div>
+                                    <div>
+                                        <p className="font-bold text-gray-900 text-sm">6 actieve</p>
+                                        <p className="font-bold text-gray-900 text-sm">technologieën</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="font-bold text-gray-900">6 actieve technologieën</p>
-                                    <p className="text-sm text-gray-500">20.5% werkzame concentratie</p>
-                                </div>
+                                <p className="text-xs text-gray-500">
+                                    20.5% werkzame concentratie
+                                </p>
                             </motion.div>
                         </div>
                     </motion.div>

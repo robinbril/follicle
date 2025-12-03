@@ -31,7 +31,7 @@ export default function SocialProofToast() {
 
     return (
         <div
-            className={`fixed bottom-6 left-6 z-40 transition-all duration-500 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
+            className={`hidden md:block fixed bottom-6 left-6 z-40 transition-all duration-500 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'
                 }`}
         >
             <div className="bg-white rounded-2xl p-4 shadow-xl border border-gray-100 flex items-center gap-4 max-w-sm">
