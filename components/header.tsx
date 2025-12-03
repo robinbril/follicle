@@ -32,7 +32,7 @@ export default function Header() {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link href="/" className="relative z-50">
-                        <h1 className={`text-2xl font-bold tracking-tight transition-colors ${isScrolled ? 'text-white' : 'text-gray-900'}`}>
+                        <h1 className={`text-2xl font-bold tracking-tight transition-colors ${isScrolled ? 'text-gray-900' : 'text-gray-900'}`}>
                             REVIVE<span className="text-emerald-600">.</span>
                         </h1>
                     </Link>
@@ -43,7 +43,7 @@ export default function Header() {
                             <Link
                                 key={item}
                                 href={`#${item.toLowerCase()}`}
-                                className={`text-sm font-medium transition-colors ${isScrolled ? 'text-white hover:text-emerald-400' : 'text-gray-600 hover:text-emerald-600'}`}
+                                className={`text-sm font-medium transition-colors ${isScrolled ? 'text-gray-600 hover:text-emerald-600' : 'text-gray-600 hover:text-emerald-600'}`}
                             >
                                 {item}
                             </Link>
@@ -52,10 +52,10 @@ export default function Header() {
 
                     {/* Desktop CTA */}
                     <div className="hidden lg:flex items-center gap-4">
-                        <Button asChild variant="ghost" className={`transition-colors ${isScrolled ? 'text-white hover:text-emerald-400 hover:bg-white/10' : 'text-gray-900 hover:text-emerald-600 hover:bg-emerald-50'}`}>
+                        <Button asChild variant="ghost" className={`transition-colors ${isScrolled ? 'text-gray-900 hover:text-emerald-600 hover:bg-emerald-50' : 'text-gray-900 hover:text-emerald-600 hover:bg-emerald-50'}`}>
                             <Link href="/login">Inloggen</Link>
                         </Button>
-                        <Button asChild className={`font-semibold px-6 transition-all ${isScrolled ? 'bg-white text-emerald-900 hover:bg-gray-100 shadow-lg' : 'bg-emerald-600 hover:bg-emerald-700 text-white'}`}>
+                        <Button asChild className={`font-semibold px-6 transition-all ${isScrolled ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-emerald-600 hover:bg-emerald-700 text-white'}`}>
                             <Link href="#prijzen">
                                 Start Nu
                             </Link>
@@ -65,7 +65,7 @@ export default function Header() {
                     {/* Mobile Toggle */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className={`lg:hidden z-50 transition-colors ${isScrolled ? 'text-white' : 'text-gray-900'}`}
+                        className={`lg:hidden z-50 transition-colors ${isScrolled ? 'text-gray-900' : 'text-gray-900'}`}
                     >
                         {isMobileMenuOpen ? <X /> : <Menu />}
                     </button>

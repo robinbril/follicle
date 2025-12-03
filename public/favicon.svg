@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- R Letter -->
+  <text x="8" y="48" font-family="serif" font-size="48" font-weight="700" fill="#1a1a1a">R</text>
+  
+  <!-- Droplet as period -->
+  <path d="M52 46 C52 46, 54 42, 54 40 C54 37.5, 52 36, 50 36 C48 36, 46 37.5, 46 40 C46 42, 48 46, 52 46 Z" 
+        fill="url(#droplet-gradient)" 
+        stroke="#C69563" 
+        stroke-width="0.5"/>
+  
+  <!-- Gradient for droplet -->
+  <defs>
+    <linearGradient id="droplet-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8C89A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4A574;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

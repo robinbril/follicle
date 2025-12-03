@@ -1,69 +1,107 @@
 "use client"
 
-import { HeartCrack, RotateCcw, Zap } from 'lucide-react'
+import { Check, X } from 'lucide-react'
 
 export default function ProblemAgitation() {
     return (
-        <section className="py-24 bg-[#091412] text-white relative overflow-hidden">
-            {/* Subtle Background Glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-900/20 rounded-full blur-3xl -z-10" />
-
-            <div className="max-w-7xl mx-auto px-6">
-                {/* Section label */}
-                <div className="text-center mb-8">
-                    <span className="text-emerald-500 font-mono text-xs uppercase tracking-widest">
-                        HET HUIDIGE LANDSCHAP
-                    </span>
-                </div>
-
+        <section className="py-16 bg-gradient-to-b from-[#091412] to-[#0D1F17] relative overflow-hidden">
+            <div className="max-w-4xl mx-auto px-6 relative z-10">
                 {/* Headline */}
-                <h2 className="text-center text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 text-balance text-white">
-                    De "gouden standaard" <br />
-                    <span className="text-gray-400">heeft een donkere kant.</span>
+                <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-6">
+                    Waarom niet gewoon Minoxidil of Finasteride?
                 </h2>
 
-                <p className="text-center text-lg text-gray-400 mb-16 max-w-3xl mx-auto leading-relaxed">
-                    Minoxidil en Finasteride zijn effectief, maar komen vaak met een prijs die veel mannen liever niet betalen.
+                <p className="text-xl text-white/70 text-center mb-16 max-w-2xl mx-auto">
+                    Ze werken. Maar ze komen met bagage.
                 </p>
 
-                {/* 3 Pain cards */}
-                <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-20">
-                    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-emerald-500/30 transition-colors group">
-                        <div className="w-12 h-12 mb-6 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">
-                            <HeartCrack className="w-6 h-6 text-emerald-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-3">Seksuele Bijwerkingen</h3>
-                        <p className="text-gray-400 leading-relaxed text-sm">
-                            Een klein maar significant percentage gebruikers ervaart <span className="text-white font-medium">libidoverlies</span> en andere ongewenste effecten.
-                        </p>
-                    </div>
+                {/* Comparison Table */}
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="overflow-x-auto">
+                        <table className="w-full">
+                            <thead>
+                                <tr className="border-b border-white/10">
+                                    <th className="px-6 py-4 text-left text-sm font-semibold text-white/60 uppercase tracking-wide">
+                                        {/* Empty header */}
+                                    </th>
+                                    <th className="px-6 py-4 text-center text-sm font-bold text-emerald-400 uppercase tracking-wide">
+                                        REVIVE
+                                    </th>
+                                    <th className="px-6 py-4 text-center text-sm font-medium text-white/40 uppercase tracking-wide">
+                                        Minoxidil
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* Effectiviteit */}
+                                <tr className="border-b border-white/5">
+                                    <td className="px-6 py-5 text-white/80 font-medium">
+                                        Effectiviteit
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                        <span className="text-2xl font-bold text-emerald-400">88.9%</span>
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                        <span className="text-2xl font-bold text-white/40">60%</span>
+                                    </td>
+                                </tr>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-emerald-500/30 transition-colors group">
-                        <div className="w-12 h-12 mb-6 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">
-                            <RotateCcw className="w-6 h-6 text-emerald-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-3">Levenslange Afhankelijkheid</h3>
-                        <p className="text-gray-400 leading-relaxed text-sm">
-                            Stop je met de behandeling? Dan verlies je vaak <span className="text-white font-medium">binnen enkele maanden</span> al je geboekte resultaat.
-                        </p>
-                    </div>
+                                {/* Bijwerkingen */}
+                                <tr className="border-b border-white/5">
+                                    <td className="px-6 py-5 text-white/80 font-medium">
+                                        Bijwerkingen
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                        <span className="text-2xl font-bold text-emerald-400">&lt; 5%</span>
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                        <span className="text-2xl font-bold text-white/40">11-18%</span>
+                                    </td>
+                                </tr>
 
-                    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-emerald-500/30 transition-colors group">
-                        <div className="w-12 h-12 mb-6 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">
-                            <Zap className="w-6 h-6 text-emerald-500" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-3">Fysiek Ongemak</h3>
-                        <p className="text-gray-400 leading-relaxed text-sm">
-                            Van hoofdpijn tot huidirritatie. Veel mannen stoppen voortijdig vanwege <span className="text-white font-medium">dagelijkse ongemakken</span>.
-                        </p>
+                                {/* Afhankelijkheid */}
+                                <tr className="border-b border-white/5">
+                                    <td className="px-6 py-5 text-white/80 font-medium">
+                                        Afhankelijkheid
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                        <div className="flex justify-center">
+                                            <X className="w-6 h-6 text-emerald-400" />
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                        <div className="flex justify-center">
+                                            <Check className="w-6 h-6 text-white/40" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                {/* Eerste resultaat */}
+                                <tr>
+                                    <td className="px-6 py-5 text-white/80 font-medium">
+                                        Eerste resultaat
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                        <span className="text-lg font-semibold text-emerald-400">6 weken</span>
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                        <span className="text-lg font-semibold text-white/40">8-12 weken</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-                {/* Transition line */}
-                <div className="text-center">
-                    <p className="text-2xl sm:text-3xl font-medium text-white">
-                        Wij geloven dat je niet hoeft te kiezen tussen <br />
-                        <span className="text-emerald-500">je haar</span> en <span className="text-emerald-500">je gezondheid</span>.
+                {/* Source */}
+                <p className="text-xs text-white/40 text-center mt-6">
+                    Bron: J. Cosmetology & Trichology, 2019 · 106 deelnemers
+                </p>
+
+                {/* Transition */}
+                <div className="text-center mt-16">
+                    <p className="text-2xl font-medium text-white italic">
+                        "Daarom ontwikkelden we REVIVE."
                     </p>
                 </div>
             </div>
