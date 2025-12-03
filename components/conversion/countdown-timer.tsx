@@ -39,7 +39,7 @@ export default function CountdownTimer() {
     }, [])
 
     return (
-        <div className="bg-amber-50 border-y border-amber-200 py-3">
+        <div className="bg-amber-50 border-b border-amber-200 py-3 sticky top-0 z-40">
             <div className="max-w-7xl mx-auto px-4 text-center">
                 <p className="text-sm sm:text-base font-semibold text-amber-900">
                     ⚡ Speciale introductieprijs eindigt over:{' '}
