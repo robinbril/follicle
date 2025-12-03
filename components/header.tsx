@@ -4,15 +4,8 @@ import { useState, useEffect } from 'react'
 import { Timer, Menu, X } from 'lucide-react'
 
 export default function Header() {
-    const [scrolled, setScrolled] = useState(false)
     const [mobileMenu, setMobileMenu] = useState(false)
     const [timeLeft, setTimeLeft] = useState("")
-
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 10)
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
 
     // Countdown timer
     useEffect(() => {
@@ -53,75 +46,75 @@ export default function Header() {
     }
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
-            {/* Urgency bar – emerald groen */}
-            <div className="bg-emerald-600 text-white py-2.5 text-center text-sm font-medium">
-                <Timer className="inline w-4 h-4 mr-2 animate-pulse" />
-                Speciale introductieprijs eindigt over: <span className="font-bold">{timeLeft}</span>
-                {' → '}
-                <span className="underline decoration-white/70 font-bold">2.847 mannen gingen je voor</span>
-            </div>
+        <header className="fixed top-0 left-0 right-0 z-50 bg-emerald-600 shadow-lg">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="flex flex-col lg:flex-row items-center justify-between py-4 gap-4">
+                    {/* Logo + urgency + social proof */}
+                    <div className="flex flex-col lg:flex-row items-center gap-6 text-white">
+                        <h1 className="text-2xl sm:text-3xl font-black tracking-tighter">FOLLICLE</h1>
 
-            {/* Main nav – wit bij scroll, transparant bovenaan */}
-            <div className={`transition-all duration-300 ${scrolled ? 'bg-white' : 'bg-white/95 backdrop-blur'}`}>
-                <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-                    {/* Logo – vet zwart */}
-                    <h1 className="text-2xl sm:text-3xl font-black tracking-tighter text-gray-900">
-                        FOLLICLE
-                    </h1>
+                        <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
+                            <div className="flex items-center gap-2">
+                                <Timer className="w-4 h-4 animate-pulse" />
+                                Speciale introductieprijs eindigt over: <span className="font-bold">{timeLeft}</span>
+                            </div>
+                            <span className="text-emerald-100">•</span>
+                            <span className="font-bold">2.847 mannen gingen je voor</span>
+                        </div>
+                    </div>
 
-                    {/* Desktop menu – strak */}
-                    <nav className="hidden lg:flex items-center gap-10">
-                        <button onClick={() => scrollToSection('ingredienten')} className="text-gray-700 hover:text-emerald-600 font-medium transition">
-                            Ingrediënten
+                    {/* Nav + CTA – perfect uitgelijnd */}
+                    <nav className="flex items-center gap-8">
+                        {['Ingrediënten', 'Wetenschap', 'Reviews', 'FAQ'].map((item) => (
+                            <button
+                                key={item}
+                                onClick={() => scrollToSection(item.toLowerCase())}
+                                className="text-white/90 hover:text-white font-medium transition hidden lg:block"
+                            >
+                                {item}
+                            </button>
+                        ))}
+
+                        {/* CTA button – wit op emerald voor max contrast */}
+                        <button
+                            onClick={() => scrollToSection('prijzen')}
+                            className="bg-white text-emerald-600 hover:bg-gray-50 font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105 whitespace-nowrap cursor-pointer"
+                        >
+                            Bestel Nu →
                         </button>
-                        <button onClick={() => scrollToSection('wetenschap')} className="text-gray-700 hover:text-emerald-600 font-medium transition">
-                            Wetenschap
-                        </button>
-                        <button onClick={() => scrollToSection('reviews')} className="text-gray-700 hover:text-emerald-600 font-medium transition">
-                            Reviews
-                        </button>
-                        <button onClick={() => scrollToSection('faq')} className="text-gray-700 hover:text-emerald-600 font-medium transition">
-                            FAQ
+
+                        {/* Mobile menu button */}
+                        <button
+                            onClick={() => setMobileMenu(!mobileMenu)}
+                            className="lg:hidden text-white"
+                        >
+                            {mobileMenu ? <X size={28} /> : <Menu size={28} />}
                         </button>
                     </nav>
+                </div>
 
-                    {/* CTA button – emerald groen */}
-                    <button
-                        onClick={() => scrollToSection('prijzen')}
-                        className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 cursor-pointer text-sm sm:text-base"
-                    >
-                        Bestel Nu
-                    </button>
-
-                    {/* Mobile menu button */}
-                    <button
-                        onClick={() => setMobileMenu(!mobileMenu)}
-                        className="lg:hidden text-gray-700"
-                    >
-                        {mobileMenu ? <X size={28} /> : <Menu size={28} />}
-                    </button>
+                {/* Mobile urgency – alleen zichtbaar op mobile */}
+                <div className="lg:hidden text-center text-white/90 text-sm pb-2">
+                    <Timer className="inline w-4 h-4 mr-1 animate-pulse" />
+                    Introductieprijs eindigt over: <span className="font-bold">{timeLeft}</span>
                 </div>
             </div>
 
             {/* Mobile dropdown menu */}
             {mobileMenu && (
-                <div className="lg:hidden bg-white border-t shadow-lg">
+                <div className="lg:hidden bg-emerald-700 border-t border-emerald-500">
                     <div className="px-6 py-6 space-y-4">
-                        <button onClick={() => scrollToSection('ingredienten')} className="block w-full text-left text-lg font-medium text-gray-800">
+                        <button onClick={() => scrollToSection('ingredienten')} className="block w-full text-left text-lg font-medium text-white">
                             Ingrediënten
                         </button>
-                        <button onClick={() => scrollToSection('wetenschap')} className="block w-full text-left text-lg font-medium text-gray-800">
+                        <button onClick={() => scrollToSection('wetenschap')} className="block w-full text-left text-lg font-medium text-white">
                             Wetenschap
                         </button>
-                        <button onClick={() => scrollToSection('reviews')} className="block w-full text-left text-lg font-medium text-gray-800">
+                        <button onClick={() => scrollToSection('reviews')} className="block w-full text-left text-lg font-medium text-white">
                             Reviews
                         </button>
-                        <button onClick={() => scrollToSection('faq')} className="block w-full text-left text-lg font-medium text-gray-800">
+                        <button onClick={() => scrollToSection('faq')} className="block w-full text-left text-lg font-medium text-white">
                             FAQ
-                        </button>
-                        <button onClick={() => scrollToSection('prijzen')} className="block bg-emerald-600 text-white text-center py-4 rounded-xl font-bold text-lg w-full">
-                            Bestel Nu
                         </button>
                     </div>
                 </div>
