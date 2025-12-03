@@ -63,23 +63,23 @@ export default function Header() {
                         FOLLICLE
                     </h1>
 
-                    {/* Desktop menu - zwarte tekst, underline hover */}
+                    {/* Desktop menu - zwarte tekst, geen borders */}
                     <nav className="hidden lg:flex items-center gap-10">
                         {['Ingrediënten', 'Wetenschap', 'Reviews', 'FAQ'].map((item) => (
                             <button
                                 key={item}
                                 onClick={() => scrollToSection(item.toLowerCase())}
-                                className="text-black font-medium hover:text-[#059669] transition border-b-2 border-transparent hover:border-[#059669] pb-1"
+                                className="text-black font-medium hover:text-[#059669] transition"
                             >
                                 {item}
                             </button>
                         ))}
                     </nav>
 
-                    {/* Bestel Nu - wit met emerald tekst */}
+                    {/* Bestel Nu - Solid Emerald voor max leesbaarheid */}
                     <button
                         onClick={() => scrollToSection('prijzen')}
-                        className="bg-white text-[#059669] font-bold px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 cursor-pointer border-2 border-[#059669]"
+                        className="bg-[#059669] text-white font-bold px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 cursor-pointer"
                     >
                         Bestel Nu →
                     </button>
