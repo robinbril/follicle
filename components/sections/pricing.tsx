@@ -158,7 +158,7 @@ export default function Pricing() {
                         <img
                             src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
                             alt="Apple Pay"
-                            className="h-7 invert"
+                            className="h-6 invert"
                         />
                     </button>
                 </div>
