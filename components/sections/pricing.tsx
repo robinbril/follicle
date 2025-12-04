@@ -90,15 +90,13 @@ export default function Pricing() {
                             <button
                                 key={index}
                                 onClick={() => setSelectedPlan(index)}
-                                className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 text-center ${plan.popular
-                                    ? 'border-[#D4A574] bg-[#D4A574]/10 shadow-lg ring-2 ring-[#D4A574]/20'
-                                    : selectedPlan === index
-                                        ? 'border-gray-400 bg-gray-50 shadow-md'
+                                className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 text-center ${selectedPlan === index
+                                        ? 'border-[#D4A574] bg-[#D4A574]/10 shadow-lg ring-2 ring-[#D4A574]/20'
                                         : 'border-gray-200 hover:border-[#D4A574]/50 hover:shadow-md bg-white cursor-pointer'
                                     }`}
                             >
-                                {/* Always show badge on popular plan */}
-                                {plan.popular && (
+                                {/* Show badge on selected popular plan */}
+                                {plan.popular && selectedPlan === index && (
                                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold whitespace-nowrap shadow-sm">
                                         MEEST GEKOZEN
                                     </div>
@@ -107,15 +105,17 @@ export default function Pricing() {
                                 <div className="font-bold text-gray-900 text-sm sm:text-base">
                                     {plan.label}
                                 </div>
-                                <div className="text-[10px] text-gray-500 mb-1 sm:mb-2 font-medium">
-                                    {plan.subLabel}
-                                </div>
-                                <div className={`text-xl sm:text-2xl font-bold mb-0.5 sm:mb-1 ${plan.popular ? 'text-[#D4A574]' : 'text-gray-900'
+                                {plan.subLabel && (
+                                    <div className="text-[10px] text-gray-500 mb-1 sm:mb-2 font-medium">
+                                        {plan.subLabel}
+                                    </div>
+                                )}
+                                <div className={`text-xl sm:text-2xl font-bold mb-0.5 sm:mb-1 ${selectedPlan === index ? 'text-[#D4A574]' : 'text-gray-900'
                                     }`}>
                                     {plan.priceLabel}
                                 </div>
                                 {plan.discount && (
-                                    <div className={`text-xs sm:text-sm font-semibold ${plan.popular ? 'text-[#D4A574]' : 'text-gray-500'
+                                    <div className={`text-xs sm:text-sm font-semibold ${selectedPlan === index ? 'text-[#D4A574]' : 'text-gray-500'
                                         }`}>
                                         {plan.discount}
                                     </div>
@@ -143,18 +143,18 @@ export default function Pricing() {
 
                 {/* Dual Checkout Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 mb-4">
-                    {/* Primary CTA - Full width on desktop when Apple Pay hidden */}
+                    {/* Primary CTA */}
                     <Button
-                        className="w-full py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                        className="w-full sm:w-[60%] py-6 text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
                     >
                         <div className="flex items-center justify-center gap-2">
-                            <span>Afrekenen</span>
+                            <span>Afrekenen · €{totalPrice}</span>
                             <ArrowRight className="w-5 h-5 flex-shrink-0" />
                         </div>
                     </Button>
 
-                    {/* Apple Pay Button - Mobile only */}
-                    <button className="sm:hidden w-full py-5 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg">
+                    {/* Apple Pay Button */}
+                    <button className="w-full sm:w-[35%] py-5 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg">
                         <img src="/images/payment/apple-pay-white.png" alt="Apple Pay" className="h-7" />
                     </button>
                 </div>
