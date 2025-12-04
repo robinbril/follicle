@@ -145,13 +145,10 @@ export default function ExitIntentPopup() {
                         </div>
                     </div>
 
-                    {/* Spacer */}
-                    <div className="flex-grow" />
-
-                    {/* Close button */}
+                    {/* Close button - positioned right after content */}
                     <button
                         onClick={() => setIsVisible(false)}
-                        className="text-xs text-gray-400 hover:text-gray-600 transition-colors text-center font-medium tracking-wide uppercase hover:underline"
+                        className="mt-8 text-xs text-gray-400 hover:text-gray-600 transition-colors text-center font-medium tracking-wide uppercase hover:underline"
                     >
                         Nee bedankt, ik betaal de volle prijs
                     </button>

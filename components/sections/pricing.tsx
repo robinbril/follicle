@@ -145,11 +145,11 @@ export default function Pricing() {
                 <div className="flex gap-3 mb-4 md:justify-center">
                     {/* Primary CTA - Full width on desktop, 60% on mobile */}
                     <Button
-                        className="flex-[0_0_60%] md:flex-none md:w-full md:max-w-[600px] py-5 md:py-6 text-lg md:text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                        className="flex-[0_0_60%] md:flex-none md:w-full md:max-w-[600px] py-4 md:py-6 text-base md:text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
                     >
                         <div className="flex items-center justify-center gap-2">
                             <span>Afrekenen · €{totalPrice}</span>
-                            <ArrowRight className="w-5 h-5 flex-shrink-0" />
+                            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
                         </div>
                     </Button>
 
