@@ -91,8 +91,8 @@ export default function Pricing() {
                                 key={index}
                                 onClick={() => setSelectedPlan(index)}
                                 className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 text-center ${selectedPlan === index
-                                        ? 'border-[#D4A574] bg-[#D4A574]/10 shadow-lg ring-2 ring-[#D4A574]/20'
-                                        : 'border-gray-200 hover:border-[#D4A574]/50 hover:shadow-md bg-white cursor-pointer'
+                                    ? 'border-[#D4A574] bg-[#D4A574]/10 shadow-lg ring-2 ring-[#D4A574]/20'
+                                    : 'border-gray-200 hover:border-[#D4A574]/50 hover:shadow-md bg-white cursor-pointer'
                                     }`}
                             >
                                 {/* Show badge on selected popular plan */}
@@ -141,11 +141,11 @@ export default function Pricing() {
                     </div>
                 </div>
 
-                {/* Dual Checkout Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 mb-4">
-                    {/* Primary CTA */}
+                {/* Checkout Buttons - Responsive */}
+                <div className="flex gap-3 mb-4 md:justify-center">
+                    {/* Primary CTA - Full width on desktop, 60% on mobile */}
                     <Button
-                        className="w-full sm:w-[60%] py-6 text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                        className="flex-[0_0_60%] md:flex-none md:w-full md:max-w-[600px] py-5 md:py-6 text-lg md:text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
                     >
                         <div className="flex items-center justify-center gap-2">
                             <span>Afrekenen · €{totalPrice}</span>
@@ -153,9 +153,9 @@ export default function Pricing() {
                         </div>
                     </Button>
 
-                    {/* Apple Pay Button */}
-                    <button className="w-full sm:w-[35%] py-5 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg">
-                        <img src="/images/payment/apple-pay-white.png" alt="Apple Pay" className="h-7" />
+                    {/* Apple Pay Button - Mobile only (hidden on md+) */}
+                    <button className="flex-[0_0_35%] md:hidden py-5 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg">
+                        <img src="/images/payment/apple-pay-white.png" alt="Apple Pay" className="h-6" />
                     </button>
                 </div>
 
