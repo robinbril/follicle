@@ -1,6 +1,7 @@
 import Hero from '@/components/sections/hero'
 import ProblemAgitation from '@/components/sections/problem-agitation'
 import Solution from '@/components/sections/solution'
+import Ingredients from '@/components/sections/ingredients'
 import HowItWorks from '@/components/sections/how-it-works'
 import Pricing from '@/components/sections/pricing'
 
@@ -17,6 +18,7 @@ export default function Home() {
       <Hero />
       <ProblemAgitation />
       <Solution />
+      <Ingredients />
       <HowItWorks />
       <Pricing />
 
