@@ -143,9 +143,9 @@ export default function Pricing() {
 
                 {/* Dual Checkout Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 mb-4">
-                    {/* Primary CTA - 60% */}
+                    {/* Primary CTA - Full width on desktop when Apple Pay hidden */}
                     <Button
-                        className="w-full sm:w-[60%] py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                        className="w-full py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
                     >
                         <div className="flex items-center justify-center gap-2">
                             <span>Afrekenen</span>
@@ -153,8 +153,8 @@ export default function Pricing() {
                         </div>
                     </Button>
 
-                    {/* Apple Pay Button - 35% */}
-                    <button className="w-full sm:w-[35%] py-5 sm:py-7 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg">
+                    {/* Apple Pay Button - Mobile only */}
+                    <button className="sm:hidden w-full py-5 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg">
                         <img src="/images/payment/apple-pay-white.png" alt="Apple Pay" className="h-7" />
                     </button>
                 </div>
