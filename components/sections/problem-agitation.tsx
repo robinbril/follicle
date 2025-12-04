@@ -8,7 +8,7 @@ export default function ProblemAgitation() {
             <div className="max-w-4xl mx-auto px-6 relative z-10">
                 {/* Headline */}
                 <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-6">
-                    Waarom niet gewoon Minoxidil of Finasteride?
+                    Waarom niet gewoon Minoxidil?
                 </h2>
 
                 <p className="text-xl text-white/70 text-center mb-16 max-w-2xl mx-auto">
