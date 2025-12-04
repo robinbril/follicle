@@ -1,36 +1,39 @@
 "use client"
 
 import { Button } from '@/components/ui/button'
-import { Star, Package, Truck, ShieldCheck } from 'lucide-react'
+import { Star, ArrowRight, Truck, ShieldCheck } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function Pricing() {
-    const [selectedPlan, setSelectedPlan] = useState(2) // Pre-select 6 maanden
+    const [selectedPlan, setSelectedPlan] = useState(0) // Pre-select 6 maanden (now index 0)
 
     const plans = [
         {
-            months: 1,
-            label: "1 MAAND",
-            price: 49,
-            priceLabel: "€49",
-            discount: null,
-            popular: false
+            months: 6,
+            label: "6 MAANDEN",
+            subLabel: "Beste resultaat",
+            price: 29,
+            priceLabel: "€29/mnd",
+            discount: "-41%",
+            popular: true
         },
         {
             months: 3,
             label: "3 MAANDEN",
+            subLabel: "Meest gekozen",
             price: 39,
             priceLabel: "€39/mnd",
             discount: "-20%",
             popular: false
         },
         {
-            months: 6,
-            label: "6 MAANDEN",
-            price: 29,
-            priceLabel: "€29/mnd",
-            discount: "-41%",
-            popular: true
+            months: 1,
+            label: "1 MAAND",
+            subLabel: "Probeer eerst",
+            price: 49,
+            priceLabel: "€49",
+            discount: null,
+            popular: false
         },
     ]
 
@@ -77,36 +80,43 @@ export default function Pricing() {
                     </p>
                 </div>
 
-                {/* Kuur Lengte Selector */}
+                {/* Package Selector */}
                 <div className="mb-8">
                     <label className="block text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wide">
-                        Kuur Lengte
+                        Kies je behandeling
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                         {plans.map((plan, index) => (
                             <button
                                 key={index}
                                 onClick={() => setSelectedPlan(index)}
-                                className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 text-center ${selectedPlan === index
-                                    ? 'border-[#D4A574] bg-[#D4A574]/5 shadow-lg'
-                                    : 'border-gray-200 hover:border-gray-300 bg-white'
+                                className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 text-center ${plan.popular
+                                    ? 'border-[#D4A574] bg-[#D4A574]/10 shadow-lg ring-2 ring-[#D4A574]/20'
+                                    : selectedPlan === index
+                                        ? 'border-gray-400 bg-gray-50 shadow-md'
+                                        : 'border-gray-200 hover:border-[#D4A574]/50 hover:shadow-md bg-white cursor-pointer'
                                     }`}
                             >
-                                {plan.popular && selectedPlan === index && (
+                                {/* Always show badge on popular plan */}
+                                {plan.popular && (
                                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold whitespace-nowrap shadow-sm">
                                         MEEST GEKOZEN
                                     </div>
                                 )}
 
-                                <div className="font-bold text-gray-900 mb-1 sm:mb-2 text-sm sm:text-base">
+                                <div className="font-bold text-gray-900 text-sm sm:text-base">
                                     {plan.label}
                                 </div>
-                                <div className={`text-xl sm:text-2xl font-bold mb-0.5 sm:mb-1 ${selectedPlan === index ? 'text-[#D4A574]' : 'text-gray-900'
+                                <div className="text-[10px] text-gray-500 mb-1 sm:mb-2 font-medium">
+                                    {plan.subLabel}
+                                </div>
+                                <div className={`text-xl sm:text-2xl font-bold mb-0.5 sm:mb-1 ${plan.popular ? 'text-[#D4A574]' : 'text-gray-900'
                                     }`}>
                                     {plan.priceLabel}
                                 </div>
                                 {plan.discount && (
-                                    <div className="text-[#D4A574] text-xs sm:text-sm font-semibold">
+                                    <div className={`text-xs sm:text-sm font-semibold ${plan.popular ? 'text-[#D4A574]' : 'text-gray-500'
+                                        }`}>
                                         {plan.discount}
                                     </div>
                                 )}
@@ -132,26 +142,19 @@ export default function Pricing() {
                 </div>
 
                 {/* Dual Checkout Buttons */}
-                <div className="space-y-3 mb-6">
+                <div className="flex flex-col sm:flex-row gap-3 mb-6">
                     {/* Primary CTA */}
                     <Button
-                        className="w-full py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                        className="flex-1 py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
                     >
                         <div className="flex items-center justify-center gap-2">
                             <span>Start mijn haargroei</span>
-                            <Package className="w-5 h-5 flex-shrink-0" />
+                            <ArrowRight className="w-5 h-5 flex-shrink-0" />
                         </div>
                     </Button>
 
-                    {/* Divider */}
-                    <div className="flex items-center gap-4">
-                        <div className="flex-1 h-px bg-gray-200"></div>
-                        <span className="text-xs text-gray-400 font-medium">of</span>
-                        <div className="flex-1 h-px bg-gray-200"></div>
-                    </div>
-
                     {/* Apple Pay Button */}
-                    <button className="w-full py-5 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+                    <button className="flex-1 py-5 sm:py-7 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
                         <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
                             <path d="M17.72 7.55c-.88-.1-1.89.29-2.55.64-.57.3-1.08.11-1.43.11-.4 0-.91-.31-1.51-.31-1.02 0-2.1.64-2.7 1.71-1.13 2.05-.29 5.11.8 6.79.55.83 1.19 1.75 2.05 1.72.8-.03 1.11-.52 2.12-.52.98 0 1.27.52 2.12.5.89-.02 1.43-.83 1.97-1.67.38-.58.53-.87.84-1.53-2.2-.85-2.55-4.02-.35-5.23-.68-.85-1.68-1.33-2.61-1.33-.11.01-.53.04-.75.12z" />
                             <path d="M15.32 4.06c.42-.54.72-1.29.63-2.06-.62.04-1.37.43-1.81.96-.39.47-.75 1.24-.62 1.97.68.02 1.38-.37 1.8-.87z" />
