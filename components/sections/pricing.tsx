@@ -154,10 +154,12 @@ export default function Pricing() {
                     </Button>
 
                     {/* Apple Pay Button - Mobile only (hidden on md+) */}
-                    <button className="flex-[0_0_38%] md:hidden py-4 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg px-4">
-                        <svg viewBox="0 0 50 21" className="h-6 w-auto" fill="white">
-                            <path d="M9.6 5.3c-.6.7-1.5 1.3-2.5 1.2-.1-1 .4-2 .9-2.7C8.6 3.1 9.6 2.5 10.5 2.5c.1 1-.3 2-.9 2.8zm.9 1.4c-1.4-.1-2.6.8-3.2.8-.7 0-1.7-.7-2.8-.7-1.4 0-2.8.8-3.5 2.2-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.5 0 0-2.3-.9-2.3-3.4 0-2.1 1.7-3.1 1.8-3.2-.9-1.5-2.4-1.6-3-1.7h-.3zm11.4-2.8v15.9h2.4v-5.4h3.4c3.1 0 5.2-2.1 5.2-5.3 0-3.1-2.1-5.2-5.1-5.2h-5.9zm2.4 2h2.8c2.1 0 3.3 1.1 3.3 3.2 0 2.1-1.2 3.2-3.3 3.2h-2.8V5.9zm13 14.1c1.5 0 2.9-.8 3.5-2h.1v1.8h2.2V9.9c0-2.2-1.8-3.7-4.5-3.7-2.5 0-4.4 1.5-4.5 3.5h2.2c.2-.9 1.1-1.6 2.3-1.6 1.5 0 2.3.7 2.3 2v.9l-3.1.2c-2.9.2-4.4 1.3-4.4 3.4 0 2.1 1.6 3.5 4 3.5l-.1-.1zm.6-1.8c-1.3 0-2.1-.6-2.1-1.6 0-1 .8-1.6 2.3-1.7l2.7-.2v.9c0 1.5-1.3 2.6-2.9 2.6zm8.6 6c2.3 0 3.4-.9 4.3-3.5l4.2-11.7h-2.5l-2.8 9.2h-.1l-2.8-9.2h-2.5l4 11.2-.2.7c-.4 1.2-1 1.6-2 1.6-.2 0-.6 0-.7-.1v1.8c.2 0 .8.1 1.1 0z" />
-                        </svg>
+                    <button className="flex-[0_0_38%] md:hidden py-4 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
+                            alt="Apple Pay"
+                            className="h-7 invert"
+                        />
                     </button>
                 </div>
 
