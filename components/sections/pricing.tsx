@@ -142,28 +142,31 @@ export default function Pricing() {
                 </div>
 
                 {/* Dual Checkout Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                    {/* Primary CTA */}
+                <div className="flex flex-col sm:flex-row gap-3 mb-4">
+                    {/* Primary CTA - 60% */}
                     <Button
-                        className="flex-1 py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                        className="w-full sm:w-[60%] py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
                     >
                         <div className="flex items-center justify-center gap-2">
-                            <span>Start mijn haargroei</span>
+                            <span>Afrekenen</span>
                             <ArrowRight className="w-5 h-5 flex-shrink-0" />
                         </div>
                     </Button>
 
-                    {/* Apple Pay Button */}
-                    <button className="flex-1 py-5 sm:py-7 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+                    {/* Apple Pay Button - 35% */}
+                    <button className="w-full sm:w-[35%] py-5 sm:py-7 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
                         <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
                             <path d="M17.72 7.55c-.88-.1-1.89.29-2.55.64-.57.3-1.08.11-1.43.11-.4 0-.91-.31-1.51-.31-1.02 0-2.1.64-2.7 1.71-1.13 2.05-.29 5.11.8 6.79.55.83 1.19 1.75 2.05 1.72.8-.03 1.11-.52 2.12-.52.98 0 1.27.52 2.12.5.89-.02 1.43-.83 1.97-1.67.38-.58.53-.87.84-1.53-2.2-.85-2.55-4.02-.35-5.23-.68-.85-1.68-1.33-2.61-1.33-.11.01-.53.04-.75.12z" />
                             <path d="M15.32 4.06c.42-.54.72-1.29.63-2.06-.62.04-1.37.43-1.81.96-.39.47-.75 1.24-.62 1.97.68.02 1.38-.37 1.8-.87z" />
                         </svg>
                         <span className="font-semibold text-base">Pay</span>
-                        <span className="text-gray-400 mx-1">|</span>
-                        <span className="text-sm">Direct afrekenen</span>
                     </button>
                 </div>
+
+                {/* Micro-copy - Trust */}
+                <p className="text-center text-xs text-gray-500 mb-6">
+                    🔒 Veilige betaling · Geen account nodig
+                </p>
 
                 {/* Trust & Payment Grid */}
                 {/* Trust & Payment Grid - Reordered for Mobile Priority */}
