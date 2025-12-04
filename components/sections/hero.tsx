@@ -8,30 +8,59 @@ import { Button } from '@/components/ui/button'
 
 export default function Hero() {
     return (
-        <section className="relative pt-24 pb-12 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
+        <section className="relative pt-40 pb-12 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
             <div className="section-container relative z-10">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
                     {/* LEFT - High Conversion Copy */}
                     <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
-                        {/* Trust Badge */}
+
+                        {/* INGREDIENT BADGE - NEW: Establishes credibility immediately */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs sm:text-sm font-medium mb-6"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D4A574]/10 border border-[#D4A574]/30 text-[#8B6914] text-xs font-bold mb-6 tracking-wide"
                         >
-                            <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4" />
-                            <span>Bestel voor 23:59 → morgen in huis</span>
+                            <span className="w-2 h-2 bg-[#D4A574] rounded-full animate-pulse" />
+                            Bevat 3% Redensyl® – #1 alternatief voor Minoxidil
                         </motion.div>
 
+                        {/* HEADLINE - POSITIVE FRAMING */}
                         <motion.h1
                             className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-4 sm:mb-6 text-balance"
                         >
-                            Klinisch bewezen haarserum <br className="hidden sm:block" />
-                            <span className="text-emerald-600">zonder Finasteride of Minoxidil</span>
+                            Voller, sterker haar <br className="hidden sm:block" />
+                            <span className="text-[#D4A574]">in 90 dagen</span>
                         </motion.h1>
 
-                        {/* Mobile Product Visual - Video Loop (Warm/Premium) */}
+                        {/* SUBHEADLINE - Benefits secondary */}
+                        <motion.p className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg">
+                            Wetenschappelijk bewezen haargroei. Zonder de bijwerkingen van Finasteride of Minoxidil.
+                        </motion.p>
+
+                        {/* PRIMARY CTA - ABOVE THE FOLD, PROMINENT */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="w-full sm:w-auto mb-6"
+                        >
+                            <Button
+                                size="lg"
+                                className="w-full sm:w-auto px-10 py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-xl"
+                                asChild
+                            >
+                                <Link href="#prijzen">
+                                    Start mijn haargroei <ArrowRight className="ml-2 w-5 h-5" />
+                                </Link>
+                            </Button>
+                            {/* URGENCY - Customer journey focused */}
+                            <p className="text-sm text-gray-500 mt-3 font-medium">
+                                <span className="text-[#D4A574] font-bold">→</span> Eerste resultaten binnen 4-6 weken
+                            </p>
+                        </motion.div>
+
+                        {/* Mobile Product Visual */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -50,80 +79,53 @@ export default function Hero() {
                             </video>
                         </motion.div>
 
-                        {/* Trust Block - Clean & Aligned */}
-                        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm mb-8 sm:mb-0 text-center sm:text-left">
-                            <motion.p
-                                className="text-base sm:text-lg text-gray-800 mb-6 leading-snug font-medium"
-                            >
-                                <span className="font-extrabold text-emerald-600 text-2xl sm:text-3xl">88.9%</span> zag duidelijke hergroei.
-                                <span className="block mt-1 text-gray-500 text-sm sm:text-base font-normal">Bewezen effectiever dan Minoxidil (60%).</span>
+                        {/* STAT + BENEFITS BLOCK - Reframed positively */}
+                        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm mb-8 sm:mb-6 w-full max-w-md">
+                            <motion.p className="text-base sm:text-lg text-gray-800 mb-5 leading-snug font-medium">
+                                <span className="font-extrabold text-[#D4A574] text-2xl sm:text-3xl">88.9%</span> zag zichtbare haargroei
+                                <span className="block mt-1 text-gray-500 text-sm font-normal">In onafhankelijk klinisch onderzoek na 90 dagen.</span>
                             </motion.p>
 
-                            {/* Benefits - Vertical list, centered as a block but aligned left internally */}
-                            <div className="flex justify-center sm:justify-start mb-6">
-                                <motion.div
-                                    className="flex flex-col gap-3 text-sm sm:text-base text-gray-700 font-medium text-left"
-                                >
-                                    <span className="flex items-center gap-3">
-                                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                            <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
-                                        </div>
-                                        Geen seksuele bijwerkingen
-                                    </span>
-                                    <span className="flex items-center gap-3">
-                                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                            <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
-                                        </div>
-                                        Geen jeuk of irritatie
-                                    </span>
-                                    <span className="flex items-center gap-3">
-                                        <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                            <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
-                                        </div>
-                                        Geen levenslange afhankelijkheid
-                                    </span>
-                                </motion.div>
+                            {/* Benefits - Positive framing */}
+                            <div className="flex flex-col gap-2.5 text-sm text-gray-700 font-medium">
+                                <span className="flex items-center gap-3">
+                                    <div className="w-5 h-5 rounded-full bg-[#D4A574]/20 flex items-center justify-center flex-shrink-0">
+                                        <Check className="w-3 h-3 text-[#D4A574]" strokeWidth={3} />
+                                    </div>
+                                    Veilig voor dagelijks gebruik
+                                </span>
+                                <span className="flex items-center gap-3">
+                                    <div className="w-5 h-5 rounded-full bg-[#D4A574]/20 flex items-center justify-center flex-shrink-0">
+                                        <Check className="w-3 h-3 text-[#D4A574]" strokeWidth={3} />
+                                    </div>
+                                    Zachte, natuurlijke ingrediënten
+                                </span>
+                                <span className="flex items-center gap-3">
+                                    <div className="w-5 h-5 rounded-full bg-[#D4A574]/20 flex items-center justify-center flex-shrink-0">
+                                        <Check className="w-3 h-3 text-[#D4A574]" strokeWidth={3} />
+                                    </div>
+                                    Stop wanneer je wilt
+                                </span>
                             </div>
-
-                            {/* Offer Text */}
-                            <motion.div className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm font-semibold text-gray-500 border-t border-gray-100 pt-4">
-                                <ShieldCheck className="w-4 h-4 text-[#D4A574]" />
-                                <span>180 dagen garantie · Vanaf €39/maand</span>
-                            </motion.div>
                         </div>
 
-                        {/* CTA Buttons */}
-                        <motion.div
-                            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-                        >
-                            <Button
-                                size="lg"
-                                className="w-full sm:w-auto px-8 py-6 text-lg font-bold bg-gradient-to-r from-[#D4A574] via-[#E8C89A] to-[#D4A574] hover:from-[#C69563] hover:via-[#D4AF37] hover:to-[#C69563] text-gray-900 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-                                asChild
-                            >
-                                <Link href="#prijzen">
-                                    BESTEL NU <ArrowRight className="ml-2 w-5 h-5" />
-                                </Link>
-                            </Button>
-                        </motion.div>
-
-                        {/* Social Proof */}
+                        {/* SOCIAL PROOF - Realistic numbers */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                            className="mt-10 flex items-center gap-4"
+                            transition={{ delay: 0.5 }}
+                            className="flex items-center gap-4 flex-wrap justify-center lg:justify-start"
                         >
                             <div className="flex -space-x-3">
                                 {[
-                                    { initials: 'TJ', bg: 'bg-emerald-100', text: 'text-emerald-700' },
-                                    { initials: 'MV', bg: 'bg-amber-100', text: 'text-amber-700' },
-                                    { initials: 'RL', bg: 'bg-blue-100', text: 'text-blue-700' },
-                                    { initials: 'SK', bg: 'bg-purple-100', text: 'text-purple-700' },
+                                    { initials: 'TJ', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
+                                    { initials: 'MV', bg: 'bg-gray-100', text: 'text-gray-600' },
+                                    { initials: 'RL', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
+                                    { initials: 'SK', bg: 'bg-gray-100', text: 'text-gray-600' },
                                 ].map((avatar, i) => (
                                     <div
                                         key={i}
-                                        className={`w-10 h-10 rounded-full ${avatar.bg} border-2 border-white flex items-center justify-center shadow-sm`}
+                                        className={`w-9 h-9 rounded-full ${avatar.bg} border-2 border-white flex items-center justify-center shadow-sm`}
                                     >
                                         <span className={`text-xs font-semibold ${avatar.text}`}>
                                             {avatar.initials}
@@ -131,15 +133,19 @@ export default function Hero() {
                                     </div>
                                 ))}
                             </div>
-                            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                            <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100">
                                 <div className="flex">
                                     {[...Array(5)].map((_, i) => (
-                                        <Star key={i} className="w-4 h-4 fill-[#D4A574] text-[#D4A574]" />
+                                        <Star key={i} className="w-3.5 h-3.5 fill-[#D4A574] text-[#D4A574]" />
                                     ))}
                                 </div>
-                                <span className="text-sm font-bold text-gray-900">4.8/5</span>
-                                <span className="text-xs text-gray-500">(2.847+)</span>
+                                <span className="text-sm font-bold text-gray-900">4.8</span>
+                                <span className="text-xs text-gray-500">(847 reviews)</span>
                             </div>
+                            <span className="text-xs text-gray-400 font-medium">
+                                <ShieldCheck className="w-3.5 h-3.5 inline mr-1" />
+                                180 dagen garantie
+                            </span>
                         </motion.div>
                     </div>
 

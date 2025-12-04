@@ -62,7 +62,7 @@ export default function Pricing() {
                             ))}
                         </div>
                         <span className="font-semibold text-gray-900">4.8/5</span>
-                        <span className="text-gray-500">(2.847 Reviews)</span>
+                        <span className="text-gray-500">(847 Reviews)</span>
                     </div>
                 </div>
 
@@ -131,15 +131,36 @@ export default function Pricing() {
                     </div>
                 </div>
 
-                {/* Golden Gradient CTA Button */}
-                <Button
-                    className="w-full py-7 text-lg font-bold bg-gradient-to-r from-[#D4A574] via-[#E8C89A] to-[#D4A574] hover:from-[#C69563] hover:via-[#D4AF37] hover:to-[#C69563] text-gray-900 shadow-xl hover:shadow-2xl transition-all duration-300 mb-6 whitespace-normal h-auto leading-tight"
-                >
-                    <div className="flex items-center justify-center gap-2">
-                        <Package className="w-5 h-5 flex-shrink-0" />
-                        <span>VOEG TOE AAN WINKELWAGEN</span>
+                {/* Dual Checkout Buttons */}
+                <div className="space-y-3 mb-6">
+                    {/* Primary CTA */}
+                    <Button
+                        className="w-full py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
+                    >
+                        <div className="flex items-center justify-center gap-2">
+                            <span>Start mijn haargroei</span>
+                            <Package className="w-5 h-5 flex-shrink-0" />
+                        </div>
+                    </Button>
+
+                    {/* Divider */}
+                    <div className="flex items-center gap-4">
+                        <div className="flex-1 h-px bg-gray-200"></div>
+                        <span className="text-xs text-gray-400 font-medium">of</span>
+                        <div className="flex-1 h-px bg-gray-200"></div>
                     </div>
-                </Button>
+
+                    {/* Apple Pay Button */}
+                    <button className="w-full py-5 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+                        <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+                            <path d="M17.72 7.55c-.88-.1-1.89.29-2.55.64-.57.3-1.08.11-1.43.11-.4 0-.91-.31-1.51-.31-1.02 0-2.1.64-2.7 1.71-1.13 2.05-.29 5.11.8 6.79.55.83 1.19 1.75 2.05 1.72.8-.03 1.11-.52 2.12-.52.98 0 1.27.52 2.12.5.89-.02 1.43-.83 1.97-1.67.38-.58.53-.87.84-1.53-2.2-.85-2.55-4.02-.35-5.23-.68-.85-1.68-1.33-2.61-1.33-.11.01-.53.04-.75.12z" />
+                            <path d="M15.32 4.06c.42-.54.72-1.29.63-2.06-.62.04-1.37.43-1.81.96-.39.47-.75 1.24-.62 1.97.68.02 1.38-.37 1.8-.87z" />
+                        </svg>
+                        <span className="font-semibold text-base">Pay</span>
+                        <span className="text-gray-400 mx-1">|</span>
+                        <span className="text-sm">Direct afrekenen</span>
+                    </button>
+                </div>
 
                 {/* Trust & Payment Grid */}
                 {/* Trust & Payment Grid - Reordered for Mobile Priority */}
