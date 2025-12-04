@@ -87,45 +87,63 @@ export default function Header() {
                 )}
             </div>
 
-            {/* --- DESKTOP HEADER (Original) --- */}
-            <header className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-200' : 'bg-transparent'}`}>
-                {/* Top Bar - Clinical Trust */}
-                <div className="bg-emerald-600 text-white py-2 text-center text-sm font-medium tracking-wide">
+            {/* --- DESKTOP HEADER (Synced with Mobile Premium Style) --- */}
+            <header className="hidden lg:block fixed top-0 left-0 right-0 z-50">
+                {/* Top Bar - Black with Reviews (matches mobile) */}
+                <div className="bg-[#111111] text-white py-2.5 text-center text-sm font-medium tracking-wide">
                     <div className="flex items-center justify-center gap-2">
-                        <Timer className="w-4 h-4" />
-                        <span>Bestel voor 23:59 = Morgen in huis</span>
+                        <div className="flex">
+                            {[...Array(5)].map((_, i) => (
+                                <Star key={i} className="w-4 h-4 fill-[#D4A574] text-[#D4A574]" />
+                            ))}
+                        </div>
+                        <span className="opacity-90">4,8 gebaseerd op 847 beoordelingen</span>
                     </div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex items-center justify-between h-20">
-                        {/* Logo */}
-                        <Link href="/" className="relative z-50">
-                            <h1 className={`text-2xl font-bold tracking-tight transition-colors ${isScrolled ? 'text-gray-900' : 'text-gray-900'}`}>
-                                REVIVE<span className="text-emerald-600">.</span>
-                            </h1>
-                        </Link>
+                {/* Delivery Bar - Gray (matches mobile) */}
+                <div className="bg-[#F5F5F5] py-2 text-center">
+                    <span className="text-xs font-black text-gray-700 tracking-[0.2em] uppercase">
+                        Bestel voor 23:59 → Morgen in huis
+                    </span>
+                </div>
 
-                        {/* Desktop Nav */}
-                        <nav className="flex items-center gap-8">
-                            {['Wetenschap', 'Resultaten', 'Reviews', 'FAQ'].map((item) => (
-                                <Link
-                                    key={item}
-                                    href={`#${item.toLowerCase()}`}
-                                    className={`text-sm font-medium transition-colors ${isScrolled ? 'text-gray-600 hover:text-emerald-600' : 'text-gray-600 hover:text-emerald-600'}`}
-                                >
-                                    {item}
-                                </Link>
-                            ))}
-                        </nav>
+                {/* Main Header - White with Nav */}
+                <div className={`bg-white transition-all duration-300 ${isScrolled ? 'shadow-lg border-b border-gray-100' : ''}`}>
+                    <div className="max-w-7xl mx-auto px-6">
+                        <div className="flex items-center justify-between h-16">
+                            {/* Logo */}
+                            <Link href="/" className="relative z-50">
+                                <h1 className="text-2xl font-extrabold tracking-tight text-gray-900">
+                                    REVIVE<span className="text-[#D4A574]">.</span>
+                                </h1>
+                            </Link>
 
-                        {/* Desktop CTA */}
-                        <div className="flex items-center gap-4">
-                            <Button asChild className={`font-bold px-8 py-6 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 ${isScrolled ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-emerald-600 hover:bg-emerald-700 text-white'}`}>
-                                <Link href="#prijzen">
-                                    BESTEL NU
-                                </Link>
-                            </Button>
+                            {/* Desktop Nav */}
+                            <nav className="flex items-center gap-8">
+                                {['Wetenschap', 'Resultaten', 'Reviews', 'FAQ'].map((item) => (
+                                    <Link
+                                        key={item}
+                                        href={`#${item.toLowerCase()}`}
+                                        className="text-sm font-medium text-gray-600 hover:text-[#D4A574] transition-colors"
+                                    >
+                                        {item}
+                                    </Link>
+                                ))}
+                            </nav>
+
+                            {/* Right: Ghost CTA + Cart */}
+                            <div className="flex items-center gap-4">
+                                <Button asChild variant="outline" className="font-bold px-6 py-5 text-sm border-2 border-[#D4A574] text-[#D4A574] hover:bg-[#D4A574] hover:text-white transition-all duration-300">
+                                    <Link href="#prijzen">
+                                        Bestel nu
+                                    </Link>
+                                </Button>
+                                <button className="relative">
+                                    <ShoppingBag className="w-5 h-5 text-gray-900" />
+                                    <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#D4A574] rounded-full text-[8px] font-bold text-white flex items-center justify-center">1</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
