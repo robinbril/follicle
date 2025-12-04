@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from 'react'
-import { Plus, Check, X } from 'lucide-react'
+import { Plus, Check, X, ExternalLink } from 'lucide-react'
 
 const ingredients = [
     {
@@ -14,7 +14,8 @@ const ingredients = [
             'Verdubbelt anageen/telogeen ratio',
             'Geen bekende bijwerkingen'
         ],
-        source: 'Int. Journal of Cosmetic Science, 2014',
+        source: 'PubMed 2020',
+        sourceUrl: 'https://pubmed.ncbi.nlm.nih.gov/32473084/',
         isNew: false
     },
     {
@@ -28,6 +29,7 @@ const ingredients = [
             'Verbetert haarverankering'
         ],
         source: 'Lucas Meyer Cosmetics',
+        sourceUrl: 'https://www.redenhair.com/img/cms/CAPIXYL-Techfile.pdf',
         isNew: false
     },
     {
@@ -41,6 +43,7 @@ const ingredients = [
             'Voorkomt follikel veroudering'
         ],
         source: 'Sederma Clinical Data',
+        sourceUrl: 'https://www.rekze.ro/wp-content/uploads/2018/05/study3.pdf',
         isNew: false
     },
     {
@@ -53,7 +56,8 @@ const ingredients = [
             'Verlengt actieve groeifase',
             'Start nieuwe haargroeicycli'
         ],
-        source: 'Mibelle Biochemistry',
+        source: 'PMC 2020',
+        sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8246764/',
         isNew: false
     },
     {
@@ -67,6 +71,7 @@ const ingredients = [
             '90% minder haarverlies in studies'
         ],
         source: 'Provital Group',
+        sourceUrl: 'https://www.weareprovital.com/en/careactives/baicapil',
         isNew: false
     },
     {
@@ -79,7 +84,8 @@ const ingredients = [
             'Stimuleert collageen en elastine',
             'Vergroot actieve follikels'
         ],
-        source: 'Skin Pharmacology, 2018',
+        source: 'PMC 2016',
+        sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4969472/',
         isNew: true
     }
 ]
@@ -143,23 +149,23 @@ export default function Ingredients() {
     return (
         <section id="ingredienten" className="py-20 bg-white" ref={sectionRef}>
             <div className="max-w-6xl mx-auto px-6">
-                {/* Transition Text */}
-                <div className="text-center mb-4">
-                    <p className="text-gray-500 italic text-lg">
-                        "Oké, maar wat zit er dan precies in?"
-                    </p>
-                </div>
-
                 {/* Header */}
-                <div className="text-center mb-12">
+                <div className="text-center mb-4">
                     <span className="text-[#C4956A] text-sm font-semibold tracking-[0.2em] uppercase">
                         DE OPLOSSING
                     </span>
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-4 mb-2">
                         6 gepatenteerde technologieën.
                     </h2>
-                    <p className="text-xl text-[#C4956A]">
+                    <p className="text-xl text-[#C4956A] mb-6">
                         1 krachtige formule.
+                    </p>
+                </div>
+
+                {/* Client Thought - Transition */}
+                <div className="text-center mb-12">
+                    <p className="text-gray-600 italic text-lg">
+                        "Mooi verhaal. Maar werkt het ook?"
                     </p>
                 </div>
 
@@ -198,7 +204,7 @@ export default function Ingredients() {
                                     </div>
                                 )}
 
-                                {/* Card Header - Always visible */}
+                                {/* Card Header */}
                                 <div className="flex items-start justify-between">
                                     <div className="flex items-baseline gap-2">
                                         <span className="text-[#C4956A] text-sm font-bold">
@@ -219,14 +225,14 @@ export default function Ingredients() {
                                     </div>
                                 </div>
 
-                                {/* Short desc - visible when collapsed */}
+                                {/* Short desc */}
                                 {!isExpanded && (
                                     <p className="text-gray-500 text-sm mt-1">
                                         {ingredient.shortDesc}
                                     </p>
                                 )}
 
-                                {/* Expanded Content - Compact */}
+                                {/* Expanded Content */}
                                 {isExpanded && (
                                     <div className="mt-4 pt-3 border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
                                         {ingredient.benefits.map((benefit, i) => (
@@ -242,9 +248,18 @@ export default function Ingredients() {
                                                 <span className="text-gray-700 text-sm">{benefit}</span>
                                             </div>
                                         ))}
-                                        <p className="text-gray-400 text-xs mt-3">
-                                            Bron: {ingredient.source}
-                                        </p>
+
+                                        {/* Clickable Source */}
+                                        <a
+                                            href={ingredient.sourceUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            className="inline-flex items-center gap-1.5 mt-4 text-xs text-[#C4956A] hover:text-[#B38559] transition-colors group"
+                                        >
+                                            <span>Bron: {ingredient.source}</span>
+                                            <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                                        </a>
                                     </div>
                                 )}
                             </div>
