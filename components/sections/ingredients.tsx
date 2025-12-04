@@ -14,7 +14,7 @@ const ingredients = [
             'Verdubbelt anageen/telogeen ratio',
             'Geen bekende bijwerkingen'
         ],
-        source: 'PubMed 2020',
+        source: 'Tsiogka et al., 2020',
         sourceUrl: 'https://pubmed.ncbi.nlm.nih.gov/32473084/',
         isNew: false
     },
@@ -28,8 +28,8 @@ const ingredients = [
             'Versterkt extracellulaire matrix',
             'Verbetert haarverankering'
         ],
-        source: 'Lucas Meyer Cosmetics',
-        sourceUrl: 'https://www.redenhair.com/img/cms/CAPIXYL-Techfile.pdf',
+        source: 'Lueangarun & Panchaprateep, 2020',
+        sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7840088/',
         isNew: false
     },
     {
@@ -42,8 +42,8 @@ const ingredients = [
             'Versterkt haarwortel',
             'Voorkomt follikel veroudering'
         ],
-        source: 'Sederma Clinical Data',
-        sourceUrl: 'https://www.rekze.ro/wp-content/uploads/2018/05/study3.pdf',
+        source: 'Review Article, 2025',
+        sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/',
         isNew: false
     },
     {
@@ -56,8 +56,8 @@ const ingredients = [
             'Verlengt actieve groeifase',
             'Start nieuwe haargroeicycli'
         ],
-        source: 'PMC 2020',
-        sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8246764/',
+        source: 'Grothe et al., 2020',
+        sourceUrl: 'https://pubmed.ncbi.nlm.nih.gov/31680356/',
         isNew: false
     },
     {
@@ -70,8 +70,8 @@ const ingredients = [
             'Vertraagt follikel veroudering',
             '90% minder haarverlies in studies'
         ],
-        source: 'Provital Group',
-        sourceUrl: 'https://www.weareprovital.com/en/careactives/baicapil',
+        source: 'Shin et al., 2015',
+        sourceUrl: 'https://pubmed.ncbi.nlm.nih.gov/25434532/',
         isNew: false
     },
     {
@@ -84,7 +84,7 @@ const ingredients = [
             'Stimuleert collageen en elastine',
             'Vergroot actieve follikels'
         ],
-        source: 'PMC 2016',
+        source: 'Lee et al., 2016',
         sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4969472/',
         isNew: true
     }
@@ -147,24 +147,24 @@ export default function Ingredients() {
     }
 
     return (
-        <section id="ingredienten" className="py-20 bg-white" ref={sectionRef}>
-            <div className="max-w-6xl mx-auto px-6">
+        <section id="ingredienten" className="py-16 sm:py-20 bg-white" ref={sectionRef}>
+            <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 {/* Header */}
-                <div className="text-center mb-4">
-                    <span className="text-[#C4956A] text-sm font-semibold tracking-[0.2em] uppercase">
+                <div className="text-center mb-3 sm:mb-4">
+                    <span className="text-[#C4956A] text-xs sm:text-sm font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
                         DE OPLOSSING
                     </span>
-                    <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-4 mb-2">
+                    <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-3 sm:mt-4 mb-1 sm:mb-2">
                         6 gepatenteerde technologieën.
                     </h2>
-                    <p className="text-xl text-[#C4956A] mb-6">
+                    <p className="text-lg sm:text-xl text-[#C4956A]">
                         1 krachtige formule.
                     </p>
                 </div>
 
-                {/* Client Thought - Transition */}
-                <div className="text-center mb-12">
-                    <p className="text-gray-600 italic text-lg">
+                {/* Client Thought */}
+                <div className="text-center mb-8 sm:mb-12">
+                    <p className="text-gray-600 italic text-base sm:text-lg">
                         "Mooi verhaal. Maar werkt het ook?"
                     </p>
                 </div>
@@ -172,13 +172,13 @@ export default function Ingredients() {
                 {/* Backdrop when expanded */}
                 {expandedCard && (
                     <div
-                        className="fixed inset-0 bg-black/5 backdrop-blur-[2px] z-10 transition-opacity duration-300"
+                        className="fixed inset-0 bg-black/10 backdrop-blur-[2px] z-10 transition-opacity duration-300"
                         onClick={() => setExpandedCard(null)}
                     />
                 )}
 
-                {/* Cards Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 relative">
+                {/* Cards Grid - 2 cols on mobile, 3 on desktop */}
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 relative">
                     {ingredients.map((ingredient, index) => {
                         const isExpanded = expandedCard === ingredient.id
 
@@ -186,11 +186,11 @@ export default function Ingredients() {
                             <div
                                 key={ingredient.id}
                                 className={`
-                                    ingredient-card relative bg-gray-50 border rounded-2xl p-5 cursor-pointer
+                                    ingredient-card relative bg-gray-50 border rounded-xl sm:rounded-2xl p-3 sm:p-5 cursor-pointer
                                     transition-all duration-300 ease-out
                                     ${visibleCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
                                     ${isExpanded
-                                        ? 'z-20 bg-white shadow-2xl border-[#C4956A] scale-105'
+                                        ? 'z-20 bg-white shadow-2xl border-[#C4956A] scale-[1.02] sm:scale-105 col-span-2 lg:col-span-1'
                                         : 'border-gray-200 hover:border-[#C4956A]/50 hover:shadow-lg hover:-translate-y-1'
                                     }
                                 `}
@@ -199,53 +199,54 @@ export default function Ingredients() {
                             >
                                 {/* NEW Badge */}
                                 {ingredient.isNew && (
-                                    <div className="absolute -top-2 -right-2 bg-[#C4956A] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider z-10">
+                                    <div className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 bg-[#C4956A] text-white text-[8px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider z-10">
                                         Nieuw
                                     </div>
                                 )}
 
                                 {/* Card Header */}
-                                <div className="flex items-start justify-between">
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-[#C4956A] text-sm font-bold">
-                                            {ingredient.percentage}%
-                                        </span>
-                                        <h3 className="text-gray-900 text-lg font-bold">
-                                            {ingredient.name}
-                                        </h3>
+                                <div className="flex items-start justify-between gap-2">
+                                    <div className="min-w-0 flex-1">
+                                        <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
+                                            <span className="text-[#C4956A] text-xs sm:text-sm font-bold">
+                                                {ingredient.percentage}%
+                                            </span>
+                                            <h3 className="text-gray-900 text-sm sm:text-lg font-bold truncate">
+                                                {ingredient.name}
+                                            </h3>
+                                        </div>
+                                        {/* Short desc - visible when collapsed */}
+                                        {!isExpanded && (
+                                            <p className="text-gray-500 text-[11px] sm:text-sm mt-0.5 sm:mt-1 line-clamp-2">
+                                                {ingredient.shortDesc}
+                                            </p>
+                                        )}
                                     </div>
-                                    <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${isExpanded
-                                            ? 'bg-[#C4956A] rotate-0'
-                                            : 'border border-[#C4956A]/30 hover:bg-[#C4956A]/10'
+                                    <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${isExpanded
+                                            ? 'bg-[#C4956A]'
+                                            : 'border border-[#C4956A]/30'
                                         }`}>
                                         {isExpanded
-                                            ? <X className="w-3.5 h-3.5 text-white" />
-                                            : <Plus className="w-3.5 h-3.5 text-[#C4956A]" />
+                                            ? <X className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
+                                            : <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C4956A]" />
                                         }
                                     </div>
                                 </div>
 
-                                {/* Short desc */}
-                                {!isExpanded && (
-                                    <p className="text-gray-500 text-sm mt-1">
-                                        {ingredient.shortDesc}
-                                    </p>
-                                )}
-
                                 {/* Expanded Content */}
                                 {isExpanded && (
-                                    <div className="mt-4 pt-3 border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
+                                    <div className="mt-3 sm:mt-4 pt-3 border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
                                         {ingredient.benefits.map((benefit, i) => (
                                             <div
                                                 key={i}
-                                                className="flex items-center gap-2.5 py-1.5"
+                                                className="flex items-start gap-2 sm:gap-2.5 py-1 sm:py-1.5"
                                                 style={{
                                                     animation: `fadeInLeft 0.3s ease ${i * 0.08}s forwards`,
                                                     opacity: 0
                                                 }}
                                             >
-                                                <Check className="w-4 h-4 text-[#C4956A] flex-shrink-0" />
-                                                <span className="text-gray-700 text-sm">{benefit}</span>
+                                                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C4956A] flex-shrink-0 mt-0.5" />
+                                                <span className="text-gray-700 text-xs sm:text-sm">{benefit}</span>
                                             </div>
                                         ))}
 
@@ -255,10 +256,10 @@ export default function Ingredients() {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             onClick={(e) => e.stopPropagation()}
-                                            className="inline-flex items-center gap-1.5 mt-4 text-xs text-[#C4956A] hover:text-[#B38559] transition-colors group"
+                                            className="inline-flex items-center gap-1 sm:gap-1.5 mt-3 sm:mt-4 text-[10px] sm:text-xs text-[#C4956A] hover:text-[#B38559] transition-colors group"
                                         >
-                                            <span>Bron: {ingredient.source}</span>
-                                            <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                                            <span className="underline underline-offset-2">{ingredient.source}</span>
+                                            <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                         </a>
                                     </div>
                                 )}
@@ -268,13 +269,13 @@ export default function Ingredients() {
                 </div>
 
                 {/* Summary Bar */}
-                <div className="flex justify-center mt-12">
-                    <div className="inline-flex items-center gap-4 bg-gray-50 border border-gray-200 rounded-full px-6 py-3 text-sm">
+                <div className="flex justify-center mt-8 sm:mt-12">
+                    <div className="inline-flex items-center gap-2 sm:gap-4 bg-gray-50 border border-gray-200 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm">
                         <span className="text-gray-900 font-semibold">20.5% actief</span>
                         <span className="text-gray-300">·</span>
                         <span className="text-gray-600">6 technologieën</span>
-                        <span className="text-gray-300">·</span>
-                        <span className="text-gray-600">Hormoonvrij</span>
+                        <span className="text-gray-300 hidden sm:inline">·</span>
+                        <span className="text-gray-600 hidden sm:inline">Hormoonvrij</span>
                     </div>
                 </div>
             </div>
