@@ -20,7 +20,7 @@ export default function Pricing() {
         {
             months: 3,
             label: "3 MAANDEN",
-            subLabel: "Meest gekozen",
+            subLabel: null,
             price: 39,
             priceLabel: "€39/mnd",
             discount: "-20%",
@@ -168,37 +168,30 @@ export default function Pricing() {
                     🔒 Veilige betaling · Geen account nodig
                 </p>
 
-                {/* Trust & Payment Grid */}
-                {/* Trust & Payment Grid - Reordered for Mobile Priority */}
-                <div className="flex flex-col items-center gap-8 mt-8">
-
-                    {/* Payment Methods - Now First & Prominent */}
-                    <div className="flex flex-col items-center w-full">
-                        <p className="text-base font-extrabold text-gray-900 mb-4 uppercase tracking-wider text-center">
-                            Veilig betalen met
-                        </p>
-                        <div className="flex flex-wrap justify-center items-center gap-8 bg-gray-50 px-8 py-6 rounded-2xl border border-gray-200 w-full sm:w-auto shadow-sm">
-                            <img src="/images/payment/ideal.png" alt="iDEAL" className="h-8 object-contain" />
-                            <img src="/images/payment/klarna.png" alt="Klarna" className="h-7 object-contain" />
-                            <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-9 object-contain" />
-                            <img src="/images/payment/google-pay.png" alt="Google Pay" className="h-7 object-contain" />
-                        </div>
+                {/* Trust & Payment - Compact */}
+                <div className="flex flex-col items-center gap-4 mt-6">
+                    {/* Payment logos - inline, subtle */}
+                    <div className="flex items-center justify-center gap-5">
+                        <img src="/images/payment/ideal.png" alt="iDEAL" className="h-5 opacity-60" />
+                        <img src="/images/payment/klarna.png" alt="Klarna" className="h-4 opacity-60" />
+                        <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-5 opacity-60" />
+                        <img src="/images/payment/google-pay.png" alt="Google Pay" className="h-4 opacity-60" />
                     </div>
 
-                    {/* Trust Badges - Now Second */}
-                    <div className="space-y-3 text-sm text-gray-600 flex flex-col items-center">
-                        <div className="flex items-center gap-2.5">
-                            <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full shadow-sm shadow-emerald-200"></div>
-                            <span className="font-semibold text-gray-900">Direct op voorraad</span>
-                        </div>
-                        <div className="flex items-center gap-2.5">
-                            <Truck className="w-4 h-4 text-gray-500" />
-                            <span>Voor 23:59 besteld = morgen in huis</span>
-                        </div>
-                        <div className="flex items-center gap-2.5">
-                            <ShieldCheck className="w-4 h-4 text-gray-500" />
-                            <span>180 dagen niet-goed-geld-terug garantie</span>
-                        </div>
+                    {/* Trust Badges - Compact */}
+                    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-500">
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                            Direct op voorraad
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                            <Truck className="w-3.5 h-3.5" />
+                            Morgen in huis
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                            <ShieldCheck className="w-3.5 h-3.5" />
+                            180 dagen garantie
+                        </span>
                     </div>
                 </div>
 
