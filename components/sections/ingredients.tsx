@@ -14,8 +14,13 @@ const ingredients = [
             'Verdubbelt anageen/telogeen ratio',
             'Geen bekende bijwerkingen'
         ],
-        source: 'Tsiogka et al., 2020',
-        sourceUrl: 'https://pubmed.ncbi.nlm.nih.gov/32473084/',
+        studies: [
+            { label: 'PubMed 2020', url: 'https://pubmed.ncbi.nlm.nih.gov/32473084/' },
+            { label: 'Karaca 2019', url: 'https://www.hilarispublisher.com/open-access/a-comparative-study-between-topical-5-minoxidil-and-topical-redensyl-capixyl-and-procapil-combination-in-men-with-androg.pdf' },
+            { label: 'Merja 2024', url: 'https://pubmed.ncbi.nlm.nih.gov/38050644/' },
+            { label: 'Kumar 2023', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10246929/' },
+            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
+        ],
         isNew: false
     },
     {
@@ -28,8 +33,12 @@ const ingredients = [
             'Versterkt extracellulaire matrix',
             'Verbetert haarverankering'
         ],
-        source: 'Lueangarun & Panchaprateep, 2020',
-        sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7840088/',
+        studies: [
+            { label: 'PMC 2020', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7840088/' },
+            { label: 'Karaca 2019', url: 'https://www.hilarispublisher.com/open-access/a-comparative-study-between-topical-5-minoxidil-and-topical-redensyl-capixyl-and-procapil-combination-in-men-with-androg.pdf' },
+            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
+            { label: 'Cochrane', url: 'https://www.cochranelibrary.com/central/doi/10.1002/central/CN-02260138/full' },
+        ],
         isNew: false
     },
     {
@@ -42,8 +51,12 @@ const ingredients = [
             'Versterkt haarwortel',
             'Voorkomt follikel veroudering'
         ],
-        source: 'Review Article, 2025',
-        sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/',
+        studies: [
+            { label: 'ResearchGate', url: 'https://www.researchgate.net/publication/326229067' },
+            { label: 'Eslahi 2022', url: 'https://www.odermatol.com/odermatology/20224/1.Effectiveness-EslahiE.pdf' },
+            { label: 'Kumar 2023', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10246929/' },
+            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
+        ],
         isNew: false
     },
     {
@@ -56,8 +69,12 @@ const ingredients = [
             'Verlengt actieve groeifase',
             'Start nieuwe haargroeicycli'
         ],
-        source: 'Grothe et al., 2020',
-        sourceUrl: 'https://pubmed.ncbi.nlm.nih.gov/31680356/',
+        studies: [
+            { label: 'PubMed 2020', url: 'https://pubmed.ncbi.nlm.nih.gov/31680356/' },
+            { label: 'PMC Full', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8246764/' },
+            { label: 'Wiley', url: 'https://onlinelibrary.wiley.com/doi/full/10.1002/ptr.6528' },
+            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
+        ],
         isNew: false
     },
     {
@@ -70,8 +87,13 @@ const ingredients = [
             'Vertraagt follikel veroudering',
             '90% minder haarverlies in studies'
         ],
-        source: 'Shin et al., 2015',
-        sourceUrl: 'https://pubmed.ncbi.nlm.nih.gov/25434532/',
+        studies: [
+            { label: 'Shin 2015', url: 'https://pubmed.ncbi.nlm.nih.gov/25434532/' },
+            { label: 'Li 2018', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5810219/' },
+            { label: 'Kim 2014', url: 'https://pubmed.ncbi.nlm.nih.gov/24496985/' },
+            { label: 'Liu 2022', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9699788/' },
+            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
+        ],
         isNew: false
     },
     {
@@ -84,8 +106,13 @@ const ingredients = [
             'Stimuleert collageen en elastine',
             'Vergroot actieve follikels'
         ],
-        source: 'Lee et al., 2016',
-        sourceUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4969472/',
+        studies: [
+            { label: 'Pyo 2007', url: 'https://www.semanticscholar.org/paper/The-effect-of-tripeptide-copper-complex-on-human-in-Pyo-Yoo/a7dd6f25ff702c912ba95f7e27fe9cd52414d69d' },
+            { label: 'Lee 2016', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4969472/' },
+            { label: 'Pickart 2018', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6073405/' },
+            { label: 'Gelfuso 2023', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10643103/' },
+            { label: 'Pickart 2008', url: 'https://pubmed.ncbi.nlm.nih.gov/18644225/' },
+        ],
         isNew: true
     }
 ]
@@ -95,7 +122,6 @@ export default function Ingredients() {
     const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set())
     const sectionRef = useRef<HTMLDivElement>(null)
 
-    // Staggered entrance animation
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -120,7 +146,6 @@ export default function Ingredients() {
         return () => observer.disconnect()
     }, [])
 
-    // Click outside to close
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (expandedCard && !(e.target as Element).closest('.ingredient-card')) {
@@ -132,7 +157,6 @@ export default function Ingredients() {
         return () => document.removeEventListener('click', handleClickOutside)
     }, [expandedCard])
 
-    // ESC to close
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
             if (e.key === 'Escape') setExpandedCard(null)
@@ -162,14 +186,12 @@ export default function Ingredients() {
                     </p>
                 </div>
 
-                {/* Client Thought */}
                 <div className="text-center mb-8 sm:mb-12">
                     <p className="text-gray-600 italic text-base sm:text-lg">
                         "Mooi verhaal. Maar werkt het ook?"
                     </p>
                 </div>
 
-                {/* Backdrop when expanded */}
                 {expandedCard && (
                     <div
                         className="fixed inset-0 bg-black/10 backdrop-blur-[2px] z-10 transition-opacity duration-300"
@@ -177,7 +199,6 @@ export default function Ingredients() {
                     />
                 )}
 
-                {/* Cards Grid - 2 cols on mobile, 3 on desktop */}
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 relative">
                     {ingredients.map((ingredient, index) => {
                         const isExpanded = expandedCard === ingredient.id
@@ -197,14 +218,12 @@ export default function Ingredients() {
                                 style={{ transitionDelay: visibleCards.has(index) ? '0s' : `${index * 0.1}s` }}
                                 onClick={(e) => toggleCard(ingredient.id, e)}
                             >
-                                {/* NEW Badge */}
                                 {ingredient.isNew && (
                                     <div className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 bg-[#C4956A] text-white text-[8px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider z-10">
                                         Nieuw
                                     </div>
                                 )}
 
-                                {/* Card Header */}
                                 <div className="flex items-start justify-between gap-2">
                                     <div className="min-w-0 flex-1">
                                         <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
@@ -215,7 +234,6 @@ export default function Ingredients() {
                                                 {ingredient.name}
                                             </h3>
                                         </div>
-                                        {/* Short desc - visible when collapsed */}
                                         {!isExpanded && (
                                             <p className="text-gray-500 text-[11px] sm:text-sm mt-0.5 sm:mt-1 line-clamp-2">
                                                 {ingredient.shortDesc}
@@ -233,7 +251,6 @@ export default function Ingredients() {
                                     </div>
                                 </div>
 
-                                {/* Expanded Content */}
                                 {isExpanded && (
                                     <div className="mt-3 sm:mt-4 pt-3 border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
                                         {ingredient.benefits.map((benefit, i) => (
@@ -250,17 +267,27 @@ export default function Ingredients() {
                                             </div>
                                         ))}
 
-                                        {/* Clickable Source */}
-                                        <a
-                                            href={ingredient.sourceUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            onClick={(e) => e.stopPropagation()}
-                                            className="inline-flex items-center gap-1 sm:gap-1.5 mt-3 sm:mt-4 text-[10px] sm:text-xs text-[#C4956A] hover:text-[#B38559] transition-colors group"
-                                        >
-                                            <span className="underline underline-offset-2">{ingredient.source}</span>
-                                            <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                                        </a>
+                                        {/* Studies Section */}
+                                        <div className="mt-4 pt-3 border-t border-gray-100">
+                                            <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider mb-2 font-medium">
+                                                Klinische studies
+                                            </p>
+                                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                                                {ingredient.studies.map((study, i) => (
+                                                    <a
+                                                        key={i}
+                                                        href={study.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 sm:py-1.5 bg-gray-100 hover:bg-[#C4956A]/10 border border-gray-200 hover:border-[#C4956A]/30 rounded-md text-[10px] sm:text-xs text-gray-700 hover:text-[#C4956A] transition-all group"
+                                                    >
+                                                        <span>{study.label}</span>
+                                                        <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </div>
                                 )}
                             </div>
@@ -268,7 +295,6 @@ export default function Ingredients() {
                     })}
                 </div>
 
-                {/* Summary Bar */}
                 <div className="flex justify-center mt-8 sm:mt-12">
                     <div className="inline-flex items-center gap-2 sm:gap-4 bg-gray-50 border border-gray-200 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm">
                         <span className="text-gray-900 font-semibold">20.5% actief</span>
