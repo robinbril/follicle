@@ -20,26 +20,26 @@ export default function Hero() {
 
 
 
-                        {/* HEADLINE - Identity-based, emotional */}
+                        {/* HEADLINE - Result-focused, quantified */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
                             className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
                         >
-                            Je eerste lijn van verdediging{' '}
-                            <span className="text-[#D4A574]">tegen haarverlies</span>
+                            <span className="text-[#D4A574]">85% ziet resultaat</span>{' '}
+                            binnen 90 dagen
                         </motion.h1>
 
-                        {/* SUBHEADLINE - Identity positioning */}
+                        {/* SUBHEADLINE - Specific benefits */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
                             className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
                         >
-                            Voor mannen die weigeren te kiezen tussen hun haar en hun gezondheid.
-                            <span className="text-gray-900 font-medium"> 6 klinisch geteste ingrediënten. Geen hormonen. Geen bijwerkingen.</span>
+                            6 klinisch bewezen ingrediënten die haarverlies stoppen én hergroei stimuleren.{' '}
+                            <span className="text-gray-900 font-medium">Zonder hormonen. Zonder bijwerkingen.</span>
                         </motion.p>
 
                         {/* PRIMARY CTA - Test + Guarantee framing */}
@@ -147,12 +147,12 @@ export default function Hero() {
                                         <Check className="w-6 h-6 text-emerald-600" />
                                     </div>
                                     <div>
-                                        <p className="font-bold text-gray-900 text-sm">Resultaat in</p>
-                                        <p className="font-bold text-gray-900 text-sm">90 dagen</p>
+                                        <p className="font-bold text-emerald-600 text-sm">85% effectief</p>
+                                        <p className="font-bold text-gray-900 text-sm">binnen 90 dagen</p>
                                     </div>
                                 </div>
                                 <p className="text-xs text-gray-500">
-                                    Of je geld volledig terug
+                                    Klinisch getest op effectiviteit
                                 </p>
                             </motion.div>
                         </div>
