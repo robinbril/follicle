@@ -98,15 +98,24 @@ export default function Hero() {
                         {/* Mobile Product Visual */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2 }}
-                            className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden rounded-2xl overflow-hidden shadow-2xl"
+                            animate={{
+                                opacity: 1,
+                                scale: 1,
+                                y: [0, -15, 0],
+                                rotate: [0, 2, 0, -2, 0]
+                            }}
+                            transition={{
+                                delay: 0.2,
+                                y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                                rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                            }}
+                            className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden rounded-2xl overflow-visible shadow-2xl"
                         >
                             <Image
                                 src="/images/revive-hero-bottle.jpg"
                                 alt="REVIVE Hair Growth Serum"
                                 fill
-                                className="object-cover"
+                                className="object-cover rounded-2xl"
                                 priority
                             />
                         </motion.div>
@@ -115,8 +124,18 @@ export default function Hero() {
                     {/* RIGHT - Product Visual - Desktop Only */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
+                        animate={{
+                            opacity: 1,
+                            x: 0,
+                            y: [0, -20, 0],
+                            rotate: [0, 3, 0, -3, 0]
+                        }}
+                        transition={{
+                            delay: 0.3,
+                            duration: 0.6,
+                            y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
+                            rotate: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }
+                        }}
                         className="hidden lg:flex relative lg:h-[600px] items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 lg:p-0 mt-10 lg:mt-0"
                     >
                         <div className="relative w-full max-w-md aspect-[4/5]">
