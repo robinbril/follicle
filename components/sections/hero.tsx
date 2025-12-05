@@ -18,15 +18,7 @@ export default function Hero() {
                     {/* LEFT - Emotional, Customer-Focused Copy */}
                     <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
 
-                        {/* SOCIAL PROOF BADGE - Specific number */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium mb-6"
-                        >
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                            3.847 flessen verzonden sinds maart 2024
-                        </motion.div>
+
 
                         {/* HEADLINE - Identity-based, emotional */}
                         <motion.h1
@@ -63,7 +55,7 @@ export default function Hero() {
                                 asChild
                             >
                                 <Link href="#prijzen">
-                                    Begin mijn 90-dagen test
+                                    BESTEL NU
                                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </Button>
