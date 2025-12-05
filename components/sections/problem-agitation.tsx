@@ -44,7 +44,8 @@ export default function ProblemAgitation() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5 }}
                     className="text-center mb-12"
                 >
                     <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
@@ -59,15 +60,16 @@ export default function ProblemAgitation() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
                     className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 mb-8 md:mb-12"
                 >
                     {treatments.map((t, i) => (
                         <div
                             key={i}
                             className={`relative p-4 md:p-6 rounded-xl border transition-all flex flex-col justify-between ${t.highlight
-                                    ? 'bg-gradient-to-b from-emerald-900/40 to-emerald-900/20 border-emerald-500/50 scale-105 shadow-lg shadow-emerald-500/20'
-                                    : 'bg-white/5 border-white/10 opacity-80 hover:opacity-100'
+                                ? 'bg-gradient-to-b from-emerald-900/40 to-emerald-900/20 border-emerald-500/50 scale-105 shadow-lg shadow-emerald-500/20'
+                                : 'bg-white/5 border-white/10 opacity-80 hover:opacity-100'
                                 }`}
                         >
                             {t.highlight && (
@@ -94,7 +96,8 @@ export default function ProblemAgitation() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                     className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
                 >
                     <div className="overflow-x-auto">

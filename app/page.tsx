@@ -1,18 +1,18 @@
 import dynamic from 'next/dynamic'
 import Hero from '@/components/sections/hero'
 import ProblemAgitation from '@/components/sections/problem-agitation'
+import Ingredients from '@/components/sections/ingredients'
 import Header from '@/components/header'
 
-const Ingredients = dynamic(() => import('@/components/sections/ingredients'))
 const TargetAudience = dynamic(() => import('@/components/sections/target-audience'))
 const HowItWorks = dynamic(() => import('@/components/sections/how-it-works'))
 const Guarantee = dynamic(() => import('@/components/sections/guarantee'))
 const Pricing = dynamic(() => import('@/components/sections/pricing'))
 const Footer = dynamic(() => import('@/components/sections/footer'))
-const ExitIntentPopup = dynamic(() => import('@/components/conversion/exit-intent-popup'))
-const SocialProofToast = dynamic(() => import('@/components/conversion/social-proof-toast'))
-const StickyMobileCTA = dynamic(() => import('@/components/conversion/sticky-mobile-cta'))
-const GDPRBanner = dynamic(() => import('@/components/gdpr-banner'))
+const ExitIntentPopup = dynamic(() => import('@/components/conversion/exit-intent-popup'), { ssr: false })
+const SocialProofToast = dynamic(() => import('@/components/conversion/social-proof-toast'), { ssr: false })
+const StickyMobileCTA = dynamic(() => import('@/components/conversion/sticky-mobile-cta'), { ssr: false })
+const GDPRBanner = dynamic(() => import('@/components/gdpr-banner'), { ssr: false })
 
 export default function Home() {
   return (
