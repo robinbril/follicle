@@ -15,31 +15,33 @@ export default function Hero() {
             <div className="section-container relative z-10">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
-                    {/* LEFT - Emotional, Customer-Focused Copy */}
-                    <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    {/* LEFT - Copy (mobile order: after product) */}
+                    <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-start text-left order-2 lg:order-1">
 
 
 
-                        {/* HEADLINE - Honest value prop */}
+                        {/* HEADLINE - Concise for mobile */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
                             className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
+                            style={{ wordBreak: 'keep-all', hyphens: 'none' }}
                         >
-                            <span className="text-[#D4A574]">6 klinisch geteste ingrediënten.</span>{' '}
-                            Geen hormonen.
+                            <span className="text-[#D4A574]">6 ingrediënten.</span>{' '}
+                            0 hormonen.
                         </motion.h1>
 
-                        {/* SUBHEADLINE - Specific benefits */}
+                        {/* SUBHEADLINE - Concise */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
                             className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
+                            style={{ wordBreak: 'keep-all', hyphens: 'none' }}
                         >
-                            Een wetenschappelijk geformuleerde behandeling tegen haarverlies.{' '}
-                            <span className="text-gray-900 font-medium">Zonder hormonen. Zonder bijwerkingen.</span>
+                            Wetenschappelijk geformuleerd.{' '}
+                            <span className="text-gray-900 font-medium">Zonder bijwerkingen.</span>
                         </motion.p>
 
                         {/* PRIMARY CTA - Test + Guarantee framing */}
@@ -96,69 +98,33 @@ export default function Hero() {
                         </motion.div>
 
                         {/* Mobile Product Visual */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2 }}
-                            className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden rounded-2xl overflow-hidden shadow-2xl"
-                        >
-                            <Image
-                                src="/images/revive-hero-bottle.jpg"
-                                alt="REVIVE Hair Growth Serum"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </motion.div>
+                        {/* This section is removed as it's replaced by the new structure below */}
                     </div>
 
-                    {/* RIGHT - Product Visual - Desktop Only */}
+                    {/* RIGHT - Product Visual (mobile order: first) */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{
-                            opacity: 1,
-                            x: 0
-                        }}
-                        transition={{
-                            delay: 0.3,
-                            duration: 0.6
-                        }}
-                        className="hidden lg:flex relative lg:h-[600px] items-center justify-center mt-10 lg:mt-0"
+                        className="order-1 lg:order-2"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.2 }}
                     >
-                        <div className="relative w-full max-w-lg aspect-[4/5]">
-                            {/* Main Product Image */}
-                            <Image
-                                src="/images/revive-hero-bottle.jpg"
-                                alt="REVIVE Hair Growth Serum"
-                                fill
-                                className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
-                                priority
-                            />
-
-                            {/* Floating Result Card */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.7 }}
-                                className="absolute -bottom-4 left-4 bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 max-w-[200px] z-10"
-                            >
-                                <div className="flex items-center gap-3 mb-2">
-                                    <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
-                                        <Check className="w-6 h-6 text-emerald-600" />
-                                    </div>
-                                    <div>
-                                        <p className="font-bold text-gray-900 text-sm">180 dagen</p>
-                                        <p className="font-bold text-gray-900 text-sm">geld terug</p>
-                                    </div>
-                                </div>
-                                <p className="text-xs text-gray-500">
-                                    Risico-vrij uitproberen
-                                </p>
-                            </motion.div>
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                                <Check className="w-6 h-6 text-emerald-600" />
+                            </div>
+                            <div>
+                                <p className="font-bold text-gray-900 text-sm">180 dagen</p>
+                                <p className="font-bold text-gray-900 text-sm">geld terug</p>
+                            </div>
                         </div>
+                        <p className="text-xs text-gray-500">
+                            Risico-vrij uitproberen
+                        </p>
                     </motion.div>
                 </div>
-            </div>
-        </section>
+            </motion.div>
+        </div>
+            </div >
+        </section >
     )
 }
