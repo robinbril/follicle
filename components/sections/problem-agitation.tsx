@@ -4,38 +4,33 @@ import { Check, X } from 'lucide-react'
 
 const treatments = [
     {
+        name: "Niets doen",
+        price: "€0",
+        risk: "Geen resultaat",
+        highlight: false,
+    },
+    {
         name: "REVIVE",
         price: "€29/mnd",
-        benefit: "6 ingrediënten",
-        subtext: "Hormoonvrij",
+        risk: "Geen bijwerkingen",
         highlight: true,
     },
     {
         name: "Minoxidil",
         price: "€45/mnd",
-        benefit: "FDA goedgekeurd",
-        subtext: "Stop = verlies",
+        risk: "Stop = haar weg",
         highlight: false,
     },
     {
         name: "Finasteride",
         price: "€30/mnd",
-        benefit: "Grootste effectiviteit",
-        subtext: "Hormonen",
+        risk: "Seksuele bijwerkingen",
         highlight: false,
     },
     {
         name: "Transplant",
         price: "€5.000+",
-        benefit: "Permanente oplossing",
-        subtext: "Chirurgisch",
-        highlight: false,
-    },
-    {
-        name: "Niets doen",
-        price: "€0",
-        benefit: "Geen actie",
-        subtext: "Haarverlies gaat door",
+        risk: "Invasief + €5k+",
         highlight: false,
     },
 ]
@@ -44,13 +39,13 @@ export default function ProblemAgitation() {
     return (
         <section className="py-16 sm:py-20 bg-gradient-to-b from-[#091412] to-[#0D1F17] relative overflow-hidden">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
-                {/* Honest Hook */}
+                {/* Emotional Hook */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                        Vergelijk je opties
+                        Je hebt opties. Maar welke is slim?
                     </h2>
                     <p className="text-lg text-white/60 max-w-2xl mx-auto">
-                        Gebaseerd op klinische studies van individuele ingrediënten.
+                        Van niets doen tot chirurgie — hier zie je hoe REVIVE zich positioneert.
                     </p>
                 </div>
 
@@ -65,25 +60,95 @@ export default function ProblemAgitation() {
                                 }`}
                         >
                             {t.highlight && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-500 text-white text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-full whitespace-nowrap shadow-lg">
                                     Aanbevolen
                                 </div>
                             )}
-                            <div className="mb-3">
-                                <h3 className={`text-base md:text-lg font-bold mb-1 ${t.highlight ? 'text-emerald-400' : 'text-white/90'}`}>
+                            <div>
+                                <p className={`text-sm md:text-base font-bold mb-1 md:mb-2 ${t.highlight ? 'text-emerald-400' : 'text-white/80'}`}>
                                     {t.name}
-                                </h3>
-                                <p className="text-white/50 text-xs md:text-sm">{t.price}</p>
-                            </div>
-                            <div className="mt-auto">
-                                <p className={`text-lg md:text-xl font-bold mb-1 ${t.highlight ? 'text-emerald-400' : 'text-white/70'}`}>
-                                    {t.benefit}
                                 </p>
-                                <p className={`text-xs md:text-sm font-medium ${t.highlight ? 'text-emerald-400/70' : 'text-white/40'}`}>
-                                    {t.subtext}
+                                <p className={`text-xl md:text-2xl font-bold mb-3 md:mb-4 ${t.highlight ? 'text-white' : 'text-white/60'}`}>
+                                    {t.price}
                                 </p>
                             </div>
-                        </div>))}
+                            <p className={`text-xs md:text-sm font-medium ${t.highlight ? 'text-emerald-400' : 'text-white/40'}`}>
+                                {t.risk}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Detailed Comparison Table */}
+                <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="overflow-x-auto">
+                        <table className="w-full">
+                            <thead>
+                                <tr className="border-b border-white/10">
+                                    <th className="px-3 py-4 text-left text-xs font-semibold text-white/60 uppercase tracking-wide" />
+                                    <th className="px-3 py-4 text-center text-xs font-bold text-emerald-400 uppercase tracking-wide">
+                                        REVIVE
+                                    </th>
+                                    <th className="px-3 py-4 text-center text-xs font-medium text-white/40 uppercase tracking-wide">
+                                        Minoxidil
+                                    </th>
+                                    <th className="px-3 py-4 text-center text-xs font-medium text-white/40 uppercase tracking-wide">
+                                        Finasteride
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="border-b border-white/5">
+                                    <td className="px-3 py-4 text-white/80 font-medium text-sm">Bijwerkingen</td>
+                                    <td className="px-3 py-4 text-center">
+                                        <span className="text-base font-bold text-emerald-400">&lt; 5%</span>
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <span className="text-base font-bold text-white/40">11-18%</span>
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <span className="text-base font-bold text-red-400/70">Libido ↓</span>
+                                    </td>
+                                </tr>
+                                <tr className="border-b border-white/5">
+                                    <td className="px-3 py-4 text-white/80 font-medium text-sm">Haar valt uit bij stoppen</td>
+                                    <td className="px-3 py-4 text-center">
+                                        <X className="w-5 h-5 text-emerald-400 mx-auto" />
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <Check className="w-5 h-5 text-red-400/70 mx-auto" />
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <Check className="w-5 h-5 text-red-400/70 mx-auto" />
+                                    </td>
+                                </tr>
+                                <tr className="border-b border-white/5">
+                                    <td className="px-3 py-4 text-white/80 font-medium text-sm">Hormoonvrij</td>
+                                    <td className="px-3 py-4 text-center">
+                                        <Check className="w-5 h-5 text-emerald-400 mx-auto" />
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <X className="w-5 h-5 text-white/40 mx-auto" />
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <X className="w-5 h-5 text-red-400/70 mx-auto" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className="px-3 py-4 text-white/80 font-medium text-sm">Libido problemen</td>
+                                    <td className="px-3 py-4 text-center">
+                                        <X className="w-5 h-5 text-emerald-400 mx-auto" />
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <span className="text-xs text-white/40">Zeldzaam</span>
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <X className="w-5 h-5 text-red-400/70 mx-auto" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
 
