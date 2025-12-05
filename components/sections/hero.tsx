@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight, Check, Star } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -63,6 +63,36 @@ export default function Hero() {
                             <p className="text-sm text-gray-500 mt-3 font-medium flex items-center justify-center lg:justify-start gap-2">
                                 ✓ 180 dagen niet tevreden? Volledige terugbetaling.
                             </p>
+
+                            {/* Social proof - avatar stack + rating */}
+                            <div className="flex items-center gap-4 flex-wrap justify-center lg:justify-start mt-6">
+                                <div className="flex -space-x-3">
+                                    {[
+                                        { initials: 'TJ', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
+                                        { initials: 'MV', bg: 'bg-gray-100', text: 'text-gray-600' },
+                                        { initials: 'RL', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
+                                        { initials: 'SK', bg: 'bg-gray-100', text: 'text-gray-600' },
+                                    ].map((avatar, i) => (
+                                        <div
+                                            key={i}
+                                            className={`w-9 h-9 rounded-full ${avatar.bg} border-2 border-white flex items-center justify-center shadow-sm`}
+                                        >
+                                            <span className={`text-xs font-semibold ${avatar.text}`}>
+                                                {avatar.initials}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100">
+                                    <div className="flex">
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star key={i} className="w-3.5 h-3.5 fill-[#D4A574] text-[#D4A574]" />
+                                        ))}
+                                    </div>
+                                    <span className="text-sm font-bold text-gray-900">4.8</span>
+                                    <span className="text-xs text-gray-500">(847 reviews)</span>
+                                </div>
+                            </div>
                         </motion.div>
 
                         {/* Mobile Product Visual */}
