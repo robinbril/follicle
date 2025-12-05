@@ -123,24 +123,24 @@ export default function Hero() {
                             delay: 0.3,
                             duration: 0.6
                         }}
-                        className="hidden lg:flex relative lg:h-[600px] items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 lg:p-0 mt-10 lg:mt-0"
+                        className="hidden lg:flex relative lg:h-[600px] items-center justify-center mt-10 lg:mt-0"
                     >
-                        <div className="relative w-full max-w-md aspect-[4/5]">
+                        <div className="relative w-full max-w-lg aspect-[4/5]">
                             {/* Main Product Image */}
                             <Image
                                 src="/images/revive-hero-bottle.jpg"
                                 alt="REVIVE Hair Growth Serum"
                                 fill
-                                className="object-contain drop-shadow-2xl"
+                                className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
                                 priority
                             />
 
                             {/* Floating Result Card */}
                             <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.7 }}
-                                className="absolute bottom-12 -left-12 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 max-w-[200px]"
+                                className="absolute -bottom-4 left-4 bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 max-w-[200px] z-10"
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
