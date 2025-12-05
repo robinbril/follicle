@@ -38,8 +38,11 @@ export default function TargetAudience() {
                         </div>
 
                         <ul className="space-y-4">
+                            <li className="flex items-start gap-3">
+                                <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                                <span className="text-gray-700"><strong>Je beginnend haarverlies hebt</strong></span>
+                            </li>
                             {[
-                                "Je beginnend tot matig haarverlies hebt",
                                 "Je haar dunner wordt (niet volledig kaal)",
                                 "Je bereid bent 90 dagen te wachten op resultaat",
                                 "Je geen hormoonbehandelingen wilt",
@@ -88,15 +91,20 @@ export default function TargetAudience() {
                     </motion.div>
                 </div>
 
-                {/* Bottom note */}
-                <motion.p
+                {/* Urgency callout */}
+                <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="text-center text-gray-500 text-sm mt-8"
+                    className="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-2xl text-center"
                 >
-                    Dit bouwt meer vertrouwen dan "werkt voor iedereen." We zijn eerlijk over wat we kunnen en niet kunnen.
-                </motion.p>
+                    <p className="text-lg font-semibold text-gray-900 mb-2">
+                        Haar dat weg is, komt niet vanzelf terug.
+                    </p>
+                    <p className="text-gray-600">
+                        Hoe eerder je begint, hoe meer er te redden valt.
+                    </p>
+                </motion.div>
             </div>
         </section>
     )

@@ -7,41 +7,31 @@ const treatments = [
     {
         name: "Niets doen",
         price: "€0",
-        risk: "Geen",
-        effectiveness: 0,
-        description: "Accepteren",
+        risk: "Geen resultaat",
         highlight: false,
     },
     {
         name: "REVIVE",
         price: "€29/mnd",
-        risk: "< 5%",
-        effectiveness: 85,
-        description: "Sweet spot",
+        risk: "Geen bijwerkingen",
         highlight: true,
     },
     {
         name: "Minoxidil",
         price: "€45/mnd",
-        risk: "Bijwerkingen",
-        effectiveness: 60,
-        description: "Afhankelijkheid",
+        risk: "Stop = haar weg",
         highlight: false,
     },
     {
-        name: "PRP",
-        price: "€500/sessie",
-        risk: "Pijn",
-        effectiveness: 70,
-        description: "Injecties",
+        name: "Finasteride",
+        price: "€30/mnd",
+        risk: "Seksuele bijwerkingen",
         highlight: false,
     },
     {
         name: "Transplant",
         price: "€5.000+",
-        risk: "Chirurgie",
-        effectiveness: 95,
-        description: "Invasief",
+        risk: "Invasief + €5k+",
         highlight: false,
     },
 ]
@@ -70,44 +60,37 @@ export default function ProblemAgitation() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8"
+                    className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 mb-8 md:mb-12"
                 >
                     {treatments.map((t, i) => (
                         <div
                             key={i}
-                            className={`relative p-4 rounded-xl border transition-all ${t.highlight
+                            className={`relative p-4 md:p-6 rounded-xl border transition-all flex flex-col justify-between ${t.highlight
                                     ? 'bg-gradient-to-b from-emerald-900/40 to-emerald-900/20 border-emerald-500/50 scale-105 shadow-lg shadow-emerald-500/20'
-                                    : 'bg-white/5 border-white/10'
+                                    : 'bg-white/5 border-white/10 opacity-80 hover:opacity-100'
                                 }`}
                         >
                             {t.highlight && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider rounded-full">
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-500 text-white text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-full whitespace-nowrap shadow-lg">
                                     Aanbevolen
                                 </div>
                             )}
-                            <p className={`text-sm font-bold mb-2 ${t.highlight ? 'text-emerald-400' : 'text-white/80'}`}>
-                                {t.name}
-                            </p>
-                            <p className={`text-xl font-bold mb-2 ${t.highlight ? 'text-white' : 'text-white/60'}`}>
-                                {t.price}
-                            </p>
-                            <div className="h-2 bg-white/10 rounded-full overflow-hidden mb-2">
-                                <div
-                                    className={`h-full rounded-full ${t.highlight ? 'bg-emerald-500' : 'bg-white/30'}`}
-                                    style={{ width: `${t.effectiveness}%` }}
-                                />
+                            <div>
+                                <p className={`text-sm md:text-base font-bold mb-1 md:mb-2 ${t.highlight ? 'text-emerald-400' : 'text-white/80'}`}>
+                                    {t.name}
+                                </p>
+                                <p className={`text-xl md:text-2xl font-bold mb-3 md:mb-4 ${t.highlight ? 'text-white' : 'text-white/60'}`}>
+                                    {t.price}
+                                </p>
                             </div>
-                            <p className="text-xs text-white/40">{t.risk}</p>
+                            <p className={`text-xs md:text-sm font-medium ${t.highlight ? 'text-emerald-400' : 'text-white/40'}`}>
+                                {t.risk}
+                            </p>
                         </div>
                     ))}
                 </motion.div>
 
-                {/* Arrow indicator on mobile */}
-                <div className="flex justify-center mb-8 md:hidden">
-                    <ArrowRight className="w-5 h-5 text-white/40 animate-pulse" />
-                </div>
-
-                {/* Detailed Comparison */}
+                {/* Detailed Comparison Table */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -118,50 +101,65 @@ export default function ProblemAgitation() {
                         <table className="w-full">
                             <thead>
                                 <tr className="border-b border-white/10">
-                                    <th className="px-4 py-4 text-left text-xs font-semibold text-white/60 uppercase tracking-wide" />
-                                    <th className="px-4 py-4 text-center text-xs font-bold text-emerald-400 uppercase tracking-wide">
+                                    <th className="px-3 py-4 text-left text-xs font-semibold text-white/60 uppercase tracking-wide" />
+                                    <th className="px-3 py-4 text-center text-xs font-bold text-emerald-400 uppercase tracking-wide">
                                         REVIVE
                                     </th>
-                                    <th className="px-4 py-4 text-center text-xs font-medium text-white/40 uppercase tracking-wide">
+                                    <th className="px-3 py-4 text-center text-xs font-medium text-white/40 uppercase tracking-wide">
                                         Minoxidil
+                                    </th>
+                                    <th className="px-3 py-4 text-center text-xs font-medium text-white/40 uppercase tracking-wide">
+                                        Finasteride
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr className="border-b border-white/5">
-                                    <td className="px-4 py-4 text-white/80 font-medium text-sm">Bijwerkingen</td>
-                                    <td className="px-4 py-4 text-center">
-                                        <span className="text-lg font-bold text-emerald-400">&lt; 5%</span>
+                                    <td className="px-3 py-4 text-white/80 font-medium text-sm">Bijwerkingen</td>
+                                    <td className="px-3 py-4 text-center">
+                                        <span className="text-base font-bold text-emerald-400">&lt; 5%</span>
                                     </td>
-                                    <td className="px-4 py-4 text-center">
-                                        <span className="text-lg font-bold text-white/40">11-18%</span>
+                                    <td className="px-3 py-4 text-center">
+                                        <span className="text-base font-bold text-white/40">11-18%</span>
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <span className="text-base font-bold text-red-400/70">Libido ↓</span>
                                     </td>
                                 </tr>
                                 <tr className="border-b border-white/5">
-                                    <td className="px-4 py-4 text-white/80 font-medium text-sm">Afhankelijkheid</td>
-                                    <td className="px-4 py-4 text-center">
+                                    <td className="px-3 py-4 text-white/80 font-medium text-sm">Haar valt uit bij stoppen</td>
+                                    <td className="px-3 py-4 text-center">
                                         <X className="w-5 h-5 text-emerald-400 mx-auto" />
                                     </td>
-                                    <td className="px-4 py-4 text-center">
-                                        <Check className="w-5 h-5 text-white/40 mx-auto" />
+                                    <td className="px-3 py-4 text-center">
+                                        <Check className="w-5 h-5 text-red-400/70 mx-auto" />
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <Check className="w-5 h-5 text-red-400/70 mx-auto" />
                                     </td>
                                 </tr>
                                 <tr className="border-b border-white/5">
-                                    <td className="px-4 py-4 text-white/80 font-medium text-sm">Hormoonvrij</td>
-                                    <td className="px-4 py-4 text-center">
+                                    <td className="px-3 py-4 text-white/80 font-medium text-sm">Hormoonvrij</td>
+                                    <td className="px-3 py-4 text-center">
                                         <Check className="w-5 h-5 text-emerald-400 mx-auto" />
                                     </td>
-                                    <td className="px-4 py-4 text-center">
+                                    <td className="px-3 py-4 text-center">
                                         <X className="w-5 h-5 text-white/40 mx-auto" />
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <X className="w-5 h-5 text-red-400/70 mx-auto" />
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td className="px-4 py-4 text-white/80 font-medium text-sm">Stop wanneer je wilt</td>
-                                    <td className="px-4 py-4 text-center">
-                                        <Check className="w-5 h-5 text-emerald-400 mx-auto" />
+                                    <td className="px-3 py-4 text-white/80 font-medium text-sm">Libido problemen</td>
+                                    <td className="px-3 py-4 text-center">
+                                        <X className="w-5 h-5 text-emerald-400 mx-auto" />
                                     </td>
-                                    <td className="px-4 py-4 text-center">
-                                        <X className="w-5 h-5 text-white/40 mx-auto" />
+                                    <td className="px-3 py-4 text-center">
+                                        <span className="text-xs text-white/40">Zeldzaam</span>
+                                    </td>
+                                    <td className="px-3 py-4 text-center">
+                                        <span className="text-xs text-red-400/70">2-5%</span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -169,12 +167,25 @@ export default function ProblemAgitation() {
                     </div>
                 </motion.div>
 
+                {/* Warning callout */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="mt-6 p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl"
+                >
+                    <p className="text-amber-200/80 text-sm text-center">
+                        ⚠️ <span className="font-medium">Finasteride</span>: Tot 5% ervaart libidoproblemen.
+                        En zodra je stopt? Al je nieuwe haargroei valt weer uit.
+                    </p>
+                </motion.div>
+
                 {/* Scepticism acknowledgment */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="mt-12 p-6 bg-white/5 rounded-xl border border-white/10"
+                    className="mt-8 p-6 bg-white/5 rounded-xl border border-white/10"
                 >
                     <p className="text-white/70 text-center leading-relaxed">
                         <span className="text-white font-medium">"Klinisch bewezen" — je hebt het 400x gehoord.</span>
