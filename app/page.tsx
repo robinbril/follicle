@@ -9,10 +9,10 @@ const HowItWorks = dynamic(() => import('@/components/sections/how-it-works'))
 const Guarantee = dynamic(() => import('@/components/sections/guarantee'))
 const Pricing = dynamic(() => import('@/components/sections/pricing'))
 const Footer = dynamic(() => import('@/components/sections/footer'))
-const ExitIntentPopup = dynamic(() => import('@/components/conversion/exit-intent-popup'), { ssr: false })
-const SocialProofToast = dynamic(() => import('@/components/conversion/social-proof-toast'), { ssr: false })
-const StickyMobileCTA = dynamic(() => import('@/components/conversion/sticky-mobile-cta'), { ssr: false })
-const GDPRBanner = dynamic(() => import('@/components/gdpr-banner'), { ssr: false })
+const ExitIntentPopup = dynamic(() => import('@/components/conversion/exit-intent-popup'))
+const SocialProofToast = dynamic(() => import('@/components/conversion/social-proof-toast'))
+const StickyMobileCTA = dynamic(() => import('@/components/conversion/sticky-mobile-cta'))
+const GDPRBanner = dynamic(() => import('@/components/gdpr-banner'))
 
 export default function Home() {
   return (
