@@ -6,36 +6,36 @@ const treatments = [
     {
         name: "REVIVE",
         price: "€29/mnd",
-        result: "+35% dichtheid",
-        subtext: "Binnen 90 dagen",
+        benefit: "6 ingrediënten",
+        subtext: "Hormoonvrij",
         highlight: true,
     },
     {
         name: "Minoxidil",
         price: "€45/mnd",
-        result: "+20% dichtheid",
+        benefit: "FDA goedgekeurd",
         subtext: "Stop = verlies",
         highlight: false,
     },
     {
         name: "Finasteride",
         price: "€30/mnd",
-        result: "+15% dichtheid",
-        subtext: "Hormoonverstoorder",
+        benefit: "Grootste effectiviteit",
+        subtext: "Hormonen",
         highlight: false,
     },
     {
         name: "Transplant",
         price: "€5.000+",
-        result: "Eenmalig",
+        benefit: "Permanente oplossing",
         subtext: "Chirurgisch",
         highlight: false,
     },
     {
         name: "Niets doen",
         price: "€0",
-        result: "-10% per jaar",
-        subtext: "Progressief verlies",
+        benefit: "Geen actie",
+        subtext: "Haarverlies gaat door",
         highlight: false,
     },
 ]
@@ -44,13 +44,13 @@ export default function ProblemAgitation() {
     return (
         <section className="py-16 sm:py-20 bg-gradient-to-b from-[#091412] to-[#0D1F17] relative overflow-hidden">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
-                {/* Result Hook */}
+                {/* Honest Hook */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                        Wat bereik je met REVIVE?
+                        Vergelijk je opties
                     </h2>
                     <p className="text-lg text-white/60 max-w-2xl mx-auto">
-                        Klinisch gemeten resultaten na 90 dagen gebruik.
+                        Gebaseerd op klinische studies van individuele ingrediënten.
                     </p>
                 </div>
 
@@ -77,7 +77,7 @@ export default function ProblemAgitation() {
                             </div>
                             <div className="mt-auto">
                                 <p className={`text-lg md:text-xl font-bold mb-1 ${t.highlight ? 'text-emerald-400' : 'text-white/70'}`}>
-                                    {t.result}
+                                    {t.benefit}
                                 </p>
                                 <p className={`text-xs md:text-sm font-medium ${t.highlight ? 'text-emerald-400/70' : 'text-white/40'}`}>
                                     {t.subtext}

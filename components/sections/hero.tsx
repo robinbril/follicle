@@ -20,15 +20,15 @@ export default function Hero() {
 
 
 
-                        {/* HEADLINE - Result-focused, quantified */}
+                        {/* HEADLINE - Honest value prop */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
                             className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
                         >
-                            <span className="text-[#D4A574]">85% ziet resultaat</span>{' '}
-                            binnen 90 dagen
+                            <span className="text-[#D4A574]">6 klinisch geteste ingrediënten.</span>{' '}
+                            Geen hormonen.
                         </motion.h1>
 
                         {/* SUBHEADLINE - Specific benefits */}
@@ -38,7 +38,7 @@ export default function Hero() {
                             transition={{ delay: 0.15 }}
                             className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
                         >
-                            6 klinisch bewezen ingrediënten die haarverlies stoppen én hergroei stimuleren.{' '}
+                            Een wetenschappelijk geformuleerde behandeling tegen haarverlies.{' '}
                             <span className="text-gray-900 font-medium">Zonder hormonen. Zonder bijwerkingen.</span>
                         </motion.p>
 
@@ -147,12 +147,12 @@ export default function Hero() {
                                         <Check className="w-6 h-6 text-emerald-600" />
                                     </div>
                                     <div>
-                                        <p className="font-bold text-emerald-600 text-sm">85% effectief</p>
-                                        <p className="font-bold text-gray-900 text-sm">binnen 90 dagen</p>
+                                        <p className="font-bold text-gray-900 text-sm">180 dagen</p>
+                                        <p className="font-bold text-gray-900 text-sm">geld terug</p>
                                     </div>
                                 </div>
                                 <p className="text-xs text-gray-500">
-                                    Klinisch getest op effectiviteit
+                                    Risico-vrij uitproberen
                                 </p>
                             </motion.div>
                         </div>
