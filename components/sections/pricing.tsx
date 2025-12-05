@@ -158,7 +158,7 @@ export default function Pricing() {
                         <img
                             src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
                             alt="Apple Pay"
-                            className="h-5 invert"
+                            className="h-[18px] invert"
                         />
                     </button>
                 </div>
@@ -174,7 +174,7 @@ export default function Pricing() {
                     <div className="flex items-center justify-center gap-5">
                         <img src="/images/payment/ideal.png" alt="iDEAL" className="h-5 opacity-60" />
                         <img src="/images/payment/klarna.png" alt="Klarna" className="h-4 opacity-60" />
-                        <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-5 opacity-60" />
+                        <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-[18px] opacity-60" />
                         <img src="/images/payment/google-pay.png" alt="Google Pay" className="h-4 opacity-60" />
                     </div>
 

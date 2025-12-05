@@ -2,163 +2,182 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const results = [
     {
         id: 1,
         name: 'Thomas',
-        duration: 'Na 12 weken',
-        badge: 'Haargroei',
-        beforeImage: '/images/results/result-1-before.png',
-        afterImage: '/images/results/result-1-after.png',
+        duration: '12 weken',
+        category: 'Haargroei',
+        image: '/images/results/result-1-combined.png',
     },
     {
         id: 2,
         name: 'Mark',
-        duration: 'Na 8 weken',
-        badge: 'Versteviging',
-        beforeImage: '/images/results/result-2-before.png',
-        afterImage: '/images/results/result-2-after.png',
-    },
-    {
-        id: 3,
-        name: 'Jordy',
-        duration: 'Na 16 weken',
-        badge: 'Haargroei',
-        beforeImage: '/images/results/result-3-before.png',
-        afterImage: '/images/results/result-3-after.png',
+        duration: '8 weken',
+        category: 'Haarlijn',
+        image: '/images/results/result-2-combined.jpg',
     },
 ]
 
 export default function Results() {
-    const [activeSliders, setActiveSliders] = useState<Record<number, number>>({})
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [showAfter, setShowAfter] = useState(false)
 
-    const handleSliderChange = (id: number, value: number) => {
-        setActiveSliders(prev => ({ ...prev, [id]: value }))
+    const currentResult = results[currentIndex]
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev + 1) % results.length)
+        setShowAfter(false)
+    }
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => (prev - 1 + results.length) % results.length)
+        setShowAfter(false)
     }
 
     return (
-        <section id="resultaten" className="py-16 sm:py-24 bg-[#111111]">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6">
-                {/* Header */}
-                <div className="text-center mb-10 sm:mb-14">
-                    <span className="text-[#C4956A] text-xs sm:text-sm font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
-                        ECHTE RESULTATEN
-                    </span>
-                    <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 sm:mt-4 mb-3">
-                        <span className="text-[#C4956A]">847+</span> tevreden klanten
+        <section id="resultaten" className="py-16 sm:py-20 bg-[#0A0A0A]">
+            <div className="max-w-md mx-auto px-4 sm:px-6">
+
+                {/* Section Header */}
+                <div className="text-center mb-10">
+                    <p className="text-xs tracking-[3px] text-[#C4956A] uppercase mb-4 font-medium">
+                        Echte Resultaten
+                    </p>
+                    <h2 className="text-3xl sm:text-4xl font-light text-white mb-4 tracking-tight">
+                        <span className="text-[#C4956A] font-medium">847+</span> tevreden klanten
                     </h2>
-                    <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
-                        Bekijk de transformaties van echte REVIVE gebruikers
+                    <p className="text-sm text-white/40 leading-relaxed max-w-lg mx-auto">
+                        Alle beschadigde haarzakjes groeien terug. Ook al het nieuwe donshaar wat je de eerste weken ontwikkelt kan volledig sterk en normaal haar worden.
                     </p>
                 </div>
 
-                {/* Results Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {results.map((result, index) => {
-                        const sliderValue = activeSliders[result.id] ?? 50
+                {/* Results Card - Smaller */}
+                <div className="bg-gradient-to-b from-[#141414] to-[#0F0F0F] rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl">
 
-                        return (
-                            <motion.div
-                                key={result.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="bg-[#1A1A1A] rounded-2xl overflow-hidden border border-gray-800 hover:border-[#C4956A]/30 transition-colors"
-                            >
-                                {/* Image Container with Slider */}
-                                <div className="relative aspect-[4/5] overflow-hidden cursor-ew-resize group">
-                                    {/* After Image (background) */}
-                                    <Image
-                                        src={result.afterImage}
-                                        alt={`${result.name} na`}
-                                        fill
-                                        className="object-cover"
-                                    />
+                    {/* Image Container with Flip */}
+                    <div
+                        className="relative w-full aspect-square cursor-pointer overflow-hidden"
+                        onClick={() => setShowAfter(!showAfter)}
+                    >
+                        {/* Before Image (Left half of combined) */}
+                        <div
+                            className={`absolute inset-0 transition-all duration-500 ease-out overflow-hidden ${showAfter ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+                                }`}
+                        >
+                            <div className="relative w-full h-full">
+                                <Image
+                                    src={currentResult.image}
+                                    alt={`${currentResult.name} voor`}
+                                    fill
+                                    className="object-cover object-left"
+                                    style={{ objectPosition: '0% center' }}
+                                />
+                            </div>
+                        </div>
 
-                                    {/* Before Image (clipped) */}
-                                    <div
-                                        className="absolute inset-0 overflow-hidden"
-                                        style={{ width: `${sliderValue}%` }}
-                                    >
-                                        <div className="relative h-full" style={{ width: `${10000 / sliderValue}%` }}>
-                                            <Image
-                                                src={result.beforeImage}
-                                                alt={`${result.name} voor`}
-                                                fill
-                                                className="object-cover object-left"
-                                            />
-                                        </div>
-                                    </div>
+                        {/* After Image (Right half of combined) */}
+                        <div
+                            className={`absolute inset-0 transition-all duration-500 ease-out overflow-hidden ${showAfter ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                                }`}
+                        >
+                            <div className="relative w-full h-full">
+                                <Image
+                                    src={currentResult.image}
+                                    alt={`${currentResult.name} na`}
+                                    fill
+                                    className="object-cover scale-[1.3]"
+                                    style={{ objectPosition: '95% center' }}
+                                />
+                            </div>
+                        </div>
 
-                                    {/* Slider Line */}
-                                    <div
-                                        className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg z-10"
-                                        style={{ left: `${sliderValue}%` }}
-                                    >
-                                        {/* Slider Handle */}
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center">
-                                            <svg className="w-5 h-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                                            </svg>
-                                        </div>
-                                    </div>
+                        {/* Label */}
+                        <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 ${showAfter
+                            ? 'bg-[#C4956A] text-white'
+                            : 'bg-black/70 backdrop-blur-xl text-white'
+                            }`}>
+                            {showAfter ? 'Na' : 'Voor'} — Tik om te wisselen
+                        </div>
+                    </div>
 
-                                    {/* Labels */}
-                                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-black/70 backdrop-blur-sm rounded text-white text-xs font-bold uppercase tracking-wider">
-                                        Voor
-                                    </div>
-                                    <div className="absolute top-3 right-3 px-2.5 py-1 bg-[#C4956A] rounded text-white text-xs font-bold uppercase tracking-wider">
-                                        Na
-                                    </div>
+                    {/* Info Bar */}
+                    <div className="flex items-center justify-between px-5 py-4 border-t border-white/[0.06]">
+                        {/* Left: User Info */}
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#C4956A] to-[#8B6B4A] flex items-center justify-center text-sm font-semibold text-white">
+                                {currentResult.name.charAt(0)}
+                            </div>
+                            <div>
+                                <p className="text-sm font-semibold text-white">
+                                    {currentResult.name}
+                                </p>
+                                <p className="text-xs text-white/40">
+                                    Na {currentResult.duration}
+                                </p>
+                            </div>
+                        </div>
 
-                                    {/* Invisible Slider Input */}
-                                    <input
-                                        type="range"
-                                        min="10"
-                                        max="90"
-                                        value={sliderValue}
-                                        onChange={(e) => handleSliderChange(result.id, Number(e.target.value))}
-                                        className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
-                                    />
-                                </div>
+                        {/* Right: Badge + Navigation */}
+                        <div className="flex items-center gap-3">
+                            <div className="hidden sm:block px-4 py-1.5 bg-[#C4956A]/10 border border-[#C4956A]/30 rounded-full text-xs font-medium text-[#C4956A]">
+                                {currentResult.category}
+                            </div>
 
-                                {/* Info */}
-                                <div className="p-4">
-                                    <div className="flex items-center justify-between">
-                                        <div>
-                                            <h3 className="text-white font-bold text-lg">{result.name}</h3>
-                                            <p className="text-gray-400 text-sm">{result.duration}</p>
-                                        </div>
-                                        <span className="px-3 py-1 bg-[#C4956A]/20 text-[#C4956A] text-xs font-semibold rounded-full">
-                                            {result.badge}
-                                        </span>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )
-                    })}
+                            <div className="flex gap-1.5">
+                                <button
+                                    onClick={prevSlide}
+                                    className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-all"
+                                >
+                                    <ChevronLeft className="w-4 h-4 text-white/50" />
+                                </button>
+                                <button
+                                    onClick={nextSlide}
+                                    className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-all"
+                                >
+                                    <ChevronRight className="w-4 h-4 text-white/50" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Dots Indicator */}
+                <div className="flex justify-center gap-2 mt-6">
+                    {results.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => {
+                                setCurrentIndex(i)
+                                setShowAfter(false)
+                            }}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex
+                                ? 'w-6 bg-[#C4956A]'
+                                : 'w-1.5 bg-white/20 hover:bg-white/30'
+                                }`}
+                        />
+                    ))}
                 </div>
 
                 {/* Stats Bar */}
-                <div className="flex flex-wrap justify-center gap-6 sm:gap-12 mt-10 sm:mt-14 pt-8 sm:pt-10 border-t border-gray-800">
+                <div className="flex flex-wrap justify-center gap-6 sm:gap-12 mt-10 pt-8 border-t border-white/10">
                     <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-white">85%</div>
-                        <div className="text-gray-400 text-xs sm:text-sm mt-1">Ziet resultaat</div>
+                        <div className="text-xl sm:text-2xl font-semibold text-white">85%</div>
+                        <div className="text-white/40 text-xs mt-1">Ziet resultaat</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-white">90</div>
-                        <div className="text-gray-400 text-xs sm:text-sm mt-1">Dagen gemiddeld</div>
+                        <div className="text-xl sm:text-2xl font-semibold text-white">90</div>
+                        <div className="text-white/40 text-xs mt-1">Dagen gemiddeld</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-white">4.8★</div>
-                        <div className="text-gray-400 text-xs sm:text-sm mt-1">Beoordeling</div>
+                        <div className="text-xl sm:text-2xl font-semibold text-white">4.8★</div>
+                        <div className="text-white/40 text-xs mt-1">Beoordeling</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-white">0</div>
-                        <div className="text-gray-400 text-xs sm:text-sm mt-1">Bijwerkingen</div>
+                        <div className="text-xl sm:text-2xl font-semibold text-white">&lt;5%</div>
+                        <div className="text-white/40 text-xs mt-1">Bijwerkingen</div>
                     </div>
                 </div>
             </div>

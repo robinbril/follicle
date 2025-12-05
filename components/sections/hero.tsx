@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Check, Star, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Check, Star, ShieldCheck, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -9,24 +9,30 @@ import { Button } from '@/components/ui/button'
 export default function Hero() {
     return (
         <section className="relative pt-40 pb-12 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
+            {/* Subtle background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/5 via-transparent to-transparent pointer-events-none" />
+
             <div className="section-container relative z-10">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
                     {/* LEFT - High Conversion Copy */}
                     <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
 
-                        {/* INGREDIENT BADGE - NEW: Establishes credibility immediately */}
+                        {/* INGREDIENT BADGE - Establishes credibility immediately */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D4A574]/10 border border-[#D4A574]/30 text-[#8B6914] text-xs font-bold mb-6 tracking-wide"
                         >
-                            <span className="w-2 h-2 bg-[#D4A574] rounded-full animate-pulse" />
+                            <Sparkles className="w-3.5 h-3.5 text-[#D4A574]" />
                             Klinisch bewezen: 85% ziet resultaat binnen 90 dagen
                         </motion.div>
 
                         {/* HEADLINE - POSITIVE FRAMING */}
                         <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
                             className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-4 sm:mb-6 text-balance"
                         >
                             Voller, sterker haar <br className="hidden sm:block" />
@@ -34,7 +40,12 @@ export default function Hero() {
                         </motion.h1>
 
                         {/* SUBHEADLINE - Benefits secondary */}
-                        <motion.p className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg">
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.15 }}
+                            className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg"
+                        >
                             Wetenschappelijk bewezen haargroei. Zonder de bijwerkingen van Finasteride of Minoxidil.
                         </motion.p>
 
@@ -47,11 +58,12 @@ export default function Hero() {
                         >
                             <Button
                                 size="lg"
-                                className="w-full sm:w-auto px-10 py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-xl"
+                                className="w-full sm:w-auto px-10 py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-xl group"
                                 asChild
                             >
                                 <Link href="#prijzen">
-                                    Start mijn haargroei <ArrowRight className="ml-2 w-5 h-5" />
+                                    Start mijn haargroei
+                                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </Button>
                             {/* URGENCY - Customer journey focused */}
@@ -80,7 +92,12 @@ export default function Hero() {
                         </motion.div>
 
                         {/* STAT + BENEFITS BLOCK - Reframed positively */}
-                        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm mb-8 sm:mb-6 w-full max-w-md">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.25 }}
+                            className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 border border-gray-200/80 shadow-sm mb-8 sm:mb-6 w-full max-w-md"
+                        >
                             <motion.p className="text-base sm:text-lg text-gray-800 mb-5 leading-snug font-medium">
                                 <span className="font-extrabold text-[#D4A574] text-2xl sm:text-3xl">88.9%</span> zag zichtbare haargroei
                                 <span className="block mt-1 text-gray-500 text-sm font-normal">In onafhankelijk klinisch onderzoek na 90 dagen.</span>
@@ -89,25 +106,25 @@ export default function Hero() {
                             {/* Benefits - Positive framing */}
                             <div className="flex flex-col gap-2.5 text-sm text-gray-700 font-medium">
                                 <span className="flex items-center gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-[#D4A574]/20 flex items-center justify-center flex-shrink-0">
-                                        <Check className="w-3 h-3 text-[#D4A574]" strokeWidth={3} />
+                                    <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                        <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
                                     </div>
                                     Veilig voor dagelijks gebruik
                                 </span>
                                 <span className="flex items-center gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-[#D4A574]/20 flex items-center justify-center flex-shrink-0">
-                                        <Check className="w-3 h-3 text-[#D4A574]" strokeWidth={3} />
+                                    <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                        <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
                                     </div>
                                     Zachte, natuurlijke ingrediënten
                                 </span>
                                 <span className="flex items-center gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-[#D4A574]/20 flex items-center justify-center flex-shrink-0">
-                                        <Check className="w-3 h-3 text-[#D4A574]" strokeWidth={3} />
+                                    <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                        <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
                                     </div>
                                     Stop wanneer je wilt
                                 </span>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* SOCIAL PROOF - Realistic numbers */}
                         <motion.div
@@ -151,7 +168,10 @@ export default function Hero() {
 
                     {/* RIGHT - Product Visual - Desktop Only */}
                     <motion.div
-                        className="hidden lg:flex relative lg:h-[600px] items-center justify-center bg-gray-50 rounded-3xl p-8 lg:p-0 mt-10 lg:mt-0"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                        className="hidden lg:flex relative lg:h-[600px] items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 lg:p-0 mt-10 lg:mt-0"
                     >
                         <div className="relative w-full max-w-md aspect-[4/5]">
                             {/* Main Product Image */}
@@ -167,7 +187,7 @@ export default function Hero() {
                             <motion.div
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.5 }}
+                                transition={{ delay: 0.7 }}
                                 className="hidden lg:block absolute bottom-12 -left-12 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 max-w-[200px]"
                             >
                                 <div className="flex items-center gap-3 mb-2">
@@ -182,6 +202,17 @@ export default function Hero() {
                                 <p className="text-xs text-gray-500">
                                     20.5% werkzame concentratie
                                 </p>
+                            </motion.div>
+
+                            {/* NEW: Floating badge top right */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.8 }}
+                                className="hidden lg:flex absolute top-8 -right-4 bg-[#D4A574] text-white px-4 py-2 rounded-xl shadow-lg items-center gap-2"
+                            >
+                                <Sparkles className="w-4 h-4" />
+                                <span className="text-sm font-bold">#1 in NL</span>
                             </motion.div>
                         </div>
                     </motion.div>
