@@ -37,13 +37,13 @@ export default function ExitIntentPopup() {
             }
         }
 
-        // Time-based trigger (45 seconds - after initial engagement)
+        // Time-based trigger (30 seconds)
         timeoutId = setTimeout(() => {
             if (!hasShown) {
                 setIsVisible(true)
                 hasShown = true
             }
-        }, 45000)
+        }, 30000)
 
         // Only activate on desktop
         if (window.innerWidth >= 768) {

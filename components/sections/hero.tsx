@@ -34,7 +34,7 @@ export default function Hero() {
                             />
                         </motion.div>
 
-                        {/* HEADLINE - No word breaking */}
+                        {/* HEADLINE - Intentional two-line break */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -42,7 +42,8 @@ export default function Hero() {
                             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
                             style={{ hyphens: 'none', wordBreak: 'keep-all' }}
                         >
-                            Stop <span className="text-[#D4A574] whitespace-nowrap">haarverlies.</span>{' '}
+                            Stop <span className="text-[#D4A574] whitespace-nowrap">haarverlies.</span>
+                            <br />
                             Start <span className="whitespace-nowrap">hergroei.</span>
                         </motion.h1>
 
@@ -103,10 +104,10 @@ export default function Hero() {
                         >
                             <div className="flex -space-x-3">
                                 {[
-                                    { initials: 'TJ', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
-                                    { initials: 'MV', bg: 'bg-gray-100', text: 'text-gray-600' },
-                                    { initials: 'RL', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
-                                    { initials: 'SK', bg: 'bg-gray-100', text: 'text-gray-600' },
+                                    { initials: 'RR', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
+                                    { initials: 'DB', bg: 'bg-gray-100', text: 'text-gray-600' },
+                                    { initials: 'TH', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
+                                    { initials: 'AB', bg: 'bg-gray-100', text: 'text-gray-600' },
                                 ].map((avatar, i) => (
                                     <div
                                         key={i}
@@ -125,7 +126,7 @@ export default function Hero() {
                                     ))}
                                 </div>
                                 <span className="text-sm font-bold text-gray-900">4.8</span>
-                                <span className="text-xs text-gray-500">(847 reviews)</span>
+                                <span className="text-xs text-gray-500">(127 reviews)</span>
                             </div>
                         </motion.div>
                     </div>
