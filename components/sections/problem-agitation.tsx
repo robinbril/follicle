@@ -98,7 +98,7 @@ export default function ProblemAgitation() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
+                    className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
                 >
                     <div className="overflow-x-auto">
                         <table className="w-full">

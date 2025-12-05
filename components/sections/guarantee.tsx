@@ -13,10 +13,6 @@ export default function Guarantee() {
                     viewport={{ once: true }}
                     className="relative bg-gradient-to-br from-[#141414] to-[#0F0F0F] rounded-3xl p-8 sm:p-12 border border-white/10 overflow-hidden"
                 >
-                    {/* Background decoration */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#D4A574]/5 rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-emerald-500/5 rounded-full blur-3xl" />
-
                     <div className="relative z-10">
                         {/* Icon */}
                         <div className="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 mx-auto sm:mx-0">
