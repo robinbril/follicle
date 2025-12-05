@@ -2,6 +2,7 @@
 
 import { ArrowRight, Check, Star } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 
@@ -97,22 +98,17 @@ export default function Hero() {
                         {/* Mobile Product Visual */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{
-                                opacity: 1,
-                                scale: 1
-                            }}
+                            animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2 }}
                             className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden rounded-2xl overflow-hidden shadow-2xl"
                         >
-                            <video
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="w-full h-full object-cover"
-                            >
-                                <source src="/videos/revive-product-loop.mp4" type="video/mp4" />
-                            </video>
+                            <Image
+                                src="/images/revive-hero-bottle.jpg"
+                                alt="REVIVE Hair Growth Serum"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
                         </motion.div>
                     </div>
 
@@ -130,16 +126,14 @@ export default function Hero() {
                         className="hidden lg:flex relative lg:h-[600px] items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 lg:p-0 mt-10 lg:mt-0"
                     >
                         <div className="relative w-full max-w-md aspect-[4/5]">
-                            {/* Main Product Video */}
-                            <video
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="w-full h-full object-contain drop-shadow-2xl"
-                            >
-                                <source src="/videos/revive-product-loop.mp4" type="video/mp4" />
-                            </video>
+                            {/* Main Product Image */}
+                            <Image
+                                src="/images/revive-hero-bottle.jpg"
+                                alt="REVIVE Hair Growth Serum"
+                                fill
+                                className="object-contain drop-shadow-2xl"
+                                priority
+                            />
 
                             {/* Floating Result Card */}
                             <motion.div
