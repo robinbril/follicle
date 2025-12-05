@@ -13,49 +13,36 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/5 via-transparent to-transparent pointer-events-none" />
 
             <div className="section-container relative z-10">
-                <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
-                    {/* Mobile: Product Video FIRST */}
-                    <div className="block lg:hidden w-full order-1">
-                        <video
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="mx-auto drop-shadow-2xl max-w-[280px] sm:max-w-sm"
-                        >
-                            <source src="/videos/revive-product-mobile.mp4" type="video/mp4" />
-                        </video>
-                    </div>
+                    {/* LEFT - Emotional, Customer-Focused Copy */}
+                    <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
 
-                    {/* LEFT - Copy (order-2 on mobile, order-1 on desktop) */}
-                    <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-start text-left order-2 lg:order-1">
 
-                        {/* HEADLINE */}
+
+                        {/* HEADLINE - Honest value proposition */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
                             className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
-                            style={{ wordBreak: 'keep-all', hyphens: 'none' }}
                         >
                             <span className="text-[#D4A574]">6 ingrediënten.</span>{' '}
-                            0 hormonen.
+                            24 studies. 0 hormonen.
                         </motion.h1>
 
-                        {/* SUBHEADLINE */}
+                        {/* SUBHEADLINE - Specific benefits */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
                             className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
-                            style={{ wordBreak: 'keep-all', hyphens: 'none' }}
                         >
-                            Wetenschappelijk geformuleerd.{' '}
-                            <span className="text-gray-900 font-medium">Zonder bijwerkingen.</span>
+                            Klinisch geteste ingrediënten die haarverlies remmen én hergroei stimuleren.{' '}
+                            <span className="text-gray-900 font-medium">Zonder hormonen. Zonder bijwerkingen.</span>
                         </motion.p>
 
-                        {/* PRIMARY CTA */}
+                        {/* PRIMARY CTA - Test + Guarantee framing */}
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -63,78 +50,92 @@ export default function Hero() {
                             className="w-full sm:w-auto mb-6"
                         >
                             <Button
-                                asChild
                                 size="lg"
-                                className="w-full sm:w-auto bg-[#C4956A] hover:bg-[#B38559] text-white font-semibold px-10 py-6 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all"
+                                className="w-full sm:w-auto px-10 py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-xl group"
+                                asChild
                             >
-                                <Link href="#pricing">
+                                <Link href="#prijzen">
                                     BESTEL NU
-                                    <ArrowRight className="ml-2 w-5 h-5" />
+                                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </Button>
-                        </motion.div>
+                            {/* Guarantee in micro-copy */}
+                            <p className="text-sm text-gray-500 mt-3 font-medium flex items-center justify-center lg:justify-start gap-2">
+                                ✓ 180 dagen niet tevreden? Volledige terugbetaling.
+                            </p>
 
-                        {/* Guarantee Micro-copy */}
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.25 }}
-                            className="text-sm text-gray-500 mb-6 flex items-center gap-2"
-                        >
-                            <Check className="w-4 h-4 text-emerald-600" />
-                            180 dagen niet tevreden? Geld terug.
-                        </motion.p>
-
-                        {/* Social Proof */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                            className="flex items-center gap-3"
-                        >
-                            {/* Avatar Stack */}
-                            <div className="flex -space-x-2">
-                                {['TJ', 'MV', 'RL', 'SK'].map((initials, i) => (
-                                    <div
-                                        key={i}
-                                        className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-100 to-emerald-200 border-2 border-white flex items-center justify-center"
-                                    >
-                                        <span className="text-[10px] font-bold text-emerald-800">{initials}</span>
-                                    </div>
-                                ))}
-                            </div>
-                            {/* Rating */}
-                            <div className="flex items-center gap-2">
-                                <div className="flex items-center gap-0.5">
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star key={i} className="w-3.5 h-3.5 fill-[#D4A574] text-[#D4A574]" />
+                            {/* Social proof - avatar stack + rating */}
+                            <div className="flex items-center gap-4 flex-wrap justify-center lg:justify-start mt-6">
+                                <div className="flex -space-x-3">
+                                    {[
+                                        { initials: 'TJ', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
+                                        { initials: 'MV', bg: 'bg-gray-100', text: 'text-gray-600' },
+                                        { initials: 'RL', bg: 'bg-[#D4A574]/20', text: 'text-[#8B6914]' },
+                                        { initials: 'SK', bg: 'bg-gray-100', text: 'text-gray-600' },
+                                    ].map((avatar, i) => (
+                                        <div
+                                            key={i}
+                                            className={`w-9 h-9 rounded-full ${avatar.bg} border-2 border-white flex items-center justify-center shadow-sm`}
+                                        >
+                                            <span className={`text-xs font-semibold ${avatar.text}`}>
+                                                {avatar.initials}
+                                            </span>
+                                        </div>
                                     ))}
                                 </div>
-                                <span className="text-sm font-bold text-gray-900">4.8</span>
-                                <span className="text-xs text-gray-500">(847 reviews)</span>
+                                <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100">
+                                    <div className="flex">
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star key={i} className="w-3.5 h-3.5 fill-[#D4A574] text-[#D4A574]" />
+                                        ))}
+                                    </div>
+                                    <span className="text-sm font-bold text-gray-900">4.8</span>
+                                    <span className="text-xs text-gray-500">(847 reviews)</span>
+                                </div>
                             </div>
+                        </motion.div>
+
+                        {/* Mobile Product Visual */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.2 }}
+                            className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden rounded-2xl overflow-hidden shadow-2xl"
+                        >
+                            <Image
+                                src="/images/revive-hero-bottle.jpg"
+                                alt="REVIVE Hair Growth Serum"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
                         </motion.div>
                     </div>
 
-                    {/* RIGHT - Desktop Product Image (order-1 on desktop, hidden on mobile) */}
+                    {/* RIGHT - Product Visual - Desktop Only */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
-                        className="hidden lg:flex relative lg:h-[600px] items-center justify-center mt-10 lg:mt-0 order-1 lg:order-2"
+                        animate={{
+                            opacity: 1,
+                            x: 0
+                        }}
+                        transition={{
+                            delay: 0.3,
+                            duration: 0.6
+                        }}
+                        className="hidden lg:flex relative lg:h-[600px] items-center justify-center mt-10 lg:mt-0"
                     >
-                        <div className="relative w-full max-w-lg">
+                        <div className="relative w-full max-w-lg aspect-[4/5]">
                             {/* Main Product Image */}
                             <Image
                                 src="/images/revive-hero-bottle.jpg"
                                 alt="REVIVE Hair Growth Serum"
-                                width={500}
-                                height={750}
+                                fill
                                 className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
                                 priority
                             />
 
-                            {/* Floating Badge */}
+                            {/* Floating Result Card */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -146,12 +147,12 @@ export default function Hero() {
                                         <Check className="w-6 h-6 text-emerald-600" />
                                     </div>
                                     <div>
-                                        <p className="font-bold text-gray-900 text-sm">180 dagen</p>
-                                        <p className="font-bold text-gray-900 text-sm">geld terug</p>
+                                        <p className="font-bold text-emerald-600 text-sm">24 studies</p>
+                                        <p className="font-bold text-gray-900 text-sm">6 ingrediënten</p>
                                     </div>
                                 </div>
                                 <p className="text-xs text-gray-500">
-                                    Risico-vrij uitproberen
+                                    Wetenschappelijk onderbouwd
                                 </p>
                             </motion.div>
                         </div>
