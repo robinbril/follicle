@@ -31,7 +31,7 @@ export default function Hero() {
                     {/* LEFT - Copy (order-2 on mobile, order-1 on desktop) */}
                     <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-start text-left order-2 lg:order-1">
 
-                        {/* HEADLINE - Concise */}
+                        {/* HEADLINE */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export default function Hero() {
                             0 hormonen.
                         </motion.h1>
 
-                        {/* SUBHEADLINE - Concise */}
+                        {/* SUBHEADLINE */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
