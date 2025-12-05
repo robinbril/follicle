@@ -1,7 +1,6 @@
 "use client"
 
-import { Check, X, ArrowRight } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Check, X } from 'lucide-react'
 
 const treatments = [
     {
@@ -41,29 +40,17 @@ export default function ProblemAgitation() {
         <section className="py-16 sm:py-20 bg-gradient-to-b from-[#091412] to-[#0D1F17] relative overflow-hidden">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
                 {/* Emotional Hook */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.5 }}
-                    className="text-center mb-12"
-                >
+                <div className="text-center mb-12">
                     <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
                         Je hebt opties. Maar welke is slim?
                     </h2>
                     <p className="text-lg text-white/60 max-w-2xl mx-auto">
                         Van niets doen tot chirurgie — hier zie je hoe REVIVE zich positioneert.
                     </p>
-                </motion.div>
+                </div>
 
                 {/* Treatment Spectrum */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 mb-8 md:mb-12"
-                >
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 mb-8 md:mb-12">
                     {treatments.map((t, i) => (
                         <div
                             key={i}
@@ -90,16 +77,10 @@ export default function ProblemAgitation() {
                             </p>
                         </div>
                     ))}
-                </motion.div>
+                </div>
 
                 {/* Detailed Comparison Table */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
-                >
+                <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead>
@@ -168,17 +149,13 @@ export default function ProblemAgitation() {
                             </tbody>
                         </table>
                     </div>
-                </motion.div>
+                </div>
 
 
 
                 {/* Scepticism acknowledgment */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="mt-8 p-6 bg-amber-500/10 rounded-xl border border-amber-500/20"
-                >
+                <div className="mt-8 p-6 bg-amber-500/10 rounded-xl border border-amber-500/20">
+
                     <p className="text-amber-100/90 text-center leading-relaxed">
                         <span className="text-amber-50 font-medium">"Klinisch bewezen" — je hebt het 400x gehoord.</span>
                         <br className="hidden sm:block" />
@@ -186,7 +163,7 @@ export default function ProblemAgitation() {
                         <span className="text-amber-300 font-semibold">peer-reviewed studies</span>.
                         24 in totaal. Klik. Lees. Oordeel zelf.
                     </p>
-                </motion.div>
+                </div>
             </div>
         </section>
     )
