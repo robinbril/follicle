@@ -101,11 +101,11 @@ export default function Hero() {
                                 <Clock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                                 <div>
                                     <p className="text-sm text-gray-800 font-medium leading-relaxed">
-                                        Gemiddeld verlies je <span className="font-bold text-amber-700">50-100 haren per dag</span>.
-                                        Elke week zonder actie = minder follikels om te activeren.
+                                        <span className="font-bold text-amber-700">50-100 haren per dag. Elke dag.</span><br />
+                                        Dat is 700 per week. 3.000 per maand.
                                     </p>
                                     <p className="text-xs text-gray-500 mt-2">
-                                        De beste tijd om te beginnen was een jaar geleden. De op-een-na beste is nu.
+                                        Hoe langer je wacht, hoe minder er terug kan komen.
                                     </p>
                                 </div>
                             </div>
