@@ -162,7 +162,7 @@ export default function ProblemAgitation() {
                                         <span className="text-xs text-white/40">Zeldzaam</span>
                                     </td>
                                     <td className="px-3 py-4 text-center">
-                                        <span className="text-xs text-red-400/70">2-5%</span>
+                                        <X className="w-5 h-5 text-red-400/70 mx-auto" />
                                     </td>
                                 </tr>
                             </tbody>
@@ -170,31 +170,20 @@ export default function ProblemAgitation() {
                     </div>
                 </motion.div>
 
-                {/* Warning callout */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="mt-6 p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl"
-                >
-                    <p className="text-amber-200/80 text-sm text-center">
-                        ⚠️ <span className="font-medium">Finasteride</span>: Tot 5% ervaart libidoproblemen.
-                        En zodra je stopt? Al je nieuwe haargroei valt weer uit.
-                    </p>
-                </motion.div>
+
 
                 {/* Scepticism acknowledgment */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="mt-8 p-6 bg-white/5 rounded-xl border border-white/10"
+                    className="mt-8 p-6 bg-amber-500/10 rounded-xl border border-amber-500/20"
                 >
-                    <p className="text-white/70 text-center leading-relaxed">
-                        <span className="text-white font-medium">"Klinisch bewezen" — je hebt het 400x gehoord.</span>
+                    <p className="text-amber-100/90 text-center leading-relaxed">
+                        <span className="text-amber-50 font-medium">"Klinisch bewezen" — je hebt het 400x gehoord.</span>
                         <br className="hidden sm:block" />
                         Daarom hebben we geen marketingclaims. Alleen{' '}
-                        <span className="text-emerald-400 font-medium">peer-reviewed studies</span>.
+                        <span className="text-amber-300 font-semibold">peer-reviewed studies</span>.
                         24 in totaal. Klik. Lees. Oordeel zelf.
                     </p>
                 </motion.div>
