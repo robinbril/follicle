@@ -4,6 +4,7 @@ import Ingredients from '@/components/sections/ingredients'
 import TargetAudience from '@/components/sections/target-audience'
 import HowItWorks from '@/components/sections/how-it-works'
 import Guarantee from '@/components/sections/guarantee'
+import Testimonials from '@/components/sections/testimonials'
 import Pricing from '@/components/sections/pricing'
 import Footer from '@/components/sections/footer'
 import ExitIntentPopup from '@/components/conversion/exit-intent-popup'
@@ -22,6 +23,7 @@ export default function Home() {
       <TargetAudience />
       <HowItWorks />
       <Guarantee />
+      <Testimonials />
       <Pricing />
 
       <Footer />
