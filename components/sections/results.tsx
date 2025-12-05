@@ -83,16 +83,14 @@ export default function Results() {
                                         className="absolute inset-0 overflow-hidden"
                                         style={{ width: `${sliderValue}%` }}
                                     >
-                                        <Image
-                                            src={result.beforeImage}
-                                            alt={`${result.name} voor`}
-                                            fill
-                                            className="object-cover"
-                                            style={{
-                                                width: `${100 / (sliderValue / 100)}%`,
-                                                maxWidth: 'none'
-                                            }}
-                                        />
+                                        <div className="relative h-full" style={{ width: `${10000 / sliderValue}%` }}>
+                                            <Image
+                                                src={result.beforeImage}
+                                                alt={`${result.name} voor`}
+                                                fill
+                                                className="object-cover object-left"
+                                            />
+                                        </div>
                                     </div>
 
                                     {/* Slider Line */}
