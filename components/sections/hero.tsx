@@ -22,7 +22,7 @@ export default function Hero() {
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D4A574]/10 border border-[#D4A574]/30 text-[#8B6914] text-xs font-bold mb-6 tracking-wide"
                         >
                             <span className="w-2 h-2 bg-[#D4A574] rounded-full animate-pulse" />
-                            Bevat 3% Redensyl® – #1 alternatief voor Minoxidil
+                            Klinisch bewezen: 85% ziet resultaat binnen 90 dagen
                         </motion.div>
 
                         {/* HEADLINE - POSITIVE FRAMING */}
