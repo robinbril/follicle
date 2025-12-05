@@ -1,7 +1,9 @@
 import Hero from '@/components/sections/hero'
 import ProblemAgitation from '@/components/sections/problem-agitation'
 import Ingredients from '@/components/sections/ingredients'
+import TargetAudience from '@/components/sections/target-audience'
 import HowItWorks from '@/components/sections/how-it-works'
+import Guarantee from '@/components/sections/guarantee'
 import Pricing from '@/components/sections/pricing'
 
 import Footer from '@/components/sections/footer'
@@ -18,7 +20,9 @@ export default function Home() {
       <Hero />
       <ProblemAgitation />
       <Ingredients />
+      <TargetAudience />
       <HowItWorks />
+      <Guarantee />
       <Pricing />
 
       <Footer />
@@ -29,4 +33,3 @@ export default function Home() {
     </main>
   )
 }
-

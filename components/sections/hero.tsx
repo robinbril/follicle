@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Check, Star, ShieldCheck, Sparkles } from 'lucide-react'
+import { ArrowRight, Check, Star, ShieldCheck, Clock } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -15,41 +15,42 @@ export default function Hero() {
             <div className="section-container relative z-10">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
-                    {/* LEFT - High Conversion Copy */}
+                    {/* LEFT - Emotional, Customer-Focused Copy */}
                     <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
 
-                        {/* INGREDIENT BADGE - Establishes credibility immediately */}
+                        {/* SOCIAL PROOF BADGE - Specific number */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D4A574]/10 border border-[#D4A574]/30 text-[#8B6914] text-xs font-bold mb-6 tracking-wide"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-medium mb-6"
                         >
-                            <Sparkles className="w-3.5 h-3.5 text-[#D4A574]" />
-                            Klinisch bewezen: 85% ziet resultaat binnen 90 dagen
+                            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                            3.847 flessen verzonden sinds maart 2024
                         </motion.div>
 
-                        {/* HEADLINE - POSITIVE FRAMING */}
+                        {/* HEADLINE - Identity-based, emotional */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-4 sm:mb-6 text-balance"
+                            className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
                         >
-                            Voller, sterker haar <br className="hidden sm:block" />
-                            <span className="text-[#D4A574]">in 90 dagen</span>
+                            Je eerste lijn van verdediging{' '}
+                            <span className="text-[#D4A574]">tegen haarverlies</span>
                         </motion.h1>
 
-                        {/* SUBHEADLINE - Benefits secondary */}
+                        {/* SUBHEADLINE - Identity positioning */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
-                            className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg"
+                            className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
                         >
-                            Wetenschappelijk bewezen haargroei. Zonder de bijwerkingen van Finasteride of Minoxidil.
+                            Voor mannen die weigeren te kiezen tussen hun haar en hun gezondheid.
+                            <span className="text-gray-900 font-medium"> 6 klinisch geteste ingrediënten. Geen hormonen. Geen bijwerkingen.</span>
                         </motion.p>
 
-                        {/* PRIMARY CTA - ABOVE THE FOLD, PROMINENT */}
+                        {/* PRIMARY CTA - Test + Guarantee framing */}
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -62,13 +63,14 @@ export default function Hero() {
                                 asChild
                             >
                                 <Link href="#prijzen">
-                                    Start mijn haargroei
+                                    Begin mijn 90-dagen test
                                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </Button>
-                            {/* URGENCY - Customer journey focused */}
-                            <p className="text-sm text-gray-500 mt-3 font-medium">
-                                <span className="text-[#D4A574] font-bold">→</span> Eerste resultaten binnen 4-6 weken
+                            {/* Guarantee in micro-copy */}
+                            <p className="text-sm text-gray-500 mt-3 font-medium flex items-center justify-center lg:justify-start gap-2">
+                                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                                180 dagen niet tevreden? Volledige terugbetaling.
                             </p>
                         </motion.div>
 
@@ -79,54 +81,37 @@ export default function Hero() {
                             transition={{ delay: 0.2 }}
                             className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden rounded-2xl overflow-hidden shadow-2xl"
                         >
-                            <video
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="w-full h-full object-cover"
-                                poster="/images/revive-hero-bottle.jpg"
-                            >
-                                <source src="/videos/revive-product-loop.mp4" type="video/mp4" />
-                            </video>
+                            <Image
+                                src="/images/revive-hero-bottle.jpg"
+                                alt="REVIVE Hair Growth Serum"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
                         </motion.div>
 
-                        {/* STAT + BENEFITS BLOCK - Reframed positively */}
+                        {/* LOSS AVERSION - Time urgency */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25 }}
-                            className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 border border-gray-200/80 shadow-sm mb-8 sm:mb-6 w-full max-w-md"
+                            className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-5 border border-amber-200/60 mb-8 sm:mb-6 w-full max-w-md"
                         >
-                            <motion.p className="text-base sm:text-lg text-gray-800 mb-5 leading-snug font-medium">
-                                <span className="font-extrabold text-[#D4A574] text-2xl sm:text-3xl">88.9%</span> zag zichtbare haargroei
-                                <span className="block mt-1 text-gray-500 text-sm font-normal">In onafhankelijk klinisch onderzoek na 90 dagen.</span>
-                            </motion.p>
-
-                            {/* Benefits - Positive framing */}
-                            <div className="flex flex-col gap-2.5 text-sm text-gray-700 font-medium">
-                                <span className="flex items-center gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                        <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
-                                    </div>
-                                    Veilig voor dagelijks gebruik
-                                </span>
-                                <span className="flex items-center gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                        <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
-                                    </div>
-                                    Zachte, natuurlijke ingrediënten
-                                </span>
-                                <span className="flex items-center gap-3">
-                                    <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                        <Check className="w-3 h-3 text-emerald-600" strokeWidth={3} />
-                                    </div>
-                                    Stop wanneer je wilt
-                                </span>
+                            <div className="flex items-start gap-3">
+                                <Clock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                                <div>
+                                    <p className="text-sm text-gray-800 font-medium leading-relaxed">
+                                        Gemiddeld verlies je <span className="font-bold text-amber-700">50-100 haren per dag</span>.
+                                        Elke week zonder actie = minder follikels om te activeren.
+                                    </p>
+                                    <p className="text-xs text-gray-500 mt-2">
+                                        De beste tijd om te beginnen was een jaar geleden. De op-een-na beste is nu.
+                                    </p>
+                                </div>
                             </div>
                         </motion.div>
 
-                        {/* SOCIAL PROOF - Realistic numbers */}
+                        {/* TRUST SIGNALS - Stacked proof */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -157,12 +142,8 @@ export default function Hero() {
                                     ))}
                                 </div>
                                 <span className="text-sm font-bold text-gray-900">4.8</span>
-                                <span className="text-xs text-gray-500">(847 reviews)</span>
+                                <span className="text-xs text-gray-500">(312 reviews)</span>
                             </div>
-                            <span className="text-xs text-gray-400 font-medium">
-                                <ShieldCheck className="w-3.5 h-3.5 inline mr-1" />
-                                180 dagen garantie
-                            </span>
                         </motion.div>
                     </div>
 
@@ -177,42 +158,42 @@ export default function Hero() {
                             {/* Main Product Image */}
                             <Image
                                 src="/images/revive-hero-bottle.jpg"
-                                alt="Follicle Hair Growth Serum"
+                                alt="REVIVE Hair Growth Serum"
                                 fill
                                 className="object-contain drop-shadow-2xl"
                                 priority
                             />
 
-                            {/* Floating Result Card - Desktop Only */}
+                            {/* Floating Result Card */}
                             <motion.div
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.7 }}
-                                className="hidden lg:block absolute bottom-12 -left-12 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 max-w-[200px]"
+                                className="absolute bottom-12 -left-12 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 max-w-[200px]"
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
                                         <Check className="w-6 h-6 text-emerald-600" />
                                     </div>
                                     <div>
-                                        <p className="font-bold text-gray-900 text-sm">6 actieve</p>
-                                        <p className="font-bold text-gray-900 text-sm">technologieën</p>
+                                        <p className="font-bold text-gray-900 text-sm">Resultaat in</p>
+                                        <p className="font-bold text-gray-900 text-sm">90 dagen</p>
                                     </div>
                                 </div>
                                 <p className="text-xs text-gray-500">
-                                    20.5% werkzame concentratie
+                                    Of je geld volledig terug
                                 </p>
                             </motion.div>
 
-                            {/* NEW: Floating badge top right */}
+                            {/* Trust badge */}
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 0.8 }}
-                                className="hidden lg:flex absolute top-8 -right-4 bg-[#D4A574] text-white px-4 py-2 rounded-xl shadow-lg items-center gap-2"
+                                className="absolute top-8 -right-4 bg-white text-gray-900 px-4 py-2 rounded-xl shadow-lg border border-gray-100 flex items-center gap-2"
                             >
-                                <Sparkles className="w-4 h-4" />
-                                <span className="text-sm font-bold">#1 in NL</span>
+                                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                                <span className="text-sm font-bold">180 dagen garantie</span>
                             </motion.div>
                         </div>
                     </motion.div>
