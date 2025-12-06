@@ -16,14 +16,14 @@ export default function Hero() {
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
                     {/* LEFT - Copy */}
-                    <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-start text-left">
+                    <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
 
                         {/* Mobile Product Visual - Above headline */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.1 }}
-                            className="relative w-full max-w-[240px] mx-auto lg:hidden aspect-[4/5] mb-6 rounded-2xl overflow-hidden shadow-2xl"
+                            className="relative w-full max-w-[280px] mx-auto lg:hidden aspect-[4/5] mb-6 rounded-2xl overflow-hidden shadow-2xl"
                         >
                             <Image
                                 src="/images/revive-hero-bottle.jpg"
@@ -58,7 +58,7 @@ export default function Hero() {
                             <span className="text-gray-900 font-medium whitespace-nowrap">6 gepatenteerde ingrediënten.</span>{' '}
                             Zonder <span className="whitespace-nowrap">hormonen.</span>{' '}
                             Zonder <span className="whitespace-nowrap">bijwerkingen.</span>{' '}
-                            Resultaat binnen <span className="whitespace-nowrap">90 dagen.</span>
+                            <span className="whitespace-nowrap">Resultaat binnen 90 dagen.</span>
                         </motion.p>
 
                         {/* PRIMARY CTA - Specific + Price */}
@@ -66,7 +66,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.25 }}
-                            className="w-full sm:w-auto mb-4"
+                            className="w-full sm:w-auto mb-4 flex flex-col items-center lg:items-start"
                         >
                             <Button
                                 size="lg"
@@ -79,7 +79,7 @@ export default function Hero() {
                                 </Link>
                             </Button>
                             {/* Price visibility */}
-                            <p className="text-center sm:text-left text-sm text-gray-600 mt-2 font-medium">
+                            <p className="text-center lg:text-left text-sm text-gray-600 mt-2 font-medium">
                                 Vanaf <span className="text-gray-900 font-bold">€29/maand</span>
                             </p>
                         </motion.div>
@@ -89,7 +89,7 @@ export default function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.3 }}
-                            className="text-sm text-gray-500 mb-6 font-medium flex items-center gap-2"
+                            className="text-sm text-gray-500 mb-6 font-medium flex items-center gap-2 justify-center lg:justify-start"
                         >
                             <Check className="w-4 h-4 text-emerald-600" />
                             180 dagen niet tevreden? Volledige terugbetaling.
@@ -100,7 +100,7 @@ export default function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.35 }}
-                            className="flex items-center gap-4 flex-wrap"
+                            className="flex items-center gap-4 flex-wrap justify-center lg:justify-start"
                         >
                             <div className="flex -space-x-3">
                                 {[

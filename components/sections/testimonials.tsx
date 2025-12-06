@@ -15,8 +15,8 @@ const testimonials = [
     },
     {
         id: 2,
-        name: 'Duncan B.',
-        initials: 'DB',
+        name: 'Duncan',
+        initials: 'D',
         rating: 5,
         quote: 'Makkelijk in gebruik, past gewoon in mijn ochtendroutine. Geen plakkerig gevoel, droogt snel. Na 6 weken zag ik de eerste nieuwe haartjes.',
         duration: '3 maanden gebruik',
@@ -24,8 +24,8 @@ const testimonials = [
     },
     {
         id: 3,
-        name: 'Thomas H.',
-        initials: 'TH',
+        name: 'Thomas',
+        initials: 'T',
         rating: 4,
         quote: 'Was eerst skeptisch, maar na 3 maanden moet ik toegeven: mijn haar voelt dikker en de kale plekken worden minder zichtbaar.',
         duration: '3 maanden gebruik',
@@ -77,7 +77,7 @@ export default function Testimonials() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+                            className="bg-white rounded-3xl p-8 border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300"
                         >
                             {/* Stars */}
                             <div className="flex items-center gap-1 mb-4">
@@ -92,14 +92,51 @@ export default function Testimonials() {
                             </p>
 
                             {/* Author */}
-                            <div className="flex items-center gap-3">
-                                {/* Avatar with initials */}
-                                <div className="w-12 h-12 rounded-full bg-[#D4A574]/10 flex items-center justify-center flex-shrink-0">
-                                    <span className="text-[#D4A574] font-bold text-sm">
-                                        {testimonial.initials}
+                            <div className="pt-4 border-t border-gray-100">
+                                <p className="font-bold text-gray-900 text-sm">
+                                    {testimonial.name}
+                                </p>
+                                <div className="flex items-center gap-2 text-xs text-gray-500 mt-0.5">
+                                    <span className="flex items-center gap-1">
+                                        <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                                        {testimonial.duration}
                                     </span>
                                 </div>
-                                <div className="flex-1">
+                                {testimonial.verified && (
+                                    <div className="flex items-center gap-1 text-emerald-600 text-xs font-medium mt-1">
+                                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                        </svg>
+                                        Geverifieerde koper
+                                    </div>
+                                )}
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Mobile Horizontal Scroll */}
+                <div className="md:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+                    <div className="flex gap-4 pb-4">
+                        {testimonials.map((testimonial) => (
+                            <div
+                                key={testimonial.id}
+                                className="flex-shrink-0 w-[85vw] max-w-[340px] snap-center bg-white rounded-3xl p-8 border border-gray-100 shadow-lg"
+                            >
+                                {/* Stars */}
+                                <div className="flex items-center gap-1 mb-4">
+                                    {[...Array(testimonial.rating)].map((_, i) => (
+                                        <Star key={i} className="w-4 h-4 fill-[#D4A574] text-[#D4A574]" />
+                                    ))}
+                                </div>
+
+                                {/* Quote */}
+                                <p className="text-gray-700 text-base leading-relaxed mb-6">
+                                    "{testimonial.quote}"
+                                </p>
+
+                                {/* Author */}
+                                <div className="pt-4 border-t border-gray-100">
                                     <p className="font-bold text-gray-900 text-sm">
                                         {testimonial.name}
                                     </p>
@@ -117,59 +154,6 @@ export default function Testimonials() {
                                             Geverifieerde koper
                                         </div>
                                     )}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Mobile Horizontal Scroll - All 5 reviews */}
-                <div className="md:hidden overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
-                    <div className="flex gap-4 pb-4">
-                        {testimonials.map((testimonial) => (
-                            <div
-                                key={testimonial.id}
-                                className="flex-shrink-0 w-[85vw] max-w-[340px] snap-center bg-white rounded-xl p-6 border border-gray-200 shadow-sm"
-                            >
-                                {/* Stars */}
-                                <div className="flex items-center gap-1 mb-4">
-                                    {[...Array(testimonial.rating)].map((_, i) => (
-                                        <Star key={i} className="w-4 h-4 fill-[#D4A574] text-[#D4A574]" />
-                                    ))}
-                                </div>
-
-                                {/* Quote */}
-                                <p className="text-gray-700 text-base leading-relaxed mb-6">
-                                    "{testimonial.quote}"
-                                </p>
-
-                                {/* Author */}
-                                <div className="flex items-center gap-3">
-                                    {/* Avatar with initials */}
-                                    <div className="w-12 h-12 rounded-full bg-[#D4A574]/10 flex items-center justify-center flex-shrink-0">
-                                        <span className="text-[#D4A574] font-bold text-sm">
-                                            {testimonial.initials}
-                                        </span>
-                                    </div>
-                                    <div className="flex-1">
-                                        <p className="font-bold text-gray-900 text-sm">
-                                            {testimonial.name}
-                                        </p>
-                                        <div className="flex items-center gap-2 text-xs text-gray-500 mt-0.5">
-                                            <span className="flex items-center gap-1">
-                                                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
-                                                {testimonial.duration}
-                                            </span>
-                                        </div>
-                                        {testimonial.verified && (
-                                            <div className="flex items-center gap-1 text-emerald-600 text-xs font-medium mt-1">
-                                                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                </svg>
-                                                Geverifieerde koper
-                                            </div>
-                                        )}
-                                    </div>
                                 </div>
                             </div>
                         ))}

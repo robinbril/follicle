@@ -56,19 +56,6 @@ export default function Pricing() {
         <section id="prijzen" className="pt-8 pb-16 bg-white relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-6">
 
-                {/* Reviews Badge */}
-                <div className="text-center mb-6">
-                    <div className="inline-flex items-center gap-2 text-lg">
-                        <div className="flex">
-                            {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="w-5 h-5 fill-[#D4A574] text-[#D4A574]" />
-                            ))}
-                        </div>
-                        <span className="font-semibold text-gray-900">4.8/5</span>
-                        <span className="text-gray-500">(847 Reviews)</span>
-                    </div>
-                </div>
-
                 {/* Title */}
                 <div className="text-center mb-12">
                     <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
