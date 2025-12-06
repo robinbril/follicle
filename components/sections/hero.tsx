@@ -20,26 +20,28 @@ export default function Hero() {
 
 
 
-                        {/* HEADLINE - Honest value proposition */}
+                        {/* HEADLINE - Clear problem + solution */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
                             className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
                         >
-                            <span className="text-[#D4A574]">6 ingrediënten.</span>{' '}
-                            24 studies. 0 hormonen.
+                            Stop haaruitval.{' '}
+                            <span className="text-[#D4A574]">Start hergroei.</span>
                         </motion.h1>
 
-                        {/* SUBHEADLINE - Specific benefits */}
+                        {/* SUBHEADLINE - Why it's better */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
                             className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
                         >
-                            Klinisch geteste ingrediënten die haarverlies remmen én hergroei stimuleren.{' '}
-                            <span className="text-gray-900 font-medium">Zonder hormonen. Zonder bijwerkingen.</span>
+                            Door <span className="text-gray-900 font-medium whitespace-nowrap">24 studies onderbouwd.</span>{' '}
+                            <span className="whitespace-nowrap">6 geteste ingrediënten.</span>{' '}
+                            <span className="text-gray-900 font-medium whitespace-nowrap">Zonder hormonen.</span>{' '}
+                            <span className="text-gray-900 font-medium whitespace-nowrap">Zonder bijwerkingen.</span>
                         </motion.p>
 
                         {/* PRIMARY CTA - Test + Guarantee framing */}

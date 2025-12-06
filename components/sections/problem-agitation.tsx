@@ -36,7 +36,7 @@ export default function ProblemAgitation() {
                 {/* Honest Hook */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                        6 ingrediënten. 24 studies. 0 hormonen.
+                        Elke keuze heeft voor- en nadelen. Hier is wat REVIVE anders maakt.
                     </h2>
                     <p className="text-lg text-white/60 max-w-2xl mx-auto">
                         Elke keuze heeft voor- en nadelen. Hier is wat REVIVE anders maakt.
@@ -83,8 +83,8 @@ export default function ProblemAgitation() {
                         <span className="text-amber-50 font-medium">"Klinisch bewezen" — je hebt het 400x gehoord.</span>
                         <br className="hidden sm:block" />
                         Daarom hebben we geen marketingclaims. Alleen{' '}
-                        <span className="text-amber-300 font-semibold">peer-reviewed studies</span>.
-                        24 in totaal. Klik. Lees. Oordeel zelf.
+                        <span className="text-white font-semibold">transparantie</span>.
+                        24 peer-reviewed studies. Klik, lees, oordeel zelf.
                     </p>
                 </div>
             </div>
