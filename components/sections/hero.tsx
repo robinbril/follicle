@@ -12,6 +12,16 @@ export default function Hero() {
             {/* Subtle background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/5 via-transparent to-transparent pointer-events-none" />
 
+            {/* Nieuw op de markt badge - Top Right */}
+            <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="absolute top-24 right-4 lg:right-8 bg-gradient-to-r from-[#D4A574] to-[#C69563] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg z-20"
+            >
+                Nieuw op de markt
+            </motion.div>
+
             <div className="section-container relative z-10">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
 
@@ -38,8 +48,7 @@ export default function Hero() {
                             transition={{ delay: 0.15 }}
                             className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
                         >
-                            Door <span className="text-gray-900 font-medium whitespace-nowrap">24 studies onderbouwd.</span>{' '}
-                            <span className="whitespace-nowrap">6 geteste ingrediënten.</span>{' '}
+                            6 geteste ingrediënten.{' '}
                             <span className="text-gray-900 font-medium whitespace-nowrap">Zonder hormonen.</span>{' '}
                             <span className="text-gray-900 font-medium whitespace-nowrap">Zonder bijwerkingen.</span>
                         </motion.p>
@@ -144,18 +153,14 @@ export default function Hero() {
                                 transition={{ delay: 0.7 }}
                                 className="absolute -bottom-4 left-4 bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 max-w-[200px] z-10"
                             >
-                                <div className="flex items-center gap-3 mb-2">
+                                <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
                                         <Check className="w-6 h-6 text-emerald-600" />
                                     </div>
-                                    <div>
-                                        <p className="font-bold text-emerald-600 text-sm">24 studies</p>
-                                        <p className="font-bold text-gray-900 text-sm">6 ingrediënten</p>
-                                    </div>
+                                    <p className="text-sm text-gray-700 font-medium">
+                                        Door 24 studies onderbouwd
+                                    </p>
                                 </div>
-                                <p className="text-xs text-gray-500">
-                                    Wetenschappelijk onderbouwd
-                                </p>
                             </motion.div>
                         </div>
                     </motion.div>

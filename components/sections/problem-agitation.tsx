@@ -33,16 +33,6 @@ export default function ProblemAgitation() {
     return (
         <section className="py-16 sm:py-20 bg-gradient-to-b from-[#091412] to-[#0D1F17] relative overflow-hidden">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
-                {/* Honest Hook */}
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                        Elke keuze heeft voor- en nadelen. Hier is wat REVIVE anders maakt.
-                    </h2>
-                    <p className="text-lg text-white/60 max-w-2xl mx-auto">
-                        Elke keuze heeft voor- en nadelen. Hier is wat REVIVE anders maakt.
-                    </p>
-                </div>
-
                 {/* Treatment Comparison */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
                     {treatments.map((t, i) => (
@@ -74,7 +64,12 @@ export default function ProblemAgitation() {
                         </div>))}
                 </div>
 
-
+                {/* Subtitle below comparison */}
+                <div className="text-center mb-8">
+                    <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                        Elke keuze heeft voor- en nadelen. Hier is wat REVIVE anders maakt.
+                    </p>
+                </div>
 
                 {/* Scepticism acknowledgment */}
                 <div className="mt-8 p-6 bg-amber-500/10 rounded-xl border border-amber-500/20">
