@@ -12,12 +12,12 @@ export default function Hero() {
             {/* Subtle background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/5 via-transparent to-transparent pointer-events-none" />
 
-            {/* Nieuw op de markt badge - Top Right */}
+            {/* Nieuw op de markt badge - Top Right (sleek) */}
             <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
-                className="absolute top-24 right-4 lg:right-8 bg-gradient-to-r from-[#D4A574] to-[#C69563] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg z-20"
+                className="absolute top-20 right-4 lg:top-24 lg:right-8 bg-[#D4A574] text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-md z-20 backdrop-blur-sm"
             >
                 Nieuw op de markt
             </motion.div>
