@@ -12,12 +12,12 @@ export default function Hero() {
             {/* Subtle background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/5 via-transparent to-transparent pointer-events-none" />
 
-            {/* Nieuw op de markt badge - Top Right (sleek) */}
+            {/* Nieuw op de markt badge - Top Right (sleek, higher position) */}
             <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
-                className="absolute top-20 right-4 lg:top-24 lg:right-8 bg-[#D4A574] text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-md z-20 backdrop-blur-sm"
+                className="absolute top-16 right-4 lg:top-20 lg:right-8 bg-[#D4A574] text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-md z-20 backdrop-blur-sm"
             >
                 Nieuw op de markt
             </motion.div>
@@ -30,27 +30,27 @@ export default function Hero() {
 
 
 
-                        {/* HEADLINE - Clear problem + solution */}
+                        {/* HEADLINE - Clear problem + solution, forced line break */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
                             className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
                         >
-                            Stop haaruitval.{' '}
+                            Stop haaruitval.<br className="block" />
                             <span className="text-[#D4A574]">Start hergroei.</span>
                         </motion.h1>
 
-                        {/* SUBHEADLINE - Why it's better */}
+                        {/* SUBHEADLINE - Specific numbers convert better */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
                             className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
                         >
-                            6 geteste ingrediënten.{' '}
-                            <span className="text-gray-900 font-medium whitespace-nowrap">Zonder hormonen.</span>{' '}
-                            <span className="text-gray-900 font-medium whitespace-nowrap">Zonder bijwerkingen.</span>
+                            <span className="text-gray-900 font-semibold">20,5% actieve ingrediënten.</span>{' '}
+                            <span className="text-gray-900 font-semibold">24 studies.</span>{' '}
+                            <span className="text-gray-900 font-semibold whitespace-nowrap">0 bijwerkingen.</span>
                         </motion.p>
 
                         {/* PRIMARY CTA - Test + Guarantee framing */}
@@ -62,7 +62,7 @@ export default function Hero() {
                         >
                             <Button
                                 size="lg"
-                                className="w-full sm:w-auto px-10 py-7 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-xl group"
+                                className="w-full sm:w-auto px-10 py-7 text-lg font-bold bg-[#C4956A] hover:bg-[#B38559] text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-xl group"
                                 asChild
                             >
                                 <Link href="#prijzen">

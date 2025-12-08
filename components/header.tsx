@@ -132,16 +132,15 @@ export default function Header() {
                                 ))}
                             </nav>
 
-                            {/* Right: Ghost CTA + Cart */}
+                            {/* Right: Filled CTA + Cart */}
                             <div className="flex items-center gap-4">
-                                <Button asChild variant="outline" className="font-bold px-6 py-5 text-sm border-2 border-[#D4A574] text-[#D4A574] hover:bg-[#D4A574] hover:text-white transition-all duration-300">
+                                <Button asChild className="font-bold px-6 py-5 text-sm bg-[#C4956A] hover:bg-[#B38559] text-white transition-all duration-300">
                                     <Link href="#prijzen">
                                         Bestel nu
                                     </Link>
                                 </Button>
                                 <button className="relative">
                                     <ShoppingBag className="w-5 h-5 text-gray-900" />
-                                    <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#D4A574] rounded-full text-[8px] font-bold text-white flex items-center justify-center">1</span>
                                 </button>
                             </div>
                         </div>
