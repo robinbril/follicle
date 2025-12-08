@@ -146,12 +146,12 @@ export default function Hero() {
                                 priority
                             />
 
-                            {/* Floating Result Card */}
+                            {/* Floating Result Card - Positioned over image top */}
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: -20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.7 }}
-                                className="absolute -bottom-4 left-4 bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 max-w-[200px] z-10"
+                                className="absolute top-8 left-4 bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 max-w-[200px] z-10"
                             >
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
