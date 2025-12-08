@@ -210,16 +210,17 @@ export default function Ingredients() {
                                     ingredient-card relative bg-white border rounded-xl sm:rounded-2xl p-3 sm:p-5 cursor-pointer
                                     transition-all duration-300 ease-out
                                     ${visibleCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                                    ${ingredient.id === 'ghk-cu' ? 'ghk-cu-gold-border' : ''}
                                     ${isExpanded
                                         ? 'z-20 bg-white shadow-2xl border-[#C4956A] scale-[1.02] sm:scale-105 col-span-2 lg:col-span-1'
-                                        : 'border-gray-200 hover:border-[#C4956A]/50 hover:shadow-lg hover:-translate-y-1'
+                                        : ingredient.id === 'ghk-cu' ? 'border-transparent' : 'border-gray-200 hover:border-[#C4956A]/50 hover:shadow-lg hover:-translate-y-1'
                                     }
                                 `}
                                 style={{ transitionDelay: visibleCards.has(index) ? '0s' : `${index * 0.1}s` }}
                                 onClick={(e) => toggleCard(ingredient.id, e)}
                             >
                                 {ingredient.isNew && (
-                                    <div className="absolute top-3 right-3 border border-[#C4956A] text-[#C4956A] text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider z-10">
+                                    <div className="absolute top-3 left-3 border border-[#C4956A] text-[#C4956A] text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider z-10">
                                         Nieuw
                                     </div>
                                 )}
@@ -316,6 +317,33 @@ export default function Ingredients() {
                         opacity: 1;
                         transform: translateX(0);
                     }
+                }
+                
+                /* GHK-Cu Animated Gold Gradient Border */
+                :global(.ghk-cu-gold-border) {
+                    position: relative;
+                    background: white;
+                }
+                
+                :global(.ghk-cu-gold-border)::before {
+                    content: '';
+                    position: absolute;
+                    inset: -2px;
+                    border-radius: 14px;
+                    background: linear-gradient(90deg, #c4956a, #ffd700, #e8b87d, #c4956a);
+                    background-size: 300% 100%;
+                    z-index: -1;
+                    animation: shine 3s linear infinite;
+                }
+                
+                :global(.ghk-cu-gold-border:hover)::before {
+                    animation-duration: 2s;
+                }
+                
+                @keyframes shine {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
                 }
             `}</style>
         </section>
