@@ -207,13 +207,12 @@ export default function Ingredients() {
                             <div
                                 key={ingredient.id}
                                 className={`
-                                    ingredient-card relative border rounded-xl sm:rounded-2xl p-3 sm:p-5 cursor-pointer
+                                    ingredient-card relative bg-white border rounded-xl sm:rounded-2xl p-3 sm:p-5 cursor-pointer
                                     transition-all duration-300 ease-out
                                     ${visibleCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-                                    ${ingredient.id === 'ghk-cu' ? 'bg-white ghk-cu-glow' : 'bg-gray-50'}
                                     ${isExpanded
                                         ? 'z-20 bg-white shadow-2xl border-[#C4956A] scale-[1.02] sm:scale-105 col-span-2 lg:col-span-1'
-                                        : ingredient.id === 'ghk-cu' ? 'border-transparent' : 'border-gray-200 hover:border-[#C4956A]/50 hover:shadow-lg hover:-translate-y-1'
+                                        : 'border-gray-200 hover:border-[#C4956A]/50 hover:shadow-lg hover:-translate-y-1'
                                     }
                                 `}
                                 style={{ transitionDelay: visibleCards.has(index) ? '0s' : `${index * 0.1}s` }}
@@ -316,57 +315,6 @@ export default function Ingredients() {
                     to {
                         opacity: 1;
                         transform: translateX(0);
-                    }
-                }
-                
-                /* GHK-Cu Animated Border Glow */
-                :global(.ghk-cu-glow) {
-                    position: relative;
-                    background: white;
-                }
-                
-                :global(.ghk-cu-glow)::before {
-                    content: '';
-                    position: absolute;
-                    inset: -2px;
-                    border-radius: 14px;
-                    background: linear-gradient(
-                        90deg,
-                        #C4956A,
-                        #E8B87D,
-                        #D4A574,
-                        #C4956A
-                    );
-                    background-size: 200% 100%;
-                    z-index: -1;
-                    animation: shimmer 3s ease-in-out infinite;
-                }
-                
-                :global(.ghk-cu-glow)::after {
-                    content: '';
-                    position: absolute;
-                    inset: -8px;
-                    border-radius: 18px;
-                    background: radial-gradient(
-                        ellipse at center,
-                        rgba(196, 149, 106, 0.15) 0%,
-                        transparent 70%
-                    );
-                    z-index: -2;
-                    filter: blur(8px);
-                    opacity: 0.7;
-                }
-                
-                :global(.ghk-cu-glow:hover)::after {
-                    opacity: 0.9;
-                }
-                
-                @keyframes shimmer {
-                    0%, 100% {
-                        background-position: 0% 50%;
-                    }
-                    50% {
-                        background-position: 100% 50%;
                     }
                 }
             `}</style>
