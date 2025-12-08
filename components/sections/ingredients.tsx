@@ -207,20 +207,20 @@ export default function Ingredients() {
                             <div
                                 key={ingredient.id}
                                 className={`
-                                    ingredient-card relative bg-gray-50 border rounded-xl sm:rounded-2xl p-3 sm:p-5 cursor-pointer
+                                    ingredient-card relative border rounded-xl sm:rounded-2xl p-3 sm:p-5 cursor-pointer
                                     transition-all duration-300 ease-out
                                     ${visibleCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+                                    ${ingredient.id === 'ghk-cu' ? 'bg-white ghk-cu-glow' : 'bg-gray-50'}
                                     ${isExpanded
                                         ? 'z-20 bg-white shadow-2xl border-[#C4956A] scale-[1.02] sm:scale-105 col-span-2 lg:col-span-1'
-                                        : 'border-gray-200 hover:border-[#C4956A]/50 hover:shadow-lg hover:-translate-y-1'
+                                        : ingredient.id === 'ghk-cu' ? 'border-transparent' : 'border-gray-200 hover:border-[#C4956A]/50 hover:shadow-lg hover:-translate-y-1'
                                     }
-                                    ${ingredient.id === 'ghk-cu' ? 'ghk-cu-glow' : ''}
                                 `}
                                 style={{ transitionDelay: visibleCards.has(index) ? '0s' : `${index * 0.1}s` }}
                                 onClick={(e) => toggleCard(ingredient.id, e)}
                             >
                                 {ingredient.isNew && (
-                                    <div className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 bg-[#C4956A] text-white text-[8px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider z-10">
+                                    <div className="absolute top-3 right-3 border border-[#C4956A] text-[#C4956A] text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider z-10">
                                         Nieuw
                                     </div>
                                 )}
@@ -319,14 +319,17 @@ export default function Ingredients() {
                     }
                 }
                 
-                /* GHK-Cu Glow Effect */
+                /* GHK-Cu Animated Border Glow */
+                :global(.ghk-cu-glow) {
+                    position: relative;
+                    background: white;
+                }
+                
                 :global(.ghk-cu-glow)::before {
                     content: '';
                     position: absolute;
-                    top: -2px;
-                    left: -2px;
-                    right: -2px;
-                    bottom: -2px;
+                    inset: -2px;
+                    border-radius: 14px;
                     background: linear-gradient(
                         90deg,
                         #C4956A,
@@ -334,56 +337,36 @@ export default function Ingredients() {
                         #D4A574,
                         #C4956A
                     );
-                    background-size: 300% 100%;
-                    border-radius: 14px;
+                    background-size: 200% 100%;
                     z-index: -1;
-                    animation: glow-move 3s ease-in-out infinite;
-                    filter: blur(8px);
-                    opacity: 0.6;
+                    animation: shimmer 3s ease-in-out infinite;
                 }
                 
                 :global(.ghk-cu-glow)::after {
                     content: '';
                     position: absolute;
-                    top: -4px;
-                    left: -4px;
-                    right: -4px;
-                    bottom: -4px;
-                    background: linear-gradient(
-                        90deg,
-                        transparent,
-                        rgba(196, 149, 106, 0.3),
-                        transparent
+                    inset: -8px;
+                    border-radius: 18px;
+                    background: radial-gradient(
+                        ellipse at center,
+                        rgba(196, 149, 106, 0.15) 0%,
+                        transparent 70%
                     );
-                    background-size: 200% 100%;
-                    border-radius: 16px;
                     z-index: -2;
-                    animation: glow-pulse 2s ease-in-out infinite;
-                    filter: blur(12px);
+                    filter: blur(8px);
+                    opacity: 0.7;
                 }
                 
-                :global(.ghk-cu-glow:hover)::before {
-                    filter: blur(10px);
-                    opacity: 0.8;
+                :global(.ghk-cu-glow:hover)::after {
+                    opacity: 0.9;
                 }
                 
-                @keyframes glow-move {
+                @keyframes shimmer {
                     0%, 100% {
                         background-position: 0% 50%;
                     }
                     50% {
                         background-position: 100% 50%;
-                    }
-                }
-                
-                @keyframes glow-pulse {
-                    0%, 100% {
-                        opacity: 0.3;
-                        transform: scale(1);
-                    }
-                    50% {
-                        opacity: 0.6;
-                        transform: scale(1.01);
                     }
                 }
             `}</style>
