@@ -220,7 +220,7 @@ export default function Ingredients() {
                                 onClick={(e) => toggleCard(ingredient.id, e)}
                             >
                                 {ingredient.isNew && (
-                                    <div className="absolute top-3 left-3 border border-[#C4956A] text-[#C4956A] text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider z-10">
+                                    <div className="absolute top-3 left-3 bg-white border-2 border-gray-900 text-gray-900 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider z-10 shadow-sm">
                                         Nieuw
                                     </div>
                                 )}
@@ -243,11 +243,11 @@ export default function Ingredients() {
                                     </div>
                                     <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${isExpanded
                                         ? 'bg-[#C4956A]'
-                                        : 'border border-[#C4956A]/30'
+                                        : 'bg-white border-2 border-gray-900 shadow-sm'
                                         }`}>
                                         {isExpanded
                                             ? <X className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
-                                            : <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C4956A]" />
+                                            : <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gray-900" />
                                         }
                                     </div>
                                 </div>
