@@ -8,8 +8,9 @@ import { Button } from '@/components/ui/button'
 
 export default function Hero() {
     return (
-        <section className="relative pt-40 pb-12 lg:pt-40 lg:pb-28 bg-gradient-to-b from-white to-[#F5F0E8] overflow-hidden">
-            {/* Premium gradient background - no extra overlay needed */}
+        <section className="relative pt-40 pb-12 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
+            {/* Subtle background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/5 via-transparent to-transparent pointer-events-none" />
 
             {/* Nieuw op de markt badge - Top Right (sleek, higher position) */}
             <motion.div
@@ -29,7 +30,7 @@ export default function Hero() {
 
 
 
-                        {/* HEADLINE - Clear problem + solution, gradient on accent */}
+                        {/* HEADLINE - Clear problem + solution, forced line break */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -37,7 +38,7 @@ export default function Hero() {
                             className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
                         >
                             Stop haaruitval.<br className="block" />
-                            <span className="bg-gradient-to-r from-[#C4956A] to-[#E8B87D] bg-clip-text text-transparent">Start hergroei.</span>
+                            <span className="text-[#D4A574]">Start hergroei.</span>
                         </motion.h1>
 
                         {/* SUBHEADLINE - Specific numbers convert better */}
@@ -122,36 +123,45 @@ export default function Hero() {
                         </motion.div>
                     </div>
 
-                    {/* RIGHT - Product Visual - Desktop Only with premium shadow & float animation */}
+                    {/* RIGHT - Product Visual - Desktop Only */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         animate={{
                             opacity: 1,
-                            x: 0,
-                            y: [0, -10, 0]
+                            x: 0
                         }}
                         transition={{
                             delay: 0.3,
-                            duration: 0.6,
-                            y: {
-                                duration: 3,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }
+                            duration: 0.6
                         }}
                         className="hidden lg:flex relative lg:h-[600px] items-center justify-center mt-10 lg:mt-0"
                     >
-                        <div className="relative w-full max-w-lg aspect-[4/5] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15)]">
-                            {/* Main Product Image with premium drop shadow */}
+                        <div className="relative w-full max-w-lg aspect-[4/5]">
+                            {/* Main Product Image */}
                             <Image
                                 src="/images/revive-hero-bottle.jpg"
                                 alt="REVIVE Hair Growth Serum"
                                 fill
-                                className="object-contain"
+                                className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
                                 priority
                             />
 
-                            {/* Badge removed - redundant with subheadline "24 studies" */}
+                            {/* Floating Result Card - Positioned over image top */}
+                            <motion.div
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.7 }}
+                                className="absolute top-8 left-4 bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 max-w-[200px] z-10"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+                                        <Check className="w-6 h-6 text-emerald-600" />
+                                    </div>
+                                    <p className="text-sm text-gray-700 font-medium">
+                                        Door 24 studies onderbouwd
+                                    </p>
+                                </div>
+                            </motion.div>
                         </div>
                     </motion.div>
                 </div>

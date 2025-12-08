@@ -214,6 +214,7 @@ export default function Ingredients() {
                                         ? 'z-20 bg-white shadow-2xl border-[#C4956A] scale-[1.02] sm:scale-105 col-span-2 lg:col-span-1'
                                         : 'border-gray-200 hover:border-[#C4956A]/50 hover:shadow-lg hover:-translate-y-1'
                                     }
+                                    ${ingredient.id === 'ghk-cu' ? 'ghk-cu-glow' : ''}
                                 `}
                                 style={{ transitionDelay: visibleCards.has(index) ? '0s' : `${index * 0.1}s` }}
                                 onClick={(e) => toggleCard(ingredient.id, e)}
@@ -241,8 +242,8 @@ export default function Ingredients() {
                                         )}
                                     </div>
                                     <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${isExpanded
-                                            ? 'bg-[#C4956A]'
-                                            : 'border border-[#C4956A]/30'
+                                        ? 'bg-[#C4956A]'
+                                        : 'border border-[#C4956A]/30'
                                         }`}>
                                         {isExpanded
                                             ? <X className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
@@ -315,6 +316,74 @@ export default function Ingredients() {
                     to {
                         opacity: 1;
                         transform: translateX(0);
+                    }
+                }
+                
+                /* GHK-Cu Glow Effect */
+                :global(.ghk-cu-glow)::before {
+                    content: '';
+                    position: absolute;
+                    top: -2px;
+                    left: -2px;
+                    right: -2px;
+                    bottom: -2px;
+                    background: linear-gradient(
+                        90deg,
+                        #C4956A,
+                        #E8B87D,
+                        #D4A574,
+                        #C4956A
+                    );
+                    background-size: 300% 100%;
+                    border-radius: 14px;
+                    z-index: -1;
+                    animation: glow-move 3s ease-in-out infinite;
+                    filter: blur(8px);
+                    opacity: 0.6;
+                }
+                
+                :global(.ghk-cu-glow)::after {
+                    content: '';
+                    position: absolute;
+                    top: -4px;
+                    left: -4px;
+                    right: -4px;
+                    bottom: -4px;
+                    background: linear-gradient(
+                        90deg,
+                        transparent,
+                        rgba(196, 149, 106, 0.3),
+                        transparent
+                    );
+                    background-size: 200% 100%;
+                    border-radius: 16px;
+                    z-index: -2;
+                    animation: glow-pulse 2s ease-in-out infinite;
+                    filter: blur(12px);
+                }
+                
+                :global(.ghk-cu-glow:hover)::before {
+                    filter: blur(10px);
+                    opacity: 0.8;
+                }
+                
+                @keyframes glow-move {
+                    0%, 100% {
+                        background-position: 0% 50%;
+                    }
+                    50% {
+                        background-position: 100% 50%;
+                    }
+                }
+                
+                @keyframes glow-pulse {
+                    0%, 100% {
+                        opacity: 0.3;
+                        transform: scale(1);
+                    }
+                    50% {
+                        opacity: 0.6;
+                        transform: scale(1.01);
                     }
                 }
             `}</style>
