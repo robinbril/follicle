@@ -219,11 +219,7 @@ export default function Ingredients() {
                                 style={{ transitionDelay: visibleCards.has(index) ? '0s' : `${index * 0.1}s` }}
                                 onClick={(e) => toggleCard(ingredient.id, e)}
                             >
-                                {ingredient.isNew && (
-                                    <div className="absolute top-3 left-3 bg-white border-2 border-gray-900 text-gray-900 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider z-10 shadow-sm">
-                                        Nieuw
-                                    </div>
-                                )}
+                                {/* NIEUW badge removed */}
 
                                 <div className="flex items-start justify-between gap-2">
                                     <div className="min-w-0 flex-1">
