@@ -236,7 +236,7 @@ export default function Ingredients() {
                                             </h3>
                                         </div>
                                         {!isExpanded && (
-                                            <p className="text-gray-500 text-[11px] sm:text-sm mt-0.5 sm:mt-1 line-clamp-2">
+                                            <p className="text-gray-700 text-[11px] sm:text-sm mt-0.5 sm:mt-1 line-clamp-2 font-medium">
                                                 {ingredient.shortDesc}
                                             </p>
                                         )}
