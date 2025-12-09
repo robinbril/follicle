@@ -327,45 +327,49 @@ export default function Ingredients() {
                     }
                 }
                 
-                /* GHK-Cu Orange Border Glow - Scroll-triggered, visible glow */
+                /* GHK-Cu Subtle Border Glow - Premium minimal outer edge only */
                 :global(.ghk-cu-gold-border) {
                     position: relative;
                     background: white;
                     border: 2px solid #e5e7eb;
                 }
                 
+                /* Subtle outer border glow - only visible during animation */
                 :global(.ghk-cu-gold-border)::before {
                     content: '';
                     position: absolute;
-                    inset: -3px;
+                    inset: -1px; /* Only 1px outer edge */
                     border-radius: 14px;
-                    background: linear-gradient(90deg, #f97316, #fb923c, #fdba74, #fb923c, #f97316);
+                    padding: 1px;
+                    background: linear-gradient(90deg, transparent 20%, #f97316 50%, transparent 80%);
                     background-size: 200% 100%;
-                    z-index: -1;
+                    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                    -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+                    z-index: 1;
                     opacity: 0;
-                    box-shadow: 0 0 30px rgba(249, 115, 22, 0.6), 0 0 60px rgba(249, 115, 22, 0.3);
+                    pointer-events: none;
                 }
                 
-                /* Animation starts when this class is added via scroll */
+                /* Animation starts when scrolled into view */
                 :global(.ghk-cu-gold-border.start-glow-animation)::before {
-                    animation: glowPulse 2.5s ease-in-out 1;
-                    animation-fill-mode: forwards;
+                    animation: subtleGlow 2s ease-in-out 1;
                 }
                 
-                @keyframes glowPulse {
+                @keyframes subtleGlow {
                     0% { 
                         background-position: 0% 50%;
                         opacity: 0;
                     }
-                    10% {
-                        opacity: 1;
+                    15% {
+                        opacity: 0.4;
                     }
                     50% { 
                         background-position: 100% 50%;
-                        opacity: 1;
+                        opacity: 0.5;
                     }
-                    90% {
-                        opacity: 0.8;
+                    85% {
+                        opacity: 0.3;
                     }
                     100% { 
                         background-position: 200% 50%;
