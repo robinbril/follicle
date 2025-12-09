@@ -329,11 +329,12 @@ export default function Ingredients() {
                     background: linear-gradient(90deg, #c4956a, #ffd700, #e8b87d, #c4956a);
                     background-size: 300% 100%;
                     z-index: -1;
-                    animation: shine 3s linear infinite;
+                    animation: shine 3s linear 4;
+                    animation-fill-mode: forwards;
                 }
                 
                 :global(.ghk-cu-gold-border:hover)::before {
-                    animation-duration: 2s;
+                    animation: shine 2s linear infinite;
                 }
                 
                 @keyframes shine {
