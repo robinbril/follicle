@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Check, Star } from 'lucide-react'
+import { ArrowRight, Check, Star, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -150,15 +150,15 @@ export default function Hero() {
                             <motion.div
                                 initial={{ opacity: 0, y: -20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.7 }}
-                                className="absolute top-8 left-4 bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100 max-w-[200px] z-10"
+                                className="absolute top-8 left-4 bg-gradient-to-r from-amber-500 to-amber-600 p-4 rounded-2xl shadow-[0_8px_30px_rgba(217,119,6,0.3)] border border-amber-400/20 max-w-[220px] z-10"
                             >
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
-                                        <Check className="w-6 h-6 text-emerald-600" />
+                                    <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                        <Sparkles className="w-6 h-6 text-white" />
                                     </div>
-                                    <p className="text-sm text-gray-700 font-medium">
-                                        Door 24 studies onderbouwd
+                                    <p className="text-sm text-white font-bold leading-tight">
+                                        Beperkte batch
+                                        <span className="block text-xs font-normal opacity-90">Early Adopter toegang</span>
                                     </p>
                                 </div>
                             </motion.div>
