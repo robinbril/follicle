@@ -1,39 +1,54 @@
 "use client"
 
 import { Button } from '@/components/ui/button'
-import { Star, ArrowRight, Truck, ShieldCheck } from 'lucide-react'
+import { Star, ArrowRight, Truck, ShieldCheck, Package, Sparkles } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function Pricing() {
-    const [selectedPlan, setSelectedPlan] = useState(0) // Pre-select 6 maanden (now index 0)
+    const [selectedPlan, setSelectedPlan] = useState(2) // Pre-select Ultimate Herstelkit
 
-    const plans = [
+    const bundles = [
         {
-            months: 6,
-            label: "6 MAANDEN",
-            subLabel: "Beste resultaat",
-            price: 29,
-            priceLabel: "€29/mnd",
-            discount: "-41%",
-            popular: true
-        },
-        {
-            months: 3,
-            label: "3 MAANDEN",
-            subLabel: null,
-            price: 39,
-            priceLabel: "€39/mnd",
-            discount: "-20%",
-            popular: false
-        },
-        {
-            months: 1,
-            label: "1 MAAND",
+            id: "starter",
+            label: "Starter Kit",
             subLabel: "Probeer eerst",
             price: 49,
-            priceLabel: "€49",
-            discount: null,
-            popular: false
+            pricePerMonth: null,
+            popular: false,
+            items: [
+                "1x REVIVE Hair Serum (30ml)",
+            ],
+            value: null
+        },
+        {
+            id: "complete",
+            label: "Complete Routine",
+            subLabel: "3 maanden",
+            price: 147,
+            pricePerMonth: 49,
+            popular: true,
+            items: [
+                "3x REVIVE Hair Serum (90ml)",
+                "1x Kirkland Minoxidil 5%",
+                "1x Dermaroller 0.5mm (€35 waarde)"
+            ],
+            value: 197
+        },
+        {
+            id: "ultimate",
+            label: "Ultimate Herstelkit",
+            subLabel: "6 maanden · Early Adopter",
+            price: 249,
+            pricePerMonth: 41.50,
+            popular: false,
+            earlyAdopter: true,
+            items: [
+                "6x REVIVE Hair Serum (180ml)",
+                "3x Kirkland Minoxidil 5%",
+                "1x Dermaroller 0.5mm (€35 waarde)",
+                "Beperkte batch met 2,5% GHK-Cu"
+            ],
+            value: 349
         },
     ]
 
@@ -49,150 +64,146 @@ export default function Pricing() {
         return () => window.removeEventListener('selectPlan', handleSelectPlan as EventListener)
     }, [])
 
-    const selectedPlanData = plans[selectedPlan]
-    const totalPrice = selectedPlanData.price * selectedPlanData.months
+    const selectedBundle = bundles[selectedPlan]
 
     return (
         <section id="prijzen" className="pt-8 pb-16 bg-white relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-6">
-
-                {/* Reviews Badge */}
-                <div className="text-center mb-6">
-                    <div className="inline-flex items-center gap-2 text-lg">
-                        <div className="flex">
-                            {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="w-5 h-5 fill-[#D4A574] text-[#D4A574]" />
-                            ))}
-                        </div>
-                        <span className="font-semibold text-gray-900">4.8/5</span>
-                        <span className="text-gray-500">(847 Reviews)</span>
-                    </div>
-                </div>
+            <div className="max-w-5xl mx-auto px-6">
 
                 {/* Title */}
                 <div className="text-center mb-12">
                     <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-                        Stop haarverlies.<br />
-                        <span className="text-[#D4A574]">Start hergroei.</span>
+                        De complete herstelkit<br />
+                        <span className="text-[#D4A574]">vanaf €41.50/maand</span>
                     </h2>
                     <p className="text-lg text-gray-600">
-                        Kies je kuurlengte en begin vandaag
+                        Curated routines voor maximaal resultaat
                     </p>
                 </div>
 
-                {/* Package Selector */}
+                {/* Bundle Selector */}
                 <div className="mb-8">
                     <label className="block text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wide">
-                        Kies je behandeling
+                        Kies je routine
                     </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-                        {plans.map((plan, index) => (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {bundles.map((bundle, index) => (
                             <button
                                 key={index}
                                 onClick={() => setSelectedPlan(index)}
-                                className={`relative p-4 sm:p-6 rounded-xl border-2 transition-all duration-200 text-center ${selectedPlan === index
-                                    ? 'border-[#D4A574] bg-[#D4A574]/10 shadow-lg ring-2 ring-[#D4A574]/20'
-                                    : 'border-gray-200 hover:border-[#D4A574]/50 hover:shadow-md bg-white cursor-pointer'
+                                className={`relative p-6 rounded-2xl border-2 transition-all duration-200 text-left ${selectedPlan === index
+                                        ? 'border-[#D4A574] bg-[#D4A574]/5 shadow-xl ring-2 ring-[#D4A574]/30'
+                                        : 'border-gray-200 hover:border-[#D4A574]/50 hover:shadow-lg bg-white cursor-pointer'
                                     }`}
                             >
-                                {/* Show badge on selected popular plan */}
-                                {plan.popular && selectedPlan === index && (
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold whitespace-nowrap shadow-sm">
-                                        MEEST GEKOZEN
+                                {/* Badge */}
+                                {bundle.popular && (
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-4 py-1 rounded-full text-xs font-bold shadow-md">
+                                        POPULAIR
+                                    </div>
+                                )}
+                                {bundle.earlyAdopter && (
+                                    <div className="absolute -top-3 left-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1">
+                                        <Sparkles className="w-3 h-3" />
+                                        EARLY ADOPTER
                                     </div>
                                 )}
 
-                                <div className="font-bold text-gray-900 text-sm sm:text-base">
-                                    {plan.label}
-                                </div>
-                                {plan.subLabel && (
-                                    <div className="text-[10px] text-gray-500 mb-1 sm:mb-2 font-medium">
-                                        {plan.subLabel}
+                                <div className="mb-4">
+                                    <div className="font-bold text-gray-900 text-lg mb-1">
+                                        {bundle.label}
                                     </div>
-                                )}
-                                <div className={`text-xl sm:text-2xl font-bold mb-0.5 sm:mb-1 ${selectedPlan === index ? 'text-[#D4A574]' : 'text-gray-900'
-                                    }`}>
-                                    {plan.priceLabel}
-                                </div>
-                                {plan.discount && (
-                                    <div className={`text-xs sm:text-sm font-semibold ${selectedPlan === index ? 'text-[#D4A574]' : 'text-gray-500'
-                                        }`}>
-                                        {plan.discount}
+                                    <div className="text-xs text-gray-500 font-medium">
+                                        {bundle.subLabel}
                                     </div>
-                                )}
+                                </div>
+
+                                <div className="mb-4">
+                                    <div className="text-3xl font-bold text-gray-900">
+                                        €{bundle.price}
+                                    </div>
+                                    {bundle.pricePerMonth && (
+                                        <div className="text-sm text-gray-600 mt-1">
+                                            €{bundle.pricePerMonth}/maand
+                                        </div>
+                                    )}
+                                    {bundle.value && (
+                                        <div className="text-xs text-emerald-600 font-semibold mt-1">
+                                            €{bundle.value} waarde · Bespaar €{bundle.value - bundle.price}
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Items included */}
+                                <div className="space-y-2">
+                                    {bundle.items.map((item, i) => (
+                                        <div key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-[#D4A574] mt-1.5 flex-shrink-0" />
+                                            <span>{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </button>
                         ))}
                     </div>
                 </div>
 
-                {/* Price Display */}
-                <div className="bg-gray-50 rounded-xl p-4 sm:p-6 mb-6">
-                    <div className="flex flex-col sm:flex-row justify-between items-center mb-2 gap-1 sm:gap-0">
-                        <span className="text-gray-600">Totaalprijs</span>
-                        <span className="text-3xl font-bold text-gray-900">€{totalPrice}</span>
+                {/* Checkout Section */}
+                <div className="bg-gray-50 rounded-2xl p-6 mb-6">
+                    <div className="flex justify-between items-center mb-6">
+                        <span className="text-gray-600 text-lg">Totaal</span>
+                        <span className="text-4xl font-bold text-gray-900">€{selectedBundle.price}</span>
                     </div>
-                    <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500 gap-1 sm:gap-0 text-center sm:text-left">
-                        <span>{selectedPlanData.months} {selectedPlanData.months === 1 ? 'maand' : 'maanden'} voorraad</span>
-                        {selectedPlanData.discount && (
-                            <span className="text-emerald-600 font-semibold">
-                                Je bespaart €{(49 * selectedPlanData.months) - totalPrice}
-                            </span>
-                        )}
-                    </div>
-                </div>
 
-                {/* Checkout Buttons - Responsive */}
-                <div className="flex gap-3 mb-4 md:justify-center">
-                    {/* Primary CTA - Full width on desktop, 60% on mobile */}
-                    <Button
-                        className="flex-[0_0_60%] md:flex-none md:w-full md:max-w-[600px] py-4 md:py-6 text-base md:text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl"
-                    >
-                        <div className="flex items-center justify-center gap-2">
-                            <span>Afrekenen · €{totalPrice}</span>
-                            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
+                    {/* One-Click Payment Buttons */}
+                    <div className="space-y-3">
+                        {/* Primary CTA */}
+                        <Button className="w-full py-6 text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl">
+                            <span>Voeg toe aan routine</span>
+                            <ArrowRight className="w-5 h-5 ml-2" />
+                        </Button>
+
+                        {/* Express Checkout */}
+                        <div className="grid grid-cols-3 gap-3">
+                            <button className="py-4 bg-black hover:bg-gray-900 text-white rounded-xl transition-all flex items-center justify-center shadow">
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
+                                    alt="Apple Pay"
+                                    className="h-5 invert"
+                                />
+                            </button>
+                            <button className="py-4 bg-white hover:bg-gray-50 border-2 border-gray-300 rounded-xl transition-all flex items-center justify-center shadow">
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
+                                    alt="Google Pay"
+                                    className="h-5"
+                                />
+                            </button>
+                            <button className="py-4 bg-pink-500 hover:bg-pink-600 text-white rounded-xl transition-all flex items-center justify-center shadow font-semibold text-sm">
+                                4x Klarna
+                            </button>
                         </div>
-                    </Button>
+                    </div>
 
-                    {/* Apple Pay Button - Mobile only (hidden on md+) */}
-                    <button className="flex-[0_0_38%] md:hidden py-4 bg-black hover:bg-gray-900 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg">
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
-                            alt="Apple Pay"
-                            className="h-[18px] invert"
-                        />
-                    </button>
+                    <p className="text-center text-xs text-gray-500 mt-4">
+                        🔒 Veilige betaling · Geen verborgen kosten
+                    </p>
                 </div>
 
-                {/* Micro-copy - Trust */}
-                <p className="text-center text-xs text-gray-500 mb-6">
-                    🔒 Veilige betaling · Geen account nodig
-                </p>
-
-                {/* Trust & Payment - Compact */}
-                <div className="flex flex-col items-center gap-4 mt-6">
-                    {/* Payment logos - inline, subtle */}
-                    <div className="flex items-center justify-center gap-5">
-                        <img src="/images/payment/ideal.png" alt="iDEAL" className="h-5 opacity-60" />
-                        <img src="/images/payment/klarna.png" alt="Klarna" className="h-4 opacity-60" />
-                        <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-[18px] opacity-60" />
-                        <img src="/images/payment/google-pay.png" alt="Google Pay" className="h-4 opacity-60" />
-                    </div>
-
-                    {/* Trust Badges - Compact */}
-                    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-500">
-                        <span className="flex items-center gap-1.5">
-                            <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                            Direct op voorraad
-                        </span>
-                        <span className="flex items-center gap-1.5">
-                            <Truck className="w-3.5 h-3.5" />
-                            Morgen in huis
-                        </span>
-                        <span className="flex items-center gap-1.5">
-                            <ShieldCheck className="w-3.5 h-3.5" />
-                            180 dagen garantie
-                        </span>
-                    </div>
+                {/* Trust Badges */}
+                <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-gray-600">
+                    <span className="flex items-center gap-2">
+                        <Package className="w-4 h-4 text-emerald-600" />
+                        Direct op voorraad
+                    </span>
+                    <span className="flex items-center gap-2">
+                        <Truck className="w-4 h-4 text-emerald-600" />
+                        Morgen in huis
+                    </span>
+                    <span className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                        180 dagen garantie
+                    </span>
                 </div>
 
             </div>

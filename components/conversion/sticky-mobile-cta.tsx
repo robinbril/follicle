@@ -55,7 +55,7 @@ export default function StickyMobileCTA() {
                     className="bg-[#D4A574] hover:bg-[#C69563] text-white font-bold px-6 py-5 rounded-xl shadow-lg"
                 >
                     <Link href="#prijzen" className="flex items-center gap-2">
-                        BESTEL NU
+                        START ROUTINE
                         <ArrowRight className="w-4 h-4" />
                     </Link>
                 </Button>

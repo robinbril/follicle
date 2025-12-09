@@ -80,7 +80,7 @@ export default function Header() {
                         ))}
                         <Button asChild className="w-full bg-[#D4A574] hover:bg-[#C69563] text-white font-bold py-6 mt-2">
                             <Link href="#prijzen" onClick={() => setIsMobileMenuOpen(false)}>
-                                BESTEL NU
+                                START ROUTINE
                             </Link>
                         </Button>
                     </div>
@@ -136,7 +136,7 @@ export default function Header() {
                             <div className="flex items-center gap-4">
                                 <Button asChild className="font-bold px-6 py-5 text-sm bg-[#C4956A] hover:bg-[#B38559] text-white transition-all duration-300">
                                     <Link href="#prijzen">
-                                        Bestel nu
+                                        Start routine
                                     </Link>
                                 </Button>
                                 <button className="relative">
