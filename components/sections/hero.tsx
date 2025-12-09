@@ -157,8 +157,8 @@ export default function Hero() {
                                         <Sparkles className="w-6 h-6 text-white" />
                                     </div>
                                     <p className="text-sm text-white font-bold leading-tight">
-                                        Beperkte batch
-                                        <span className="block text-xs font-normal opacity-90">Early Adopter toegang</span>
+                                        Exclusieve Voorraad
+                                        <span className="block text-xs font-normal opacity-90">met GHK-Cu Peptides</span>
                                     </p>
                                 </div>
                             </motion.div>
