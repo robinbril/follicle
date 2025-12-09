@@ -13,47 +13,15 @@ export default function ExitIntentPopup() {
         let hasShown = false
         let timeoutId: NodeJS.Timeout
 
-        // Exit-intent detection
-        const handleMouseLeave = (e: MouseEvent) => {
-            if (e.clientY <= 0 && !hasShown && window.innerWidth >= 768) {
-                setIsVisible(true)
-                hasShown = true
-            }
-        }
-
-        // Scroll depth tracking
-        const handleScroll = () => {
-            const windowHeight = window.innerHeight
-            const documentHeight = document.documentElement.scrollHeight
-            const scrollTop = window.scrollY
-            const depth = (scrollTop / (documentHeight - windowHeight)) * 100
-
-            setScrollDepth(depth)
-
-            // Trigger at 75% scroll (less aggressive)
-            if (depth >= 75 && !hasShown) {
-                setIsVisible(true)
-                hasShown = true
-            }
-        }
-
-        // Time-based trigger (18 seconds)
+        // ONLY time-based trigger - exactly 20 seconds, no exceptions
         timeoutId = setTimeout(() => {
             if (!hasShown) {
                 setIsVisible(true)
                 hasShown = true
             }
-        }, 18000)
-
-        // Only activate on desktop
-        if (window.innerWidth >= 768) {
-            document.addEventListener('mouseleave', handleMouseLeave)
-            window.addEventListener('scroll', handleScroll)
-        }
+        }, 20000) // Hard 20 seconds
 
         return () => {
-            document.removeEventListener('mouseleave', handleMouseLeave)
-            window.removeEventListener('scroll', handleScroll)
             clearTimeout(timeoutId)
         }
     }, [])
