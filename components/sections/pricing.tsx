@@ -1,11 +1,13 @@
 "use client"
 
 import { Button } from '@/components/ui/button'
-import { Star, ArrowRight, Truck, ShieldCheck, Package, Sparkles } from 'lucide-react'
+import { Star, ArrowRight, Truck, ShieldCheck, Package, Sparkles, Plus, Minus, Clock } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function Pricing() {
     const [selectedPlan, setSelectedPlan] = useState(0) // Pre-select 6 maanden
+    const [quantity, setQuantity] = useState(1)
+    const [timeLeft, setTimeLeft] = useState({ hours: 3, minutes: 9, seconds: 12 })
 
     const bundles = [
         {
@@ -60,6 +62,27 @@ export default function Pricing() {
         },
     ]
 
+    // Countdown timer
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTimeLeft(prev => {
+                let { hours, minutes, seconds } = prev
+                if (seconds > 0) {
+                    seconds--
+                } else if (minutes > 0) {
+                    minutes--
+                    seconds = 59
+                } else if (hours > 0) {
+                    hours--
+                    minutes = 59
+                    seconds = 59
+                }
+                return { hours, minutes, seconds }
+            })
+        }, 1000)
+        return () => clearInterval(timer)
+    }, [])
+
     // Listen for plan selection from calculator
     useEffect(() => {
         const handleSelectPlan = (event: CustomEvent) => {
@@ -73,6 +96,7 @@ export default function Pricing() {
     }, [])
 
     const selectedBundle = bundles[selectedPlan]
+    const finalPrice = selectedBundle.totalPrice * quantity
 
     return (
         <section id="prijzen" className="pt-8 pb-16 bg-white relative overflow-hidden">
@@ -154,27 +178,85 @@ export default function Pricing() {
                 </div>
 
                 {/* Checkout Section */}
-                <div className="bg-gray-50 rounded-2xl p-6 mb-6">
+                <div className="bg-gray-50 rounded-2xl p-6 mb-6 relative">
+                    {/* Animated Arrow - pointing to CTA */}
+                    <svg
+                        className="absolute -top-16 left-1/2 -translate-x-1/2 w-16 h-16 text-gray-800 animate-bounce"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                    </svg>
+
+                    {/* Beschikbaarheid */}
+                    <div className="mb-6">
+                        <div className="flex items-center justify-between text-sm mb-2">
+                            <span className="font-semibold text-gray-700">Beschikbaarheid:</span>
+                            <span className="text-emerald-600 font-semibold">Op voorraad en klaar voor verzending</span>
+                        </div>
+                        <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full" style={{ width: '87%' }}></div>
+                        </div>
+                    </div>
+
+                    {/* Aantal Selector */}
+                    <div className="mb-6">
+                        <label className="block text-sm font-semibold text-gray-700 mb-3">AANTAL</label>
+                        <div className="flex items-center gap-4">
+                            <div className="flex items-center border-2 border-gray-300 rounded-lg overflow-hidden">
+                                <button
+                                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                    className="p-3 hover:bg-gray-100 transition-colors"
+                                >
+                                    <Minus className="w-4 h-4 text-gray-600" />
+                                </button>
+                                <span className="px-6 font-bold text-lg text-gray-900">{quantity}</span>
+                                <button
+                                    onClick={() => setQuantity(quantity + 1)}
+                                    className="p-3 hover:bg-gray-100 transition-colors"
+                                >
+                                    <Plus className="w-4 h-4 text-gray-600" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="flex justify-between items-center mb-4">
                         <span className="text-gray-600">Totaalprijs</span>
-                        <span className="text-4xl font-bold text-gray-900">€{selectedBundle.totalPrice}</span>
+                        <span className="text-4xl font-bold text-gray-900">€{finalPrice}</span>
                     </div>
                     <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
                         <span>{selectedBundle.months} {selectedBundle.months === 1 ? 'maand' : 'maanden'} voorraad</span>
                         {selectedBundle.savings && (
                             <span className="text-emerald-600 font-semibold">
-                                Je bespaart €{selectedBundle.savings}
+                                Je bespaart €{selectedBundle.savings * quantity}
                             </span>
                         )}
                     </div>
 
-                    {/* Primary CTA Only */}
-                    <Button className="w-full py-6 text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl">
+                    {/* Primary CTA */}
+                    <Button className="w-full py-6 text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl mb-4">
                         <span>Voeg toe aan routine</span>
                         <ArrowRight className="w-5 h-5 ml-2" />
                     </Button>
 
-                    <p className="text-center text-xs text-gray-500 mt-4">
+                    {/* Klarna Info */}
+                    <p className="text-center text-sm text-gray-600 mb-4">
+                        4 betalingen van €{(finalPrice / 4).toFixed(2)} met <span className="font-bold">Klarna</span> · 0% rente
+                    </p>
+
+                    {/* Countdown Timer */}
+                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4">
+                        <div className="flex items-center justify-center gap-2 text-sm">
+                            <Clock className="w-4 h-4 text-amber-600" />
+                            <span className="text-amber-800 font-semibold">
+                                Bestel binnen {timeLeft.hours}u {timeLeft.minutes}m {timeLeft.seconds}s voor verzending vandaag
+                            </span>
+                        </div>
+                    </div>
+
+                    <p className="text-center text-xs text-gray-500">
                         🔒 Veilige betaling · Geen verborgen kosten
                     </p>
                 </div>
@@ -182,7 +264,7 @@ export default function Pricing() {
                 {/* Payment & Trust Badges */}
                 <div className="space-y-4">
                     {/* Payment logos */}
-                    <div className="flex items-center justify-center gap-5">
+                    <div className="flex items-center justify-center gap-5 flex-wrap">
                         <img src="/images/payment/ideal.png" alt="iDEAL" className="h-5 opacity-60" />
                         <img src="/images/payment/klarna.png" alt="Klarna" className="h-4 opacity-60" />
                         <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-[18px] opacity-60" />
