@@ -173,15 +173,6 @@ export default function Pricing() {
 
                 {/* Checkout Section */}
                 <div className="bg-gray-50 rounded-2xl p-6 mb-6 relative">
-                    {/* Animated Arrow - pointing to CTA */}
-                    <svg
-                        className="absolute -top-16 left-1/2 -translate-x-1/2 w-16 h-16 text-gray-800 animate-bounce"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
-                    </svg>
 
                     {/* Aantal Selector */}
                     <div className="mb-6">

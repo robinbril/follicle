@@ -119,19 +119,31 @@ const ingredients = [
 
 export default function Ingredients() {
     const [expandedCard, setExpandedCard] = useState<string | null>(null)
-    const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set())
+    const [visibleCards, setVisibleCards] = useState(new Set<number>())
+    const [hasAnimated, setHasAnimated] = useState(false)
     const sectionRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        // Trigger card visibility stagger
                         ingredients.forEach((_, index) => {
                             setTimeout(() => {
                                 setVisibleCards(prev => new Set([...prev, index]))
                             }, index * 100)
                         })
+
+                        // Trigger GHK-Cu glow animation after cards are visible
+                        setTimeout(() => {
+                            const ghkCard = document.querySelector('.ghk-cu-gold-border')
+                            if (ghkCard) {
+                                ghkCard.classList.add('start-glow-animation')
+                            }
+                            setHasAnimated(true)
+                        }, 600) // Start after last card appears
+
                         observer.disconnect()
                     }
                 })
@@ -227,9 +239,6 @@ export default function Ingredients() {
                                             <span className="text-[#C4956A] text-xs sm:text-sm font-bold">
                                                 {ingredient.percentage}%
                                             </span>
-                                            {ingredient.id === 'ghk-cu' && (
-                                                <span className="text-orange-500 text-xs">⭐</span>
-                                            )}
                                             <h3 className="text-gray-900 text-sm sm:text-lg font-bold truncate">
                                                 {ingredient.name}
                                             </h3>
@@ -318,37 +327,48 @@ export default function Ingredients() {
                     }
                 }
                 
-                /* GHK-Cu Orange Border Glow - 2s animation on border only, then clean */
+                /* GHK-Cu Orange Border Glow - Scroll-triggered, visible glow */
                 :global(.ghk-cu-gold-border) {
                     position: relative;
                     background: white;
-                    border: 2px solid #e5e7eb; /* Same gray border as other cards */
+                    border: 2px solid #e5e7eb;
                 }
                 
                 :global(.ghk-cu-gold-border)::before {
                     content: '';
                     position: absolute;
-                    inset: -2px;
+                    inset: -3px;
                     border-radius: 14px;
-                    background: linear-gradient(90deg, #f97316, #fb923c, #fdba74, #f97316);
-                    background-size: 300% 100%;
+                    background: linear-gradient(90deg, #f97316, #fb923c, #fdba74, #fb923c, #f97316);
+                    background-size: 200% 100%;
                     z-index: -1;
-                    animation: shine 2s ease-in-out 1;
-                    animation-fill-mode: forwards;
                     opacity: 0;
+                    box-shadow: 0 0 30px rgba(249, 115, 22, 0.6), 0 0 60px rgba(249, 115, 22, 0.3);
                 }
                 
-                @keyframes shine {
+                /* Animation starts when this class is added via scroll */
+                :global(.ghk-cu-gold-border.start-glow-animation)::before {
+                    animation: glowPulse 2.5s ease-in-out 1;
+                    animation-fill-mode: forwards;
+                }
+                
+                @keyframes glowPulse {
                     0% { 
                         background-position: 0% 50%;
+                        opacity: 0;
+                    }
+                    10% {
                         opacity: 1;
                     }
                     50% { 
                         background-position: 100% 50%;
                         opacity: 1;
                     }
+                    90% {
+                        opacity: 0.8;
+                    }
                     100% { 
-                        background-position: 0% 50%;
+                        background-position: 200% 50%;
                         opacity: 0;
                     }
                 }
