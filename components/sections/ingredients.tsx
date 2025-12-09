@@ -99,8 +99,8 @@ const ingredients = [
     {
         id: 'ghk-cu',
         percentage: 2.5,
-        name: 'GHK-Cu',
-        shortDesc: 'Stimuleert collageen',
+        name: 'GHK-Cu Peptide',
+        shortDesc: 'Bekend uit wetenschappelijke regeneratiestudies',
         benefits: [
             '33% snellere resultaten dan Minoxidil',
             'Stimuleert collageen en elastine',
@@ -227,6 +227,9 @@ export default function Ingredients() {
                                             <span className="text-[#C4956A] text-xs sm:text-sm font-bold">
                                                 {ingredient.percentage}%
                                             </span>
+                                            {ingredient.id === 'ghk-cu' && (
+                                                <span className="text-orange-500 text-xs">⭐</span>
+                                            )}
                                             <h3 className="text-gray-900 text-sm sm:text-lg font-bold truncate">
                                                 {ingredient.name}
                                             </h3>
@@ -315,10 +318,12 @@ export default function Ingredients() {
                     }
                 }
                 
-                /* GHK-Cu Animated Gold Gradient Border */
+                /* GHK-Cu Orange Border Glow - Only Border, White Background */
                 :global(.ghk-cu-gold-border) {
                     position: relative;
                     background: white;
+                    box-shadow: 0 0 0 2px #f97316, 0 0 20px rgba(249, 115, 22, 0.4);
+                    border: none;
                 }
                 
                 :global(.ghk-cu-gold-border)::before {
@@ -326,15 +331,17 @@ export default function Ingredients() {
                     position: absolute;
                     inset: -2px;
                     border-radius: 14px;
-                    background: linear-gradient(90deg, #c4956a, #ffd700, #e8b87d, #c4956a);
+                    background: linear-gradient(90deg, #f97316, #fb923c, #fdba74, #f97316);
                     background-size: 300% 100%;
                     z-index: -1;
                     animation: shine 3s linear 4;
                     animation-fill-mode: forwards;
+                    opacity: 0.8;
                 }
                 
                 :global(.ghk-cu-gold-border:hover)::before {
                     animation: shine 2s linear infinite;
+                    opacity: 1;
                 }
                 
                 @keyframes shine {
