@@ -124,20 +124,14 @@ export default function Pricing() {
                                 key={index}
                                 onClick={() => setSelectedPlan(index)}
                                 className={`relative p-6 rounded-2xl border-2 transition-all duration-200 text-center ${selectedPlan === index
-                                        ? 'border-[#D4A574] bg-[#D4A574]/5 shadow-xl ring-2 ring-[#D4A574]/30'
-                                        : 'border-gray-200 hover:border-[#D4A574]/50 hover:shadow-lg bg-white cursor-pointer'
+                                    ? 'border-[#D4A574] bg-[#D4A574]/5 shadow-xl ring-2 ring-[#D4A574]/30'
+                                    : 'border-gray-200 hover:border-[#D4A574]/50 hover:shadow-lg bg-white cursor-pointer'
                                     }`}
                             >
-                                {/* Badges */}
+                                {/* Only show MEEST GEKOZEN badge */}
                                 {bundle.popular && selectedPlan === index && (
                                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-4 py-1 rounded-full text-xs font-bold shadow-md">
                                         MEEST GEKOZEN
-                                    </div>
-                                )}
-                                {bundle.earlyAdopter && (
-                                    <div className="absolute -top-3 -right-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1">
-                                        <Sparkles className="w-3 h-3" />
-                                        EARLY ADOPTER
                                     </div>
                                 )}
 
@@ -188,17 +182,6 @@ export default function Pricing() {
                     >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                     </svg>
-
-                    {/* Beschikbaarheid */}
-                    <div className="mb-6">
-                        <div className="flex items-center justify-between text-sm mb-2">
-                            <span className="font-semibold text-gray-700">Beschikbaarheid:</span>
-                            <span className="text-emerald-600 font-semibold">Op voorraad en klaar voor verzending</span>
-                        </div>
-                        <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full" style={{ width: '87%' }}></div>
-                        </div>
-                    </div>
 
                     {/* Aantal Selector */}
                     <div className="mb-6">
