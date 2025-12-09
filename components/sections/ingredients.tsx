@@ -318,12 +318,11 @@ export default function Ingredients() {
                     }
                 }
                 
-                /* GHK-Cu Orange Border Glow - Only Border, White Background */
+                /* GHK-Cu Orange Border Glow - 2s animation on border only, then clean */
                 :global(.ghk-cu-gold-border) {
                     position: relative;
                     background: white;
-                    box-shadow: 0 0 0 2px #f97316, 0 0 20px rgba(249, 115, 22, 0.4);
-                    border: none;
+                    border: 2px solid #e5e7eb; /* Same gray border as other cards */
                 }
                 
                 :global(.ghk-cu-gold-border)::before {
@@ -334,20 +333,24 @@ export default function Ingredients() {
                     background: linear-gradient(90deg, #f97316, #fb923c, #fdba74, #f97316);
                     background-size: 300% 100%;
                     z-index: -1;
-                    animation: shine 3s linear 4;
+                    animation: shine 2s ease-in-out 1;
                     animation-fill-mode: forwards;
-                    opacity: 0.8;
-                }
-                
-                :global(.ghk-cu-gold-border:hover)::before {
-                    animation: shine 2s linear infinite;
-                    opacity: 1;
+                    opacity: 0;
                 }
                 
                 @keyframes shine {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
+                    0% { 
+                        background-position: 0% 50%;
+                        opacity: 1;
+                    }
+                    50% { 
+                        background-position: 100% 50%;
+                        opacity: 1;
+                    }
+                    100% { 
+                        background-position: 0% 50%;
+                        opacity: 0;
+                    }
                 }
             `}</style>
         </section>
