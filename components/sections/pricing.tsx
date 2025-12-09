@@ -115,9 +115,6 @@ export default function Pricing() {
 
                 {/* Bundle Selector */}
                 <div className="mb-8">
-                    <label className="block text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wide">
-                        Kies je behandeling
-                    </label>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {bundles.map((bundle, index) => (
                             <button
