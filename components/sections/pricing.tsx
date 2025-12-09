@@ -24,7 +24,7 @@ export default function Pricing() {
             items: [
                 "6x REVIVE Hair Serum (180ml)",
                 "3x Kirkland Minoxidil 5%",
-                "1x Dermaroller 0.5mm"
+                "1x Dermaroller 0.25mm"
             ],
             savings: 120
         },
@@ -41,7 +41,7 @@ export default function Pricing() {
             items: [
                 "3x REVIVE Hair Serum (90ml)",
                 "1x Kirkland Minoxidil 5%",
-                "1x Dermaroller 0.5mm"
+                "1x Dermaroller 0.25mm"
             ],
             savings: 30
         },
@@ -155,10 +155,10 @@ export default function Pricing() {
                                 </div>
 
                                 {/* Items included */}
-                                <div className="space-y-2 text-left">
+                                <div className="space-y-2 text-center">
                                     {bundle.items.map((item, i) => (
-                                        <div key={i} className="flex items-start gap-2 text-xs text-gray-700">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-[#D4A574] mt-1.5 flex-shrink-0" />
+                                        <div key={i} className="flex items-center justify-center gap-2 text-xs text-gray-700">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-[#D4A574] flex-shrink-0" />
                                             <span>{item}</span>
                                         </div>
                                     ))}
