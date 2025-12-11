@@ -35,25 +35,6 @@ export default function Guarantee() {
                             </p>
                         </div>
 
-                        {/* Founder quote - personal trust builder */}
-                        <div className="bg-white/5 rounded-2xl p-6 mb-8">
-                            <div className="flex items-start gap-4">
-                                {/* Photo placeholder */}
-                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#D4A574]/30 to-[#D4A574]/10 flex-shrink-0 flex items-center justify-center">
-                                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                                        <span className="text-white/60 text-xs">RB</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p className="text-white/80 leading-relaxed italic">
-                                        "Ik had zelf haarverlies vanaf mijn 17e. Als dit niet werkte voor mij, had ik het niet verkocht."
-                                    </p>
-                                    <p className="text-white/50 text-sm mt-2">
-                                        — <span className="text-[#D4A574] font-medium">Robin Bril</span>, Oprichter
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
 
                         {/* Trust points */}
                         <div className="grid sm:grid-cols-3 gap-4">
