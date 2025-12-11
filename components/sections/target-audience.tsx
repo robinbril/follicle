@@ -103,30 +103,6 @@ export default function TargetAudience() {
                         </p>
                     </motion.div>
                 </div>
-
-                {/* Urgency callout with CTA */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="mt-10 p-6 bg-amber-50 border border-amber-200 rounded-2xl text-center"
-                >
-                    <p className="text-lg font-semibold text-gray-900 mb-2">
-                        Haar dat weg is, komt niet vanzelf terug.
-                    </p>
-                    <p className="text-gray-600 mb-4">
-                        Hoe eerder je begint, hoe meer er te redden valt.
-                    </p>
-                    <Button
-                        asChild
-                        variant="outline"
-                        className="border-amber-400 text-amber-700 hover:bg-amber-100 font-semibold"
-                    >
-                        <Link href="#prijzen">
-                            Start vandaag
-                        </Link>
-                    </Button>
-                </motion.div>
             </div>
         </section>
     )

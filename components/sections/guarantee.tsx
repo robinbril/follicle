@@ -15,21 +15,21 @@ export default function Guarantee() {
                 >
                     <div className="relative z-10">
                         {/* Icon */}
-                        <div className="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 mx-auto sm:mx-0">
+                        <div className="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                             <ShieldCheck className="w-8 h-8 text-emerald-400" />
                         </div>
 
                         {/* Header */}
-                        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 text-center sm:text-left">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 text-center">
                             De REVIVE Garantie
                         </h2>
 
                         {/* Main promise */}
-                        <div className="space-y-4 mb-8">
-                            <p className="text-xl sm:text-2xl text-white/90 font-medium leading-relaxed text-center sm:text-left">
+                        <div className="space-y-4 mb-8 text-center">
+                            <p className="text-xl sm:text-2xl text-white/90 font-medium leading-relaxed">
                                 180 dagen om te beslissen.
                             </p>
-                            <p className="text-lg text-white/70 leading-relaxed text-center sm:text-left">
+                            <p className="text-lg text-white/70 leading-relaxed max-w-md mx-auto">
                                 Niet tevreden? <span className="text-white font-semibold">Volledige terugbetaling.</span><br />
                                 Geen vragen. Geen formulieren. Zelfs als de fles leeg is.
                             </p>
