@@ -1,13 +1,13 @@
 "use client"
 
-import { Check, X, ArrowRight } from 'lucide-react'
+import { Check, X, ArrowRight, Info } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export default function TargetAudience() {
     return (
-        <section className="py-16 sm:py-20 bg-gray-50">
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-stone-100">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -18,10 +18,16 @@ export default function TargetAudience() {
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
                         Is REVIVE voor jou?
                     </h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
-                        We zijn eerlijk: REVIVE werkt niet voor iedereen.
-                        Hier is hoe je weet of het bij jouw situatie past.
+                    <p className="text-gray-600 max-w-2xl mx-auto mb-3">
+                        We zijn transparant: REVIVE past niet bij iedereen.
+                        Hier de feiten om te checken of het bij jouw situatie past.
                     </p>
+                    <Link
+                        href="#wetenschap"
+                        className="text-sm text-[#D4A574] hover:text-[#B38559] font-medium inline-flex items-center gap-1"
+                    >
+                        Gebaseerd op 24 peer-reviewed studies →
+                    </Link>
                 </motion.div>
 
                 {/* Asymmetric grid - YES card larger */}
@@ -37,23 +43,23 @@ export default function TargetAudience() {
                             <div className="w-10 h-10 bg-[#D4A574]/10 rounded-full flex items-center justify-center">
                                 <Check className="w-5 h-5 text-[#D4A574]" />
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900">REVIVE is voor jou als:</h3>
+                            <h3 className="text-xl font-bold text-gray-900">REVIVE kan voor jou werken als:</h3>
                         </div>
 
                         <ul className="space-y-4 mb-8">
-                            <li className="flex items-start gap-3">
-                                <Check className="w-5 h-5 text-[#D4A574] flex-shrink-0 mt-0.5" />
-                                <span className="text-gray-700"><strong>Je beginnend haarverlies hebt</strong></span>
-                            </li>
                             {[
-                                "Je haar dunner wordt (niet volledig kaal)",
-                                "Je bereid bent 90 dagen te wachten op resultaat",
-                                "Je geen hormoonbehandelingen wilt",
-                                "Je een natuurlijk serum zoekt (standalone of als boost)",
+                                { text: "Je beginnend haarverlies hebt", note: "voor velen effectief" },
+                                { text: "Je haar dunner wordt (niet volledig kaal)", note: "hergroei mogelijk" },
+                                { text: "Je bereid bent 90+ dagen te wachten", note: "resultaten variëren" },
+                                { text: "Je voorkeur hebt voor hormoonvrij", note: "combineren kan ook" },
+                                { text: "Je een natuurlijk serum zoekt", note: "standalone of als boost" },
                             ].map((item, i) => (
                                 <li key={i} className="flex items-start gap-3">
                                     <Check className="w-5 h-5 text-[#D4A574] flex-shrink-0 mt-0.5" />
-                                    <span className="text-gray-700">{item}</span>
+                                    <span className="text-gray-700">
+                                        {item.text}
+                                        <span className="text-gray-400 text-sm"> ({item.note})</span>
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -64,7 +70,7 @@ export default function TargetAudience() {
                             className="w-full sm:w-auto bg-[#C4956A] hover:bg-[#B38559] text-white font-bold py-6 px-8 text-base"
                         >
                             <Link href="#prijzen" className="flex items-center justify-center gap-2">
-                                Past bij mij → Bekijk opties
+                                Bekijk opties
                                 <ArrowRight className="w-4 h-4" />
                             </Link>
                         </Button>
@@ -75,7 +81,7 @@ export default function TargetAudience() {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-2 bg-white/80 rounded-2xl p-5 sm:p-6 border border-gray-100 h-fit opacity-80"
+                        className="lg:col-span-2 bg-white/80 rounded-2xl p-5 sm:p-6 border border-gray-100 h-fit"
                     >
                         <div className="flex items-center gap-2 mb-4">
                             <div className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center">
@@ -84,23 +90,27 @@ export default function TargetAudience() {
                             <h3 className="text-sm font-semibold text-gray-500">Niet voor jou als:</h3>
                         </div>
 
-                        <ul className="space-y-2.5 text-xs">
+                        <ul className="space-y-2.5 text-xs text-gray-500">
                             {[
-                                "Je al 5+ jaar volledig kaal bent",
-                                "Je haarverlies een medische oorzaak heeft",
-                                "Je onmiddellijk resultaat verwacht",
-                                "Je al tevreden bent met Minoxidil",
+                                { text: "Je al 5+ jaar volledig kaal bent", note: "hergroei beperkt" },
+                                { text: "Je haarverlies een medische oorzaak heeft", note: "raadpleeg arts" },
+                                { text: "Je onmiddellijk resultaat verwacht", note: "geduld nodig" },
+                                { text: "Je al tevreden bent met huidige routine", note: "geen reden te switchen" },
                             ].map((item, i) => (
                                 <li key={i} className="flex items-start gap-2">
                                     <X className="w-3.5 h-3.5 text-gray-300 flex-shrink-0 mt-0.5" />
-                                    <span className="text-gray-400">{item}</span>
+                                    <span>
+                                        {item.text}
+                                        <span className="text-gray-400"> ({item.note})</span>
+                                    </span>
                                 </li>
                             ))}
                         </ul>
 
-                        <p className="mt-4 text-[10px] text-gray-400 bg-gray-50 rounded-lg p-2">
-                            💡 Twijfel? Vraag je huisarts.
-                        </p>
+                        <div className="mt-4 text-[10px] text-gray-400 bg-gray-50 rounded-lg p-2 flex items-start gap-2">
+                            <Info className="w-3 h-3 flex-shrink-0 mt-0.5" />
+                            <span>Twijfel je? Raadpleeg je huisarts. Resultaten variëren per persoon.</span>
+                        </div>
                     </motion.div>
                 </div>
             </div>
