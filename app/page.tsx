@@ -1,4 +1,5 @@
 import Hero from '@/components/sections/hero'
+import OriginStory from '@/components/sections/origin-story'
 import ProblemAgitation from '@/components/sections/problem-agitation'
 import Ingredients from '@/components/sections/ingredients'
 import SocialProof from '@/components/sections/social-proof'
@@ -18,6 +19,7 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Header />
       <Hero />
+      <OriginStory />
       <ProblemAgitation />
       <Ingredients />
       <SocialProof />

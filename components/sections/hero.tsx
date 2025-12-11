@@ -30,27 +30,26 @@ export default function Hero() {
 
 
 
-                        {/* HEADLINE - Clear problem + solution, forced line break */}
+                        {/* HEADLINE - De haarindustrie is kapot */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
                             className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
                         >
-                            Stop haaruitval.<br className="block" />
-                            <span className="text-[#D4A574]">Start hergroei.</span>
+                            De haarindustrie<br className="block" />
+                            <span className="text-[#D4A574]">is kapot.</span>
                         </motion.h1>
 
-                        {/* SUBHEADLINE - Specific numbers convert better */}
+                        {/* SUBHEADLINE - Competitor comparison */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
                             className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
                         >
-                            <span className="text-gray-900 font-semibold">20,5% actieve ingrediënten.</span>{' '}
-                            <span className="text-gray-900 font-semibold">24 studies.</span>{' '}
-                            <span className="text-gray-900 font-semibold whitespace-nowrap">0 bijwerkingen.</span>
+                            <span className="text-gray-900 font-semibold">20.5% actieve stof.</span>{' '}
+                            <span className="text-gray-500">Gemiddelde concurrent: 0.8%</span>
                         </motion.p>
 
                         {/* PRIMARY CTA - Test + Guarantee framing */}
@@ -66,7 +65,7 @@ export default function Hero() {
                                 asChild
                             >
                                 <Link href="#prijzen">
-                                    START ROUTINE
+                                    START JE JOURNEY
                                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </Button>

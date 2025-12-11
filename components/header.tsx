@@ -68,10 +68,10 @@ export default function Header() {
                 {/* Mobile Menu Overlay */}
                 {isMobileMenuOpen && (
                     <div className="absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-2xl p-6 flex flex-col gap-4 animate-in slide-in-from-top-5">
-                        {['Wetenschap', 'Resultaten', 'Reviews', 'FAQ'].map((item) => (
+                        {['Ons Verhaal', 'Wetenschap', 'Resultaten', 'FAQ'].map((item) => (
                             <Link
                                 key={item}
-                                href={`#${item.toLowerCase()}`}
+                                href={item === 'Ons Verhaal' ? '#verhaal' : `#${item.toLowerCase()}`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-lg font-medium text-gray-900 py-2 border-b border-gray-50"
                             >
@@ -80,7 +80,7 @@ export default function Header() {
                         ))}
                         <Button asChild className="w-full bg-[#D4A574] hover:bg-[#C69563] text-white font-bold py-6 mt-2">
                             <Link href="#prijzen" onClick={() => setIsMobileMenuOpen(false)}>
-                                START ROUTINE
+                                START JE JOURNEY
                             </Link>
                         </Button>
                     </div>
@@ -121,10 +121,10 @@ export default function Header() {
 
                             {/* Desktop Nav */}
                             <nav className="flex items-center gap-8">
-                                {['Wetenschap', 'Resultaten', 'Reviews', 'FAQ'].map((item) => (
+                                {['Ons Verhaal', 'Wetenschap', 'Resultaten', 'FAQ'].map((item) => (
                                     <Link
                                         key={item}
-                                        href={`#${item.toLowerCase()}`}
+                                        href={item === 'Ons Verhaal' ? '#verhaal' : `#${item.toLowerCase()}`}
                                         className="text-sm font-medium text-gray-600 hover:text-[#D4A574] transition-colors"
                                     >
                                         {item}
@@ -136,7 +136,7 @@ export default function Header() {
                             <div className="flex items-center gap-4">
                                 <Button asChild className="font-bold px-6 py-5 text-sm bg-[#C4956A] hover:bg-[#B38559] text-white transition-all duration-300">
                                     <Link href="#prijzen">
-                                        Start routine
+                                        Start je journey
                                     </Link>
                                 </Button>
                                 <button className="relative">
