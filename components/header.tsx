@@ -71,7 +71,7 @@ export default function Header() {
                         {['Ons Verhaal', 'Wetenschap', 'Resultaten', 'FAQ'].map((item) => (
                             <Link
                                 key={item}
-                                href={item === 'Ons Verhaal' ? '#verhaal' : `#${item.toLowerCase()}`}
+                                href={item === 'Ons Verhaal' ? '#garantie' : `#${item.toLowerCase()}`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-lg font-medium text-gray-900 py-2 border-b border-gray-50"
                             >
@@ -124,7 +124,7 @@ export default function Header() {
                                 {['Ons Verhaal', 'Wetenschap', 'Resultaten', 'FAQ'].map((item) => (
                                     <Link
                                         key={item}
-                                        href={item === 'Ons Verhaal' ? '#verhaal' : `#${item.toLowerCase()}`}
+                                        href={item === 'Ons Verhaal' ? '#garantie' : `#${item.toLowerCase()}`}
                                         className="text-sm font-medium text-gray-600 hover:text-[#D4A574] transition-colors"
                                     >
                                         {item}
