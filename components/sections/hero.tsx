@@ -30,31 +30,20 @@ export default function Hero() {
 
 
 
-                        {/* HEADLINE - Clear problem + solution */}
+                        {/* HEADLINE - The comparison IS the headline */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-3xl sm:text-5xl lg:text-[3.5rem] font-bold text-gray-900 tracking-tight leading-[1.1] mb-5"
+                            className="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.2] mb-5"
                         >
-                            Stop haaruitval.<br className="block" />
-                            <span className="text-[#D4A574]">Start hergroei.</span>
+                            De meeste haarserums bevatten <span className="text-gray-400">0.3%</span> actieve stof.<br className="hidden sm:block" />
+                            Die van ons <span className="text-[#D4A574]">20.5%</span>.
                         </motion.h1>
 
-                        {/* SUBHEADLINE - Competitor comparison + confidence */}
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.15 }}
-                            className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
-                        >
-                            De meeste haarserums bevatten <span className="text-gray-400">0.3%</span> actieve stof.<br />
-                            Die van ons <span className="text-gray-900 font-semibold">20.5%</span>.
-                            <br /><br />
-                            <span className="text-gray-500">Daarom durven we 180 dagen garantie te geven.</span>
-                        </motion.p>
+                        {/* SUBHEADLINE - Removed - guarantee is already in micro-copy */}
 
-                        {/* PRIMARY CTA - Test + Guarantee framing */}
+                        {/* PRIMARY CTA */}
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -67,13 +56,13 @@ export default function Hero() {
                                 asChild
                             >
                                 <Link href="#prijzen">
-                                    START JE JOURNEY
+                                    PROBEER REVIVE
                                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </Button>
                             {/* Guarantee in micro-copy */}
                             <p className="text-sm text-gray-500 mt-3 font-medium flex items-center justify-center lg:justify-start gap-2">
-                                ✓ 180 dagen niet tevreden? Volledige terugbetaling.
+                                ✓ Niet tevreden? Volledige terugbetaling.
                             </p>
 
                             {/* Social proof - avatar stack + rating */}
@@ -158,8 +147,8 @@ export default function Hero() {
                                         <Sparkles className="w-6 h-6 text-white" />
                                     </div>
                                     <p className="text-sm text-white font-bold leading-tight">
-                                        Exclusieve Voorraad
-                                        <span className="block text-xs font-normal opacity-90">met GHK-Cu Peptides</span>
+                                        24 studies
+                                        <span className="block text-xs font-normal opacity-90">Peer-reviewed</span>
                                     </p>
                                 </div>
                             </motion.div>
