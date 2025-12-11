@@ -41,16 +41,17 @@ export default function Hero() {
                             <span className="text-[#D4A574]">Start hergroei.</span>
                         </motion.h1>
 
-                        {/* SUBHEADLINE - Specific numbers */}
+                        {/* SUBHEADLINE - Competitor comparison + confidence */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
                             className="text-lg sm:text-xl text-gray-600 mb-6 max-w-lg leading-relaxed"
                         >
-                            <span className="text-gray-900 font-semibold">20.5% actieve ingrediënten.</span>{' '}
-                            <span className="text-gray-900 font-semibold">24 studies.</span>{' '}
-                            <span className="text-gray-900 font-semibold whitespace-nowrap">0 bijwerkingen.</span>
+                            De meeste haarserums bevatten <span className="text-gray-400">0.3%</span> actieve stof.<br />
+                            Die van ons <span className="text-gray-900 font-semibold">20.5%</span>.
+                            <br /><br />
+                            <span className="text-gray-500">Daarom durven we 180 dagen garantie te geven.</span>
                         </motion.p>
 
                         {/* PRIMARY CTA - Test + Guarantee framing */}
