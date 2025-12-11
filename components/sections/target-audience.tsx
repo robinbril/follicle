@@ -49,7 +49,7 @@ export default function TargetAudience() {
                                 "Je haar dunner wordt (niet volledig kaal)",
                                 "Je bereid bent 90 dagen te wachten op resultaat",
                                 "Je geen hormoonbehandelingen wilt",
-                                "Je een veilig alternatief zoekt voor Minoxidil",
+                                "Je een natuurlijk serum zoekt (standalone of als boost)",
                             ].map((item, i) => (
                                 <li key={i} className="flex items-start gap-3">
                                     <Check className="w-5 h-5 text-[#D4A574] flex-shrink-0 mt-0.5" />

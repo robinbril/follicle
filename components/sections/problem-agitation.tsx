@@ -15,7 +15,7 @@ const treatments = [
             { text: "Hormoonvrij", positive: true },
             { text: "Geen bijwerkingen", positive: true },
             { text: "1x per dag", positive: true },
-            { text: "180 dagen garantie", positive: true },
+            { text: "Combineerbaar met Minoxidil", positive: true },
         ]
     },
     {
@@ -23,9 +23,9 @@ const treatments = [
         price: "€45/mnd",
         highlight: false,
         features: [
-            { text: "Stop = onmiddellijke uitval", positive: false },
-            { text: "2x per dag", positive: false },
-            { text: "Hoofdhuid irritatie", positive: false },
+            { text: "Bewezen effectief", positive: true },
+            { text: "2x per dag toepassen", positive: false },
+            { text: "Stop = mogelijke uitval", positive: false },
         ]
     },
     {
@@ -33,9 +33,9 @@ const treatments = [
         price: "€30/mnd",
         highlight: false,
         features: [
+            { text: "Sterk tegen DHT", positive: true },
             { text: "Hormoonblokker", positive: false },
-            { text: "Bijwerkingen libido", positive: false },
-            { text: "Dagelijks pillen", positive: false },
+            { text: "Mogelijke bijwerkingen", positive: false },
         ]
     },
     {
@@ -43,9 +43,9 @@ const treatments = [
         price: "€5.000+",
         highlight: false,
         features: [
+            { text: "Permanente oplossing", positive: true },
             { text: "Chirurgisch ingrijpen", positive: false },
-            { text: "Herstelperiode", positive: false },
-            { text: "Eenmalig, maar risico's", positive: false },
+            { text: "Lange herstelperiode", positive: false },
         ]
     },
 ]
@@ -66,8 +66,8 @@ export default function ProblemAgitation() {
                         Vergelijk Eerlijk
                     </h2>
                     <p className="text-white/60 max-w-xl mx-auto">
-                        REVIVE is ons serum tegen beginnend haarverlies —
-                        met <span className="text-[#D4A574] font-semibold">20.5% actieve stof</span>. Kies slimmer dan de industrie.
+                        REVIVE: Natuurlijk serum met <span className="text-[#D4A574] font-semibold">20.5% actieve stof</span>.
+                        Standalone of gecombineerd met Minoxidil in onze bundels.
                     </p>
                 </motion.div>
 
