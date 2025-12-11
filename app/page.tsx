@@ -1,6 +1,5 @@
 import Hero from '@/components/sections/hero'
 import ProblemAgitation from '@/components/sections/problem-agitation'
-import OriginStory from '@/components/sections/origin-story'
 import Ingredients from '@/components/sections/ingredients'
 import SocialProof from '@/components/sections/social-proof'
 import TargetAudience from '@/components/sections/target-audience'
@@ -20,7 +19,6 @@ export default function Home() {
       <Header />
       <Hero />
       <ProblemAgitation />
-      <OriginStory />
       <Ingredients />
       <SocialProof />
       <TargetAudience />
