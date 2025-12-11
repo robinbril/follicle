@@ -1,7 +1,6 @@
 import Hero from '@/components/sections/hero'
 import ProblemAgitation from '@/components/sections/problem-agitation'
 import Ingredients from '@/components/sections/ingredients'
-import SocialProof from '@/components/sections/social-proof'
 import TargetAudience from '@/components/sections/target-audience'
 import HowItWorks from '@/components/sections/how-it-works'
 import Guarantee from '@/components/sections/guarantee'
@@ -20,7 +19,6 @@ export default function Home() {
       <Hero />
       <ProblemAgitation />
       <Ingredients />
-      <SocialProof />
       <TargetAudience />
       <HowItWorks />
       <Guarantee />
