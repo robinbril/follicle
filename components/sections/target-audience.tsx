@@ -26,23 +26,23 @@ export default function TargetAudience() {
 
                 {/* Asymmetric grid - YES card larger */}
                 <div className="grid lg:grid-cols-5 gap-6">
-                    {/* YES Column - Takes 3/5 of space */}
+                    {/* YES Column - Takes 3/5 of space, warm styling */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-3 bg-emerald-50 rounded-2xl p-6 sm:p-8 border border-emerald-200 shadow-sm"
+                        className="lg:col-span-3 bg-gradient-to-br from-[#fffbf8] to-[#fef7f0] rounded-2xl p-6 sm:p-8 border-l-4 border-[#D4A574] shadow-sm"
                     >
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
-                                <Check className="w-5 h-5 text-emerald-600" />
+                            <div className="w-10 h-10 bg-[#D4A574]/10 rounded-full flex items-center justify-center">
+                                <Check className="w-5 h-5 text-[#D4A574]" />
                             </div>
                             <h3 className="text-xl font-bold text-gray-900">REVIVE is voor jou als:</h3>
                         </div>
 
                         <ul className="space-y-4 mb-8">
                             <li className="flex items-start gap-3">
-                                <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                                <Check className="w-5 h-5 text-[#D4A574] flex-shrink-0 mt-0.5" />
                                 <span className="text-gray-700"><strong>Je beginnend haarverlies hebt</strong></span>
                             </li>
                             {[
@@ -52,7 +52,7 @@ export default function TargetAudience() {
                                 "Je een veilig alternatief zoekt voor Minoxidil",
                             ].map((item, i) => (
                                 <li key={i} className="flex items-start gap-3">
-                                    <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                                    <Check className="w-5 h-5 text-[#D4A574] flex-shrink-0 mt-0.5" />
                                     <span className="text-gray-700">{item}</span>
                                 </li>
                             ))}
@@ -70,21 +70,21 @@ export default function TargetAudience() {
                         </Button>
                     </motion.div>
 
-                    {/* NO Column - Takes 2/5 of space, smaller */}
+                    {/* NO Column - Subtle, faded */}
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-2 bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 shadow-sm h-fit"
+                        className="lg:col-span-2 bg-white/80 rounded-2xl p-5 sm:p-6 border border-gray-100 h-fit opacity-80"
                     >
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-                                <X className="w-4 h-4 text-gray-500" />
+                        <div className="flex items-center gap-2 mb-4">
+                            <div className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center">
+                                <X className="w-3.5 h-3.5 text-gray-400" />
                             </div>
-                            <h3 className="text-base font-bold text-gray-700">Niet voor jou als:</h3>
+                            <h3 className="text-sm font-semibold text-gray-500">Niet voor jou als:</h3>
                         </div>
 
-                        <ul className="space-y-3 text-sm">
+                        <ul className="space-y-2.5 text-xs">
                             {[
                                 "Je al 5+ jaar volledig kaal bent",
                                 "Je haarverlies een medische oorzaak heeft",
@@ -92,13 +92,13 @@ export default function TargetAudience() {
                                 "Je al tevreden bent met Minoxidil",
                             ].map((item, i) => (
                                 <li key={i} className="flex items-start gap-2">
-                                    <X className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
-                                    <span className="text-gray-500">{item}</span>
+                                    <X className="w-3.5 h-3.5 text-gray-300 flex-shrink-0 mt-0.5" />
+                                    <span className="text-gray-400">{item}</span>
                                 </li>
                             ))}
                         </ul>
 
-                        <p className="mt-4 text-xs text-gray-400 bg-gray-50 rounded-lg p-2">
+                        <p className="mt-4 text-[10px] text-gray-400 bg-gray-50 rounded-lg p-2">
                             💡 Twijfel? Vraag je huisarts.
                         </p>
                     </motion.div>
