@@ -28,10 +28,10 @@ export default function Footer() {
                             Compromisloos.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#94A3B8] hover:bg-emerald-600 hover:text-white transition-all duration-300">
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#94A3B8] hover:bg-[#D4A574] hover:text-white transition-all duration-300">
                                 <Instagram className="w-5 h-5" />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#94A3B8] hover:bg-emerald-600 hover:text-white transition-all duration-300">
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#94A3B8] hover:bg-[#D4A574] hover:text-white transition-all duration-300">
                                 <Youtube className="w-5 h-5" />
                             </a>
                         </div>
@@ -41,18 +41,18 @@ export default function Footer() {
                     <div>
                         <h4 className="text-[#F8F5F0] font-bold text-xs tracking-[0.15em] mb-6 uppercase">Product</h4>
                         <ul className="space-y-4 text-sm text-[#94A3B8] font-light">
-                            <li><Link href="/product/haar-serum-18" className="hover:text-emerald-500 transition-colors">Hair Serum</Link></li>
-                            <li><Link href="/bundels" className="hover:text-emerald-500 transition-colors">Kuren & Bundels</Link></li>
-                            <li><Link href="/garantie" className="hover:text-emerald-500 transition-colors">180 Dagen Garantie</Link></li>
+                            <li><Link href="/product/haar-serum-18" className="hover:text-[#D4A574] transition-colors">Hair Serum</Link></li>
+                            <li><Link href="/bundels" className="hover:text-[#D4A574] transition-colors">Kuren & Bundels</Link></li>
+                            <li><Link href="/garantie" className="hover:text-[#D4A574] transition-colors">180 Dagen Garantie</Link></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="text-[#F8F5F0] font-bold text-xs tracking-[0.15em] mb-6 uppercase">Wetenschap</h4>
                         <ul className="space-y-4 text-sm text-[#94A3B8] font-light">
-                            <li><Link href="/wetenschap" className="hover:text-emerald-500 transition-colors">Ingrediënten</Link></li>
-                            <li><Link href="/studies" className="hover:text-emerald-500 transition-colors">Klinische Studies</Link></li>
-                            <li><Link href="/experts" className="hover:text-emerald-500 transition-colors">Dermatologen</Link></li>
+                            <li><Link href="/wetenschap" className="hover:text-[#D4A574] transition-colors">Ingrediënten</Link></li>
+                            <li><Link href="/studies" className="hover:text-[#D4A574] transition-colors">Klinische Studies</Link></li>
+                            <li><Link href="/experts" className="hover:text-[#D4A574] transition-colors">Dermatologen</Link></li>
                         </ul>
                     </div>
 
@@ -66,7 +66,7 @@ export default function Footer() {
                                 placeholder="WhatsApp nummer (06...)"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-sm text-[#F8F5F0] placeholder:text-[#525252] focus:outline-none focus:border-emerald-500 flex-1 transition-colors"
+                                className="bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-sm text-[#F8F5F0] placeholder:text-[#525252] focus:outline-none focus:border-[#D4A574] flex-1 transition-colors"
                             />
                             <button type="submit" className="bg-[#25D366] text-white px-4 py-3 rounded-sm font-bold text-sm hover:bg-[#20bd5a] transition-colors flex items-center justify-center">
                                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
@@ -78,9 +78,9 @@ export default function Footer() {
                 {/* Trust & Legal */}
                 <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex gap-6 text-xs text-[#525252] font-light">
-                        <Link href="/algemene-voorwaarden" className="hover:text-emerald-500 transition-colors">Algemene Voorwaarden</Link>
-                        <Link href="/privacy" className="hover:text-emerald-500 transition-colors">Privacy</Link>
-                        <Link href="/cookies" className="hover:text-emerald-500 transition-colors">Cookies</Link>
+                        <Link href="/algemene-voorwaarden" className="hover:text-[#D4A574] transition-colors">Algemene Voorwaarden</Link>
+                        <Link href="/privacy" className="hover:text-[#D4A574] transition-colors">Privacy</Link>
+                        <Link href="/cookies" className="hover:text-[#D4A574] transition-colors">Cookies</Link>
                     </div>
                 </div>
 

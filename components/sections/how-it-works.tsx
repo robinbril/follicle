@@ -69,10 +69,10 @@ export default function HowItWorks() {
 
                 {/* Footer Line - The "Green Pill" */}
                 <div className="text-center">
-                    <div className="inline-flex items-center gap-2.5 px-6 py-3 bg-emerald-50/80 backdrop-blur-sm border border-emerald-100 rounded-full text-emerald-800 text-sm font-bold shadow-sm hover:shadow-md transition-all duration-300 cursor-default">
+                    <div className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#D4A574]/10 backdrop-blur-sm border border-[#D4A574]/30 rounded-full text-[#8B6914] text-sm font-bold shadow-sm hover:shadow-md transition-all duration-300 cursor-default">
                         <div className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4A574] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#C4956A]"></span>
                         </div>
                         Droogt in 60 seconden · Geen vettig haar
                     </div>
