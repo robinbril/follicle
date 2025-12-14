@@ -15,8 +15,8 @@ export default function Guarantee() {
                 >
                     <div className="relative z-10">
                         {/* Icon */}
-                        <div className="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <ShieldCheck className="w-8 h-8 text-emerald-400" />
+                        <div className="w-16 h-16 bg-[#D4A574]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                            <ShieldCheck className="w-8 h-8 text-[#D4A574]" />
                         </div>
 
                         {/* Header */}
@@ -39,15 +39,15 @@ export default function Guarantee() {
                         {/* Trust points */}
                         <div className="grid sm:grid-cols-3 gap-4">
                             <div className="flex items-center gap-3 bg-white/5 rounded-xl p-4">
-                                <RotateCcw className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                                <RotateCcw className="w-5 h-5 text-[#D4A574] flex-shrink-0" />
                                 <span className="text-white/80 text-sm">Gratis retour</span>
                             </div>
                             <div className="flex items-center gap-3 bg-white/5 rounded-xl p-4">
-                                <MessageCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                                <MessageCircle className="w-5 h-5 text-[#D4A574] flex-shrink-0" />
                                 <span className="text-white/80 text-sm">Geen gedoe</span>
                             </div>
                             <div className="flex items-center gap-3 bg-white/5 rounded-xl p-4">
-                                <ShieldCheck className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                                <ShieldCheck className="w-5 h-5 text-[#D4A574] flex-shrink-0" />
                                 <span className="text-white/80 text-sm">100% geld terug</span>
                             </div>
                         </div>

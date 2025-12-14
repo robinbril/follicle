@@ -93,7 +93,7 @@ export default function Hero() {
 
                             {/* Guarantee - prominent */}
                             <p className="text-sm text-gray-500 mt-4 font-medium flex items-center justify-center lg:justify-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500" />
+                                <Check className="w-4 h-4 text-[#D4A574]" />
                                 180 dagen niet tevreden? Volledige terugbetaling.
                             </p>
                         </motion.div>
