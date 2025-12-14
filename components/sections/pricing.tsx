@@ -200,7 +200,7 @@ export default function Pricing() {
                     <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
                         <span>{selectedBundle.months} {selectedBundle.months === 1 ? 'maand' : 'maanden'} voorraad</span>
                         {selectedBundle.savings && (
-                            <span className="text-emerald-600 font-semibold">
+                            <span className="text-[#D4A574] font-semibold">
                                 Je bespaart €{selectedBundle.savings * quantity}
                             </span>
                         )}
@@ -245,15 +245,15 @@ export default function Pricing() {
                     {/* Trust badges */}
                     <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-gray-600">
                         <span className="flex items-center gap-2">
-                            <Package className="w-4 h-4 text-emerald-600" />
+                            <Package className="w-4 h-4 text-[#D4A574]" />
                             Direct op voorraad
                         </span>
                         <span className="flex items-center gap-2">
-                            <Truck className="w-4 h-4 text-emerald-600" />
+                            <Truck className="w-4 h-4 text-[#D4A574]" />
                             Morgen in huis
                         </span>
                         <span className="flex items-center gap-2">
-                            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                            <ShieldCheck className="w-4 h-4 text-[#D4A574]" />
                             180 dagen garantie
                         </span>
                     </div>
