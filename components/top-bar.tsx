@@ -50,9 +50,9 @@ export default function TopBar() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shine" />
 
             <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-4 text-center relative z-10">
-                {/* Main hook */}
+                {/* Main hook - simple, honest */}
                 <div className="flex items-center gap-3">
-                    <Timer className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+                    <Timer className="w-5 h-5 sm:w-6 sm:h-6" />
                     <span className="font-bold text-sm sm:text-lg">
                         Bestel voor 23:59 → Morgen in huis
                     </span>
