@@ -41,7 +41,7 @@ export default function Hero() {
                                 ))}
                             </div>
                             <span className="text-sm font-bold text-gray-900">4.8</span>
-                            <span className="text-xs text-gray-500">uit 847 reviews</span>
+                            <span className="text-xs text-gray-500">uit 47 reviews</span>
                         </motion.div>
 
                         {/* HEADLINE - Result first */}

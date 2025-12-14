@@ -47,7 +47,7 @@ export default function Results() {
                         ECHTE RESULTATEN
                     </span>
                     <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 sm:mt-4 mb-3">
-                        <span className="text-[#C4956A]">847+</span> tevreden klanten
+                        <span className="text-[#C4956A]">47+</span> tevreden klanten
                     </h2>
                     <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
                         Bekijk de transformaties van echte REVIVE gebruikers

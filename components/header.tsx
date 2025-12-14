@@ -30,7 +30,7 @@ export default function Header() {
                                 <Star key={i} className="w-3 h-3 fill-[#D4A574] text-[#D4A574]" />
                             ))}
                         </div>
-                        <span className="opacity-90">4,8 gebaseerd op 847 beoordelingen</span>
+                        <span className="opacity-90">4,8 gebaseerd op 47 beoordelingen</span>
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@ export default function Header() {
                                 <Star key={i} className="w-4 h-4 fill-[#D4A574] text-[#D4A574]" />
                             ))}
                         </div>
-                        <span className="opacity-90">4,8 gebaseerd op 847 beoordelingen</span>
+                        <span className="opacity-90">4,8 gebaseerd op 47 beoordelingen</span>
                     </div>
                 </div>
 

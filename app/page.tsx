@@ -7,7 +7,6 @@ import Guarantee from '@/components/sections/guarantee'
 import Pricing from '@/components/sections/pricing'
 import Footer from '@/components/sections/footer'
 import ExitIntentPopup from '@/components/conversion/exit-intent-popup'
-import SocialProofToast from '@/components/conversion/social-proof-toast'
 import StickyMobileCTA from '@/components/conversion/sticky-mobile-cta'
 import GDPRBanner from '@/components/gdpr-banner'
 import Header from '@/components/header'
@@ -26,7 +25,6 @@ export default function Home() {
 
       <Footer />
       <ExitIntentPopup />
-      <SocialProofToast />
       <StickyMobileCTA />
       <GDPRBanner />
     </main>
