@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,8 +10,8 @@
   }
 
   body {
-    @apply bg-white text-gray-900 font-sans antialiased;
-    font-family: 'Outfit', sans-serif;
+    @apply bg-white text-gray-900 antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-wrap: anywhere;
     hyphens: auto;
   }
@@ -21,11 +21,16 @@
   }
 
   h1,
-  h2,
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    @apply font-semibold tracking-tight text-gray-900;
+  }
+
   h3,
   h4,
   h5,
   h6 {
+    font-family: 'Inter', sans-serif;
     @apply font-bold tracking-tight text-gray-900;
   }
 }
