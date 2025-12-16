@@ -1,166 +1,132 @@
 "use client"
 
-import { useState } from 'react'
-import Image from 'next/image'
+import { TrendingUp, Shield, Layers, TrendingDown, RefreshCw, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const results = [
     {
-        id: 1,
-        name: 'Thomas',
-        duration: 'Na 12 weken',
-        badge: 'Haargroei',
-        beforeImage: '/images/results/result-1-before.png',
-        afterImage: '/images/results/result-1-after.png',
+        icon: TrendingUp,
+        number: "+17%",
+        label: "meer haar",
+        description: "Na 84 dagen dagelijks gebruik",
+        source: "Givaudan 2014",
+        link: "#"
     },
     {
-        id: 2,
-        name: 'Mark',
-        duration: 'Na 8 weken',
-        badge: 'Versteviging',
-        beforeImage: '/images/results/result-2-before.png',
-        afterImage: '/images/results/result-2-after.png',
+        icon: Shield,
+        number: "-93%",
+        label: "DHT-blokkade",
+        description: "Remt hormoon-gerelateerde uitval",
+        source: "Lucas Meyer",
+        link: "#"
     },
     {
-        id: 3,
-        name: 'Jordy',
-        duration: 'Na 16 weken',
-        badge: 'Haargroei',
-        beforeImage: '/images/results/result-3-before.png',
-        afterImage: '/images/results/result-3-after.png',
+        icon: Layers,
+        number: "+59%",
+        label: "haardichtheid",
+        description: "Zichtbaar voller haar",
+        source: "Provital 2015",
+        link: "#"
+    },
+    {
+        icon: TrendingDown,
+        number: "-60%",
+        label: "haaruitval",
+        description: "Significante vermindering",
+        source: "Baicapil study",
+        link: "#"
+    },
+    {
+        icon: RefreshCw,
+        number: "+88%",
+        label: "groeifase",
+        description: "Anageen/telogeen verhouding",
+        source: "Capixyl 2024",
+        link: "#"
+    },
+    {
+        icon: Sparkles,
+        number: "10.000+",
+        label: "nieuwe haren",
+        description: "In 84 dagen gemeten",
+        source: "Redensyl trial",
+        link: "#"
     },
 ]
 
 export default function Results() {
-    const [activeSliders, setActiveSliders] = useState<Record<number, number>>({})
-
-    const handleSliderChange = (id: number, value: number) => {
-        setActiveSliders(prev => ({ ...prev, [id]: value }))
-    }
-
     return (
-        <section id="resultaten" className="py-16 sm:py-24 bg-[#111111]">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <section className="py-16 sm:py-20 bg-[#FDFCFA] relative overflow-hidden">
+            <div className="max-w-4xl mx-auto px-6">
+
                 {/* Header */}
-                <div className="text-center mb-10 sm:mb-14">
-                    <span className="text-[#C4956A] text-xs sm:text-sm font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
-                        ECHTE RESULTATEN
-                    </span>
-                    <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3 sm:mt-4 mb-3">
-                        <span className="text-[#C4956A]">47+</span> tevreden klanten
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-12"
+                >
+                    <h2 className="text-2xl sm:text-3xl font-medium text-[#2D2A26] mb-3">
+                        Wat de wetenschap laat zien
                     </h2>
-                    <p className="text-gray-400 text-base sm:text-lg max-w-xl mx-auto">
-                        Bekijk de transformaties van echte REVIVE gebruikers
+                    <p className="text-[#8A8580]">
+                        Gebaseerd op peer-reviewed studies naar onze ingrediënten
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Results Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    {results.map((result, index) => {
-                        const sliderValue = activeSliders[result.id] ?? 50
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10">
+                    {results.map((result, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className="bg-white border border-[#E8E4DF] rounded-2xl p-5 sm:p-6 text-center hover:shadow-[0_8px_30px_rgba(196,149,106,0.1)] hover:-translate-y-1 transition-all duration-300"
+                        >
+                            {/* Icon */}
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FBF7F2] rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <result.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#C4956A]" />
+                            </div>
 
-                        return (
-                            <motion.div
-                                key={result.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="bg-[#1A1A1A] rounded-2xl overflow-hidden border border-gray-800 hover:border-[#C4956A]/30 transition-colors"
-                            >
-                                {/* Image Container with Slider */}
-                                <div className="relative aspect-[4/5] overflow-hidden cursor-ew-resize group">
-                                    {/* After Image (background) */}
-                                    <Image
-                                        src={result.afterImage}
-                                        alt={`${result.name} na`}
-                                        fill
-                                        className="object-cover"
-                                    />
+                            {/* Number */}
+                            <p className="text-2xl sm:text-3xl font-medium text-[#C4956A] mb-1">
+                                {result.number}
+                            </p>
 
-                                    {/* Before Image (clipped) */}
-                                    <div
-                                        className="absolute inset-0 overflow-hidden"
-                                        style={{ width: `${sliderValue}%` }}
-                                    >
-                                        <div className="relative h-full" style={{ width: `${10000 / sliderValue}%` }}>
-                                            <Image
-                                                src={result.beforeImage}
-                                                alt={`${result.name} voor`}
-                                                fill
-                                                className="object-cover object-left"
-                                            />
-                                        </div>
-                                    </div>
+                            {/* Label */}
+                            <p className="text-sm sm:text-base font-medium text-[#2D2A26] mb-2">
+                                {result.label}
+                            </p>
 
-                                    {/* Slider Line */}
-                                    <div
-                                        className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg z-10"
-                                        style={{ left: `${sliderValue}%` }}
-                                    >
-                                        {/* Slider Handle */}
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center">
-                                            <svg className="w-5 h-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                                            </svg>
-                                        </div>
-                                    </div>
+                            {/* Description */}
+                            <p className="text-xs sm:text-sm text-[#8A8580] mb-3 leading-relaxed">
+                                {result.description}
+                            </p>
 
-                                    {/* Labels */}
-                                    <div className="absolute top-3 left-3 px-2.5 py-1 bg-black/70 backdrop-blur-sm rounded text-white text-xs font-bold uppercase tracking-wider">
-                                        Voor
-                                    </div>
-                                    <div className="absolute top-3 right-3 px-2.5 py-1 bg-[#C4956A] rounded text-white text-xs font-bold uppercase tracking-wider">
-                                        Na
-                                    </div>
-
-                                    {/* Invisible Slider Input */}
-                                    <input
-                                        type="range"
-                                        min="10"
-                                        max="90"
-                                        value={sliderValue}
-                                        onChange={(e) => handleSliderChange(result.id, Number(e.target.value))}
-                                        className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
-                                    />
-                                </div>
-
-                                {/* Info */}
-                                <div className="p-4">
-                                    <div className="flex items-center justify-between">
-                                        <div>
-                                            <h3 className="text-white font-bold text-lg">{result.name}</h3>
-                                            <p className="text-gray-400 text-sm">{result.duration}</p>
-                                        </div>
-                                        <span className="px-3 py-1 bg-[#C4956A]/20 text-[#C4956A] text-xs font-semibold rounded-full">
-                                            {result.badge}
-                                        </span>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )
-                    })}
+                            {/* Source */}
+                            <span className="inline-block text-xs text-[#6B6560] px-3 py-1.5 bg-[#F8F6F3] rounded-full">
+                                {result.source} ↗
+                            </span>
+                        </motion.div>
+                    ))}
                 </div>
 
-                {/* Stats Bar */}
-                <div className="flex flex-wrap justify-center gap-6 sm:gap-12 mt-10 sm:mt-14 pt-8 sm:pt-10 border-t border-gray-800">
-                    <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-white">85%</div>
-                        <div className="text-gray-400 text-xs sm:text-sm mt-1">Ziet resultaat</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-white">90</div>
-                        <div className="text-gray-400 text-xs sm:text-sm mt-1">Dagen gemiddeld</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-white">4.8★</div>
-                        <div className="text-gray-400 text-xs sm:text-sm mt-1">Beoordeling</div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-2xl sm:text-3xl font-bold text-white">0</div>
-                        <div className="text-gray-400 text-xs sm:text-sm mt-1">Bijwerkingen</div>
-                    </div>
+                {/* Footer */}
+                <div className="flex flex-wrap justify-center items-center gap-4 text-sm text-[#6B6560]">
+                    <span>20.5% actieve concentratie</span>
+                    <span className="text-[#E8E4DF]">·</span>
+                    <span>6 technologieën</span>
+                    <span className="text-[#E8E4DF]">·</span>
+                    <span>Hormoonvrij</span>
                 </div>
+
+                {/* Disclaimer */}
+                <p className="text-center text-xs text-[#9A948E] mt-8 max-w-lg mx-auto">
+                    *Resultaten gebaseerd op klinische studies van individuele ingrediënten.
+                    Individuele resultaten kunnen variëren. REVIVE is geen medicijn.
+                </p>
             </div>
         </section>
     )
