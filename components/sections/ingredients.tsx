@@ -9,7 +9,7 @@ const ingredients = [
         id: "ghkcu",
         percentage: "2.5%",
         name: "GHK-Cu",
-        subheader: "Stimuleert stamcelactivatie",
+        subheader: "Sterkst onderzochte peptide in Europa",
         compound: "COPPER TRIPEPTIDE-1",
         hero: true,
         benefits: ["Activeert 4.000+ herstel-genen", "Stimuleert dermal papilla stamcellen", "+70% collageen productie"],
