@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ChevronDown, Check, ArrowUpRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -84,10 +84,102 @@ const ingredients = [
 ]
 
 export default function Ingredients() {
-    const [expanded, setExpanded] = useState<string | null>("ghkcu")
+    const [expanded, setExpanded] = useState<string | null>(null)
+    const [showCursor, setShowCursor] = useState(false)
+    const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
+    const [animationPlayed, setAnimationPlayed] = useState(false)
+    const sectionRef = useRef<HTMLElement>(null)
+    const ghkcuCardRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !animationPlayed) {
+                    setAnimationPlayed(true)
+
+                    // Start cursor animation after 1.5s delay
+                    setTimeout(() => {
+                        setShowCursor(true)
+                        // Start from center-right of section
+                        setCursorPos({ x: 80, y: 30 })
+
+                        // Move to GHK-Cu card
+                        setTimeout(() => {
+                            setCursorPos({ x: 20, y: 55 })
+
+                            // Click effect and expand
+                            setTimeout(() => {
+                                setExpanded("ghkcu")
+
+                                // Hide cursor after click
+                                setTimeout(() => {
+                                    setShowCursor(false)
+                                }, 800)
+                            }, 600)
+                        }, 800)
+                    }, 1500)
+                }
+            })
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, {
+            threshold: 0.3
+        })
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current)
+        }
+
+        return () => observer.disconnect()
+    }, [animationPlayed])
 
     return (
-        <section id="ingredienten" className="py-24 sm:py-32 bg-gradient-to-b from-[#FDFCFA] to-white overflow-hidden">
+        <section
+            ref={sectionRef}
+            id="ingredienten"
+            className="py-24 sm:py-32 bg-gradient-to-b from-[#FDFCFA] to-white overflow-hidden relative"
+        >
+            {/* Animated Cursor */}
+            <AnimatePresence>
+                {showCursor && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{
+                            opacity: 1,
+                            scale: 1,
+                            left: `${cursorPos.x}%`,
+                            top: `${cursorPos.y}%`
+                        }}
+                        exit={{ opacity: 0, scale: 0.5 }}
+                        transition={{
+                            duration: 0.8,
+                            ease: [0.22, 1, 0.36, 1],
+                            left: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+                            top: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+                        }}
+                        className="absolute z-50 pointer-events-none"
+                        style={{ left: `${cursorPos.x}%`, top: `${cursorPos.y}%` }}
+                    >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M5 3L19 12L12 14L9 21L5 3Z"
+                                fill="#1a1a1a"
+                                stroke="white"
+                                strokeWidth="1.5"
+                            />
+                        </svg>
+                        {cursorPos.x < 30 && (
+                            <motion.div
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{ scale: [0, 1.5, 1], opacity: [0, 0.5, 0] }}
+                                transition={{ duration: 0.4, delay: 0.2 }}
+                                className="absolute top-0 left-0 w-8 h-8 rounded-full bg-[#C4956A]/30 -translate-x-1/2 -translate-y-1/2"
+                            />
+                        )}
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <div className="max-w-5xl mx-auto px-6">
 
                 {/* Header with Marketing Copy */}
@@ -148,6 +240,7 @@ export default function Ingredients() {
                     {ingredients.map((ing, i) => (
                         <motion.div
                             key={ing.id}
+                            ref={ing.id === "ghkcu" ? ghkcuCardRef : undefined}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
@@ -159,8 +252,8 @@ export default function Ingredients() {
                             onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
                             whileHover={{ y: -4, transition: { duration: 0.2 } }}
                             className={`group cursor-pointer rounded-2xl overflow-hidden transition-shadow duration-300 ${ing.hero
-                                ? 'bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl'
-                                : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-lg'
+                                    ? 'bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl'
+                                    : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-lg'
                                 }`}
                         >
                             {/* Card Content */}
