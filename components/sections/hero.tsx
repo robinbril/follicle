@@ -106,7 +106,7 @@ export default function Hero() {
                             className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden rounded-2xl overflow-hidden shadow-2xl"
                         >
                             <Image
-                                src="/images/revive-hero-bottle.jpg"
+                                src="/images/revive-hero-bottle.png"
                                 alt="REVIVE Hair Growth Serum"
                                 fill
                                 className="object-cover"
@@ -131,7 +131,7 @@ export default function Hero() {
                         <div className="relative w-full max-w-lg aspect-[4/5]">
                             {/* Main Product Image */}
                             <Image
-                                src="/images/revive-hero-bottle.jpg"
+                                src="/images/revive-hero-bottle.png"
                                 alt="REVIVE Hair Growth Serum"
                                 fill
                                 className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)]"

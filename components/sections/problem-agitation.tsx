@@ -1,115 +1,80 @@
 "use client"
 
-import { Check, ArrowRight } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { Check } from 'lucide-react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
-const treatments = [
-    {
-        name: "REVIVE",
-        price: "€29/mnd",
-        highlight: true,
-        features: [
-            { text: "6 gepatenteerde ingrediënten", positive: true },
-            { text: "Hormoonvrij", positive: true },
-            { text: "Geen bijwerkingen", positive: true },
-            { text: "1x per dag", positive: true },
-            { text: "Combineerbaar met Minoxidil", positive: true },
-        ]
-    },
+const competitors = [
     {
         name: "Minoxidil",
         price: "€45/mnd",
-        highlight: false,
-        features: [
-            { text: "Bewezen effectief", positive: true },
-            { text: "2x per dag toepassen", neutral: true },
-            { text: "Stop = mogelijke uitval", neutral: true },
-        ]
+        features: ["Bewezen effectief", "2× daags toepassen", "Stop = uitval"]
     },
     {
         name: "Finasteride",
         price: "€30/mnd",
-        highlight: false,
-        features: [
-            { text: "Sterk tegen DHT", positive: true },
-            { text: "Hormoonblokker", neutral: true },
-            { text: "Mogelijke bijwerkingen", neutral: true },
-        ]
+        features: ["Remt DHT", "Hormoonblokkend", "Bijwerkingen mogelijk"]
     },
     {
-        name: "Transplant",
+        name: "Transplantatie",
         price: "€5.000+",
-        highlight: false,
-        features: [
-            { text: "Permanente oplossing", positive: true },
-            { text: "Chirurgisch ingrijpen", neutral: true },
-            { text: "Lange herstelperiode", neutral: true },
-        ]
-    },
+        features: ["Permanent", "Chirurgisch", "Herstelperiode"]
+    }
+]
+
+const reviveFeatures = [
+    { left: "6 gepatenteerde ingrediënten", right: "Hormoonvrij" },
+    { left: "20.5% actieve concentratie", right: "Geen bijwerkingen" },
+    { left: "Combineerbaar met Minoxidil", right: "180 dagen garantie" },
 ]
 
 export default function ProblemAgitation() {
     return (
-        <section className="py-20 sm:py-28 bg-[#FDFCFA] relative overflow-hidden">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <section className="py-24 sm:py-32 bg-[#FDFCFA] relative overflow-hidden">
+            <div className="max-w-5xl mx-auto px-6 relative z-10">
 
-                {/* Section Title - Elegant serif */}
+                {/* Elegant Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-14"
+                    className="text-center mb-20"
                 >
-                    <h2 className="text-3xl sm:text-4xl font-normal text-[#2D2A26] mb-4 tracking-tight">
-                        Vergelijk Eerlijk
+                    <h2
+                        className="text-4xl sm:text-5xl font-normal text-[#2D2A26] mb-6 tracking-wide uppercase"
+                        style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '6px' }}
+                    >
+                        Vergelijk
                     </h2>
-                    <p className="text-[#6B6560] max-w-xl mx-auto leading-relaxed">
-                        REVIVE: Natuurlijk serum met <span className="text-[#C4956A] font-medium">20.5% actieve stof</span>.
-                        Standalone of gecombineerd met Minoxidil.
+                    <p className="text-[#8A8580] text-lg font-light tracking-wide">
+                        Eén serum. Zes technologieën. Geen compromis.
                     </p>
                 </motion.div>
 
-                {/* Treatment Comparison - Premium Cards */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
-                    {treatments.map((t, i) => (
+                {/* Competitors Grid - Smaller, less prominent */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16 max-w-3xl mx-auto">
+                    {competitors.map((comp, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className={`relative p-6 lg:p-8 rounded-2xl transition-all duration-300 ${t.highlight
-                                ? 'bg-white border-2 border-[#C4956A] shadow-[0_8px_30px_rgba(196,149,106,0.15)] lg:scale-[1.02]'
-                                : 'bg-white border border-[#E8E4DF] hover:shadow-[0_8px_30px_rgba(45,42,38,0.08)] hover:-translate-y-1'
-                                }`}
+                            className="bg-transparent border border-[#E8E4DF] rounded-xl p-6 text-center"
                         >
-                            {/* Recommended badge */}
-                            {t.highlight && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#C4956A] to-[#D4A574] text-white text-[11px] font-medium tracking-wide px-4 py-1.5 rounded-full uppercase shadow-sm">
-                                    Aanbevolen
-                                </div>
-                            )}
-
-                            {/* Product name & price */}
-                            <div className="mb-6">
-                                <h3 className={`text-xl font-semibold mb-1 ${t.highlight ? 'text-[#C4956A]' : 'text-[#2D2A26]'}`}>
-                                    {t.name}
-                                </h3>
-                                <p className="text-[#9A948E] text-sm">{t.price}</p>
-                            </div>
-
-                            {/* Features list - elegant, no red crosses */}
-                            <ul className="space-y-3">
-                                {t.features.map((feature, idx) => (
-                                    <li key={idx} className="flex items-start gap-2.5 text-sm text-[#6B6560]">
-                                        {feature.positive ? (
-                                            <Check className="w-4 h-4 text-[#C4956A] flex-shrink-0 mt-0.5" />
-                                        ) : (
-                                            <span className="w-4 h-4 flex items-center justify-center text-[#C4C0BA] flex-shrink-0 mt-0.5">·</span>
-                                        )}
-                                        <span className="leading-relaxed">{feature.text}</span>
+                            <h3 className="text-xs tracking-widest uppercase text-[#6B6560] mb-2">
+                                {comp.name}
+                            </h3>
+                            <p
+                                className="text-2xl text-[#2D2A26] mb-5"
+                                style={{ fontFamily: "'Playfair Display', serif" }}
+                            >
+                                {comp.price}
+                            </p>
+                            <ul className="space-y-2">
+                                {comp.features.map((feat, idx) => (
+                                    <li key={idx} className="text-sm text-[#9A948E] leading-relaxed">
+                                        {feat}
                                     </li>
                                 ))}
                             </ul>
@@ -117,32 +82,70 @@ export default function ProblemAgitation() {
                     ))}
                 </div>
 
-                {/* Trust section - Elegant, not aggressive */}
+                {/* REVIVE Hero Card - Separate, dominant */}
                 <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="relative max-w-2xl mx-auto bg-white rounded-2xl p-12 sm:p-16 border border-[#C4956A] shadow-[0_20px_60px_rgba(196,149,106,0.1)]"
+                >
+                    {/* Subtle gold glow */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#C4956A]/5 to-transparent pointer-events-none" />
+
+                    <div className="relative text-center">
+                        {/* Brand name */}
+                        <h3
+                            className="text-4xl sm:text-5xl text-[#C4956A] mb-3 tracking-widest"
+                            style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '8px' }}
+                        >
+                            REVIVE
+                        </h3>
+                        <p className="text-[#6B6560] text-lg font-light mb-10">
+                            €29/maand
+                        </p>
+
+                        {/* Separator */}
+                        <div className="w-16 h-px bg-[#E8E4DF] mx-auto mb-10" />
+
+                        {/* Features in 2 columns */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 mb-12">
+                            {reviveFeatures.map((row, i) => (
+                                <div key={i} className="contents">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-5 h-5 rounded-full border border-[#C4956A] flex items-center justify-center flex-shrink-0">
+                                            <Check className="w-3 h-3 text-[#C4956A]" />
+                                        </div>
+                                        <span className="text-[#4A4540] text-sm">{row.left}</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-5 h-5 rounded-full border border-[#C4956A] flex items-center justify-center flex-shrink-0">
+                                            <Check className="w-3 h-3 text-[#C4956A]" />
+                                        </div>
+                                        <span className="text-[#4A4540] text-sm">{row.right}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Subtle CTA - outline style */}
+                        <Link
+                            href="#prijzen"
+                            className="inline-block px-10 py-4 border border-[#2D2A26] rounded-lg text-[#2D2A26] text-sm tracking-widest uppercase hover:bg-[#2D2A26] hover:text-white transition-all duration-300"
+                        >
+                            Bekijk studies
+                        </Link>
+                    </div>
+                </motion.div>
+
+                {/* Confident copy - no defensiveness */}
+                <motion.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="text-center max-w-2xl mx-auto"
+                    className="text-center text-[#9A948E] text-sm mt-12 tracking-wide"
                 >
-                    <p className="text-[#6B6560] leading-relaxed mb-6">
-                        <span className="text-[#2D2A26] font-medium">"Klinisch bewezen"</span> — we snappen de scepsis.
-                        <br className="hidden sm:block" />
-                        Daarom geen marketingclaims, alleen{' '}
-                        <span className="text-[#C4956A] font-medium">24 peer-reviewed studies</span>.
-                    </p>
-
-                    {/* CTA */}
-                    <Button
-                        asChild
-                        className="bg-[#C4956A] hover:bg-[#B38559] text-white font-medium py-6 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                        <Link href="#prijzen" className="flex items-center gap-2">
-                            Bekijk prijzen
-                            <ArrowRight className="w-4 h-4" />
-                        </Link>
-                    </Button>
-                    <p className="text-[#9A948E] text-xs mt-3">180 dagen niet tevreden? Volledige terugbetaling.</p>
-                </motion.div>
+                    24 peer-reviewed studies. Oordeel zelf.
+                </motion.p>
             </div>
         </section>
     )
