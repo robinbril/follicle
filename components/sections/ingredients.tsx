@@ -198,10 +198,10 @@ export default function Ingredients() {
                         <AnimatePresence>
                             {showTapHint && (
                                 <motion.div
-                                    initial={{ scale: 0.8, opacity: 0 }}
-                                    animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.6, 0.3, 0.6] }}
-                                    exit={{ scale: 1.5, opacity: 0 }}
-                                    transition={{ duration: 0.8, repeat: Infinity }}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: [0.3, 0.6, 0.3] }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                                     className="absolute inset-0 border-2 border-[#C4956A] rounded-2xl pointer-events-none z-10"
                                 />
                             )}
