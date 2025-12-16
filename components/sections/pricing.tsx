@@ -1,37 +1,64 @@
 "use client"
 
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Check } from 'lucide-react'
+import { Check, Star, Shield, Truck } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Pricing() {
-    const [selectedPlan, setSelectedPlan] = useState(1) // Pre-select 6 maanden (index 1)
+    const [selectedPlan, setSelectedPlan] = useState(2) // Pre-select 6 months (best deal)
 
     const plans = [
         {
             id: "trial",
-            label: "Probeer",
-            sublabel: "1 maand",
+            label: "Proberen",
+            months: 1,
             price: 49,
-            perMonth: null,
+            perMonth: 49,
+            originalTotal: 49,
             totalPrice: 49,
+            savings: 0,
             featured: false,
-            description: "Perfect om te testen of REVIVE bij je past",
-            items: ["1× REVIVE Serum (30ml)"],
+            benefits: [
+                "1× REVIVE Serum (30ml)",
+                "Gratis verzending"
+            ],
         },
         {
-            id: "cure",
-            label: "Volledige kuur",
-            sublabel: "6 maanden",
-            price: 29,
-            perMonth: true,
-            totalPrice: 174,
+            id: "popular",
+            label: "Populair",
+            months: 3,
+            price: 35,
+            perMonth: 35,
+            originalTotal: 147,
+            totalPrice: 105,
+            savings: 42,
+            featured: false,
+            benefits: [
+                "3× REVIVE Serum",
+                "Gratis verzending",
+                "Eerste resultaten zichtbaar"
+            ],
+        },
+        {
+            id: "best",
+            label: "Beste Deal",
+            months: 6,
+            price: 20,
+            perMonth: 20,
+            originalTotal: 294,
+            totalPrice: 119,
+            savings: 175,
             featured: true,
-            description: "Beste resultaten voor volledige behandeling",
-            items: ["6× REVIVE Serum (180ml totaal)"],
-            extraBenefit: "Meest gekozen door 847 klanten"
+            benefits: [
+                "6× REVIVE Serum (Complete kuur)",
+                "Gratis verzending",
+                "Volledige resultaten",
+                "180 dagen garantie"
+            ],
+            badge: "BESPAAR €175"
         },
     ]
 
@@ -47,143 +74,151 @@ export default function Pricing() {
         return () => window.removeEventListener('selectPlan', handleSelectPlan as EventListener)
     }, [])
 
-    const selectedBundle = plans[selectedPlan]
-
     return (
-        <section id="prijzen" className="py-24 sm:py-32 bg-[#FDFCFA] relative overflow-hidden">
-            <div className="max-w-4xl mx-auto px-6">
+        <section id="prijzen" className="py-24 sm:py-32 bg-gradient-to-b from-white to-[#FAFAF9]">
+            <div className="max-w-5xl mx-auto px-6">
 
-                {/* Elegant Title */}
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center mb-14"
                 >
-                    <h2
-                        className="text-3xl sm:text-4xl font-light text-[#2D2A26] mb-4 tracking-wide"
-                    >
+                    <p className="text-sm text-[#C4956A] font-medium mb-3">
+                        Start vandaag
+                    </p>
+                    <h2 className="text-3xl sm:text-4xl font-light text-[#1a1a1a] tracking-tight mb-4">
                         Kies je behandeling
                     </h2>
-                    <p className="text-[#8A8580] font-light">
-                        Gratis verzending · 180 dagen garantie
-                    </p>
+                    <div className="flex items-center justify-center gap-6 text-sm text-[#888]">
+                        <span className="flex items-center gap-2">
+                            <Truck className="w-4 h-4" /> Gratis verzending
+                        </span>
+                        <span className="flex items-center gap-2">
+                            <Shield className="w-4 h-4" /> 180 dagen garantie
+                        </span>
+                    </div>
                 </motion.div>
 
-                {/* Two-option layout with visual hierarchy */}
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-12">
-
-                    {/* Trial - smaller (2 cols) */}
-                    <motion.button
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        onClick={() => setSelectedPlan(0)}
-                        className={`md:col-span-2 relative p-8 rounded-2xl transition-all duration-300 text-left ${selectedPlan === 0
-                            ? 'bg-white border-2 border-[#C4956A] shadow-lg'
-                            : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]/50'
-                            }`}
-                    >
-                        <p className="text-xs tracking-widest uppercase text-[#9A948E] mb-2">
-                            {plans[0].label}
-                        </p>
-                        <h3 className="text-xl font-medium text-[#2D2A26] mb-4">
-                            {plans[0].sublabel}
-                        </h3>
-
-                        <div className="mb-6">
-                            <span className="text-3xl font-medium text-[#2D2A26]">€{plans[0].price}</span>
-                        </div>
-
-                        <p className="text-sm text-[#6B6560] mb-4 leading-relaxed">
-                            {plans[0].description}
-                        </p>
-
-                        <div className="flex items-center gap-2 text-sm text-[#6B6560]">
-                            <Check className="w-4 h-4 text-[#C4956A]" />
-                            {plans[0].items[0]}
-                        </div>
-                    </motion.button>
-
-                    {/* Cure - larger, featured (3 cols) */}
-                    <motion.button
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        onClick={() => setSelectedPlan(1)}
-                        className={`md:col-span-3 relative p-8 sm:p-10 rounded-2xl transition-all duration-300 text-left ${selectedPlan === 1
-                            ? 'bg-white border-2 border-[#C4956A] shadow-[0_8px_30px_rgba(196,149,106,0.15)]'
-                            : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]/50 hover:shadow-lg'
-                            }`}
-                    >
-                        {/* Recommended indicator */}
-                        <span className="absolute top-4 right-4 text-[#C4956A] text-sm">◆</span>
-
-                        <p className="text-xs tracking-widest uppercase text-[#C4956A] mb-2">
-                            Aanbevolen
-                        </p>
-                        <h3
-                            className="text-2xl font-medium text-[#2D2A26] mb-4"
+                {/* 3-Tier Pricing Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                    {plans.map((plan, i) => (
+                        <motion.div
+                            key={plan.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            onClick={() => setSelectedPlan(i)}
+                            className={`relative cursor-pointer rounded-2xl p-6 transition-all duration-300 ${plan.featured
+                                    ? 'bg-[#1a1a1a] text-white scale-[1.02] shadow-2xl z-10'
+                                    : selectedPlan === i
+                                        ? 'bg-white border-2 border-[#C4956A] shadow-lg'
+                                        : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-md'
+                                }`}
                         >
-                            {plans[1].sublabel}
-                        </h3>
+                            {/* Savings Badge */}
+                            {plan.badge && (
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#C4956A] text-white text-[10px] tracking-wider font-bold px-4 py-1.5 rounded-full shadow-lg">
+                                    {plan.badge}
+                                </div>
+                            )}
 
-                        <div className="mb-2">
-                            <span className="text-4xl font-medium text-[#2D2A26]">€{plans[1].price}</span>
-                            <span className="text-[#9A948E] text-lg">/maand</span>
-                        </div>
-                        <p className="text-sm text-[#9A948E] mb-6">€{plans[1].totalPrice} totaal</p>
+                            {/* Header */}
+                            <div className="text-center mb-4 pt-2">
+                                <p className={`text-xs tracking-widest uppercase mb-2 ${plan.featured ? 'text-[#C4956A]' : 'text-[#999]'
+                                    }`}>
+                                    {plan.label}
+                                </p>
+                                <h3 className={`text-2xl font-medium ${plan.featured ? 'text-white' : 'text-[#1a1a1a]'
+                                    }`}>
+                                    {plan.months} maand{plan.months > 1 ? 'en' : ''}
+                                </h3>
+                            </div>
 
-                        <p className="text-sm text-[#6B6560] mb-4 leading-relaxed">
-                            {plans[1].description}
-                        </p>
+                            {/* Product Visual */}
+                            <div className="flex justify-center mb-4">
+                                <div className={`w-20 h-20 rounded-xl flex items-center justify-center ${plan.featured ? 'bg-white/10' : 'bg-[#f8f8f8]'
+                                    }`}>
+                                    <span className={`text-3xl font-light ${plan.featured ? 'text-[#C4956A]' : 'text-[#C4956A]'
+                                        }`}>
+                                        {plan.months}×
+                                    </span>
+                                </div>
+                            </div>
 
-                        <div className="flex items-center gap-2 text-sm text-[#6B6560] mb-4">
-                            <Check className="w-4 h-4 text-[#C4956A]" />
-                            {plans[1].items[0]}
-                        </div>
+                            {/* Price */}
+                            <div className="text-center mb-4">
+                                {plan.savings > 0 && (
+                                    <p className={`text-sm line-through mb-1 ${plan.featured ? 'text-white/40' : 'text-[#bbb]'
+                                        }`}>
+                                        €{plan.originalTotal}
+                                    </p>
+                                )}
+                                <div className="flex items-baseline justify-center gap-1">
+                                    <span className={`text-4xl font-medium ${plan.featured ? 'text-white' : 'text-[#1a1a1a]'
+                                        }`}>
+                                        €{plan.totalPrice}
+                                    </span>
+                                    <span className={`text-sm ${plan.featured ? 'text-white/50' : 'text-[#999]'
+                                        }`}>
+                                        totaal
+                                    </span>
+                                </div>
+                                <p className={`text-sm mt-1 ${plan.featured ? 'text-[#C4956A]' : 'text-[#C4956A]'
+                                    }`}>
+                                    €{plan.perMonth}/maand
+                                </p>
+                            </div>
 
-                        {/* Social proof */}
-                        <p className="text-xs text-[#C4956A] font-medium">
-                            {plans[1].extraBenefit}
-                        </p>
-                    </motion.button>
+                            {/* Benefits */}
+                            <ul className="space-y-2 mb-6">
+                                {plan.benefits.map((benefit, idx) => (
+                                    <li key={idx} className={`flex items-start gap-2 text-sm ${plan.featured ? 'text-white/80' : 'text-[#666]'
+                                        }`}>
+                                        <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 ${plan.featured ? 'text-[#C4956A]' : 'text-[#C4956A]'
+                                            }`} />
+                                        {benefit}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {/* CTA Button */}
+                            <Link href="/checkout" className="block">
+                                <button className={`w-full py-3 rounded-lg font-medium transition-all ${plan.featured
+                                        ? 'bg-[#C4956A] text-white hover:bg-[#b8896a]'
+                                        : selectedPlan === i
+                                            ? 'bg-[#1a1a1a] text-white hover:bg-[#333]'
+                                            : 'border border-[#ddd] text-[#666] hover:border-[#C4956A] hover:text-[#C4956A]'
+                                    }`}>
+                                    {plan.featured ? 'Kies beste deal' : 'Selecteer'}
+                                </button>
+                            </Link>
+                        </motion.div>
+                    ))}
                 </div>
 
-                {/* Checkout - Clean, Premium */}
+                {/* Social Proof */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     className="text-center"
                 >
-                    {/* Total */}
-                    <div className="mb-8">
-                        <p className="text-[#9A948E] text-sm mb-2">Totaal</p>
-                        <p
-                            className="text-4xl font-medium text-[#2D2A26]"
-                        >
-                            €{selectedBundle.totalPrice}
-                        </p>
-                        <p className="text-[#9A948E] text-sm mt-1">
-                            {selectedPlan === 1 ? "€0.97 per dag" : ""}
-                        </p>
+                    <div className="inline-flex items-center gap-2 bg-white border border-[#eee] rounded-full px-5 py-2.5 shadow-sm">
+                        <div className="flex">
+                            {[...Array(5)].map((_, i) => (
+                                <Star key={i} className="w-4 h-4 fill-[#C4956A] text-[#C4956A]" />
+                            ))}
+                        </div>
+                        <span className="text-sm text-[#666]">
+                            Keuze van <strong>847+</strong> klanten
+                        </span>
                     </div>
 
-                    {/* Elegant CTA - Dark, not glossy */}
-                    <Link href="/checkout">
-                        <Button
-                            className="bg-[#2D2A26] hover:bg-[#C4956A] text-white font-normal text-lg py-7 px-14 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 mb-6"
-                        >
-                            Start behandeling
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                    </Link>
-
-                    {/* Subtle trust */}
-                    <p className="text-[#9A948E] text-sm">
-                        180 dagen garantie · Gratis verzending · Morgen in huis
+                    <p className="text-xs text-[#999] mt-6">
+                        Niet tevreden? Volledige terugbetaling binnen 180 dagen. Geen vragen.
                     </p>
                 </motion.div>
 
