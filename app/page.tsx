@@ -1,6 +1,5 @@
 import Hero from '@/components/sections/hero'
 import Ingredients from '@/components/sections/ingredients'
-import Results from '@/components/sections/results'
 import HowItWorks from '@/components/sections/how-it-works'
 import ProblemAgitation from '@/components/sections/problem-agitation'
 import TargetAudience from '@/components/sections/target-audience'
@@ -17,15 +16,11 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Header />
       <Hero />
-      {/* 1. Hero done above */}
 
-      {/* 1. What is REVIVE - explain BEFORE comparing */}
+      {/* 1. What is REVIVE - ingredients with scientific claims */}
       <Ingredients />
 
-      {/* 2. Scientific Proof - show the results */}
-      <Results />
-
-      {/* 3. How it works - simple steps */}
+      {/* 2. How it works - simple steps */}
       <HowItWorks />
 
       {/* 4. Compare - NOW they understand what REVIVE is */}

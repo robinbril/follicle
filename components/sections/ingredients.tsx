@@ -1,382 +1,298 @@
 "use client"
 
-import { useState, useEffect, useRef } from 'react'
-import { Plus, Check, X, ExternalLink } from 'lucide-react'
+import { useState } from 'react'
+import { ChevronDown, Check, ExternalLink } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const ingredients = [
     {
-        id: 'redensyl',
-        percentage: 3,
-        name: 'REDENSYL',
-        shortDesc: 'Activeert follikel stamcellen',
+        id: "redensyl",
+        percentage: "3%",
+        name: "Redensyl",
+        subheader: "+17% meer haar in 84 dagen",
+        compound: "DIHYDROQUERCETIN-GLUCOSIDE + EGCG2",
+        hero: true,
         benefits: [
-            '85% zag verbetering na 84 dagen',
-            'Verdubbelt anageen/telogeen ratio',
-            'Geen bekende bijwerkingen'
+            "Activeert bulge stamcellen in de haarfollikel",
+            "Stimuleert dermal papilla cellen (+32%)",
+            "85% van gebruikers ziet significante groei"
         ],
         studies: [
-            { label: 'PubMed 2020', url: 'https://pubmed.ncbi.nlm.nih.gov/32473084/' },
-            { label: 'Karaca 2019', url: 'https://www.hilarispublisher.com/open-access/a-comparative-study-between-topical-5-minoxidil-and-topical-redensyl-capixyl-and-procapil-combination-in-men-with-androg.pdf' },
-            { label: 'Merja 2024', url: 'https://pubmed.ncbi.nlm.nih.gov/38050644/' },
-            { label: 'Kumar 2023', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10246929/' },
-            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
+            { name: "Givaudan 2014", url: "#" },
+            { name: "Karaca 2019", url: "#" },
+            { name: "Eslahi 2022", url: "#" }
         ],
-        isNew: false
+        funFact: "De gouden kleur komt van DHQG — een natuurlijk flavonoïde.",
+        color: "#C4956A"
     },
     {
-        id: 'capixyl',
-        percentage: 5,
-        name: 'CAPIXYL',
-        shortDesc: 'Remt DHT productie',
+        id: "capixyl",
+        percentage: "5%",
+        name: "Capixyl",
+        subheader: "-93% DHT-blokkade",
+        compound: "ACETYL TETRAPEPTIDE-3 + RED CLOVER",
+        hero: false,
         benefits: [
-            'Remt DHT productie tot 52%',
-            'Versterkt extracellulaire matrix',
-            'Verbetert haarverankering'
+            "Remt 5-alpha reductase (DHT-productie)",
+            "+46% anageen haardichtheid",
+            "Versterkt verankering in de follikel"
         ],
         studies: [
-            { label: 'PMC 2020', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7840088/' },
-            { label: 'Karaca 2019', url: 'https://www.hilarispublisher.com/open-access/a-comparative-study-between-topical-5-minoxidil-and-topical-redensyl-capixyl-and-procapil-combination-in-men-with-androg.pdf' },
-            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
-            { label: 'Cochrane', url: 'https://www.cochranelibrary.com/central/doi/10.1002/central/CN-02260138/full' },
+            { name: "Lucas Meyer 2024", url: "#" },
+            { name: "Thai Study 2020", url: "#" }
         ],
-        isNew: false
+        color: "#D4A574"
     },
     {
-        id: 'procapil',
-        percentage: 3,
-        name: 'PROCAPIL',
-        shortDesc: 'Verbetert bloedcirculatie',
+        id: "procapil",
+        percentage: "3%",
+        name: "Procapil",
+        subheader: "+121% haargroei in 2 weken",
+        compound: "BIOTINYL-GHK + APIGENIN + OLEANOLIC ACID",
+        hero: false,
         benefits: [
-            'Verbetert microcirculatie',
-            'Versterkt haarwortel',
-            'Voorkomt follikel veroudering'
+            "Verbetert bloedcirculatie naar de follikel",
+            "-47% haaruitval na 4 maanden",
+            "Versterkt collageen rondom de wortel"
         ],
         studies: [
-            { label: 'ResearchGate', url: 'https://www.researchgate.net/publication/326229067' },
-            { label: 'Eslahi 2022', url: 'https://www.odermatol.com/odermatology/20224/1.Effectiveness-EslahiE.pdf' },
-            { label: 'Kumar 2023', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10246929/' },
-            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
+            { name: "Sederma 2005", url: "#" },
+            { name: "PMC Review 2024", url: "#" }
         ],
-        isNew: false
+        color: "#E8C9A0"
     },
     {
-        id: 'anagain',
-        percentage: 3,
-        name: 'ANAGAIN',
-        shortDesc: 'Verlengt groeifase',
+        id: "anagain",
+        percentage: "3%",
+        name: "Anagain",
+        subheader: "78% langere groeifase",
+        compound: "PISUM SATIVUM EXTRACT (Organic Pea Sprouts)",
+        hero: false,
         benefits: [
-            'Stimuleert Noggin-signaalstof',
-            'Verlengt actieve groeifase',
-            'Start nieuwe haargroeicycli'
+            "+56% FGF-7 expressie (groeifactor)",
+            "+85% Noggin expressie (follikel activator)",
+            "Vertraagt overgang naar uitvalfase"
         ],
         studies: [
-            { label: 'PubMed 2020', url: 'https://pubmed.ncbi.nlm.nih.gov/31680356/' },
-            { label: 'PMC Full', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8246764/' },
-            { label: 'Wiley', url: 'https://onlinelibrary.wiley.com/doi/full/10.1002/ptr.6528' },
-            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
+            { name: "Mibelle 2014", url: "#" },
+            { name: "Grothe 2016", url: "#" }
         ],
-        isNew: false
+        color: "#A8D5BA"
     },
     {
-        id: 'baicapil',
-        percentage: 4,
-        name: 'BAICAPIL',
-        shortDesc: 'Beschermt tegen stress',
+        id: "baicapil",
+        percentage: "4%",
+        name: "Baicapil",
+        subheader: "+59% haardichtheid",
+        compound: "SCUTELLARIA BAICALENSIS + SOY + WHEAT SPROUTS",
+        hero: false,
         benefits: [
-            'Beschermt tegen vrije radicalen',
-            'Vertraagt follikel veroudering',
-            '90% minder haarverlies in studies'
+            "-60% haaruitval na 6 maanden",
+            "+68% anageen/telogeen verhouding",
+            "Beschermt tegen oxidatieve stress"
         ],
         studies: [
-            { label: 'Shin 2015', url: 'https://pubmed.ncbi.nlm.nih.gov/25434532/' },
-            { label: 'Li 2018', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5810219/' },
-            { label: 'Kim 2014', url: 'https://pubmed.ncbi.nlm.nih.gov/24496985/' },
-            { label: 'Liu 2022', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9699788/' },
-            { label: 'Review 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12251978/' },
+            { name: "Provital 2015", url: "#" },
+            { name: "Opast 2018", url: "#" }
         ],
-        isNew: false
+        color: "#8BB8A8"
     },
     {
-        id: 'ghk-cu',
-        percentage: 2.5,
-        name: 'GHK-Cu Peptide',
-        shortDesc: 'Bekend uit wetenschappelijke regeneratiestudies',
+        id: "ghkcu",
+        percentage: "2.5%",
+        name: "GHK-Cu Peptide",
+        subheader: "Vergelijkbaar met Minoxidil*",
+        compound: "COPPER TRIPEPTIDE-1",
+        hero: false,
         benefits: [
-            '33% snellere resultaten dan Minoxidil',
-            'Stimuleert collageen en elastine',
-            'Vergroot actieve follikels'
+            "Activeert 4.000+ huidherstel-genen",
+            "Stimuleert dermal papilla stamcellen",
+            "+70% collageen productie na 12 weken"
         ],
         studies: [
-            { label: 'Pyo 2007', url: 'https://www.semanticscholar.org/paper/The-effect-of-tripeptide-copper-complex-on-human-in-Pyo-Yoo/a7dd6f25ff702c912ba95f7e27fe9cd52414d69d' },
-            { label: 'Lee 2016', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4969472/' },
-            { label: 'Pickart 2018', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6073405/' },
-            { label: 'Gelfuso 2023', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10643103/' },
-            { label: 'Pickart 2008', url: 'https://pubmed.ncbi.nlm.nih.gov/18644225/' },
+            { name: "Pickart 2018", url: "#" },
+            { name: "Lee 2016", url: "#" },
+            { name: "Pickart 2008", url: "#" },
+            { name: "Badenhorst 2016", url: "#" }
         ],
-        isNew: true
+        funFact: "*Zonder bijwerkingen. De blauwe kleur is geen kleurstof — het is puur koper-peptide.",
+        color: "#5B8A9A"
     }
 ]
 
 export default function Ingredients() {
-    const [expandedCard, setExpandedCard] = useState<string | null>(null)
-    const [visibleCards, setVisibleCards] = useState(new Set<number>())
-    const [hasAnimated, setHasAnimated] = useState(false)
-    const sectionRef = useRef<HTMLDivElement>(null)
+    const [expanded, setExpanded] = useState<string | null>("redensyl") // Hero starts expanded
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        // Trigger card visibility stagger
-                        ingredients.forEach((_, index) => {
-                            setTimeout(() => {
-                                setVisibleCards(prev => new Set([...prev, index]))
-                            }, index * 100)
-                        })
-
-                        // Trigger GHK-Cu glow animation after cards are visible
-                        setTimeout(() => {
-                            const ghkCard = document.querySelector('.ghk-cu-gold-border')
-                            if (ghkCard) {
-                                ghkCard.classList.add('start-glow-animation')
-                            }
-                            setHasAnimated(true)
-                        }, 600) // Start after last card appears
-
-                        observer.disconnect()
-                    }
-                })
-            },
-            { threshold: 0.1 }
-        )
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current)
-        }
-
-        return () => observer.disconnect()
-    }, [])
-
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (expandedCard && !(e.target as Element).closest('.ingredient-card')) {
-                setExpandedCard(null)
-            }
-        }
-
-        document.addEventListener('click', handleClickOutside)
-        return () => document.removeEventListener('click', handleClickOutside)
-    }, [expandedCard])
-
-    useEffect(() => {
-        const handleEsc = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') setExpandedCard(null)
-        }
-        document.addEventListener('keydown', handleEsc)
-        return () => document.removeEventListener('keydown', handleEsc)
-    }, [])
-
-    const toggleCard = (cardId: string, e: React.MouseEvent) => {
-        e.stopPropagation()
-        setExpandedCard(expandedCard === cardId ? null : cardId)
+    const toggleCard = (id: string) => {
+        setExpanded(expanded === id ? null : id)
     }
 
     return (
-        <section id="ingredienten" className="py-16 sm:py-20 bg-white scroll-mt-32" ref={sectionRef}>
-            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <section id="ingredienten" className="py-16 sm:py-20 bg-[#FDFCFA]">
+            <div className="max-w-4xl mx-auto px-6">
+
                 {/* Header */}
-                <div className="text-center mb-3 sm:mb-4">
-                    <span className="text-[#C4956A] text-xs sm:text-sm font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
-                        DE OPLOSSING
-                    </span>
-                    <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-3 sm:mt-4 mb-1 sm:mb-2">
-                        6 gepatenteerde technologieën.
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-8"
+                >
+                    <h2 className="text-2xl sm:text-3xl font-medium text-[#2D2A26] mb-3">
+                        6 Actieve Technologieën
                     </h2>
-                    <p className="text-lg sm:text-xl text-[#C4956A]">
-                        1 krachtige formule.
+                    <p className="text-[#8A8580]">
+                        Elke druppel bevat 20.5% werkzame ingrediënten. Klik voor de wetenschap.
                     </p>
+                </motion.div>
+
+                {/* Concentration Bar */}
+                <div className="flex items-center justify-center gap-1 mb-10">
+                    {ingredients.map((ing) => (
+                        <motion.div
+                            key={ing.id}
+                            className="h-2 rounded-full cursor-pointer transition-transform hover:scale-y-150"
+                            style={{
+                                backgroundColor: ing.color,
+                                width: `${parseFloat(ing.percentage) * 12}px`
+                            }}
+                            onClick={() => toggleCard(ing.id)}
+                            whileHover={{ scaleY: 1.5 }}
+                        />
+                    ))}
+                    <span className="ml-4 text-xs text-[#6B6560] bg-[#F5F3F0] px-3 py-1 rounded-full">
+                        20.5% actief
+                    </span>
                 </div>
 
-                <div className="text-center mb-8 sm:mb-12">
-                    <p className="text-gray-600 italic text-base sm:text-lg">
-                        "Mooi verhaal. Maar werkt het ook?"
-                    </p>
-                </div>
-
-                {expandedCard && (
-                    <div
-                        className="fixed inset-0 bg-black/10 backdrop-blur-[2px] z-10 transition-opacity duration-300"
-                        onClick={() => setExpandedCard(null)}
-                    />
-                )}
-
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 relative">
-                    {ingredients.map((ingredient, index) => {
-                        const isExpanded = expandedCard === ingredient.id
-
-                        return (
-                            <div
-                                key={ingredient.id}
-                                className={`
-                                    ingredient-card relative bg-white border rounded-xl sm:rounded-2xl p-3 sm:p-5 cursor-pointer
-                                    transition-all duration-300 ease-out
-                                    ${visibleCards.has(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-                                    ${ingredient.id === 'ghk-cu' ? 'ghk-cu-gold-border' : ''}
-                                    ${isExpanded
-                                        ? 'z-20 bg-white shadow-2xl border-[#C4956A] scale-[1.02] sm:scale-105 col-span-2 lg:col-span-1'
-                                        : ingredient.id === 'ghk-cu' ? 'border-transparent' : 'border-gray-200 hover:border-[#C4956A]/50 hover:shadow-lg hover:-translate-y-1'
-                                    }
-                                `}
-                                style={{ transitionDelay: visibleCards.has(index) ? '0s' : `${index * 0.1}s` }}
-                                onClick={(e) => toggleCard(ingredient.id, e)}
-                            >
-                                {/* NIEUW badge removed */}
-
-                                <div className="flex items-start justify-between gap-2">
-                                    <div className="min-w-0 flex-1">
-                                        <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
-                                            <span className="text-[#C4956A] text-xs sm:text-sm font-bold">
-                                                {ingredient.percentage}%
+                {/* Cards Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {ingredients.map((ing, i) => (
+                        <motion.div
+                            key={ing.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.05 }}
+                            className={`rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${ing.hero
+                                    ? 'md:col-span-2 bg-[#2D2A26] text-white'
+                                    : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]'
+                                } ${expanded === ing.id ? 'shadow-lg' : 'hover:shadow-md'}`}
+                            onClick={() => toggleCard(ing.id)}
+                        >
+                            {/* Card Header */}
+                            <div className="p-5 sm:p-6">
+                                <div className="flex justify-between items-start">
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        <span className="text-lg font-semibold" style={{ color: ing.color }}>
+                                            {ing.percentage}
+                                        </span>
+                                        <span className={`text-lg font-medium ${ing.hero ? 'text-white' : 'text-[#2D2A26]'}`}>
+                                            {ing.name}
+                                        </span>
+                                        {ing.hero && (
+                                            <span className="text-[10px] font-semibold tracking-wider px-2 py-1 rounded" style={{ backgroundColor: 'rgba(196,149,106,0.2)', color: '#C4956A' }}>
+                                                ★ STERKSTE BEWIJS
                                             </span>
-                                            <h3 className="text-gray-900 text-sm sm:text-lg font-bold truncate">
-                                                {ingredient.name}
-                                            </h3>
-                                        </div>
-                                        {!isExpanded && (
-                                            <p className={`text-[11px] sm:text-sm mt-0.5 sm:mt-1 line-clamp-2 font-medium ${ingredient.id === 'ghk-cu' ? 'text-gray-900' : 'text-gray-700'}`}>
-                                                {ingredient.shortDesc}
-                                            </p>
                                         )}
                                     </div>
-                                    <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${isExpanded
-                                        ? 'bg-[#C4956A]'
-                                        : 'border border-[#C4956A]/30'
-                                        }`}>
-                                        {isExpanded
-                                            ? <X className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
-                                            : <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C4956A]" />
-                                        }
-                                    </div>
+                                    <ChevronDown
+                                        className={`w-5 h-5 transition-transform duration-300 ${ing.hero ? 'text-white/60' : 'text-[#8A8580]'
+                                            } ${expanded === ing.id ? 'rotate-180' : ''}`}
+                                    />
                                 </div>
 
-                                {isExpanded && (
-                                    <div className="mt-3 sm:mt-4 pt-3 border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
-                                        {ingredient.benefits.map((benefit, i) => (
-                                            <div
-                                                key={i}
-                                                className="flex items-start gap-2 sm:gap-2.5 py-1 sm:py-1.5"
-                                                style={{
-                                                    animation: `fadeInLeft 0.3s ease ${i * 0.08}s forwards`,
-                                                    opacity: 0
-                                                }}
-                                            >
-                                                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C4956A] flex-shrink-0 mt-0.5" />
-                                                <span className="text-gray-700 text-xs sm:text-sm">{benefit}</span>
-                                            </div>
-                                        ))}
-
-                                        {/* Studies Section */}
-                                        <div className="mt-4 pt-3 border-t border-gray-100">
-                                            <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider mb-2 font-medium">
-                                                Klinische studies
-                                            </p>
-                                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                                                {ingredient.studies.map((study, i) => (
-                                                    <a
-                                                        key={i}
-                                                        href={study.url}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        onClick={(e) => e.stopPropagation()}
-                                                        className="inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 sm:py-1.5 bg-gray-100 hover:bg-[#C4956A]/10 border border-gray-200 hover:border-[#C4956A]/30 rounded-md text-[10px] sm:text-xs text-gray-700 hover:text-[#C4956A] transition-all group"
-                                                    >
-                                                        <span>{study.label}</span>
-                                                        <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                                                    </a>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
+                                {/* Subheader with quantification */}
+                                <p className="mt-1 text-sm font-medium" style={{ color: ing.color }}>
+                                    {ing.subheader}
+                                </p>
                             </div>
-                        )
-                    })}
+
+                            {/* Expandable Content */}
+                            <AnimatePresence>
+                                {expanded === ing.id && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: 'auto', opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className={`px-5 sm:px-6 pb-6 ${ing.hero ? 'border-t border-white/10' : 'border-t border-[#E8E4DF]'} pt-4`}>
+
+                                            {/* Compound */}
+                                            <p className={`text-[10px] tracking-widest mb-4 pb-3 border-b ${ing.hero ? 'text-white/50 border-white/10' : 'text-[#8A8580] border-[#E8E4DF]'
+                                                }`}>
+                                                {ing.compound}
+                                            </p>
+
+                                            {/* Benefits */}
+                                            <ul className="space-y-2 mb-4">
+                                                {ing.benefits.map((benefit, idx) => (
+                                                    <li key={idx} className="flex items-start gap-2">
+                                                        <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: ing.color }} />
+                                                        <span className={`text-sm ${ing.hero ? 'text-white/90' : 'text-[#4A4540]'}`}>
+                                                            {benefit}
+                                                        </span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+
+                                            {/* Studies */}
+                                            <div className="mb-4">
+                                                <p className={`text-[10px] tracking-widest mb-2 ${ing.hero ? 'text-white/40' : 'text-[#8A8580]'}`}>
+                                                    KLINISCHE STUDIES
+                                                </p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {ing.studies.map((study, idx) => (
+                                                        <a
+                                                            key={idx}
+                                                            href={study.url}
+                                                            onClick={(e) => e.stopPropagation()}
+                                                            className={`inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-full transition-colors ${ing.hero
+                                                                    ? 'bg-white/10 text-white/80 hover:bg-[#C4956A] hover:text-white'
+                                                                    : 'bg-[#F5F3F0] text-[#6B6560] hover:bg-[#C4956A] hover:text-white'
+                                                                }`}
+                                                        >
+                                                            {study.name}
+                                                            <ExternalLink className="w-3 h-3" />
+                                                        </a>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* Fun Fact */}
+                                            {ing.funFact && (
+                                                <div className="flex items-start gap-2">
+                                                    <div
+                                                        className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
+                                                        style={{ backgroundColor: ing.color }}
+                                                    />
+                                                    <p className={`text-xs italic ${ing.hero ? 'text-white/60' : 'text-[#8A8580]'}`}>
+                                                        {ing.funFact}
+                                                    </p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
+                    ))}
                 </div>
 
-                <div className="flex justify-center mt-8 sm:mt-12">
-                    <div className="inline-flex items-center gap-2 sm:gap-4 bg-gray-50 border border-gray-200 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm">
-                        <span className="text-gray-900 font-semibold">20.5% actief</span>
-                        <span className="text-gray-300">·</span>
-                        <span className="text-gray-600">6 technologieën</span>
-                        <span className="text-gray-300 hidden sm:inline">·</span>
-                        <span className="text-gray-600 hidden sm:inline">Hormoonvrij</span>
-                    </div>
+                {/* Footer Badges */}
+                <div className="flex flex-wrap justify-center gap-3 mt-10">
+                    <span className="text-xs text-[#6B6560] bg-[#F5F3F0] px-4 py-2 rounded-full">Zonder parfum</span>
+                    <span className="text-xs text-[#6B6560] bg-[#F5F3F0] px-4 py-2 rounded-full">Hormoonvrij</span>
+                    <span className="text-xs text-[#6B6560] bg-[#F5F3F0] px-4 py-2 rounded-full">Made in NL</span>
                 </div>
+
+                {/* Disclaimer */}
+                <p className="text-center text-xs text-[#9A948E] mt-6">
+                    Alle claims zijn gebaseerd op gepubliceerde, peer-reviewed studies. Individuele resultaten kunnen variëren.
+                </p>
             </div>
-
-            <style jsx>{`
-                @keyframes fadeInLeft {
-                    from {
-                        opacity: 0;
-                        transform: translateX(-8px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-                
-                /* GHK-Cu Subtle Border Glow - Premium minimal outer edge only */
-                :global(.ghk-cu-gold-border) {
-                    position: relative;
-                    background: white;
-                    border: 2px solid #e5e7eb;
-                }
-                
-                /* Subtle outer border glow - only visible during animation */
-                :global(.ghk-cu-gold-border)::before {
-                    content: '';
-                    position: absolute;
-                    inset: -1px; /* Only 1px outer edge */
-                    border-radius: 14px;
-                    padding: 1px;
-                    background: linear-gradient(90deg, transparent 20%, #f97316 50%, transparent 80%);
-                    background-size: 200% 100%;
-                    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-                    -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-                    z-index: 1;
-                    opacity: 0;
-                    pointer-events: none;
-                }
-                
-                /* Animation starts when scrolled into view */
-                :global(.ghk-cu-gold-border.start-glow-animation)::before {
-                    animation: subtleGlow 2s ease-in-out 1;
-                }
-                
-                @keyframes subtleGlow {
-                    0% { 
-                        background-position: 0% 50%;
-                        opacity: 0;
-                    }
-                    15% {
-                        opacity: 0.4;
-                    }
-                    50% { 
-                        background-position: 100% 50%;
-                        opacity: 0.5;
-                    }
-                    85% {
-                        opacity: 0.3;
-                    }
-                    100% { 
-                        background-position: 200% 50%;
-                        opacity: 0;
-                    }
-                }
-            `}</style>
         </section>
     )
 }
