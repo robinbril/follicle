@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { ChevronDown, Check, ExternalLink } from 'lucide-react'
+import { ChevronDown, Check, ArrowUpRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const ingredients = [
@@ -9,48 +9,40 @@ const ingredients = [
         id: "ghkcu",
         percentage: "2.5%",
         name: "GHK-Cu",
-        tagline: "Het geheim van dermatologen",
         subheader: "Stimuleert stamcelactivatie",
         compound: "COPPER TRIPEPTIDE-1",
         hero: true,
-        emoji: "🧬",
         benefits: [
             "Activeert 4.000+ herstel-genen",
-            "Stimuleert stamcellen voor nieuwe groei",
+            "Stimuleert dermal papilla stamcellen",
             "+70% collageen na 12 weken"
         ],
         studies: [
             { name: "Pickart 2018", url: "#" },
-            { name: "Lee 2016", url: "#" },
-            { name: "Badenhorst 2016", url: "#" }
+            { name: "Lee 2016", url: "#" }
         ]
     },
     {
         id: "redensyl",
         percentage: "3%",
         name: "Redensyl",
-        tagline: "Klinisch bewezen",
         subheader: "+17% meer haar in 84 dagen",
         compound: "DHQG + EGCG2",
-        emoji: "🔬",
         benefits: [
             "Activeert slapende haarfollikels",
             "10.000+ nieuwe haren in trials",
             "85% ziet zichtbaar resultaat"
         ],
         studies: [
-            { name: "Givaudan 2014", url: "#" },
-            { name: "Karaca 2019", url: "#" }
+            { name: "Givaudan 2014", url: "#" }
         ]
     },
     {
         id: "capixyl",
         percentage: "5%",
         name: "Capixyl",
-        tagline: "DHT-blokkade",
         subheader: "-93% DHT-blokkade",
         compound: "ACETYL TETRAPEPTIDE-3",
-        emoji: "🛡️",
         benefits: [
             "Blokkeert DHT zonder hormonen",
             "+46% haardichtheid",
@@ -64,12 +56,10 @@ const ingredients = [
         id: "procapil",
         percentage: "3%",
         name: "Procapil",
-        tagline: "Doorbloeding",
         subheader: "+121% haargroei",
         compound: "BIOTINYL-GHK",
-        emoji: "💧",
         benefits: [
-            "Meer doorbloeding naar follikels",
+            "Verbetert doorbloeding",
             "-47% uitval na 4 maanden",
             "Versterkt haarwortel"
         ],
@@ -81,10 +71,8 @@ const ingredients = [
         id: "anagain",
         percentage: "3%",
         name: "Anagain",
-        tagline: "Groeicyclus",
         subheader: "78% langere groeifase",
         compound: "PISUM SATIVUM",
-        emoji: "🌱",
         benefits: [
             "Verlengt groeicyclus",
             "+56% FGF-7 groeifactor",
@@ -98,10 +86,8 @@ const ingredients = [
         id: "baicapil",
         percentage: "4%",
         name: "Baicapil",
-        tagline: "Bescherming",
         subheader: "+59% haardichtheid",
         compound: "SCUTELLARIA + SOY",
-        emoji: "✨",
         benefits: [
             "-60% uitval in 6 maanden",
             "+68% groei/rust verhouding",
@@ -117,177 +103,116 @@ export default function Ingredients() {
     const [expanded, setExpanded] = useState<string | null>("ghkcu")
 
     return (
-        <section id="ingredienten" className="py-24 sm:py-32 bg-gradient-to-b from-white via-[#FDFCFA] to-white">
-            <div className="max-w-4xl mx-auto px-6">
+        <section id="ingredienten" className="py-24 bg-[#FAFAF9]">
+            <div className="max-w-3xl mx-auto px-6">
 
-                {/* Premium Header */}
+                {/* Minimal Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-14"
                 >
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-xs tracking-[0.3em] uppercase text-[#B8956A] font-medium mb-4"
-                    >
-                        De Wetenschap
-                    </motion.p>
-
-                    <h2 className="text-4xl sm:text-5xl font-light text-[#1a1a1a] mb-6 tracking-tight">
+                    <p className="text-[11px] tracking-[0.25em] uppercase text-[#999] mb-3">
+                        Formule
+                    </p>
+                    <h2 className="text-2xl sm:text-3xl font-light text-[#1a1a1a] tracking-tight">
                         6 Actieve Technologieën
                     </h2>
-
-                    <div className="flex items-center justify-center gap-4 text-sm text-[#666]">
-                        <span className="font-semibold text-[#1a1a1a]">20.5%</span>
-                        <span className="text-[#ddd]">·</span>
-                        <span>Werkzame concentratie</span>
-                        <span className="text-[#ddd]">·</span>
-                        <span className="font-semibold text-[#1a1a1a]">24 studies</span>
-                    </div>
+                    <p className="text-sm text-[#888] mt-3">
+                        20.5% werkzame concentratie
+                    </p>
                 </motion.div>
 
-                {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {/* Cards */}
+                <div className="space-y-3">
                     {ingredients.map((ing, i) => (
                         <motion.div
                             key={ing.id}
-                            initial={{ opacity: 0, y: 25 }}
+                            initial={{ opacity: 0, y: 15 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                            className={`group rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 ${ing.hero
-                                    ? 'md:col-span-2 bg-[#FAFAF8] border-2 border-[#C4956A] animate-[goldPulse_3s_ease-in-out_infinite]'
-                                    : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]/60 hover:shadow-lg'
-                                } ${expanded === ing.id && !ing.hero ? 'shadow-lg border-[#C4956A]' : ''}`}
+                            transition={{ delay: i * 0.05, duration: 0.5 }}
                             onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
-                            whileHover={{ y: -4 }}
-                            style={ing.hero ? {
-                                boxShadow: '0 0 30px rgba(196, 149, 106, 0.15)'
-                            } : undefined}
+                            className={`group cursor-pointer transition-all duration-300 rounded-xl overflow-hidden ${ing.hero
+                                    ? 'bg-white border-2 border-[#C4956A]/40 shadow-sm'
+                                    : 'bg-white border border-[#eee] hover:border-[#C4956A]/30'
+                                } ${expanded === ing.id ? 'shadow-md' : 'hover:shadow-sm'}`}
                         >
-                            {/* Card Header */}
-                            <div className="p-6 sm:p-8">
-                                <div className="flex justify-between items-start">
-                                    <div className="flex items-start gap-4">
-                                        {/* Emoji Icon */}
-                                        <motion.div
-                                            className="text-3xl"
-                                            whileHover={{ scale: 1.2, rotate: 10 }}
-                                            transition={{ type: "spring", stiffness: 400 }}
-                                        >
-                                            {ing.emoji}
-                                        </motion.div>
-
-                                        <div>
-                                            <div className="flex items-center gap-3 flex-wrap mb-1">
-                                                <span className="text-xl font-semibold text-[#C4956A]">
-                                                    {ing.percentage}
+                            {/* Header */}
+                            <div className="px-5 py-4 flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <span className="text-sm font-medium text-[#C4956A] w-10">
+                                        {ing.percentage}
+                                    </span>
+                                    <div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-base font-medium text-[#1a1a1a]">
+                                                {ing.name}
+                                            </span>
+                                            {ing.hero && (
+                                                <span className="text-[9px] tracking-wider uppercase px-2 py-0.5 rounded bg-[#C4956A]/10 text-[#C4956A] font-medium">
+                                                    Top
                                                 </span>
-                                                <span className="text-xl font-medium text-[#1a1a1a]">
-                                                    {ing.name}
-                                                </span>
-                                                {ing.hero && (
-                                                    <motion.span
-                                                        initial={{ opacity: 0, scale: 0.8 }}
-                                                        animate={{ opacity: 1, scale: 1 }}
-                                                        className="text-xs font-bold tracking-wider px-4 py-1.5 rounded-full bg-[#C4956A] text-white shadow-lg"
-                                                    >
-                                                        ★ HET VERSCHIL
-                                                    </motion.span>
-                                                )}
-                                            </div>
-                                            <p className="text-xs uppercase tracking-[0.15em] text-[#999]">
-                                                {ing.tagline}
-                                            </p>
+                                            )}
                                         </div>
+                                        <p className="text-sm text-[#C4956A] mt-0.5 font-normal">
+                                            {ing.subheader}
+                                        </p>
                                     </div>
-
-                                    <motion.div
-                                        animate={{ rotate: expanded === ing.id ? 180 : 0 }}
-                                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                                        className="mt-1"
-                                    >
-                                        <ChevronDown className="w-5 h-5 text-[#C4956A] opacity-50 group-hover:opacity-100 transition-opacity" />
-                                    </motion.div>
                                 </div>
-
-                                {/* Quantification - Big & Bold */}
-                                <motion.p
-                                    className="text-2xl sm:text-3xl font-semibold text-[#C4956A] mt-4"
+                                <motion.div
+                                    animate={{ rotate: expanded === ing.id ? 180 : 0 }}
+                                    transition={{ duration: 0.3 }}
                                 >
-                                    {ing.subheader}
-                                </motion.p>
+                                    <ChevronDown className="w-4 h-4 text-[#bbb] group-hover:text-[#C4956A] transition-colors" />
+                                </motion.div>
                             </div>
 
-                            {/* Expandable Content */}
+                            {/* Expandable */}
                             <AnimatePresence>
                                 {expanded === ing.id && (
                                     <motion.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: 'auto', opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                        transition={{ duration: 0.35 }}
                                         className="overflow-hidden"
                                     >
-                                        <div className="px-6 sm:px-8 pb-8 pt-4 border-t border-[#E8E4DF]">
-
-                                            {/* Compound */}
-                                            <motion.p
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                transition={{ delay: 0.1 }}
-                                                className="text-[11px] tracking-[0.2em] text-[#bbb] mb-5"
-                                            >
+                                        <div className="px-5 pb-5 pt-2 border-t border-[#f5f5f5]">
+                                            <p className="text-[10px] tracking-[0.15em] text-[#bbb] mb-4">
                                                 {ing.compound}
-                                            </motion.p>
+                                            </p>
 
-                                            {/* Benefits */}
-                                            <ul className="space-y-3 mb-6">
+                                            <ul className="space-y-2 mb-4">
                                                 {ing.benefits.map((b, idx) => (
                                                     <motion.li
                                                         key={idx}
-                                                        initial={{ opacity: 0, x: -10 }}
+                                                        initial={{ opacity: 0, x: -5 }}
                                                         animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: 0.15 + idx * 0.1 }}
-                                                        className="flex items-start gap-3 text-[15px] text-[#444]"
+                                                        transition={{ delay: 0.1 + idx * 0.05 }}
+                                                        className="flex items-start gap-2 text-sm text-[#555]"
                                                     >
-                                                        <div className="w-5 h-5 rounded-full bg-[#C4956A]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                                            <Check className="w-3 h-3 text-[#C4956A]" />
-                                                        </div>
-                                                        {b}
+                                                        <Check className="w-3.5 h-3.5 text-[#C4956A] mt-0.5 flex-shrink-0" />
+                                                        <span>{b}</span>
                                                     </motion.li>
                                                 ))}
                                             </ul>
 
-                                            {/* Studies */}
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 0.4 }}
-                                            >
-                                                <p className="text-[10px] tracking-[0.2em] text-[#bbb] mb-3">
-                                                    KLINISCHE STUDIES
-                                                </p>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {ing.studies.map((s, idx) => (
-                                                        <motion.a
-                                                            key={idx}
-                                                            href={s.url}
-                                                            onClick={(e) => e.stopPropagation()}
-                                                            whileHover={{ scale: 1.05 }}
-                                                            whileTap={{ scale: 0.95 }}
-                                                            className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full bg-[#F5F3F0] text-[#666] hover:bg-[#C4956A] hover:text-white transition-all duration-300"
-                                                        >
-                                                            {s.name} <ExternalLink className="w-3 h-3" />
-                                                        </motion.a>
-                                                    ))}
-                                                </div>
-                                            </motion.div>
+                                            <div className="flex flex-wrap gap-2">
+                                                {ing.studies.map((s, idx) => (
+                                                    <a
+                                                        key={idx}
+                                                        href={s.url}
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="inline-flex items-center gap-1 text-xs text-[#888] hover:text-[#C4956A] transition-colors"
+                                                    >
+                                                        {s.name}
+                                                        <ArrowUpRight className="w-3 h-3" />
+                                                    </a>
+                                                ))}
+                                            </div>
                                         </div>
                                     </motion.div>
                                 )}
@@ -297,33 +222,14 @@ export default function Ingredients() {
                 </div>
 
                 {/* Footer */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                    className="text-center mt-14"
-                >
-                    <div className="flex flex-wrap justify-center gap-6 text-sm text-[#888]">
-                        <span>Zonder parfum</span>
-                        <span className="text-[#ddd]">·</span>
-                        <span>Hormoonvrij</span>
-                        <span className="text-[#ddd]">·</span>
-                        <span>Made in NL</span>
-                    </div>
-                    <p className="text-[11px] text-[#aaa] mt-4">
-                        Claims gebaseerd op peer-reviewed studies. Individuele resultaten kunnen variëren.
-                    </p>
-                </motion.div>
+                <div className="flex justify-center gap-6 mt-10 text-xs text-[#999]">
+                    <span>Hormoonvrij</span>
+                    <span>·</span>
+                    <span>Zonder parfum</span>
+                    <span>·</span>
+                    <span>Made in NL</span>
+                </div>
             </div>
-
-            {/* Gold Pulse Animation */}
-            <style jsx>{`
-                @keyframes goldPulse {
-                    0%, 100% { box-shadow: 0 0 20px rgba(196, 149, 106, 0.15); }
-                    50% { box-shadow: 0 0 40px rgba(196, 149, 106, 0.25); }
-                }
-            `}</style>
         </section>
     )
 }
