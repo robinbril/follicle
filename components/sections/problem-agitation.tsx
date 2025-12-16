@@ -9,40 +9,35 @@ const features = [
         revive: "€20/mnd",
         minoxidil: "€45/mnd",
         finasteride: "€30/mnd",
-        transplant: "€3.000+",
-        reviveWin: true
+        transplant: "€3.000+"
     },
     {
         name: "Hormoonvrij",
         revive: true,
         minoxidil: true,
         finasteride: false,
-        transplant: true,
-        reviveWin: true
+        transplant: true
     },
     {
-        name: "Geen bijwerkingen",
-        revive: true,
-        minoxidil: false,
-        finasteride: false,
-        transplant: false,
-        reviveWin: true
+        name: "Bijwerkingen",
+        revive: "Geen",
+        minoxidil: "Hoofdpijn",
+        finasteride: "DHT-blokkade",
+        transplant: "Herstel"
     },
     {
         name: "Gebruiksgemak",
         revive: "1× daags",
         minoxidil: "2× daags",
         finasteride: "1× daags",
-        transplant: "Eenmalig",
-        reviveWin: true
+        transplant: "Eenmalig"
     },
     {
         name: "Geld-terug garantie",
         revive: true,
         minoxidil: false,
         finasteride: false,
-        transplant: "partial",
-        reviveWin: true
+        transplant: "partial"
     },
 ]
 
@@ -54,21 +49,24 @@ const satisfaction = {
 }
 
 export default function ProblemAgitation() {
-    const renderCell = (value: boolean | string, isRevive: boolean = false) => {
+    const renderCell = (value: boolean | string) => {
         if (typeof value === 'string') {
             if (value === 'partial') {
-                return <HelpCircle className="w-5 h-5 text-[#999]" />
+                return <HelpCircle className="w-5 h-5 text-[#999] mx-auto" />
             }
+            const isNegative = ['Hoofdpijn', 'DHT-blokkade', 'Herstel', '2× daags'].includes(value)
+            const isPositive = ['Geen', '1× daags', 'Eenmalig'].includes(value)
             return (
-                <span className={`text-sm font-medium ${isRevive ? 'text-[#C4956A]' : 'text-[#666]'}`}>
+                <span className={`text-sm ${isNegative ? 'text-red-400' : isPositive ? 'text-green-500' : 'text-[#666]'
+                    }`}>
                     {value}
                 </span>
             )
         }
         return value ? (
-            <Check className={`w-5 h-5 ${isRevive ? 'text-green-500' : 'text-green-400'}`} />
+            <Check className="w-5 h-5 text-green-500 mx-auto" />
         ) : (
-            <X className="w-5 h-5 text-red-400" />
+            <X className="w-5 h-5 text-red-400 mx-auto" />
         )
     }
 
@@ -87,10 +85,10 @@ export default function ProblemAgitation() {
                     <p className="text-sm text-[#C4956A] font-medium mb-3">
                         De feiten
                     </p>
-                    <h2 className="text-2xl sm:text-3xl font-light text-[#1a1a1a] tracking-tight mb-4">
+                    <h2 className="text-3xl sm:text-4xl font-light text-[#1a1a1a] tracking-tight mb-4">
                         Vergelijk en kies slim
                     </h2>
-                    <p className="text-[#666] max-w-md mx-auto">
+                    <p className="text-lg text-[#666] max-w-md mx-auto">
                         Wij verkopen geen valse hoop. Hier zijn de eerlijke alternatieven.
                     </p>
                 </motion.div>
@@ -103,16 +101,16 @@ export default function ProblemAgitation() {
                     transition={{ delay: 0.1, duration: 0.6 }}
                     className="overflow-x-auto"
                 >
-                    <table className="w-full">
+                    <table className="w-full text-center">
                         {/* Header Row */}
                         <thead>
                             <tr className="border-b border-[#eee]">
-                                <th className="text-left py-4 px-3 text-sm font-medium text-[#999]">
-                                    Feature
+                                <th className="text-left py-5 px-4 text-sm font-medium text-[#999] w-[180px]">
+
                                 </th>
-                                <th className="py-4 px-3 text-center bg-[#FFFAF5] rounded-t-lg">
+                                <th className="py-5 px-4 bg-[#FFFAF5] rounded-t-xl">
                                     <div className="flex flex-col items-center gap-1">
-                                        <span className="text-[#C4956A] font-bold text-lg">REVIVE</span>
+                                        <span className="text-[#C4956A] font-semibold text-lg">REVIVE</span>
                                         <div className="flex items-center gap-0.5">
                                             {[...Array(5)].map((_, i) => (
                                                 <Star key={i} className="w-3 h-3 fill-[#C4956A] text-[#C4956A]" />
@@ -120,13 +118,13 @@ export default function ProblemAgitation() {
                                         </div>
                                     </div>
                                 </th>
-                                <th className="py-4 px-3 text-center text-sm font-medium text-[#666]">
+                                <th className="py-5 px-4 text-sm font-medium text-[#666]">
                                     Minoxidil
                                 </th>
-                                <th className="py-4 px-3 text-center text-sm font-medium text-[#666]">
+                                <th className="py-5 px-4 text-sm font-medium text-[#666]">
                                     Finasteride
                                 </th>
-                                <th className="py-4 px-3 text-center text-sm font-medium text-[#666] hidden sm:table-cell">
+                                <th className="py-5 px-4 text-sm font-medium text-[#666] hidden sm:table-cell">
                                     Transplant
                                 </th>
                             </tr>
@@ -137,28 +135,25 @@ export default function ProblemAgitation() {
                             {features.map((feat, i) => (
                                 <motion.tr
                                     key={feat.name}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 + i * 0.05 }}
-                                    className={`border-b border-[#f5f5f5] hover:bg-[#FAFAF9] transition-colors ${i % 2 === 1 ? 'bg-[#FAFAFA]' : ''
-                                        }`}
+                                    className={`border-b border-[#f0f0f0] ${i % 2 === 1 ? 'bg-[#FAFAFA]' : ''}`}
                                 >
-                                    <td className="py-4 px-3 text-sm text-[#444] font-medium">
+                                    <td className="py-4 px-4 text-left text-sm text-[#444] font-medium">
                                         {feat.name}
                                     </td>
-                                    <td className="py-4 px-3 bg-[#FFFAF5]">
-                                        <div className="flex justify-center">
-                                            {renderCell(feat.revive, true)}
-                                        </div>
+                                    <td className="py-4 px-4 bg-[#FFFAF5]">
+                                        {renderCell(feat.revive)}
                                     </td>
-                                    <td className="py-4 px-3 text-center">
+                                    <td className="py-4 px-4">
                                         {renderCell(feat.minoxidil)}
                                     </td>
-                                    <td className="py-4 px-3 text-center">
+                                    <td className="py-4 px-4">
                                         {renderCell(feat.finasteride)}
                                     </td>
-                                    <td className="py-4 px-3 text-center hidden sm:table-cell">
+                                    <td className="py-4 px-4 hidden sm:table-cell">
                                         {renderCell(feat.transplant)}
                                     </td>
                                 </motion.tr>
@@ -172,13 +167,15 @@ export default function ProblemAgitation() {
                                 transition={{ delay: 0.4 }}
                                 className="bg-[#FAFAF9]"
                             >
-                                <td className="py-5 px-3 text-sm text-[#444] font-medium flex items-center gap-2">
-                                    <TrendingUp className="w-4 h-4 text-[#C4956A]" />
-                                    Tevredenheid
+                                <td className="py-5 px-4 text-left text-sm text-[#444] font-medium">
+                                    <span className="flex items-center gap-2">
+                                        <TrendingUp className="w-4 h-4 text-[#C4956A]" />
+                                        Tevredenheid
+                                    </span>
                                 </td>
-                                <td className="py-5 px-3 bg-[#FFFAF5] rounded-b-lg">
+                                <td className="py-5 px-4 bg-[#FFFAF5] rounded-b-xl">
                                     <div className="flex flex-col items-center gap-1">
-                                        <div className="w-full bg-[#e8e8e8] rounded-full h-2 max-w-[80px]">
+                                        <div className="w-20 bg-[#e8e8e8] rounded-full h-2">
                                             <div
                                                 className="bg-gradient-to-r from-[#C4956A] to-[#d4a57a] h-2 rounded-full"
                                                 style={{ width: `${satisfaction.revive}%` }}
@@ -187,33 +184,33 @@ export default function ProblemAgitation() {
                                         <span className="text-xs font-bold text-[#C4956A]">{satisfaction.revive}%</span>
                                     </div>
                                 </td>
-                                <td className="py-5 px-3 text-center">
+                                <td className="py-5 px-4">
                                     <div className="flex flex-col items-center gap-1">
-                                        <div className="w-full bg-[#e8e8e8] rounded-full h-2 max-w-[80px]">
+                                        <div className="w-20 bg-[#e8e8e8] rounded-full h-2">
                                             <div
-                                                className="bg-[#bbb] h-2 rounded-full"
+                                                className="bg-[#ccc] h-2 rounded-full"
                                                 style={{ width: `${satisfaction.minoxidil}%` }}
                                             />
                                         </div>
                                         <span className="text-xs text-[#999]">{satisfaction.minoxidil}%</span>
                                     </div>
                                 </td>
-                                <td className="py-5 px-3 text-center">
+                                <td className="py-5 px-4">
                                     <div className="flex flex-col items-center gap-1">
-                                        <div className="w-full bg-[#e8e8e8] rounded-full h-2 max-w-[80px]">
+                                        <div className="w-20 bg-[#e8e8e8] rounded-full h-2">
                                             <div
-                                                className="bg-[#bbb] h-2 rounded-full"
+                                                className="bg-[#ccc] h-2 rounded-full"
                                                 style={{ width: `${satisfaction.finasteride}%` }}
                                             />
                                         </div>
                                         <span className="text-xs text-[#999]">{satisfaction.finasteride}%</span>
                                     </div>
                                 </td>
-                                <td className="py-5 px-3 text-center hidden sm:table-cell">
+                                <td className="py-5 px-4 hidden sm:table-cell">
                                     <div className="flex flex-col items-center gap-1">
-                                        <div className="w-full bg-[#e8e8e8] rounded-full h-2 max-w-[80px]">
+                                        <div className="w-20 bg-[#e8e8e8] rounded-full h-2">
                                             <div
-                                                className="bg-[#bbb] h-2 rounded-full"
+                                                className="bg-[#ccc] h-2 rounded-full"
                                                 style={{ width: `${satisfaction.transplant}%` }}
                                             />
                                         </div>
