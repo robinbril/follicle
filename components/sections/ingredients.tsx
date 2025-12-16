@@ -175,9 +175,9 @@ export default function Ingredients() {
                                             <motion.span
                                                 initial={{ opacity: 0, x: -10 }}
                                                 animate={{ opacity: 1, x: 0 }}
-                                                className="ml-2 text-[10px] tracking-wider uppercase px-2 py-1 rounded bg-[#C4956A] text-white font-medium"
+                                                className="ml-2 text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-md bg-[#C4956A] text-white font-medium"
                                             >
-                                                Star
+                                                Bewezen
                                             </motion.span>
                                         )}
                                     </div>
@@ -228,13 +228,15 @@ export default function Ingredients() {
                                                 ))}
                                             </ul>
 
-                                            <div className="flex flex-wrap gap-2">
+                                            <div className="flex flex-wrap gap-2 mt-2">
                                                 {ing.studies.map((s, idx) => (
                                                     <a
                                                         key={idx}
                                                         href={s.url}
                                                         onClick={(e) => e.stopPropagation()}
-                                                        className={`inline-flex items-center gap-1 text-xs font-medium transition-colors ${ing.hero ? 'text-white/50 hover:text-[#C4956A]' : 'text-[#999] hover:text-[#C4956A]'
+                                                        className={`inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full transition-all ${ing.hero
+                                                            ? 'bg-white/10 text-white/70 hover:bg-[#C4956A] hover:text-white'
+                                                            : 'bg-[#f5f5f5] text-[#666] hover:bg-[#C4956A] hover:text-white'
                                                             }`}
                                                     >
                                                         {s.name} <ArrowUpRight className="w-3 h-3" />
