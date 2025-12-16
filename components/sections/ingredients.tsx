@@ -10,7 +10,7 @@ const ingredients = [
         percentage: "2.5%",
         name: "GHK-Cu",
         tagline: "Het geheim van dermatologen",
-        subheader: "Vergelijkbaar met Minoxidil*",
+        subheader: "Stimuleert stamcelactivatie",
         compound: "COPPER TRIPEPTIDE-1",
         hero: true,
         emoji: "🧬",
@@ -30,12 +30,12 @@ const ingredients = [
         percentage: "3%",
         name: "Redensyl",
         tagline: "Klinisch bewezen",
-        subheader: "+17% meer haar",
+        subheader: "+17% meer haar in 84 dagen",
         compound: "DHQG + EGCG2",
         emoji: "🔬",
         benefits: [
             "Activeert slapende haarfollikels",
-            "10.000+ nieuwe haren in 84 dagen",
+            "10.000+ nieuwe haren in trials",
             "85% ziet zichtbaar resultaat"
         ],
         studies: [
@@ -48,7 +48,7 @@ const ingredients = [
         percentage: "5%",
         name: "Capixyl",
         tagline: "DHT-blokkade",
-        subheader: "-93% DHT",
+        subheader: "-93% DHT-blokkade",
         compound: "ACETYL TETRAPEPTIDE-3",
         emoji: "🛡️",
         benefits: [
@@ -65,7 +65,7 @@ const ingredients = [
         percentage: "3%",
         name: "Procapil",
         tagline: "Doorbloeding",
-        subheader: "+121% groei",
+        subheader: "+121% haargroei",
         compound: "BIOTINYL-GHK",
         emoji: "💧",
         benefits: [
@@ -99,7 +99,7 @@ const ingredients = [
         percentage: "4%",
         name: "Baicapil",
         tagline: "Bescherming",
-        subheader: "+59% dichtheid",
+        subheader: "+59% haardichtheid",
         compound: "SCUTELLARIA + SOY",
         emoji: "✨",
         benefits: [
@@ -117,7 +117,7 @@ export default function Ingredients() {
     const [expanded, setExpanded] = useState<string | null>("ghkcu")
 
     return (
-        <section id="ingredienten" className="py-24 sm:py-32 bg-gradient-to-b from-white to-[#FAF9F7]">
+        <section id="ingredienten" className="py-24 sm:py-32 bg-gradient-to-b from-white via-[#FDFCFA] to-white">
             <div className="max-w-4xl mx-auto px-6">
 
                 {/* Premium Header */}
@@ -144,9 +144,9 @@ export default function Ingredients() {
 
                     <div className="flex items-center justify-center gap-4 text-sm text-[#666]">
                         <span className="font-semibold text-[#1a1a1a]">20.5%</span>
-                        <span className="text-[#ccc]">·</span>
+                        <span className="text-[#ddd]">·</span>
                         <span>Werkzame concentratie</span>
-                        <span className="text-[#ccc]">·</span>
+                        <span className="text-[#ddd]">·</span>
                         <span className="font-semibold text-[#1a1a1a]">24 studies</span>
                     </div>
                 </motion.div>
@@ -161,36 +161,47 @@ export default function Ingredients() {
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                             className={`group rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 ${ing.hero
-                                    ? 'md:col-span-2 bg-[#1a1a1a] text-white'
-                                    : 'bg-white border border-[#E8E4DF] hover:border-[#B8956A]/50 hover:shadow-xl'
-                                } ${expanded === ing.id ? (ing.hero ? '' : 'shadow-xl border-[#B8956A]') : ''}`}
+                                    ? 'md:col-span-2 bg-[#FAFAF8] border-2 border-[#C4956A] animate-[goldPulse_3s_ease-in-out_infinite]'
+                                    : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]/60 hover:shadow-lg'
+                                } ${expanded === ing.id && !ing.hero ? 'shadow-lg border-[#C4956A]' : ''}`}
                             onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
                             whileHover={{ y: -4 }}
+                            style={ing.hero ? {
+                                boxShadow: '0 0 30px rgba(196, 149, 106, 0.15)'
+                            } : undefined}
                         >
                             {/* Card Header */}
                             <div className="p-6 sm:p-8">
                                 <div className="flex justify-between items-start">
-                                    <div className="flex items-start gap-5">
+                                    <div className="flex items-start gap-4">
                                         {/* Emoji Icon */}
-                                        <div className={`text-3xl ${ing.hero ? 'opacity-100' : 'opacity-90'}`}>
+                                        <motion.div
+                                            className="text-3xl"
+                                            whileHover={{ scale: 1.2, rotate: 10 }}
+                                            transition={{ type: "spring", stiffness: 400 }}
+                                        >
                                             {ing.emoji}
-                                        </div>
+                                        </motion.div>
 
                                         <div>
-                                            <div className="flex items-center gap-3 mb-1">
-                                                <span className={`text-xl font-semibold ${ing.hero ? 'text-[#B8956A]' : 'text-[#1a1a1a]'}`}>
+                                            <div className="flex items-center gap-3 flex-wrap mb-1">
+                                                <span className="text-xl font-semibold text-[#C4956A]">
                                                     {ing.percentage}
                                                 </span>
-                                                <span className={`text-xl font-medium ${ing.hero ? 'text-white' : 'text-[#1a1a1a]'}`}>
+                                                <span className="text-xl font-medium text-[#1a1a1a]">
                                                     {ing.name}
                                                 </span>
                                                 {ing.hero && (
-                                                    <span className="text-[10px] font-bold tracking-wider px-3 py-1 rounded-full bg-[#B8956A] text-white">
-                                                        ★ TOP INGREDIENT
-                                                    </span>
+                                                    <motion.span
+                                                        initial={{ opacity: 0, scale: 0.8 }}
+                                                        animate={{ opacity: 1, scale: 1 }}
+                                                        className="text-xs font-bold tracking-wider px-4 py-1.5 rounded-full bg-[#C4956A] text-white shadow-lg"
+                                                    >
+                                                        ★ HET VERSCHIL
+                                                    </motion.span>
                                                 )}
                                             </div>
-                                            <p className={`text-xs uppercase tracking-[0.15em] ${ing.hero ? 'text-white/50' : 'text-[#999]'}`}>
+                                            <p className="text-xs uppercase tracking-[0.15em] text-[#999]">
                                                 {ing.tagline}
                                             </p>
                                         </div>
@@ -198,16 +209,16 @@ export default function Ingredients() {
 
                                     <motion.div
                                         animate={{ rotate: expanded === ing.id ? 180 : 0 }}
-                                        transition={{ duration: 0.4 }}
+                                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                                         className="mt-1"
                                     >
-                                        <ChevronDown className={`w-5 h-5 ${ing.hero ? 'text-white/50' : 'text-[#ccc] group-hover:text-[#B8956A]'} transition-colors`} />
+                                        <ChevronDown className="w-5 h-5 text-[#C4956A] opacity-50 group-hover:opacity-100 transition-opacity" />
                                     </motion.div>
                                 </div>
 
                                 {/* Quantification - Big & Bold */}
                                 <motion.p
-                                    className={`text-2xl sm:text-3xl font-medium mt-4 ${ing.hero ? 'text-[#B8956A]' : 'text-[#B8956A]'}`}
+                                    className="text-2xl sm:text-3xl font-semibold text-[#C4956A] mt-4"
                                 >
                                     {ing.subheader}
                                 </motion.p>
@@ -223,14 +234,14 @@ export default function Ingredients() {
                                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                                         className="overflow-hidden"
                                     >
-                                        <div className={`px-6 sm:px-8 pb-8 pt-4 ${ing.hero ? 'border-t border-white/10' : 'border-t border-[#F0EDE8]'}`}>
+                                        <div className="px-6 sm:px-8 pb-8 pt-4 border-t border-[#E8E4DF]">
 
                                             {/* Compound */}
                                             <motion.p
                                                 initial={{ opacity: 0 }}
                                                 animate={{ opacity: 1 }}
                                                 transition={{ delay: 0.1 }}
-                                                className={`text-[11px] tracking-[0.2em] mb-5 ${ing.hero ? 'text-white/30' : 'text-[#bbb]'}`}
+                                                className="text-[11px] tracking-[0.2em] text-[#bbb] mb-5"
                                             >
                                                 {ing.compound}
                                             </motion.p>
@@ -243,9 +254,11 @@ export default function Ingredients() {
                                                         initial={{ opacity: 0, x: -10 }}
                                                         animate={{ opacity: 1, x: 0 }}
                                                         transition={{ delay: 0.15 + idx * 0.1 }}
-                                                        className={`flex items-start gap-3 text-[15px] ${ing.hero ? 'text-white/80' : 'text-[#444]'}`}
+                                                        className="flex items-start gap-3 text-[15px] text-[#444]"
                                                     >
-                                                        <Check className={`w-4 h-4 flex-shrink-0 mt-1 ${ing.hero ? 'text-[#B8956A]' : 'text-[#B8956A]'}`} />
+                                                        <div className="w-5 h-5 rounded-full bg-[#C4956A]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                            <Check className="w-3 h-3 text-[#C4956A]" />
+                                                        </div>
                                                         {b}
                                                     </motion.li>
                                                 ))}
@@ -257,8 +270,8 @@ export default function Ingredients() {
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: 0.4 }}
                                             >
-                                                <p className={`text-[10px] tracking-[0.2em] mb-3 ${ing.hero ? 'text-white/30' : 'text-[#bbb]'}`}>
-                                                    STUDIES
+                                                <p className="text-[10px] tracking-[0.2em] text-[#bbb] mb-3">
+                                                    KLINISCHE STUDIES
                                                 </p>
                                                 <div className="flex flex-wrap gap-2">
                                                     {ing.studies.map((s, idx) => (
@@ -268,10 +281,7 @@ export default function Ingredients() {
                                                             onClick={(e) => e.stopPropagation()}
                                                             whileHover={{ scale: 1.05 }}
                                                             whileTap={{ scale: 0.95 }}
-                                                            className={`inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full transition-all duration-300 ${ing.hero
-                                                                    ? 'bg-white/10 text-white/70 hover:bg-[#B8956A] hover:text-white'
-                                                                    : 'bg-[#F5F3F0] text-[#666] hover:bg-[#B8956A] hover:text-white'
-                                                                }`}
+                                                            className="inline-flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-full bg-[#F5F3F0] text-[#666] hover:bg-[#C4956A] hover:text-white transition-all duration-300"
                                                         >
                                                             {s.name} <ExternalLink className="w-3 h-3" />
                                                         </motion.a>
@@ -294,18 +304,26 @@ export default function Ingredients() {
                     transition={{ delay: 0.4 }}
                     className="text-center mt-14"
                 >
-                    <div className="flex flex-wrap justify-center gap-6 text-sm text-[#999]">
+                    <div className="flex flex-wrap justify-center gap-6 text-sm text-[#888]">
                         <span>Zonder parfum</span>
                         <span className="text-[#ddd]">·</span>
                         <span>Hormoonvrij</span>
                         <span className="text-[#ddd]">·</span>
                         <span>Made in NL</span>
                     </div>
-                    <p className="text-[11px] text-[#bbb] mt-4">
-                        *Zonder bijwerkingen. Claims gebaseerd op peer-reviewed studies.
+                    <p className="text-[11px] text-[#aaa] mt-4">
+                        Claims gebaseerd op peer-reviewed studies. Individuele resultaten kunnen variëren.
                     </p>
                 </motion.div>
             </div>
+
+            {/* Gold Pulse Animation */}
+            <style jsx>{`
+                @keyframes goldPulse {
+                    0%, 100% { box-shadow: 0 0 20px rgba(196, 149, 106, 0.15); }
+                    50% { box-shadow: 0 0 40px rgba(196, 149, 106, 0.25); }
+                }
+            `}</style>
         </section>
     )
 }
