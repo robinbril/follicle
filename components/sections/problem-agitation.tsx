@@ -1,6 +1,6 @@
 "use client"
 
-import { Check, X, Star, TrendingUp } from 'lucide-react'
+import { Check, X, Star, TrendingUp, HelpCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const features = [
@@ -9,7 +9,7 @@ const features = [
         revive: "€20/mnd",
         minoxidil: "€45/mnd",
         finasteride: "€30/mnd",
-        transplant: "€5.000+",
+        transplant: "€3.000+",
         reviveWin: true
     },
     {
@@ -29,19 +29,11 @@ const features = [
         reviveWin: true
     },
     {
-        name: "1× per dag",
-        revive: true,
-        minoxidil: false,
-        finasteride: true,
-        transplant: true,
-        reviveWin: true
-    },
-    {
-        name: "Geen pijn",
-        revive: true,
-        minoxidil: true,
-        finasteride: true,
-        transplant: false,
+        name: "Gebruiksgemak",
+        revive: "1× daags",
+        minoxidil: "2× daags",
+        finasteride: "1× daags",
+        transplant: "Eenmalig",
         reviveWin: true
     },
     {
@@ -49,7 +41,7 @@ const features = [
         revive: true,
         minoxidil: false,
         finasteride: false,
-        transplant: false,
+        transplant: "partial",
         reviveWin: true
     },
 ]
@@ -58,12 +50,15 @@ const satisfaction = {
     revive: 96,
     minoxidil: 60,
     finasteride: 55,
-    transplant: 85
+    transplant: 92
 }
 
 export default function ProblemAgitation() {
     const renderCell = (value: boolean | string, isRevive: boolean = false) => {
         if (typeof value === 'string') {
+            if (value === 'partial') {
+                return <HelpCircle className="w-5 h-5 text-[#999]" />
+            }
             return (
                 <span className={`text-sm font-medium ${isRevive ? 'text-[#C4956A]' : 'text-[#666]'}`}>
                     {value}
@@ -115,7 +110,7 @@ export default function ProblemAgitation() {
                                 <th className="text-left py-4 px-3 text-sm font-medium text-[#999]">
                                     Feature
                                 </th>
-                                <th className="py-4 px-3 text-center">
+                                <th className="py-4 px-3 text-center bg-[#FFFAF5] rounded-t-lg">
                                     <div className="flex flex-col items-center gap-1">
                                         <span className="text-[#C4956A] font-bold text-lg">REVIVE</span>
                                         <div className="flex items-center gap-0.5">
@@ -146,13 +141,14 @@ export default function ProblemAgitation() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 + i * 0.05 }}
-                                    className="border-b border-[#f5f5f5] hover:bg-[#FAFAF9] transition-colors"
+                                    className={`border-b border-[#f5f5f5] hover:bg-[#FAFAF9] transition-colors ${i % 2 === 1 ? 'bg-[#FAFAFA]' : ''
+                                        }`}
                                 >
                                     <td className="py-4 px-3 text-sm text-[#444] font-medium">
                                         {feat.name}
                                     </td>
-                                    <td className="py-4 px-3">
-                                        <div className="flex justify-center bg-[#C4956A]/5 rounded-lg py-2 -mx-1">
+                                    <td className="py-4 px-3 bg-[#FFFAF5]">
+                                        <div className="flex justify-center">
                                             {renderCell(feat.revive, true)}
                                         </div>
                                     </td>
@@ -178,9 +174,9 @@ export default function ProblemAgitation() {
                             >
                                 <td className="py-5 px-3 text-sm text-[#444] font-medium flex items-center gap-2">
                                     <TrendingUp className="w-4 h-4 text-[#C4956A]" />
-                                    Klanttevredenheid
+                                    Tevredenheid
                                 </td>
-                                <td className="py-5 px-3">
+                                <td className="py-5 px-3 bg-[#FFFAF5] rounded-b-lg">
                                     <div className="flex flex-col items-center gap-1">
                                         <div className="w-full bg-[#e8e8e8] rounded-full h-2 max-w-[80px]">
                                             <div
@@ -229,7 +225,7 @@ export default function ProblemAgitation() {
                     </table>
                 </motion.div>
 
-                {/* Bottom CTA */}
+                {/* Bottom Note */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -238,7 +234,7 @@ export default function ProblemAgitation() {
                     className="text-center mt-10"
                 >
                     <p className="text-sm text-[#888]">
-                        REVIVE wint op <span className="text-[#C4956A] font-medium">6 van 6</span> criteria
+                        Transplantatie is effectief maar duur. REVIVE biedt de beste <span className="text-[#C4956A] font-medium">prijs-kwaliteit</span> verhouding.
                     </p>
                 </motion.div>
 
