@@ -86,10 +86,10 @@ const ingredients = [
 export default function Ingredients() {
     const [expanded, setExpanded] = useState<string | null>(null)
     const [showCursor, setShowCursor] = useState(false)
-    const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
+    const [cursorStage, setCursorStage] = useState(0)
     const [animationPlayed, setAnimationPlayed] = useState(false)
     const sectionRef = useRef<HTMLElement>(null)
-    const ghkcuCardRef = useRef<HTMLDivElement>(null)
+    const cardsRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const handleIntersection = (entries: IntersectionObserverEntry[]) => {
@@ -97,33 +97,33 @@ export default function Ingredients() {
                 if (entry.isIntersecting && !animationPlayed) {
                     setAnimationPlayed(true)
 
-                    // Start cursor animation after 1.5s delay
+                    // Stage 0: Cursor appears above cards, centered
                     setTimeout(() => {
                         setShowCursor(true)
-                        // Start from center-right of section
-                        setCursorPos({ x: 80, y: 30 })
+                        setCursorStage(0)
+                    }, 1200)
 
-                        // Move to GHK-Cu card
-                        setTimeout(() => {
-                            setCursorPos({ x: 20, y: 55 })
+                    // Stage 1: Move to GHK-Cu card
+                    setTimeout(() => {
+                        setCursorStage(1)
+                    }, 1800)
 
-                            // Click effect and expand
-                            setTimeout(() => {
-                                setExpanded("ghkcu")
+                    // Stage 2: Click effect
+                    setTimeout(() => {
+                        setCursorStage(2)
+                        setExpanded("ghkcu")
+                    }, 2400)
 
-                                // Hide cursor after click
-                                setTimeout(() => {
-                                    setShowCursor(false)
-                                }, 800)
-                            }, 600)
-                        }, 800)
-                    }, 1500)
+                    // Stage 3: Fade out
+                    setTimeout(() => {
+                        setShowCursor(false)
+                    }, 3200)
                 }
             })
         }
 
         const observer = new IntersectionObserver(handleIntersection, {
-            threshold: 0.3
+            threshold: 0.4
         })
 
         if (sectionRef.current) {
@@ -133,56 +133,22 @@ export default function Ingredients() {
         return () => observer.disconnect()
     }, [animationPlayed])
 
+    // Cursor positions for each stage (relative to cards container)
+    const cursorPositions = [
+        { x: '50%', y: '-20px' },      // Stage 0: Above cards, centered
+        { x: '120px', y: '80px' },     // Stage 1: On GHK-Cu card
+        { x: '120px', y: '80px' },     // Stage 2: Click (same position)
+    ]
+
     return (
         <section
             ref={sectionRef}
             id="ingredienten"
-            className="py-24 sm:py-32 bg-gradient-to-b from-[#FDFCFA] to-white overflow-hidden relative"
+            className="py-24 sm:py-32 bg-gradient-to-b from-[#FDFCFA] to-white overflow-hidden"
         >
-            {/* Animated Cursor */}
-            <AnimatePresence>
-                {showCursor && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{
-                            opacity: 1,
-                            scale: 1,
-                            left: `${cursorPos.x}%`,
-                            top: `${cursorPos.y}%`
-                        }}
-                        exit={{ opacity: 0, scale: 0.5 }}
-                        transition={{
-                            duration: 0.8,
-                            ease: [0.22, 1, 0.36, 1],
-                            left: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-                            top: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-                        }}
-                        className="absolute z-50 pointer-events-none"
-                        style={{ left: `${cursorPos.x}%`, top: `${cursorPos.y}%` }}
-                    >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M5 3L19 12L12 14L9 21L5 3Z"
-                                fill="#1a1a1a"
-                                stroke="white"
-                                strokeWidth="1.5"
-                            />
-                        </svg>
-                        {cursorPos.x < 30 && (
-                            <motion.div
-                                initial={{ scale: 0, opacity: 0 }}
-                                animate={{ scale: [0, 1.5, 1], opacity: [0, 0.5, 0] }}
-                                transition={{ duration: 0.4, delay: 0.2 }}
-                                className="absolute top-0 left-0 w-8 h-8 rounded-full bg-[#C4956A]/30 -translate-x-1/2 -translate-y-1/2"
-                            />
-                        )}
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
             <div className="max-w-5xl mx-auto px-6">
 
-                {/* Header with Marketing Copy */}
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -235,113 +201,156 @@ export default function Ingredients() {
                     </motion.div>
                 </motion.div>
 
-                {/* Cards Grid - 2x3 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {ingredients.map((ing, i) => (
-                        <motion.div
-                            key={ing.id}
-                            ref={ing.id === "ghkcu" ? ghkcuCardRef : undefined}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{
-                                delay: i * 0.1,
-                                duration: 0.6,
-                                ease: [0.22, 1, 0.36, 1]
-                            }}
-                            onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
-                            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                            className={`group cursor-pointer rounded-2xl overflow-hidden transition-shadow duration-300 ${ing.hero
-                                ? 'bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl'
-                                : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-lg'
-                                }`}
-                        >
-                            {/* Card Content */}
-                            <div className="p-6">
-                                {/* Top Row */}
-                                <div className="flex items-start justify-between mb-4">
-                                    <div>
-                                        <span className={`text-2xl font-light ${ing.hero ? 'text-[#C4956A]' : 'text-[#C4956A]'}`}>
-                                            {ing.percentage}
-                                        </span>
-                                        {ing.hero && (
-                                            <motion.span
-                                                initial={{ opacity: 0, x: -10 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                className="ml-2 text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-md bg-[#C4956A] text-white font-medium"
-                                            >
-                                                Bewezen
-                                            </motion.span>
-                                        )}
-                                    </div>
+                {/* Cards Container with Cursor */}
+                <div ref={cardsRef} className="relative">
+
+                    {/* Animated Cursor */}
+                    <AnimatePresence>
+                        {showCursor && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.5, x: '-50%' }}
+                                animate={{
+                                    opacity: cursorStage === 2 ? [1, 0.7, 1] : 1,
+                                    scale: cursorStage === 2 ? [1, 0.9, 1] : 1,
+                                    left: cursorPositions[cursorStage].x,
+                                    top: cursorPositions[cursorStage].y,
+                                    x: cursorStage === 0 ? '-50%' : 0
+                                }}
+                                exit={{ opacity: 0, scale: 0.5 }}
+                                transition={{
+                                    duration: 0.6,
+                                    ease: [0.22, 1, 0.36, 1]
+                                }}
+                                className="absolute z-50 pointer-events-none"
+                            >
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg">
+                                    <path
+                                        d="M5 3L19 12L12 14L9 21L5 3Z"
+                                        fill="#1a1a1a"
+                                        stroke="white"
+                                        strokeWidth="2"
+                                    />
+                                </svg>
+                                {/* Click ripple */}
+                                {cursorStage === 2 && (
                                     <motion.div
-                                        animate={{ rotate: expanded === ing.id ? 180 : 0 }}
-                                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                                    >
-                                        <ChevronDown className={`w-5 h-5 ${ing.hero ? 'text-white/40' : 'text-[#ccc] group-hover:text-[#C4956A]'} transition-colors`} />
-                                    </motion.div>
+                                        initial={{ scale: 0, opacity: 0.6 }}
+                                        animate={{ scale: 2.5, opacity: 0 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="absolute top-2 left-2 w-4 h-4 rounded-full bg-[#C4956A]"
+                                    />
+                                )}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+                    {/* Cards Grid - align-start prevents stretching */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+                        {ingredients.map((ing, i) => (
+                            <motion.div
+                                key={ing.id}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{
+                                    delay: i * 0.1,
+                                    duration: 0.6,
+                                    ease: [0.22, 1, 0.36, 1]
+                                }}
+                                onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
+                                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                                className={`group cursor-pointer rounded-2xl overflow-hidden transition-shadow duration-300 ${ing.hero
+                                        ? 'bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl'
+                                        : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-lg'
+                                    }`}
+                            >
+                                {/* Card Content */}
+                                <div className="p-6">
+                                    {/* Top Row */}
+                                    <div className="flex items-start justify-between mb-4">
+                                        <div>
+                                            <span className="text-2xl font-light text-[#C4956A]">
+                                                {ing.percentage}
+                                            </span>
+                                            {ing.hero && (
+                                                <motion.span
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    className="ml-2 text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-md bg-[#C4956A] text-white font-medium"
+                                                >
+                                                    Bewezen
+                                                </motion.span>
+                                            )}
+                                        </div>
+                                        <motion.div
+                                            animate={{ rotate: expanded === ing.id ? 180 : 0 }}
+                                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                                        >
+                                            <ChevronDown className={`w-5 h-5 ${ing.hero ? 'text-white/40' : 'text-[#ccc] group-hover:text-[#C4956A]'} transition-colors`} />
+                                        </motion.div>
+                                    </div>
+
+                                    {/* Name & Subheader */}
+                                    <h3 className={`text-xl font-medium mb-1 ${ing.hero ? 'text-white' : 'text-[#1a1a1a]'}`}>
+                                        {ing.name}
+                                    </h3>
+                                    <p className="text-sm text-[#C4956A]">
+                                        {ing.subheader}
+                                    </p>
                                 </div>
 
-                                {/* Name & Subheader */}
-                                <h3 className={`text-xl font-medium mb-1 ${ing.hero ? 'text-white' : 'text-[#1a1a1a]'}`}>
-                                    {ing.name}
-                                </h3>
-                                <p className={`text-sm ${ing.hero ? 'text-[#C4956A]' : 'text-[#C4956A]'}`}>
-                                    {ing.subheader}
-                                </p>
-                            </div>
+                                {/* Expandable */}
+                                <AnimatePresence>
+                                    {expanded === ing.id && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className={`px-6 pb-6 pt-2 ${ing.hero ? 'border-t border-white/10' : 'border-t border-[#f0f0f0]'}`}>
+                                                <p className={`text-[10px] tracking-[0.15em] mb-4 ${ing.hero ? 'text-white/30' : 'text-[#bbb]'}`}>
+                                                    {ing.compound}
+                                                </p>
 
-                            {/* Expandable */}
-                            <AnimatePresence>
-                                {expanded === ing.id && (
-                                    <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                                        className="overflow-hidden"
-                                    >
-                                        <div className={`px-6 pb-6 pt-2 ${ing.hero ? 'border-t border-white/10' : 'border-t border-[#f0f0f0]'}`}>
-                                            <p className={`text-[10px] tracking-[0.15em] mb-4 ${ing.hero ? 'text-white/30' : 'text-[#bbb]'}`}>
-                                                {ing.compound}
-                                            </p>
+                                                <ul className="space-y-2 mb-4">
+                                                    {ing.benefits.map((b, idx) => (
+                                                        <motion.li
+                                                            key={idx}
+                                                            initial={{ opacity: 0, x: -10 }}
+                                                            animate={{ opacity: 1, x: 0 }}
+                                                            transition={{ delay: 0.1 + idx * 0.08 }}
+                                                            className={`flex items-start gap-2 text-sm ${ing.hero ? 'text-white/80' : 'text-[#555]'}`}
+                                                        >
+                                                            <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 text-[#C4956A]`} />
+                                                            {b}
+                                                        </motion.li>
+                                                    ))}
+                                                </ul>
 
-                                            <ul className="space-y-2 mb-4">
-                                                {ing.benefits.map((b, idx) => (
-                                                    <motion.li
-                                                        key={idx}
-                                                        initial={{ opacity: 0, x: -10 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: 0.1 + idx * 0.08 }}
-                                                        className={`flex items-start gap-2 text-sm ${ing.hero ? 'text-white/80' : 'text-[#555]'}`}
-                                                    >
-                                                        <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 ${ing.hero ? 'text-[#C4956A]' : 'text-[#C4956A]'}`} />
-                                                        {b}
-                                                    </motion.li>
-                                                ))}
-                                            </ul>
-
-                                            <div className="flex flex-wrap gap-2 mt-2">
-                                                {ing.studies.map((s, idx) => (
-                                                    <a
-                                                        key={idx}
-                                                        href={s.url}
-                                                        onClick={(e) => e.stopPropagation()}
-                                                        className={`inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full transition-all ${ing.hero
-                                                            ? 'bg-white/10 text-white/70 hover:bg-[#C4956A] hover:text-white'
-                                                            : 'bg-[#f5f5f5] text-[#666] hover:bg-[#C4956A] hover:text-white'
-                                                            }`}
-                                                    >
-                                                        {s.name} <ArrowUpRight className="w-3 h-3" />
-                                                    </a>
-                                                ))}
+                                                <div className="flex flex-wrap gap-2 mt-2">
+                                                    {ing.studies.map((s, idx) => (
+                                                        <a
+                                                            key={idx}
+                                                            href={s.url}
+                                                            onClick={(e) => e.stopPropagation()}
+                                                            className={`inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full transition-all ${ing.hero
+                                                                ? 'bg-white/10 text-white/70 hover:bg-[#C4956A] hover:text-white'
+                                                                : 'bg-[#f5f5f5] text-[#666] hover:bg-[#C4956A] hover:text-white'
+                                                                }`}
+                                                        >
+                                                            {s.name} <ArrowUpRight className="w-3 h-3" />
+                                                        </a>
+                                                    ))}
+                                                </div>
                                             </div>
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
-                    ))}
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Footer */}
