@@ -12,60 +12,35 @@ const ingredients = [
         subheader: "Stimuleert stamcelactivatie",
         compound: "COPPER TRIPEPTIDE-1",
         hero: true,
-        benefits: [
-            "Activeert 4.000+ herstel-genen",
-            "Stimuleert dermal papilla stamcellen",
-            "+70% collageen na 12 weken"
-        ],
-        studies: [
-            { name: "Pickart 2018", url: "#" },
-            { name: "Lee 2016", url: "#" }
-        ]
+        benefits: ["4.000+ herstel-genen", "Stimuleert stamcellen", "+70% collageen"],
+        study: "Pickart 2018"
     },
     {
         id: "redensyl",
         percentage: "3%",
         name: "Redensyl",
-        subheader: "+17% meer haar in 84 dagen",
+        subheader: "+17% meer haar",
         compound: "DHQG + EGCG2",
-        benefits: [
-            "Activeert slapende haarfollikels",
-            "10.000+ nieuwe haren in trials",
-            "85% ziet zichtbaar resultaat"
-        ],
-        studies: [
-            { name: "Givaudan 2014", url: "#" }
-        ]
+        benefits: ["Activeert follikels", "10.000+ nieuwe haren", "85% ziet resultaat"],
+        study: "Givaudan 2014"
     },
     {
         id: "capixyl",
         percentage: "5%",
         name: "Capixyl",
-        subheader: "-93% DHT-blokkade",
+        subheader: "-93% DHT",
         compound: "ACETYL TETRAPEPTIDE-3",
-        benefits: [
-            "Blokkeert DHT zonder hormonen",
-            "+46% haardichtheid",
-            "Versterkt verankering"
-        ],
-        studies: [
-            { name: "Lucas Meyer 2024", url: "#" }
-        ]
+        benefits: ["Blokkeert DHT", "+46% dichtheid", "Versterkt verankering"],
+        study: "Lucas Meyer 2024"
     },
     {
         id: "procapil",
         percentage: "3%",
         name: "Procapil",
-        subheader: "+121% haargroei",
+        subheader: "+121% groei",
         compound: "BIOTINYL-GHK",
-        benefits: [
-            "Verbetert doorbloeding",
-            "-47% uitval na 4 maanden",
-            "Versterkt haarwortel"
-        ],
-        studies: [
-            { name: "Sederma 2005", url: "#" }
-        ]
+        benefits: ["Meer doorbloeding", "-47% uitval", "Versterkt wortel"],
+        study: "Sederma 2005"
     },
     {
         id: "anagain",
@@ -73,101 +48,79 @@ const ingredients = [
         name: "Anagain",
         subheader: "78% langere groeifase",
         compound: "PISUM SATIVUM",
-        benefits: [
-            "Verlengt groeicyclus",
-            "+56% FGF-7 groeifactor",
-            "Biologisch & hormoonvrij"
-        ],
-        studies: [
-            { name: "Mibelle 2014", url: "#" }
-        ]
+        benefits: ["Verlengt cyclus", "+56% FGF-7", "Biologisch"],
+        study: "Mibelle 2014"
     },
     {
         id: "baicapil",
         percentage: "4%",
         name: "Baicapil",
-        subheader: "+59% haardichtheid",
+        subheader: "+59% dichtheid",
         compound: "SCUTELLARIA + SOY",
-        benefits: [
-            "-60% uitval in 6 maanden",
-            "+68% groei/rust verhouding",
-            "Antioxidante bescherming"
-        ],
-        studies: [
-            { name: "Provital 2015", url: "#" }
-        ]
+        benefits: ["-60% uitval", "+68% A/T ratio", "Antioxidant"],
+        study: "Provital 2015"
     }
 ]
 
 export default function Ingredients() {
-    const [expanded, setExpanded] = useState<string | null>("ghkcu")
+    const [expanded, setExpanded] = useState<string | null>(null)
 
     return (
-        <section id="ingredienten" className="py-24 bg-[#FAFAF9]">
-            <div className="max-w-3xl mx-auto px-6">
+        <section id="ingredienten" className="py-20 bg-[#FAFAF9]">
+            <div className="max-w-4xl mx-auto px-6">
 
-                {/* Minimal Header */}
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-14"
+                    className="text-center mb-12"
                 >
-                    <p className="text-[11px] tracking-[0.25em] uppercase text-[#999] mb-3">
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-[#999] mb-2">
                         Formule
                     </p>
-                    <h2 className="text-2xl sm:text-3xl font-light text-[#1a1a1a] tracking-tight">
+                    <h2 className="text-2xl font-light text-[#1a1a1a]">
                         6 Actieve Technologieën
                     </h2>
-                    <p className="text-sm text-[#888] mt-3">
+                    <p className="text-sm text-[#888] mt-2">
                         20.5% werkzame concentratie
                     </p>
                 </motion.div>
 
-                {/* Cards */}
-                <div className="space-y-3">
+                {/* 2-Column Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {ingredients.map((ing, i) => (
                         <motion.div
                             key={ing.id}
                             initial={{ opacity: 0, y: 15 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.05, duration: 0.5 }}
+                            transition={{ delay: i * 0.05 }}
                             onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
-                            className={`group cursor-pointer transition-all duration-300 rounded-xl overflow-hidden ${ing.hero
-                                    ? 'bg-white border-2 border-[#C4956A]/40 shadow-sm'
-                                    : 'bg-white border border-[#eee] hover:border-[#C4956A]/30'
+                            className={`cursor-pointer transition-all duration-200 rounded-lg overflow-hidden ${ing.hero
+                                    ? 'bg-white border-2 border-[#C4956A]/30'
+                                    : 'bg-white border border-[#e5e5e5] hover:border-[#C4956A]/40'
                                 } ${expanded === ing.id ? 'shadow-md' : 'hover:shadow-sm'}`}
                         >
-                            {/* Header */}
-                            <div className="px-5 py-4 flex items-center justify-between">
-                                <div className="flex items-center gap-4">
-                                    <span className="text-sm font-medium text-[#C4956A] w-10">
+                            {/* Compact Header */}
+                            <div className="p-4">
+                                <div className="flex items-baseline justify-between mb-1">
+                                    <span className="text-xs font-medium text-[#C4956A]">
                                         {ing.percentage}
                                     </span>
-                                    <div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-base font-medium text-[#1a1a1a]">
-                                                {ing.name}
-                                            </span>
-                                            {ing.hero && (
-                                                <span className="text-[9px] tracking-wider uppercase px-2 py-0.5 rounded bg-[#C4956A]/10 text-[#C4956A] font-medium">
-                                                    Top
-                                                </span>
-                                            )}
-                                        </div>
-                                        <p className="text-sm text-[#C4956A] mt-0.5 font-normal">
-                                            {ing.subheader}
-                                        </p>
-                                    </div>
+                                    <motion.div
+                                        animate={{ rotate: expanded === ing.id ? 180 : 0 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <ChevronDown className="w-3.5 h-3.5 text-[#ccc]" />
+                                    </motion.div>
                                 </div>
-                                <motion.div
-                                    animate={{ rotate: expanded === ing.id ? 180 : 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <ChevronDown className="w-4 h-4 text-[#bbb] group-hover:text-[#C4956A] transition-colors" />
-                                </motion.div>
+                                <h3 className="text-sm font-medium text-[#1a1a1a] mb-1">
+                                    {ing.name}
+                                </h3>
+                                <p className="text-xs text-[#C4956A]">
+                                    {ing.subheader}
+                                </p>
                             </div>
 
                             {/* Expandable */}
@@ -177,42 +130,28 @@ export default function Ingredients() {
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: 'auto', opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.35 }}
+                                        transition={{ duration: 0.25 }}
                                         className="overflow-hidden"
                                     >
-                                        <div className="px-5 pb-5 pt-2 border-t border-[#f5f5f5]">
-                                            <p className="text-[10px] tracking-[0.15em] text-[#bbb] mb-4">
+                                        <div className="px-4 pb-4 border-t border-[#f5f5f5]">
+                                            <p className="text-[9px] tracking-wider text-[#bbb] mt-3 mb-2">
                                                 {ing.compound}
                                             </p>
-
-                                            <ul className="space-y-2 mb-4">
+                                            <ul className="space-y-1 mb-3">
                                                 {ing.benefits.map((b, idx) => (
-                                                    <motion.li
-                                                        key={idx}
-                                                        initial={{ opacity: 0, x: -5 }}
-                                                        animate={{ opacity: 1, x: 0 }}
-                                                        transition={{ delay: 0.1 + idx * 0.05 }}
-                                                        className="flex items-start gap-2 text-sm text-[#555]"
-                                                    >
-                                                        <Check className="w-3.5 h-3.5 text-[#C4956A] mt-0.5 flex-shrink-0" />
-                                                        <span>{b}</span>
-                                                    </motion.li>
+                                                    <li key={idx} className="flex items-center gap-1.5 text-xs text-[#666]">
+                                                        <Check className="w-3 h-3 text-[#C4956A]" />
+                                                        {b}
+                                                    </li>
                                                 ))}
                                             </ul>
-
-                                            <div className="flex flex-wrap gap-2">
-                                                {ing.studies.map((s, idx) => (
-                                                    <a
-                                                        key={idx}
-                                                        href={s.url}
-                                                        onClick={(e) => e.stopPropagation()}
-                                                        className="inline-flex items-center gap-1 text-xs text-[#888] hover:text-[#C4956A] transition-colors"
-                                                    >
-                                                        {s.name}
-                                                        <ArrowUpRight className="w-3 h-3" />
-                                                    </a>
-                                                ))}
-                                            </div>
+                                            <a
+                                                href="#"
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="inline-flex items-center gap-1 text-[10px] text-[#999] hover:text-[#C4956A]"
+                                            >
+                                                {ing.study} <ArrowUpRight className="w-2.5 h-2.5" />
+                                            </a>
                                         </div>
                                     </motion.div>
                                 )}
@@ -222,7 +161,7 @@ export default function Ingredients() {
                 </div>
 
                 {/* Footer */}
-                <div className="flex justify-center gap-6 mt-10 text-xs text-[#999]">
+                <div className="flex justify-center gap-4 mt-10 text-[10px] text-[#999] tracking-wider">
                     <span>Hormoonvrij</span>
                     <span>·</span>
                     <span>Zonder parfum</span>
