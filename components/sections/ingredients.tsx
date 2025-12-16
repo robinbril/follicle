@@ -80,6 +80,17 @@ const ingredients = [
             { name: "Mibelle 2014", url: "#" },
             { name: "Grothe 2016", url: "#" }
         ]
+    },
+    {
+        id: "rozenwater",
+        percentage: "basis",
+        name: "Rozenwater",
+        subheader: "Plakvrije, schadevrije opname",
+        compound: "ROSA DAMASCENA",
+        benefits: ["Optimale absorptie in huid", "Geen plakkerig gevoel", "Kalmeert en hydrateert"],
+        studies: [
+            { name: "Mahboubi 2016", url: "#" }
+        ]
     }
 ]
 
