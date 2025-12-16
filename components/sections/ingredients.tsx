@@ -9,10 +9,10 @@ const ingredients = [
         id: "ghkcu",
         percentage: "5%",
         name: "GHK-Cu",
-        subheader: "Sterkste peptide · 5× marktgemiddelde",
+        subheader: "5× hogere dosis · Standaard serums <1%",
         compound: "COPPER TRIPEPTIDE-1",
         hero: true,
-        benefits: ["Activeert 4.000+ herstel-genen", "Stimuleert dermal papilla stamcellen", "+70% collageen productie"],
+        benefits: ["Stimuleert collageen & bloedvatvorming", "Activeert 4.000+ herstel-genen", "+70% collageen productie"],
         studies: [
             { name: "Pickart 2018", url: "#" },
             { name: "Lee 2016", url: "#" },
@@ -23,10 +23,10 @@ const ingredients = [
     {
         id: "capixyl",
         percentage: "5%",
-        name: "Capixyl",
-        subheader: "Blokkeert -93% DHT · Hormoonvrij",
+        name: "Capixyl™",
+        subheader: "-93% DHT-schade · Hormoonvrij",
         compound: "ACETYL TETRAPEPTIDE-3",
-        benefits: ["Blokkeert DHT zonder hormonen", "+46% haardichtheid", "Versterkt verankering"],
+        benefits: ["Verlaagt ontstekingen rond haarwortel", "Blokkeert DHT zonder hormonen", "+46% haardichtheid"],
         studies: [
             { name: "Lucas Meyer 2024", url: "#" },
             { name: "Thai Study 2020", url: "#" }
@@ -35,10 +35,10 @@ const ingredients = [
     {
         id: "redensyl",
         percentage: "3%",
-        name: "Redensyl",
-        subheader: "+17% haargroei · Activeert haarwortels",
+        name: "Redensyl®",
+        subheader: "+17% haargroei · Beter dan Minoxidil",
         compound: "DHQG + EGCG2",
-        benefits: ["Activeert slapende haarfollikels", "10.000+ nieuwe haren in trials", "85% ziet zichtbaar resultaat"],
+        benefits: ["Activeert slapende stamcellen in haarwortel", "10.000+ nieuwe haren in trials", "85% ziet zichtbaar resultaat"],
         studies: [
             { name: "Givaudan 2014", url: "#" },
             { name: "Karaca 2019", url: "#" },
@@ -48,10 +48,10 @@ const ingredients = [
     {
         id: "baicapil",
         percentage: "4%",
-        name: "Baicapil",
-        subheader: "+59% dichtheid · Stopt uitval",
+        name: "Baicapil™",
+        subheader: "+59% haardichtheid · Verlengt groeifase",
         compound: "SCUTELLARIA + SOY",
-        benefits: ["-60% haaruitval in 6 maanden", "+68% groei/rust verhouding", "Antioxidante bescherming"],
+        benefits: ["Verlengt de anagene groeifase", "-60% haaruitval in 6 maanden", "Meer haren per cm²"],
         studies: [
             { name: "Provital 2015", url: "#" },
             { name: "Opast 2018", url: "#" }
@@ -60,10 +60,10 @@ const ingredients = [
     {
         id: "procapil",
         percentage: "3%",
-        name: "Procapil",
-        subheader: "+121% groei · Versterkt wortel",
+        name: "Procapil™",
+        subheader: "+121% betere hechting · Anti-haaruitval",
         compound: "BIOTINYL-GHK",
-        benefits: ["Verbetert doorbloeding", "-47% uitval na 4 maanden", "Versterkt haarwortel"],
+        benefits: ["Versterkt de follikel in de dermis", "Verbetert doorbloeding", "-47% uitval na 4 maanden"],
         studies: [
             { name: "Sederma 2005", url: "#" },
             { name: "PMC Review 2024", url: "#" }
@@ -71,11 +71,11 @@ const ingredients = [
     },
     {
         id: "anagain",
-        percentage: "3%",
-        name: "Anagain",
-        subheader: "+78% groeifase · Biologisch",
+        percentage: "0.5%",
+        name: "AnaGain™",
+        subheader: "78% reactivatie · Biologische erwtenscheuten",
         compound: "PISUM SATIVUM",
-        benefits: ["Verlengt groeicyclus", "+56% FGF-7 groeifactor", "100% biologisch"],
+        benefits: ["Brengt haren terug naar groeifase", "+56% FGF-7 groeifactor", "100% biologisch"],
         studies: [
             { name: "Mibelle 2014", url: "#" },
             { name: "Grothe 2016", url: "#" }
