@@ -13,7 +13,12 @@ const ingredients = [
         compound: "COPPER TRIPEPTIDE-1",
         hero: true,
         benefits: ["Activeert 4.000+ herstel-genen", "Stimuleert dermal papilla stamcellen", "+70% collageen productie"],
-        study: "Pickart 2018"
+        studies: [
+            { name: "Pickart 2018", url: "#" },
+            { name: "Lee 2016", url: "#" },
+            { name: "Badenhorst 2016", url: "#" },
+            { name: "Pickart 2008", url: "#" }
+        ]
     },
     {
         id: "capixyl",
@@ -22,7 +27,10 @@ const ingredients = [
         subheader: "-93% DHT-blokkade",
         compound: "ACETYL TETRAPEPTIDE-3",
         benefits: ["Blokkeert DHT zonder hormonen", "+46% haardichtheid", "Versterkt verankering"],
-        study: "Lucas Meyer 2024"
+        studies: [
+            { name: "Lucas Meyer 2024", url: "#" },
+            { name: "Thai Study 2020", url: "#" }
+        ]
     },
     {
         id: "redensyl",
@@ -31,7 +39,11 @@ const ingredients = [
         subheader: "+17% meer haar",
         compound: "DHQG + EGCG2",
         benefits: ["Activeert slapende haarfollikels", "10.000+ nieuwe haren in trials", "85% ziet zichtbaar resultaat"],
-        study: "Givaudan 2014"
+        studies: [
+            { name: "Givaudan 2014", url: "#" },
+            { name: "Karaca 2019", url: "#" },
+            { name: "Eslahi 2022", url: "#" }
+        ]
     },
     {
         id: "baicapil",
@@ -40,7 +52,10 @@ const ingredients = [
         subheader: "+59% dichtheid",
         compound: "SCUTELLARIA + SOY",
         benefits: ["-60% haaruitval in 6 maanden", "+68% groei/rust verhouding", "Antioxidante bescherming"],
-        study: "Provital 2015"
+        studies: [
+            { name: "Provital 2015", url: "#" },
+            { name: "Opast 2018", url: "#" }
+        ]
     },
     {
         id: "procapil",
@@ -49,7 +64,10 @@ const ingredients = [
         subheader: "+121% groei",
         compound: "BIOTINYL-GHK",
         benefits: ["Verbetert doorbloeding", "-47% uitval na 4 maanden", "Versterkt haarwortel"],
-        study: "Sederma 2005"
+        studies: [
+            { name: "Sederma 2005", url: "#" },
+            { name: "PMC Review 2024", url: "#" }
+        ]
     },
     {
         id: "anagain",
@@ -58,7 +76,10 @@ const ingredients = [
         subheader: "78% langere groeifase",
         compound: "PISUM SATIVUM",
         benefits: ["Verlengt groeicyclus", "+56% FGF-7 groeifactor", "100% biologisch"],
-        study: "Mibelle 2014"
+        studies: [
+            { name: "Mibelle 2014", url: "#" },
+            { name: "Grothe 2016", url: "#" }
+        ]
     }
 ]
 
@@ -138,8 +159,8 @@ export default function Ingredients() {
                             onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
                             whileHover={{ y: -4, transition: { duration: 0.2 } }}
                             className={`group cursor-pointer rounded-2xl overflow-hidden transition-shadow duration-300 ${ing.hero
-                                    ? 'bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl'
-                                    : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-lg'
+                                ? 'bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl'
+                                : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-lg'
                                 }`}
                         >
                             {/* Card Content */}
@@ -207,14 +228,19 @@ export default function Ingredients() {
                                                 ))}
                                             </ul>
 
-                                            <a
-                                                href="#"
-                                                onClick={(e) => e.stopPropagation()}
-                                                className={`inline-flex items-center gap-1 text-xs font-medium transition-colors ${ing.hero ? 'text-white/50 hover:text-[#C4956A]' : 'text-[#999] hover:text-[#C4956A]'
-                                                    }`}
-                                            >
-                                                {ing.study} <ArrowUpRight className="w-3 h-3" />
-                                            </a>
+                                            <div className="flex flex-wrap gap-2">
+                                                {ing.studies.map((s, idx) => (
+                                                    <a
+                                                        key={idx}
+                                                        href={s.url}
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className={`inline-flex items-center gap-1 text-xs font-medium transition-colors ${ing.hero ? 'text-white/50 hover:text-[#C4956A]' : 'text-[#999] hover:text-[#C4956A]'
+                                                            }`}
+                                                    >
+                                                        {s.name} <ArrowUpRight className="w-3 h-3" />
+                                                    </a>
+                                                ))}
+                                            </div>
                                         </div>
                                     </motion.div>
                                 )}
