@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 const ingredients = [
     {
         id: "ghkcu",
-        percentage: "2.5%",
+        percentage: "5%",
         name: "GHK-Cu",
-        subheader: "2.5% concentratie (markt avg 0.5%)",
+        subheader: "5% concentratie (markt avg 0,5-1%)*",
         compound: "COPPER TRIPEPTIDE-1",
         hero: true,
         benefits: ["Activeert 4.000+ herstel-genen", "Stimuleert dermal papilla stamcellen", "+70% collageen productie"],
@@ -252,8 +252,8 @@ export default function Ingredients() {
                             onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
                             whileHover={{ y: -4, transition: { duration: 0.2 } }}
                             className={`group cursor-pointer rounded-2xl overflow-hidden transition-shadow duration-300 ${ing.hero
-                                    ? 'bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl'
-                                    : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-lg'
+                                ? 'bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl'
+                                : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-lg'
                                 }`}
                         >
                             {/* Card Content */}
