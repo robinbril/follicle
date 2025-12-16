@@ -33,15 +33,22 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.05 }}
-                            className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100 mb-6"
+                            className="flex items-center gap-3 bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100 mb-6"
                         >
+                            {/* Trustpilot */}
+                            <div className="flex items-center gap-1">
+                                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#00B67A" />
+                                </svg>
+                                <span className="text-xs font-bold text-[#00B67A]">Trustpilot</span>
+                            </div>
                             <div className="flex">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-3.5 h-3.5 fill-[#D4A574] text-[#D4A574]" />
+                                    <Star key={i} className="w-3.5 h-3.5 fill-[#00B67A] text-[#00B67A]" />
                                 ))}
                             </div>
                             <span className="text-sm font-bold text-gray-900">4.8</span>
-                            <span className="text-xs text-gray-500">uit 47 reviews</span>
+                            <span className="text-xs text-gray-500">47 reviews</span>
                         </motion.div>
 
                         {/* HEADLINE - Result first */}
@@ -51,7 +58,8 @@ export default function Hero() {
                             transition={{ delay: 0.1 }}
                             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.15] mb-4"
                         >
-                            Zichtbaar voller haar.<br className="hidden sm:block" />
+                            Stop haaruitval in 90 dagen.
+                            <br className="hidden sm:block" />
                             <span className="text-[#D4A574]">Of je geld terug.</span>
                         </motion.h1>
 
@@ -83,12 +91,6 @@ export default function Hero() {
                                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                     </Link>
                                 </Button>
-                                <Link
-                                    href="#ingredienten"
-                                    className="text-sm text-gray-500 hover:text-[#D4A574] font-medium transition-colors"
-                                >
-                                    Bekijk ingrediënten →
-                                </Link>
                             </div>
 
                             {/* Guarantee - prominent */}
