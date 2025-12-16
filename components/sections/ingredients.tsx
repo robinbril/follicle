@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from 'react'
-import { ChevronDown, Check, ArrowUpRight } from 'lucide-react'
+import { ChevronDown, Check, ArrowUpRight, MousePointer2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const ingredients = [
@@ -9,7 +9,7 @@ const ingredients = [
         id: "ghkcu",
         percentage: "5%",
         name: "GHK-Cu",
-        subheader: "5% concentratie (markt avg 0,5-1%)*",
+        subheader: "Sterkste peptide · 5× marktgemiddelde",
         compound: "COPPER TRIPEPTIDE-1",
         hero: true,
         benefits: ["Activeert 4.000+ herstel-genen", "Stimuleert dermal papilla stamcellen", "+70% collageen productie"],
@@ -24,7 +24,7 @@ const ingredients = [
         id: "capixyl",
         percentage: "5%",
         name: "Capixyl",
-        subheader: "-93% DHT-blokkade",
+        subheader: "Blokkeert -93% DHT · Hormoonvrij",
         compound: "ACETYL TETRAPEPTIDE-3",
         benefits: ["Blokkeert DHT zonder hormonen", "+46% haardichtheid", "Versterkt verankering"],
         studies: [
@@ -36,7 +36,7 @@ const ingredients = [
         id: "redensyl",
         percentage: "3%",
         name: "Redensyl",
-        subheader: "+17% meer haar",
+        subheader: "+17% haargroei · Wekt follikels",
         compound: "DHQG + EGCG2",
         benefits: ["Activeert slapende haarfollikels", "10.000+ nieuwe haren in trials", "85% ziet zichtbaar resultaat"],
         studies: [
@@ -49,7 +49,7 @@ const ingredients = [
         id: "baicapil",
         percentage: "4%",
         name: "Baicapil",
-        subheader: "+59% dichtheid",
+        subheader: "+59% dichtheid · Stopt uitval",
         compound: "SCUTELLARIA + SOY",
         benefits: ["-60% haaruitval in 6 maanden", "+68% groei/rust verhouding", "Antioxidante bescherming"],
         studies: [
@@ -61,7 +61,7 @@ const ingredients = [
         id: "procapil",
         percentage: "3%",
         name: "Procapil",
-        subheader: "+121% groei",
+        subheader: "+121% groei · Versterkt wortel",
         compound: "BIOTINYL-GHK",
         benefits: ["Verbetert doorbloeding", "-47% uitval na 4 maanden", "Versterkt haarwortel"],
         studies: [
@@ -73,7 +73,7 @@ const ingredients = [
         id: "anagain",
         percentage: "3%",
         name: "Anagain",
-        subheader: "78% langere groeifase",
+        subheader: "+78% groeifase · Biologisch",
         compound: "PISUM SATIVUM",
         benefits: ["Verlengt groeicyclus", "+56% FGF-7 groeifactor", "100% biologisch"],
         studies: [
@@ -85,7 +85,7 @@ const ingredients = [
         id: "rozenwater",
         percentage: "basis",
         name: "Rozenwater",
-        subheader: "Plakvrije, schadevrije opname",
+        subheader: "Plakvrij · Snelle opname",
         compound: "ROSA DAMASCENA",
         benefits: ["Optimale absorptie in huid", "Geen plakkerig gevoel", "Kalmeert en hydrateert"],
         studies: [
@@ -96,9 +96,11 @@ const ingredients = [
 
 export default function Ingredients() {
     const [expanded, setExpanded] = useState<string | null>(null)
-    const [showTapHint, setShowTapHint] = useState(false)
+    const [showCursor, setShowCursor] = useState(false)
+    const [cursorPos, setCursorPos] = useState({ x: 50, y: 0 })
     const [animationPlayed, setAnimationPlayed] = useState(false)
     const sectionRef = useRef<HTMLElement>(null)
+    const cardsRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const handleIntersection = (entries: IntersectionObserverEntry[]) => {
@@ -106,22 +108,36 @@ export default function Ingredients() {
                 if (entry.isIntersecting && !animationPlayed) {
                     setAnimationPlayed(true)
 
-                    // Show tap hint quickly
-                    setTimeout(() => {
-                        setShowTapHint(true)
-                    }, 600)
+                    // Only show cursor on desktop
+                    const isDesktop = window.innerWidth >= 768
 
-                    // Auto-expand GHK-Cu
-                    setTimeout(() => {
-                        setExpanded("ghkcu")
-                        setShowTapHint(false)
-                    }, 1400)
+                    if (isDesktop) {
+                        // Desktop: show arrow cursor
+                        setTimeout(() => {
+                            setShowCursor(true)
+                            setCursorPos({ x: 50, y: -30 })
+                        }, 800)
+
+                        setTimeout(() => {
+                            setCursorPos({ x: 15, y: 50 })
+                        }, 1200)
+
+                        setTimeout(() => {
+                            setExpanded("ghkcu")
+                            setTimeout(() => setShowCursor(false), 400)
+                        }, 1800)
+                    } else {
+                        // Mobile: just expand after delay
+                        setTimeout(() => {
+                            setExpanded("ghkcu")
+                        }, 1000)
+                    }
                 }
             })
         }
 
         const observer = new IntersectionObserver(handleIntersection, {
-            threshold: 0.2
+            threshold: 0.5 // Higher threshold - really on section
         })
 
         if (sectionRef.current) {
@@ -164,7 +180,7 @@ export default function Ingredients() {
                         transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                         className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#1a1a1a] tracking-tight mb-5"
                     >
-                        6 Gepatenteerde Technologieën
+                        7 Actieve Ingrediënten
                     </motion.h2>
 
                     <motion.p
@@ -192,9 +208,29 @@ export default function Ingredients() {
                     </motion.div>
                 </motion.div>
 
-                {/* Cards - Flex wrap layout */}
-                <div className="space-y-4">
-                    {/* Row 1: GHK-Cu (hero - can expand full width) */}
+                {/* Cards Container */}
+                <div ref={cardsRef} className="relative space-y-4">
+
+                    {/* Desktop Arrow Cursor */}
+                    <AnimatePresence>
+                        {showCursor && (
+                            <motion.div
+                                initial={{ opacity: 0, x: '-50%' }}
+                                animate={{
+                                    opacity: 1,
+                                    left: `${cursorPos.x}%`,
+                                    top: cursorPos.y
+                                }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                className="absolute z-50 pointer-events-none hidden md:block"
+                            >
+                                <MousePointer2 className="w-6 h-6 text-[#1a1a1a] fill-white drop-shadow-lg" />
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+                    {/* Row 1: GHK-Cu (hero) */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -205,19 +241,6 @@ export default function Ingredients() {
                         whileTap={{ scale: 0.995 }}
                         className="relative group cursor-pointer rounded-2xl overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl"
                     >
-                        {/* Tap Hint Animation */}
-                        <AnimatePresence>
-                            {showTapHint && (
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: [0.3, 0.6, 0.3] }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute inset-0 border-2 border-[#C4956A] rounded-2xl pointer-events-none z-10"
-                                />
-                            )}
-                        </AnimatePresence>
-
                         <div className="p-6">
                             <div className="flex items-start justify-between mb-4">
                                 <div className="flex items-center gap-3">
@@ -234,7 +257,7 @@ export default function Ingredients() {
                                 </motion.div>
                             </div>
                             <h3 className="text-xl font-medium text-white mb-1">GHK-Cu</h3>
-                            <p className="text-sm text-[#C4956A]">5% concentratie (markt avg 0,5-1%)*</p>
+                            <p className="text-sm text-[#C4956A]">{ingredients[0].subheader}</p>
                         </div>
 
                         <AnimatePresence>
