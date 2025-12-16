@@ -61,8 +61,7 @@ export default function Pricing() {
                     className="text-center mb-16"
                 >
                     <h2
-                        className="text-3xl sm:text-4xl font-normal text-[#2D2A26] mb-4 tracking-wide"
-                        style={{ fontFamily: "'Playfair Display', serif" }}
+                        className="text-3xl sm:text-4xl font-light text-[#2D2A26] mb-4 tracking-wide"
                     >
                         Kies je behandeling
                     </h2>
@@ -81,8 +80,8 @@ export default function Pricing() {
                         viewport={{ once: true }}
                         onClick={() => setSelectedPlan(0)}
                         className={`md:col-span-2 relative p-8 rounded-2xl transition-all duration-300 text-left ${selectedPlan === 0
-                                ? 'bg-white border-2 border-[#C4956A] shadow-lg'
-                                : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]/50'
+                            ? 'bg-white border-2 border-[#C4956A] shadow-lg'
+                            : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]/50'
                             }`}
                     >
                         <p className="text-xs tracking-widest uppercase text-[#9A948E] mb-2">
@@ -114,8 +113,8 @@ export default function Pricing() {
                         transition={{ delay: 0.1 }}
                         onClick={() => setSelectedPlan(1)}
                         className={`md:col-span-3 relative p-8 sm:p-10 rounded-2xl transition-all duration-300 text-left ${selectedPlan === 1
-                                ? 'bg-white border-2 border-[#C4956A] shadow-[0_8px_30px_rgba(196,149,106,0.15)]'
-                                : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]/50 hover:shadow-lg'
+                            ? 'bg-white border-2 border-[#C4956A] shadow-[0_8px_30px_rgba(196,149,106,0.15)]'
+                            : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]/50 hover:shadow-lg'
                             }`}
                     >
                         {/* Recommended indicator */}
@@ -126,7 +125,6 @@ export default function Pricing() {
                         </p>
                         <h3
                             className="text-2xl font-medium text-[#2D2A26] mb-4"
-                            style={{ fontFamily: "'Playfair Display', serif" }}
                         >
                             {plans[1].sublabel}
                         </h3>
@@ -164,8 +162,7 @@ export default function Pricing() {
                     <div className="mb-8">
                         <p className="text-[#9A948E] text-sm mb-2">Totaal</p>
                         <p
-                            className="text-4xl font-normal text-[#2D2A26]"
-                            style={{ fontFamily: "'Playfair Display', serif" }}
+                            className="text-4xl font-medium text-[#2D2A26]"
                         >
                             €{selectedBundle.totalPrice}
                         </p>

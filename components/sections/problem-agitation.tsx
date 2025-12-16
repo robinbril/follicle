@@ -13,7 +13,7 @@ const competitors = [
     {
         name: "Finasteride",
         price: "€30/mnd",
-        features: ["Remt DHT", "Hormoonblokkend", "Bijwerkingen mogelijk"]
+        features: ["Remt DHT", "Invloed op testosteron", "Bijwerkingen mogelijk"]
     },
     {
         name: "Transplantatie",
@@ -40,10 +40,7 @@ export default function ProblemAgitation() {
                     viewport={{ once: true }}
                     className="text-center mb-20"
                 >
-                    <h2
-                        className="text-4xl sm:text-5xl font-normal text-[#2D2A26] mb-6 tracking-wide uppercase"
-                        style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '6px' }}
-                    >
+                    <h2 className="text-4xl sm:text-5xl font-light text-[#2D2A26] mb-6 tracking-[0.2em] uppercase">
                         Vergelijk
                     </h2>
                     <p className="text-[#8A8580] text-lg font-light tracking-wide">
@@ -65,10 +62,7 @@ export default function ProblemAgitation() {
                             <h3 className="text-xs tracking-widest uppercase text-[#6B6560] mb-2">
                                 {comp.name}
                             </h3>
-                            <p
-                                className="text-2xl text-[#2D2A26] mb-5"
-                                style={{ fontFamily: "'Playfair Display', serif" }}
-                            >
+                            <p className="text-2xl font-medium text-[#2D2A26] mb-5">
                                 {comp.price}
                             </p>
                             <ul className="space-y-2">
@@ -94,10 +88,7 @@ export default function ProblemAgitation() {
 
                     <div className="relative text-center">
                         {/* Brand name */}
-                        <h3
-                            className="text-4xl sm:text-5xl text-[#C4956A] mb-3 tracking-widest"
-                            style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '8px' }}
-                        >
+                        <h3 className="text-4xl sm:text-5xl font-light text-[#C4956A] mb-3 tracking-[0.3em] uppercase">
                             REVIVE
                         </h3>
                         <p className="text-[#6B6560] text-lg font-light mb-10">
