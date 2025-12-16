@@ -8,6 +8,7 @@ const results = [
         icon: TrendingUp,
         number: "+17%",
         label: "meer haar",
+        ingredient: "Redensyl 3%",
         description: "Na 84 dagen dagelijks gebruik",
         source: "Givaudan 2014",
         link: "#"
@@ -16,6 +17,7 @@ const results = [
         icon: Shield,
         number: "-93%",
         label: "DHT-blokkade",
+        ingredient: "Capixyl 5%",
         description: "Remt hormoon-gerelateerde uitval",
         source: "Lucas Meyer",
         link: "#"
@@ -24,6 +26,7 @@ const results = [
         icon: Layers,
         number: "+59%",
         label: "haardichtheid",
+        ingredient: "Baicapil 4%",
         description: "Zichtbaar voller haar",
         source: "Provital 2015",
         link: "#"
@@ -32,6 +35,7 @@ const results = [
         icon: TrendingDown,
         number: "-60%",
         label: "haaruitval",
+        ingredient: "Baicapil 4%",
         description: "Significante vermindering",
         source: "Baicapil study",
         link: "#"
@@ -40,6 +44,7 @@ const results = [
         icon: RefreshCw,
         number: "+88%",
         label: "groeifase",
+        ingredient: "Capixyl 5%",
         description: "Anageen/telogeen verhouding",
         source: "Capixyl 2024",
         link: "#"
@@ -48,6 +53,7 @@ const results = [
         icon: Sparkles,
         number: "10.000+",
         label: "nieuwe haren",
+        ingredient: "Redensyl 3%",
         description: "In 84 dagen gemeten",
         source: "Redensyl trial",
         link: "#"
@@ -96,8 +102,13 @@ export default function Results() {
                             </p>
 
                             {/* Label */}
-                            <p className="text-sm sm:text-base font-medium text-[#2D2A26] mb-2">
+                            <p className="text-sm sm:text-base font-medium text-[#2D2A26] mb-1">
                                 {result.label}
+                            </p>
+
+                            {/* Ingredient */}
+                            <p className="text-xs text-[#C4956A] font-medium mb-2">
+                                {result.ingredient}
                             </p>
 
                             {/* Description */}
