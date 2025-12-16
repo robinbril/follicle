@@ -35,14 +35,13 @@ export default function Hero() {
                             transition={{ delay: 0.05 }}
                             className="flex items-center gap-3 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 mb-6"
                         >
-                            {/* Trustpilot Logo */}
-                            <Image
-                                src="/images/trustpilot-logo.png"
-                                alt="Trustpilot"
-                                width={80}
-                                height={20}
-                                className="h-5 w-auto"
-                            />
+                            {/* Trustpilot */}
+                            <div className="flex items-center gap-1.5">
+                                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#00B67A" />
+                                </svg>
+                                <span className="text-sm font-semibold text-[#1a1a1a]">Trustpilot</span>
+                            </div>
                             <div className="w-px h-4 bg-gray-200" />
                             <div className="flex">
                                 {[...Array(5)].map((_, i) => (
