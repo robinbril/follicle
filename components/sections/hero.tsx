@@ -137,23 +137,6 @@ export default function Hero() {
                                 className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
                                 priority
                             />
-
-                            {/* Floating Result Card - Positioned over image top */}
-                            <motion.div
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="absolute top-8 left-4 bg-gradient-to-r from-amber-500 to-amber-600 p-4 rounded-2xl shadow-[0_8px_30px_rgba(217,119,6,0.3)] border border-amber-400/20 max-w-[220px] z-10"
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                        <Sparkles className="w-6 h-6 text-white" />
-                                    </div>
-                                    <p className="text-sm text-white font-bold leading-tight">
-                                        24 studies
-                                        <span className="block text-xs font-normal opacity-90">Peer-reviewed</span>
-                                    </p>
-                                </div>
-                            </motion.div>
                         </div>
                     </motion.div>
                 </div>

@@ -1,8 +1,8 @@
 import Hero from '@/components/sections/hero'
-import ProblemAgitation from '@/components/sections/problem-agitation'
 import Ingredients from '@/components/sections/ingredients'
-import TargetAudience from '@/components/sections/target-audience'
 import HowItWorks from '@/components/sections/how-it-works'
+import ProblemAgitation from '@/components/sections/problem-agitation'
+import TargetAudience from '@/components/sections/target-audience'
 import Guarantee from '@/components/sections/guarantee'
 import Pricing from '@/components/sections/pricing'
 import Footer from '@/components/sections/footer'
@@ -16,11 +16,24 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Header />
       <Hero />
-      <ProblemAgitation />
+      {/* 1. Hero done above */}
+
+      {/* 2. What is REVIVE - explain BEFORE comparing */}
       <Ingredients />
-      <TargetAudience />
+
+      {/* 3. How it works - simple steps */}
       <HowItWorks />
+
+      {/* 4. Compare - NOW they understand what REVIVE is */}
+      <ProblemAgitation />
+
+      {/* 5. Is it for you? */}
+      <TargetAudience />
+
+      {/* 6. Guarantee */}
       <Guarantee />
+
+      {/* 7. Pricing */}
       <Pricing />
 
       <Footer />
