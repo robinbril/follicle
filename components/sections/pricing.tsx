@@ -1,87 +1,52 @@
 "use client"
 
 import { Button } from '@/components/ui/button'
-import { Star, ArrowRight, Truck, ShieldCheck, Package, Sparkles, Plus, Minus, Clock } from 'lucide-react'
+import { ArrowRight, Truck, ShieldCheck, Package } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 
 export default function Pricing() {
     const [selectedPlan, setSelectedPlan] = useState(0) // Pre-select 6 maanden
-    const [quantity, setQuantity] = useState(1)
-    const [timeLeft, setTimeLeft] = useState({ hours: 3, minutes: 9, seconds: 12 })
 
     const bundles = [
         {
             id: "ultimate",
             months: 6,
-            label: "6 MAANDEN",
-            subLabel: "Beste resultaat",
+            label: "6 maanden",
             price: 29,
-            pricePerMonth: 29,
             totalPrice: 174,
-            popular: true,
-            earlyAdopter: true,
-            discount: "-41%",
+            recommended: true,
             items: [
                 "6x REVIVE Hair Serum (180ml)",
                 "3x Kirkland Minoxidil 5%",
                 "1x Dermaroller 0.25mm"
             ],
-            savings: 120
         },
         {
             id: "complete",
             months: 3,
-            label: "3 MAANDEN",
-            subLabel: null,
+            label: "3 maanden",
             price: 39,
-            pricePerMonth: 39,
             totalPrice: 117,
-            popular: false,
-            discount: "-20%",
+            recommended: false,
             items: [
                 "3x REVIVE Hair Serum (90ml)",
                 "1x Kirkland Minoxidil 5%",
                 "1x Dermaroller 0.25mm"
             ],
-            savings: 30
         },
         {
             id: "starter",
             months: 1,
-            label: "1 MAAND",
-            subLabel: "Probeer eerst",
+            label: "1 maand",
             price: 49,
-            pricePerMonth: null,
             totalPrice: 49,
-            popular: false,
-            discount: null,
+            recommended: false,
             items: [
                 "1x REVIVE Hair Serum (30ml)",
             ],
-            savings: null
         },
     ]
-
-    // Countdown timer
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft(prev => {
-                let { hours, minutes, seconds } = prev
-                if (seconds > 0) {
-                    seconds--
-                } else if (minutes > 0) {
-                    minutes--
-                    seconds = 59
-                } else if (hours > 0) {
-                    hours--
-                    minutes = 59
-                    seconds = 59
-                }
-                return { hours, minutes, seconds }
-            })
-        }, 1000)
-        return () => clearInterval(timer)
-    }, [])
 
     // Listen for plan selection from calculator
     useEffect(() => {
@@ -96,168 +61,114 @@ export default function Pricing() {
     }, [])
 
     const selectedBundle = bundles[selectedPlan]
-    const finalPrice = selectedBundle.totalPrice * quantity
 
     return (
-        <section id="prijzen" className="pt-8 pb-16 bg-white relative overflow-hidden">
-            <div className="max-w-5xl mx-auto px-6">
+        <section id="prijzen" className="py-20 sm:py-28 bg-[#FDFCFA] relative overflow-hidden">
+            <div className="max-w-4xl mx-auto px-6">
 
-                {/* Title */}
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-                        Stop haarverlies.<br />
-                        <span className="text-[#D4A574]">Start hergroei.</span>
+                {/* Elegant Title */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
+                >
+                    <h2 className="text-3xl sm:text-4xl font-normal text-[#2D2A26] mb-4 tracking-tight">
+                        Kies je behandeling
                     </h2>
-                    <p className="text-lg text-gray-600">
-                        Kies je kuurlengte en begin vandaag
+                    <p className="text-[#6B6560] max-w-md mx-auto">
+                        Alle bundels inclusief gratis verzending en 180 dagen garantie
                     </p>
-                </div>
+                </motion.div>
 
-                {/* Bundle Selector */}
-                <div className="mb-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        {bundles.map((bundle, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setSelectedPlan(index)}
-                                className={`relative p-6 rounded-2xl border-2 transition-all duration-200 text-center ${selectedPlan === index
-                                    ? 'border-[#D4A574] bg-[#D4A574]/5 shadow-xl ring-2 ring-[#D4A574]/30'
-                                    : 'border-gray-200 hover:border-[#D4A574]/50 hover:shadow-lg bg-white cursor-pointer'
-                                    }`}
-                            >
-                                {/* Only show MEEST GEKOZEN badge */}
-                                {bundle.popular && selectedPlan === index && (
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D4A574] text-white px-4 py-1 rounded-full text-xs font-bold shadow-md">
-                                        MEEST GEKOZEN
-                                    </div>
-                                )}
+                {/* Premium Plan Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    {bundles.map((bundle, index) => (
+                        <motion.button
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            onClick={() => setSelectedPlan(index)}
+                            className={`relative p-8 rounded-2xl transition-all duration-300 text-left ${selectedPlan === index
+                                ? 'bg-white border-2 border-[#C4956A] shadow-[0_8px_30px_rgba(196,149,106,0.15)]'
+                                : 'bg-white border border-[#E8E4DF] hover:border-[#C4956A]/50 hover:shadow-lg'
+                                }`}
+                        >
+                            {/* Subtle diamond for recommended */}
+                            {bundle.recommended && (
+                                <span className="absolute top-4 right-4 text-[#C4956A] text-sm">◆</span>
+                            )}
 
-                                <div className="mb-4">
-                                    <div className="font-bold text-gray-900 text-base mb-1">
-                                        {bundle.label}
-                                    </div>
-                                    {bundle.subLabel && (
-                                        <div className="text-xs text-gray-500 font-medium">
-                                            {bundle.subLabel}
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="mb-4">
-                                    <div className="text-2xl font-bold text-gray-900">
-                                        {bundle.pricePerMonth ? `€${bundle.pricePerMonth}/mnd` : `€${bundle.price}`}
-                                    </div>
-                                    {bundle.discount && (
-                                        <div className="text-sm text-[#D4A574] font-semibold mt-1">
-                                            {bundle.discount}
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* Items included */}
-                                <div className="space-y-2 text-center">
-                                    {bundle.items.map((item, i) => (
-                                        <div key={i} className="flex items-center justify-center gap-2 text-xs text-gray-700">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-[#D4A574] flex-shrink-0" />
-                                            <span>{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Checkout Section */}
-                <div className="bg-gray-50 rounded-2xl p-6 mb-6 relative">
-
-                    {/* Aantal Selector */}
-                    <div className="mb-6">
-                        <label className="block text-sm font-semibold text-gray-700 mb-3">AANTAL</label>
-                        <div className="flex items-center gap-4">
-                            <div className="flex items-center border-2 border-gray-300 rounded-lg overflow-hidden">
-                                <button
-                                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                    className="p-3 hover:bg-gray-100 transition-colors"
-                                >
-                                    <Minus className="w-4 h-4 text-gray-600" />
-                                </button>
-                                <span className="px-6 font-bold text-lg text-gray-900">{quantity}</span>
-                                <button
-                                    onClick={() => setQuantity(quantity + 1)}
-                                    className="p-3 hover:bg-gray-100 transition-colors"
-                                >
-                                    <Plus className="w-4 h-4 text-gray-600" />
-                                </button>
+                            {/* Duration */}
+                            <div className="mb-6">
+                                <p className="text-[11px] tracking-widest uppercase text-[#9A948E] mb-2">
+                                    {bundle.recommended ? 'Aanbevolen' : 'Behandeling'}
+                                </p>
+                                <h3 className="text-xl font-medium text-[#2D2A26]">
+                                    {bundle.label}
+                                </h3>
                             </div>
-                        </div>
+
+                            {/* Price - clean, no discount messaging */}
+                            <div className="mb-6">
+                                <div className="flex items-baseline gap-1">
+                                    <span className="text-3xl font-medium text-[#2D2A26]">€{bundle.price}</span>
+                                    {bundle.months > 1 && (
+                                        <span className="text-[#9A948E] text-sm">/maand</span>
+                                    )}
+                                </div>
+                                {bundle.months > 1 && (
+                                    <p className="text-[#9A948E] text-sm mt-1">€{bundle.totalPrice} totaal</p>
+                                )}
+                            </div>
+
+                            {/* Items - subtle, elegant */}
+                            <div className="space-y-2 border-t border-[#E8E4DF] pt-6">
+                                {bundle.items.map((item, i) => (
+                                    <p key={i} className="text-sm text-[#6B6560] leading-relaxed">
+                                        {item}
+                                    </p>
+                                ))}
+                            </div>
+                        </motion.button>
+                    ))}
+                </div>
+
+                {/* Checkout - Clean, Premium */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                >
+                    {/* Total */}
+                    <div className="mb-6">
+                        <p className="text-[#9A948E] text-sm mb-2">Totaal</p>
+                        <p className="text-4xl font-medium text-[#2D2A26]">€{selectedBundle.totalPrice}</p>
                     </div>
 
-                    <div className="flex justify-between items-center mb-4">
-                        <span className="text-gray-600">Totaalprijs</span>
-                        <span className="text-4xl font-bold text-gray-900">€{finalPrice}</span>
-                    </div>
-                    <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
-                        <span>{selectedBundle.months} {selectedBundle.months === 1 ? 'maand' : 'maanden'} voorraad</span>
-                        {selectedBundle.savings && (
-                            <span className="text-[#D4A574] font-semibold">
-                                Je bespaart €{selectedBundle.savings * quantity}
-                            </span>
-                        )}
-                    </div>
-
-                    {/* Primary CTA */}
-                    <Button className="w-full py-6 text-xl font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-xl hover:shadow-2xl transition-all duration-300 rounded-xl mb-4">
-                        <span>Voeg toe aan routine</span>
-                        <ArrowRight className="w-5 h-5 ml-2" />
+                    {/* Elegant CTA - Dark, not glossy gold */}
+                    <Button
+                        className="bg-[#2D2A26] hover:bg-[#C4956A] text-white font-normal text-lg py-7 px-12 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 mb-6"
+                    >
+                        Start behandeling
+                        <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
 
-                    {/* Klarna Info */}
-                    <p className="text-center text-sm text-gray-600 mb-4">
-                        4 betalingen van €{(finalPrice / 4).toFixed(2)} met <span className="font-bold">Klarna</span> · 0% rente
+                    {/* Subtle trust signals */}
+                    <p className="text-[#9A948E] text-sm mb-8">
+                        180 dagen garantie · Gratis verzending · Morgen in huis
                     </p>
 
-                    {/* Countdown Timer */}
-                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4">
-                        <div className="flex items-center justify-center gap-2 text-sm">
-                            <Clock className="w-4 h-4 text-amber-600" />
-                            <span className="text-amber-800 font-semibold">
-                                Bestel binnen {timeLeft.hours}u {timeLeft.minutes}m {timeLeft.seconds}s voor verzending vandaag
-                            </span>
-                        </div>
+                    {/* Payment logos - very subtle */}
+                    <div className="flex items-center justify-center gap-6 opacity-40">
+                        <img src="/images/payment/ideal.png" alt="iDEAL" className="h-4" />
+                        <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-4" />
+                        <img src="/images/payment/google-pay.png" alt="Google Pay" className="h-4" />
                     </div>
-
-                    <p className="text-center text-xs text-gray-500">
-                        🔒 Veilige betaling · Geen verborgen kosten
-                    </p>
-                </div>
-
-                {/* Payment & Trust Badges */}
-                <div className="space-y-4">
-                    {/* Payment logos */}
-                    <div className="flex items-center justify-center gap-5 flex-wrap">
-                        <img src="/images/payment/ideal.png" alt="iDEAL" className="h-5 opacity-60" />
-                        <img src="/images/payment/klarna.png" alt="Klarna" className="h-4 opacity-60" />
-                        <img src="/images/payment/apple-pay.png" alt="Apple Pay" className="h-[18px] opacity-60" />
-                        <img src="/images/payment/google-pay.png" alt="Google Pay" className="h-4 opacity-60" />
-                    </div>
-
-                    {/* Trust badges */}
-                    <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-gray-600">
-                        <span className="flex items-center gap-2">
-                            <Package className="w-4 h-4 text-[#D4A574]" />
-                            Direct op voorraad
-                        </span>
-                        <span className="flex items-center gap-2">
-                            <Truck className="w-4 h-4 text-[#D4A574]" />
-                            Morgen in huis
-                        </span>
-                        <span className="flex items-center gap-2">
-                            <ShieldCheck className="w-4 h-4 text-[#D4A574]" />
-                            180 dagen garantie
-                        </span>
-                    </div>
-                </div>
+                </motion.div>
 
             </div>
         </section>
