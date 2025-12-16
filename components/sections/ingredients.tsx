@@ -85,11 +85,9 @@ const ingredients = [
 
 export default function Ingredients() {
     const [expanded, setExpanded] = useState<string | null>(null)
-    const [showCursor, setShowCursor] = useState(false)
-    const [cursorStage, setCursorStage] = useState(0)
+    const [showTapHint, setShowTapHint] = useState(false)
     const [animationPlayed, setAnimationPlayed] = useState(false)
     const sectionRef = useRef<HTMLElement>(null)
-    const cardsRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const handleIntersection = (entries: IntersectionObserverEntry[]) => {
@@ -97,33 +95,22 @@ export default function Ingredients() {
                 if (entry.isIntersecting && !animationPlayed) {
                     setAnimationPlayed(true)
 
-                    // Stage 0: Cursor appears above cards, centered
+                    // Show tap hint quickly
                     setTimeout(() => {
-                        setShowCursor(true)
-                        setCursorStage(0)
-                    }, 1200)
+                        setShowTapHint(true)
+                    }, 600)
 
-                    // Stage 1: Move to GHK-Cu card
+                    // Auto-expand GHK-Cu
                     setTimeout(() => {
-                        setCursorStage(1)
-                    }, 1800)
-
-                    // Stage 2: Click effect
-                    setTimeout(() => {
-                        setCursorStage(2)
                         setExpanded("ghkcu")
-                    }, 2400)
-
-                    // Stage 3: Fade out
-                    setTimeout(() => {
-                        setShowCursor(false)
-                    }, 3200)
+                        setShowTapHint(false)
+                    }, 1400)
                 }
             })
         }
 
         const observer = new IntersectionObserver(handleIntersection, {
-            threshold: 0.4
+            threshold: 0.2
         })
 
         if (sectionRef.current) {
@@ -132,13 +119,6 @@ export default function Ingredients() {
 
         return () => observer.disconnect()
     }, [animationPlayed])
-
-    // Cursor positions for each stage (relative to cards container)
-    const cursorPositions = [
-        { x: '50%', y: '-20px' },      // Stage 0: Above cards, centered
-        { x: '120px', y: '80px' },     // Stage 1: On GHK-Cu card
-        { x: '120px', y: '80px' },     // Stage 2: Click (same position)
-    ]
 
     return (
         <section
@@ -201,105 +181,123 @@ export default function Ingredients() {
                     </motion.div>
                 </motion.div>
 
-                {/* Cards Container with Cursor */}
-                <div ref={cardsRef} className="relative">
+                {/* Cards - Flex wrap layout */}
+                <div className="space-y-4">
+                    {/* Row 1: GHK-Cu (hero - can expand full width) */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        onClick={() => setExpanded(expanded === "ghkcu" ? null : "ghkcu")}
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.995 }}
+                        className="relative group cursor-pointer rounded-2xl overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl"
+                    >
+                        {/* Tap Hint Animation */}
+                        <AnimatePresence>
+                            {showTapHint && (
+                                <motion.div
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.6, 0.3, 0.6] }}
+                                    exit={{ scale: 1.5, opacity: 0 }}
+                                    transition={{ duration: 0.8, repeat: Infinity }}
+                                    className="absolute inset-0 border-2 border-[#C4956A] rounded-2xl pointer-events-none z-10"
+                                />
+                            )}
+                        </AnimatePresence>
 
-                    {/* Animated Cursor */}
-                    <AnimatePresence>
-                        {showCursor && (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.5, x: '-50%' }}
-                                animate={{
-                                    opacity: cursorStage === 2 ? [1, 0.7, 1] : 1,
-                                    scale: cursorStage === 2 ? [1, 0.9, 1] : 1,
-                                    left: cursorPositions[cursorStage].x,
-                                    top: cursorPositions[cursorStage].y,
-                                    x: cursorStage === 0 ? '-50%' : 0
-                                }}
-                                exit={{ opacity: 0, scale: 0.5 }}
-                                transition={{
-                                    duration: 0.6,
-                                    ease: [0.22, 1, 0.36, 1]
-                                }}
-                                className="absolute z-50 pointer-events-none"
-                            >
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="drop-shadow-lg">
-                                    <path
-                                        d="M5 3L19 12L12 14L9 21L5 3Z"
-                                        fill="#1a1a1a"
-                                        stroke="white"
-                                        strokeWidth="2"
-                                    />
-                                </svg>
-                                {/* Click ripple */}
-                                {cursorStage === 2 && (
-                                    <motion.div
-                                        initial={{ scale: 0, opacity: 0.6 }}
-                                        animate={{ scale: 2.5, opacity: 0 }}
-                                        transition={{ duration: 0.5 }}
-                                        className="absolute top-2 left-2 w-4 h-4 rounded-full bg-[#C4956A]"
-                                    />
-                                )}
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                        <div className="p-6">
+                            <div className="flex items-start justify-between mb-4">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-3xl font-light text-[#C4956A]">5%</span>
+                                    <span className="text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-md bg-[#C4956A] text-white font-medium">
+                                        Bewezen
+                                    </span>
+                                </div>
+                                <motion.div
+                                    animate={{ rotate: expanded === "ghkcu" ? 180 : 0 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <ChevronDown className="w-5 h-5 text-white/40" />
+                                </motion.div>
+                            </div>
+                            <h3 className="text-xl font-medium text-white mb-1">GHK-Cu</h3>
+                            <p className="text-sm text-[#C4956A]">5% concentratie (markt avg 0,5-1%)*</p>
+                        </div>
 
-                    {/* Cards Grid - align-start prevents stretching */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
-                        {ingredients.map((ing, i) => (
+                        <AnimatePresence>
+                            {expanded === "ghkcu" && (
+                                <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="px-6 pb-6 pt-2 border-t border-white/10">
+                                        <p className="text-[10px] tracking-[0.15em] text-white/30 mb-4">COPPER TRIPEPTIDE-1</p>
+                                        <ul className="space-y-2 mb-4">
+                                            {ingredients[0].benefits.map((b, idx) => (
+                                                <motion.li
+                                                    key={idx}
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.1 + idx * 0.08 }}
+                                                    className="flex items-start gap-2 text-sm text-white/80"
+                                                >
+                                                    <Check className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#C4956A]" />
+                                                    {b}
+                                                </motion.li>
+                                            ))}
+                                        </ul>
+                                        <div className="flex flex-wrap gap-2">
+                                            {ingredients[0].studies.map((s, idx) => (
+                                                <a
+                                                    key={idx}
+                                                    href={s.url}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    className="inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full bg-white/10 text-white/70 hover:bg-[#C4956A] hover:text-white transition-all"
+                                                >
+                                                    {s.name} <ArrowUpRight className="w-3 h-3" />
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.div>
+
+                    {/* Row 2-3: Other ingredients in grid */}
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                        {ingredients.slice(1).map((ing, i) => (
                             <motion.div
                                 key={ing.id}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{
-                                    delay: i * 0.1,
-                                    duration: 0.6,
-                                    ease: [0.22, 1, 0.36, 1]
-                                }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1 + i * 0.05, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                                 onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
-                                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                                className={`group cursor-pointer rounded-2xl overflow-hidden transition-shadow duration-300 ${ing.hero
-                                        ? 'bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] text-white shadow-xl'
-                                        : 'bg-white border border-[#e8e8e8] hover:border-[#C4956A]/50 hover:shadow-lg'
+                                whileHover={{ y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                className={`group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 bg-white border hover:shadow-lg ${expanded === ing.id ? 'border-[#C4956A] shadow-lg col-span-2 lg:col-span-3' : 'border-[#e8e8e8] hover:border-[#C4956A]/50'
                                     }`}
                             >
-                                {/* Card Content */}
-                                <div className="p-6">
-                                    {/* Top Row */}
-                                    <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <span className="text-2xl font-light text-[#C4956A]">
-                                                {ing.percentage}
-                                            </span>
-                                            {ing.hero && (
-                                                <motion.span
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    className="ml-2 text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-md bg-[#C4956A] text-white font-medium"
-                                                >
-                                                    Bewezen
-                                                </motion.span>
-                                            )}
-                                        </div>
+                                <div className="p-5">
+                                    <div className="flex items-start justify-between mb-3">
+                                        <span className="text-xl font-light text-[#C4956A]">{ing.percentage}</span>
                                         <motion.div
                                             animate={{ rotate: expanded === ing.id ? 180 : 0 }}
-                                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                                            transition={{ duration: 0.3 }}
                                         >
-                                            <ChevronDown className={`w-5 h-5 ${ing.hero ? 'text-white/40' : 'text-[#ccc] group-hover:text-[#C4956A]'} transition-colors`} />
+                                            <ChevronDown className="w-4 h-4 text-[#ccc] group-hover:text-[#C4956A] transition-colors" />
                                         </motion.div>
                                     </div>
-
-                                    {/* Name & Subheader */}
-                                    <h3 className={`text-xl font-medium mb-1 ${ing.hero ? 'text-white' : 'text-[#1a1a1a]'}`}>
-                                        {ing.name}
-                                    </h3>
-                                    <p className="text-sm text-[#C4956A]">
-                                        {ing.subheader}
-                                    </p>
+                                    <h3 className="text-lg font-medium text-[#1a1a1a] mb-1">{ing.name}</h3>
+                                    <p className="text-sm text-[#C4956A]">{ing.subheader}</p>
                                 </div>
 
-                                {/* Expandable */}
                                 <AnimatePresence>
                                     {expanded === ing.id && (
                                         <motion.div
@@ -309,36 +307,29 @@ export default function Ingredients() {
                                             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                                             className="overflow-hidden"
                                         >
-                                            <div className={`px-6 pb-6 pt-2 ${ing.hero ? 'border-t border-white/10' : 'border-t border-[#f0f0f0]'}`}>
-                                                <p className={`text-[10px] tracking-[0.15em] mb-4 ${ing.hero ? 'text-white/30' : 'text-[#bbb]'}`}>
-                                                    {ing.compound}
-                                                </p>
-
+                                            <div className="px-5 pb-5 pt-2 border-t border-[#f0f0f0]">
+                                                <p className="text-[10px] tracking-[0.15em] text-[#bbb] mb-3">{ing.compound}</p>
                                                 <ul className="space-y-2 mb-4">
                                                     {ing.benefits.map((b, idx) => (
                                                         <motion.li
                                                             key={idx}
                                                             initial={{ opacity: 0, x: -10 }}
                                                             animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: 0.1 + idx * 0.08 }}
-                                                            className={`flex items-start gap-2 text-sm ${ing.hero ? 'text-white/80' : 'text-[#555]'}`}
+                                                            transition={{ delay: 0.05 + idx * 0.05 }}
+                                                            className="flex items-start gap-2 text-sm text-[#555]"
                                                         >
-                                                            <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 text-[#C4956A]`} />
+                                                            <Check className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#C4956A]" />
                                                             {b}
                                                         </motion.li>
                                                     ))}
                                                 </ul>
-
-                                                <div className="flex flex-wrap gap-2 mt-2">
+                                                <div className="flex flex-wrap gap-2">
                                                     {ing.studies.map((s, idx) => (
                                                         <a
                                                             key={idx}
                                                             href={s.url}
                                                             onClick={(e) => e.stopPropagation()}
-                                                            className={`inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full transition-all ${ing.hero
-                                                                ? 'bg-white/10 text-white/70 hover:bg-[#C4956A] hover:text-white'
-                                                                : 'bg-[#f5f5f5] text-[#666] hover:bg-[#C4956A] hover:text-white'
-                                                                }`}
+                                                            className="inline-flex items-center gap-1.5 text-[11px] px-3 py-1.5 rounded-full bg-[#f5f5f5] text-[#666] hover:bg-[#C4956A] hover:text-white transition-all"
                                                         >
                                                             {s.name} <ArrowUpRight className="w-3 h-3" />
                                                         </a>
