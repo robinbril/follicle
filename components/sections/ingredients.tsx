@@ -9,7 +9,7 @@ const ingredients = [
         id: "ghkcu",
         percentage: "2.5%",
         name: "GHK-Cu",
-        subheader: "Sterkst onderzochte peptide in Europa",
+        subheader: "2.5% concentratie (markt avg 0.5%)",
         compound: "COPPER TRIPEPTIDE-1",
         hero: true,
         benefits: ["Activeert 4.000+ herstel-genen", "Stimuleert dermal papilla stamcellen", "+70% collageen productie"],
@@ -24,7 +24,7 @@ const ingredients = [
         id: "capixyl",
         percentage: "5%",
         name: "Capixyl",
-        subheader: "5% concentratie (markt avg 1%)",
+        subheader: "-93% DHT-blokkade",
         compound: "ACETYL TETRAPEPTIDE-3",
         benefits: ["Blokkeert DHT zonder hormonen", "+46% haardichtheid", "Versterkt verankering"],
         studies: [
