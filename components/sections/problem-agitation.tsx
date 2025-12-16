@@ -1,6 +1,6 @@
 "use client"
 
-import { Check, X, ArrowRight } from 'lucide-react'
+import { Check, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -24,8 +24,8 @@ const treatments = [
         highlight: false,
         features: [
             { text: "Bewezen effectief", positive: true },
-            { text: "2x per dag toepassen", positive: false },
-            { text: "Stop = mogelijke uitval", positive: false },
+            { text: "2x per dag toepassen", neutral: true },
+            { text: "Stop = mogelijke uitval", neutral: true },
         ]
     },
     {
@@ -34,8 +34,8 @@ const treatments = [
         highlight: false,
         features: [
             { text: "Sterk tegen DHT", positive: true },
-            { text: "Hormoonblokker", positive: false },
-            { text: "Mogelijke bijwerkingen", positive: false },
+            { text: "Hormoonblokker", neutral: true },
+            { text: "Mogelijke bijwerkingen", neutral: true },
         ]
     },
     {
@@ -44,35 +44,35 @@ const treatments = [
         highlight: false,
         features: [
             { text: "Permanente oplossing", positive: true },
-            { text: "Chirurgisch ingrijpen", positive: false },
-            { text: "Lange herstelperiode", positive: false },
+            { text: "Chirurgisch ingrijpen", neutral: true },
+            { text: "Lange herstelperiode", neutral: true },
         ]
     },
 ]
 
 export default function ProblemAgitation() {
     return (
-        <section className="py-16 sm:py-20 bg-gradient-to-b from-[#091412] to-[#0D1F17] relative overflow-hidden">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        <section className="py-20 sm:py-28 bg-[#FDFCFA] relative overflow-hidden">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
 
-                {/* Section Title - Bridge from Hero */}
+                {/* Section Title - Elegant serif */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-10"
+                    className="text-center mb-14"
                 >
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                    <h2 className="text-3xl sm:text-4xl font-normal text-[#2D2A26] mb-4 tracking-tight">
                         Vergelijk Eerlijk
                     </h2>
-                    <p className="text-white/60 max-w-xl mx-auto">
-                        REVIVE: Natuurlijk serum met <span className="text-[#D4A574] font-semibold">20.5% actieve stof</span>.
-                        Standalone of gecombineerd met Minoxidil in onze bundels.
+                    <p className="text-[#6B6560] max-w-xl mx-auto leading-relaxed">
+                        REVIVE: Natuurlijk serum met <span className="text-[#C4956A] font-medium">20.5% actieve stof</span>.
+                        Standalone of gecombineerd met Minoxidil.
                     </p>
                 </motion.div>
 
-                {/* Treatment Comparison - REVIVE dominant */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
+                {/* Treatment Comparison - Premium Cards */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
                     {treatments.map((t, i) => (
                         <motion.div
                             key={i}
@@ -80,31 +80,36 @@ export default function ProblemAgitation() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className={`relative p-5 md:p-6 rounded-xl border transition-all ${t.highlight
-                                ? 'bg-gradient-to-b from-emerald-900/40 to-emerald-900/20 border-emerald-500/50 shadow-lg shadow-emerald-500/20 md:scale-105'
-                                : 'bg-white/5 border-white/10 opacity-80 hover:opacity-100'
+                            className={`relative p-6 lg:p-8 rounded-2xl transition-all duration-300 ${t.highlight
+                                ? 'bg-white border-2 border-[#C4956A] shadow-[0_8px_30px_rgba(196,149,106,0.15)] lg:scale-[1.02]'
+                                : 'bg-white border border-[#E8E4DF] hover:shadow-[0_8px_30px_rgba(45,42,38,0.08)] hover:-translate-y-1'
                                 }`}
                         >
+                            {/* Recommended badge */}
                             {t.highlight && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#C4956A] to-[#D4A574] text-white text-[11px] font-medium tracking-wide px-4 py-1.5 rounded-full uppercase shadow-sm">
                                     Aanbevolen
                                 </div>
                             )}
-                            <div className="mb-4">
-                                <h3 className={`text-lg md:text-xl font-bold mb-1 ${t.highlight ? 'text-emerald-400' : 'text-white/90'}`}>
+
+                            {/* Product name & price */}
+                            <div className="mb-6">
+                                <h3 className={`text-xl font-semibold mb-1 ${t.highlight ? 'text-[#C4956A]' : 'text-[#2D2A26]'}`}>
                                     {t.name}
                                 </h3>
-                                <p className="text-white/50 text-sm">{t.price}</p>
+                                <p className="text-[#9A948E] text-sm">{t.price}</p>
                             </div>
-                            <ul className="space-y-2">
+
+                            {/* Features list - elegant, no red crosses */}
+                            <ul className="space-y-3">
                                 {t.features.map((feature, idx) => (
-                                    <li key={idx} className={`flex items-start gap-2 text-xs md:text-sm ${t.highlight ? 'text-white/80' : 'text-white/60'}`}>
+                                    <li key={idx} className="flex items-start gap-2.5 text-sm text-[#6B6560]">
                                         {feature.positive ? (
-                                            <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                                            <Check className="w-4 h-4 text-[#C4956A] flex-shrink-0 mt-0.5" />
                                         ) : (
-                                            <X className="w-4 h-4 text-red-400/70 flex-shrink-0 mt-0.5" />
+                                            <span className="w-4 h-4 flex items-center justify-center text-[#C4C0BA] flex-shrink-0 mt-0.5">·</span>
                                         )}
-                                        {feature.text}
+                                        <span className="leading-relaxed">{feature.text}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -112,34 +117,31 @@ export default function ProblemAgitation() {
                     ))}
                 </div>
 
-                {/* Scepticism acknowledgment */}
+                {/* Trust section - Elegant, not aggressive */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="p-6 bg-amber-500/10 rounded-xl border border-amber-500/20"
+                    className="text-center max-w-2xl mx-auto"
                 >
-                    <p className="text-amber-100/90 text-center leading-relaxed mb-4">
-                        <span className="text-amber-50 font-medium">"Klinisch bewezen" — je hebt het 400x gehoord.</span>
+                    <p className="text-[#6B6560] leading-relaxed mb-6">
+                        <span className="text-[#2D2A26] font-medium">"Klinisch bewezen"</span> — we snappen de scepsis.
                         <br className="hidden sm:block" />
-                        Daarom hebben we geen marketingclaims. Alleen{' '}
-                        <span className="text-white font-semibold">transparantie</span>.
-                        24 peer-reviewed studies. Klik, lees, oordeel zelf.
+                        Daarom geen marketingclaims, alleen{' '}
+                        <span className="text-[#C4956A] font-medium">24 peer-reviewed studies</span>.
                     </p>
 
                     {/* CTA */}
-                    <div className="text-center">
-                        <Button
-                            asChild
-                            className="bg-[#C4956A] hover:bg-[#B38559] text-white font-bold py-5 px-8"
-                        >
-                            <Link href="#prijzen" className="flex items-center gap-2">
-                                Start met REVIVE
-                                <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </Button>
-                        <p className="text-white/40 text-xs mt-2">180 dagen risico-vrij</p>
-                    </div>
+                    <Button
+                        asChild
+                        className="bg-[#C4956A] hover:bg-[#B38559] text-white font-medium py-6 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                        <Link href="#prijzen" className="flex items-center gap-2">
+                            Bekijk prijzen
+                            <ArrowRight className="w-4 h-4" />
+                        </Link>
+                    </Button>
+                    <p className="text-[#9A948E] text-xs mt-3">180 dagen niet tevreden? Volledige terugbetaling.</p>
                 </motion.div>
             </div>
         </section>
