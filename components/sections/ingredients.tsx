@@ -24,7 +24,7 @@ const ingredients = [
         id: "capixyl",
         percentage: "5%",
         name: "Capixyl",
-        subheader: "-93% DHT-blokkade",
+        subheader: "5% concentratie (markt avg 1%)",
         compound: "ACETYL TETRAPEPTIDE-3",
         benefits: ["Blokkeert DHT zonder hormonen", "+46% haardichtheid", "Versterkt verankering"],
         studies: [
