@@ -1,12 +1,12 @@
 "use client"
 
-import { Check, Truck, Shield, Package } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { Check, Truck, Shield, Sparkles } from 'lucide-react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 export default function Pricing() {
-    const [selectedPlan, setSelectedPlan] = useState(2)
+    const [selectedPlan, setSelectedPlan] = useState(2) // Default to 6 months (Resultaatpakket)
 
     const plans = [
         {
@@ -15,235 +15,222 @@ export default function Pricing() {
             months: 1,
             bottles: 1,
             perMonth: 49,
-            originalTotal: 49,
             totalPrice: 49,
             perDay: "1.63",
-            savings: 0,
             featured: false,
-            bgClass: "bg-white border border-[#e8e8e8]",
+            bgClass: "bg-white border-[#F0EDE9]",
+            textColor: "text-[#1a1a1a]",
+            subColor: "text-[#6B6560]",
             benefits: [
                 "1× REVIVE Serum (30ml)",
-                "Gratis verzending"
+                "30 dagen haargroei kuur",
+                "180 dagen garantie",
+                "Morgen al in huis"
             ],
-            cta: "Probeer éénmalig"
+            cta: "PROBEER 1 FLES"
         },
         {
             id: "popular",
-            label: "Bundel",
+            label: "Startpakket",
             months: 3,
             bottles: 3,
-            perMonth: 30,
-            originalTotal: 147,
-            totalPrice: 89,
-            perDay: "0.99",
-            savings: 58,
+            perMonth: 29,
+            totalPrice: 87,
+            perDay: "0.96",
             featured: false,
-            bgClass: "bg-[#F5F5F7] border border-[#e8e8e8]",
+            badge: "Snelste resultaat",
+            bgClass: "bg-white border-[#E8DCCF]",
+            textColor: "text-[#1a1a1a]",
+            subColor: "text-[#6B6560]",
             benefits: [
-                "3× REVIVE Serum",
-                "Gratis verzending",
-                "Eerste resultaten"
+                "3× REVIVE Serum (90ml)",
+                "90 dagen haargroei kuur",
+                "180 dagen garantie",
+                "Gratis verzending"
             ],
-            cta: "Kies bundel"
+            cta: "BESTEL STARTPAKKET"
         },
         {
             id: "best",
-            label: "Voordeelverpakking",
+            label: "Resultaatpakket",
             months: 6,
             bottles: 6,
-            perMonth: 20,
-            originalTotal: 294,
-            totalPrice: 119,
-            perDay: "0.66",
-            savings: 175,
+            perMonth: 19,
+            totalPrice: 114,
+            perDay: "0.62",
             featured: true,
-            bgClass: "bg-gradient-to-br from-[#1a1a1a] via-[#252525] to-[#1a1a1a]",
+            badge: "Meest gekozen",
+            bgClass: "bg-[#111] border-[#C4956A]",
+            textColor: "text-white",
+            subColor: "text-white/60",
             benefits: [
-                "6× REVIVE Serum (Complete kuur)",
-                "1× Minoxidil flesje (GRATIS)",
-                "1× Dermaroller 0.25mm (GRATIS)",
-                "180 dagen garantie"
+                "6× REVIVE Serum (180ml)",
+                "180 dagen haargroei kuur",
+                "Gratis dermaroller t.w.v. €19",
+                "180 dagen garantie",
+                "Gratis verzending"
             ],
-            cta: "Claim Voordeelverpakking",
-            badge: "3 MAANDEN GRATIS"
-        },
+            cta: "BESTEL RESULTAATPAKKET"
+        }
     ]
 
-    useEffect(() => {
-        const handleSelectPlan = (event: CustomEvent) => {
-            if (event.detail?.planIndex !== undefined) {
-                setSelectedPlan(event.detail.planIndex)
-            }
-        }
-
-        window.addEventListener('selectPlan', handleSelectPlan as EventListener)
-        return () => window.removeEventListener('selectPlan', handleSelectPlan as EventListener)
-    }, [])
-
     return (
-        <section id="prijzen" className="py-24 sm:py-32 bg-gradient-to-b from-white to-[#FAFAF9]">
-            <div className="max-w-5xl mx-auto px-6">
+        <section id="prijzen" className="py-20 sm:py-32 bg-[#FDFCFA]">
+            <div className="max-w-6xl mx-auto px-6">
 
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-14"
+                    className="text-center mb-16"
                 >
-                    <p className="text-sm text-[#C4956A] font-medium mb-3">
-                        Start vandaag
+                    <p className="text-sm text-[#C4956A] font-medium mb-3 uppercase tracking-[0.2em]">
+                        Start direct
                     </p>
-                    <h2 className="text-3xl sm:text-4xl font-light text-[#1a1a1a] tracking-tight mb-4">
+                    <h2 className="text-3xl sm:text-5xl font-bold text-[#1a1a1a] tracking-tight mb-8">
                         Kies je behandeling
                     </h2>
-                    <div className="flex items-center justify-center gap-6 text-sm text-[#888]">
+                    
+                    {/* Compact Trust Summary */}
+                    <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-[#6B6560] font-medium opacity-80">
                         <span className="flex items-center gap-2">
-                            <Truck className="w-4 h-4" /> Gratis verzending
+                            <Truck className="w-4 h-4 text-[#C4956A]" /> Gratis verzending
                         </span>
                         <span className="flex items-center gap-2">
-                            <Shield className="w-4 h-4" /> 180 dagen garantie
+                            <Shield className="w-4 h-4 text-[#C4956A]" /> 180 dagen garantie
+                        </span>
+                        <span className="flex items-center gap-2">
+                            <Check className="w-4 h-4 text-[#C4956A]" /> Geen abonnement
                         </span>
                     </div>
                 </motion.div>
 
                 {/* 3-Tier Pricing Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-3 items-end mb-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch max-w-6xl mx-auto">
                     {plans.map((plan, i) => (
                         <motion.div
                             key={plan.id}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
+                            transition={{ delay: i * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                             onClick={() => setSelectedPlan(i)}
-                            className={`relative cursor-pointer rounded-2xl transition-all duration-300 ${plan.bgClass} ${plan.featured
-                                    ? 'text-white scale-[1.03] shadow-[0_20px_60px_rgba(196,149,106,0.3)] z-10'
-                                    : selectedPlan === i
-                                        ? 'border-2 !border-[#C4956A] shadow-lg'
-                                        : 'hover:border-[#C4956A]/50 hover:shadow-md'
-                                }`}
+                            className={`relative flex flex-col cursor-pointer rounded-[2.5rem] transition-all duration-500 border-[1.5px] group ${
+                                plan.featured 
+                                ? 'bg-[#111] border-[#C4956A] shadow-[0_40px_80px_rgba(0,0,0,0.3)] md:scale-[1.05] z-10' 
+                                : selectedPlan === i
+                                    ? 'bg-white border-[#C4956A] shadow-2xl'
+                                    : 'bg-white border-[#E8E4DF] hover:border-[#C4956A]/50 hover:shadow-xl'
+                            }`}
                         >
-                            {/* Badge */}
+                            {/* Featured Badge */}
                             {plan.badge && (
-                                <div className="absolute -top-0 left-0 right-0 bg-gradient-to-r from-[#C4956A] to-[#d4a57a] text-white text-[11px] tracking-wider font-bold py-2 text-center rounded-t-2xl">
+                                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#C4956A] text-white text-[9px] tracking-[0.15em] font-bold py-1.5 px-5 rounded-full uppercase shadow-lg z-20">
                                     {plan.badge}
                                 </div>
                             )}
 
-                            <div className={`p-6 ${plan.featured ? 'pt-12' : ''}`}>
-
-                                {/* Header */}
-                                <div className="text-center mb-4">
-                                    <p className={`text-xs tracking-widest uppercase mb-2 ${plan.featured ? 'text-[#C4956A]' : 'text-[#999]'
-                                        }`}>
+                            <div className="p-8 sm:p-10 flex flex-col flex-grow">
+                                {/* Plan Identity */}
+                                <div className="mb-8">
+                                    <span className={`text-[10px] font-bold tracking-[0.2em] uppercase ${plan.featured ? 'text-[#C4956A]' : 'text-[#888]'}`}>
                                         {plan.label}
-                                    </p>
-                                    <h3 className={`text-2xl font-medium ${plan.featured ? 'text-white' : 'text-[#1a1a1a]'
-                                        }`}>
-                                        {plan.months} maand{plan.months > 1 ? 'en' : ''}
+                                    </span>
+                                    <h3 className={`text-2xl sm:text-3xl font-bold mt-1 ${plan.textColor}`}>
+                                        {plan.months} Maand{plan.months > 1 ? 'en' : ''}
                                     </h3>
                                 </div>
 
-                                {/* Simple Icon Visual */}
-                                <div className="flex justify-center mb-5 min-h-[60px] items-center">
-                                    <div className="flex items-center gap-1">
-                                        {[...Array(Math.min(plan.bottles, 3))].map((_, idx) => (
-                                            <Package
-                                                key={idx}
-                                                className={`${plan.bottles === 1 ? 'w-8 h-8' : 'w-6 h-6'} ${plan.featured ? 'text-[#C4956A]' : 'text-[#C4956A]'
-                                                    }`}
-                                            />
-                                        ))}
-                                        {plan.bottles > 3 && (
-                                            <span className={`text-sm font-medium ml-1 ${plan.featured ? 'text-white/60' : 'text-[#999]'
-                                                }`}>
-                                                +{plan.bottles - 3}
-                                            </span>
+                                {/* Pricing */}
+                                <div className="mb-8">
+                                    <div className="flex items-baseline gap-1">
+                                        <span className={`text-5xl font-bold ${plan.textColor}`}>€{plan.totalPrice}</span>
+                                        <span className={`text-sm ${plan.subColor}`}>totaal</span>
+                                    </div>
+                                    <div className="mt-2 flex items-center gap-2 text-sm">
+                                        {plan.months > 1 && (
+                                            <>
+                                                <span className="text-[#888] line-through opacity-50">€{plan.months * 49}</span>
+                                                <span className="font-bold text-[#C4956A]">€{plan.perMonth}/mnd</span>
+                                            </>
+                                        )}
+                                        {plan.months === 1 && (
+                                            <span className="font-bold text-[#C4956A]">€{plan.perDay}/dag</span>
                                         )}
                                     </div>
                                 </div>
 
-                                {/* Price */}
-                                <div className="text-center mb-4">
-                                    {plan.savings > 0 && (
-                                        <p className={`text-base line-through mb-1 ${plan.featured ? 'text-white/40' : 'text-[#bbb]'
-                                            }`}>
-                                            €{plan.originalTotal}
-                                        </p>
-                                    )}
-                                    <div className="flex items-baseline justify-center gap-1">
-                                        <span className={`text-4xl font-medium ${plan.featured ? 'text-white' : 'text-[#1a1a1a]'
-                                            }`}>
-                                            €{plan.totalPrice}
-                                        </span>
-                                    </div>
-                                    <p className={`text-sm mt-1 ${plan.featured ? 'text-[#C4956A]' : 'text-[#C4956A]'
-                                        }`}>
-                                        €{plan.perMonth}/maand
-                                    </p>
-
-                                    {/* Smart customer logic */}
-                                    {plan.featured && (
-                                        <p className="text-xs mt-2 text-[#d4a57a] font-medium">
-                                            Slechts €30 méér dan 3 maanden
-                                        </p>
-                                    )}
-
-                                    <p className={`text-xs mt-1 ${plan.featured ? 'text-white/40' : 'text-[#bbb]'
-                                        }`}>
-                                        €{plan.perDay} per dag
-                                    </p>
-                                </div>
-
-                                {/* Benefits */}
-                                <ul className="space-y-2 mb-6 min-h-[100px]">
+                                {/* Checkmarks */}
+                                <ul className="space-y-4 mb-10 flex-grow">
                                     {plan.benefits.map((benefit, idx) => (
-                                        <li key={idx} className={`flex items-start gap-2 text-sm ${plan.featured ? 'text-white/80' : 'text-[#666]'
-                                            }`}>
-                                            <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 ${plan.featured ? 'text-[#C4956A]' : 'text-[#C4956A]'
-                                                }`} />
-                                            {benefit}
+                                        <li key={idx} className={`flex items-start gap-3.5 text-[14px] leading-snug ${plan.featured ? 'text-white/80' : 'text-[#4A4540]'}`}>
+                                            <div className={`mt-0.5 p-0.5 rounded-full ${plan.featured ? 'bg-[#C4956A]/30 text-[#C4956A]' : 'bg-[#C4956A]/10 text-[#C4956A]'}`}>
+                                                <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                                            </div>
+                                            <span className={plan.featured ? 'font-light' : ''}>{benefit}</span>
                                         </li>
                                     ))}
                                 </ul>
 
                                 {/* CTA Button */}
-                                <Link href="/checkout" className="block">
-                                    <button className={`w-full py-3.5 rounded-xl font-medium transition-all ${plan.featured
-                                            ? 'bg-gradient-to-r from-[#C4956A] to-[#d4a57a] text-white hover:shadow-lg hover:shadow-[#C4956A]/30'
-                                            : selectedPlan === i
-                                                ? 'bg-[#1a1a1a] text-white hover:bg-[#333]'
-                                                : 'border border-[#ddd] text-[#666] hover:border-[#C4956A] hover:text-[#C4956A]'
+                                <div className="mt-auto">
+                                    <Link href="/checkout" className="block w-full">
+                                        <button className={`w-full py-5 rounded-2xl font-bold text-[11px] tracking-[0.2em] transition-all duration-500 uppercase ${
+                                            plan.featured
+                                            ? 'bg-gradient-to-r from-[#C4956A] to-[#D4A57A] text-white hover:shadow-[0_20px_40px_rgba(196,149,106,0.4)] hover:-translate-y-1'
+                                            : 'bg-[#1a1a1a] text-white hover:bg-black shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:-translate-y-1'
                                         }`}>
-                                        {plan.cta} {plan.featured && '›'}
-                                    </button>
-                                </Link>
-
-                                {/* Trust indicator for featured */}
-                                {plan.featured && (
-                                    <p className="text-center text-xs text-green-400 mt-3 flex items-center justify-center gap-1">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                                        Op voorraad · Morgen in huis
-                                    </p>
-                                )}
+                                            {plan.cta}
+                                        </button>
+                                    </Link>
+                                    
+                                    <div className="mt-5 flex items-center justify-center gap-2 opacity-50">
+                                        <div className="w-1 h-1 rounded-full bg-green-500" />
+                                        <span className={`text-[10px] font-bold tracking-widest uppercase ${plan.featured ? 'text-white' : 'text-[#1a1a1a]'}`}>
+                                            Beperkte voorraad
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </motion.div>
                     ))}
                 </div>
 
-                {/* Bottom Trust */}
+                {/* Ultra-Premium Trust Section */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="text-center"
+                    className="mt-24 pt-12 border-t border-[#F0EDE9] flex flex-col lg:flex-row items-center justify-between gap-12"
                 >
-                    <p className="text-xs text-[#999]">
-                        Niet tevreden? Volledige terugbetaling binnen 180 dagen. Geen vragen.
-                    </p>
+                    <div className="flex items-start gap-6 max-w-lg text-left">
+                        <div className="flex-shrink-0 w-12 h-12 bg-[#FDFCFA] rounded-2xl border border-[#F0EDE9] flex items-center justify-center shadow-sm">
+                            <Sparkles className="w-6 h-6 text-[#C4956A]" />
+                        </div>
+                        <div>
+                            <p className="text-xl font-bold text-[#1a1a1a] mb-1 tracking-tight">Geen risico. Gegarandeerd resultaat.</p>
+                            <p className="text-sm text-[#6B6560] leading-relaxed font-medium opacity-90">
+                                We zijn zo overtuigd van onze formule dat we je 180 dagen de tijd geven. Geen resultaat na een volledige kuur? Dan storten we het volledige bedrag terug.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    {/* Clean Payment Indicators */}
+                    <div className="flex flex-col items-center lg:items-end gap-4">
+                         <div className="flex items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-700 pointer-events-none">
+                             <span className="text-2xl font-black italic text-[#1a1a1a] tracking-tight">iDEAL</span>
+                             <span className="text-2xl font-black italic text-[#1a1a1a] tracking-tight">Klarna.</span>
+                             <div className="flex flex-col items-end leading-none">
+                                 <span className="text-[10px] font-bold tracking-widest uppercase mb-1">Veilig betalen met</span>
+                                 <span className="text-xs font-black italic">MASTERCARD VISA</span>
+                             </div>
+                         </div>
+                         <div className="flex items-center gap-2 px-3 py-1 bg-[#FDFCFA] rounded-full border border-[#F0EDE9] text-[9px] font-bold tracking-[0.1em] text-[#A8A29E] uppercase">
+                             <Shield className="w-3 h-3 text-[#C4956A]" /> 256-bit SSL Beveiligde Verbinding
+                         </div>
+                    </div>
                 </motion.div>
-
             </div>
         </section>
     )

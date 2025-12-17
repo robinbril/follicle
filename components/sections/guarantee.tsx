@@ -24,14 +24,14 @@ export default function Guarantee() {
                             De REVIVE Garantie
                         </h2>
 
-                        {/* Main promise */}
-                        <div className="space-y-4 mb-8 text-center">
-                            <p className="text-xl sm:text-2xl text-white/90 font-medium leading-relaxed">
-                                180 dagen om te beslissen.
+                        {/* Main promise - simplified per analysis */}
+                        <div className="space-y-3 mb-8 text-center">
+                            <p className="text-xl sm:text-2xl text-white/90 font-medium">
+                                180 dagen garantie
                             </p>
-                            <p className="text-lg text-white/70 leading-relaxed max-w-md mx-auto">
-                                Niet tevreden? <span className="text-white font-semibold">Volledige terugbetaling.</span><br />
-                                Geen vragen. Geen formulieren. Zelfs als de fles leeg is.
+                            <p className="text-lg text-white/70 leading-relaxed max-w-sm mx-auto" style={{ hyphens: 'none' }}>
+                                Niet tevreden? <span className="text-white font-semibold whitespace-nowrap">Geld terug.</span><br />
+                                Geen vragen. Zelfs als de fles leeg is.
                             </p>
                         </div>
 

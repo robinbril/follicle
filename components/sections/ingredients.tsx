@@ -170,7 +170,7 @@ export default function Ingredients() {
                         transition={{ delay: 0.2, duration: 0.6 }}
                         className="text-sm text-[#C4956A] font-medium mb-4"
                     >
-                        Kracht uit wetenschap
+                        De formule
                     </motion.p>
 
                     <motion.h2
@@ -188,10 +188,11 @@ export default function Ingredients() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.5, duration: 0.6 }}
-                        className="text-lg text-[#666] max-w-xl mx-auto"
+                        className="text-base sm:text-lg text-[#666] max-w-md mx-auto leading-relaxed"
+                        style={{ hyphens: 'none' }}
                     >
-                        Elk ingrediënt geselecteerd op <span className="text-[#1a1a1a]">klinisch bewijs</span>.
-                        Samen vormen ze de hoogste concentratie op de markt.
+                        Klinisch bewezen ingrediënten.<br className="sm:hidden" />
+                        Hoogste concentratie op de markt.
                     </motion.p>
 
                     <motion.div
@@ -199,10 +200,10 @@ export default function Ingredients() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.7, duration: 0.5 }}
-                        className="inline-flex items-center gap-3 mt-8 px-5 py-3 bg-[#1a1a1a] text-white rounded-full text-sm"
+                        className="inline-flex items-center gap-3 mt-6 px-5 py-3 bg-[#1a1a1a] text-white rounded-full text-sm"
                     >
                         <span className="font-semibold">20.5%</span>
-                        <span className="text-white/60">actieve concentratie</span>
+                        <span className="text-white/60">actieve stoffen</span>
                         <span className="w-1 h-1 rounded-full bg-white/30" />
                         <span className="text-white/60">24 studies</span>
                     </motion.div>

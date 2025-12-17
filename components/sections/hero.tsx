@@ -8,19 +8,11 @@ import { Button } from '@/components/ui/button'
 
 export default function Hero() {
     return (
-        <section className="relative pt-40 pb-12 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
+        <section className="relative pt-32 pb-8 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
             {/* Subtle background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/5 via-transparent to-transparent pointer-events-none" />
 
-            {/* Nieuw op de markt badge - Top Right (sleek pill) */}
-            <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-                className="absolute top-20 right-4 lg:top-24 lg:right-8 bg-[#D4A574]/90 text-white px-2.5 py-1 rounded-full text-[10px] font-medium shadow-sm z-20"
-            >
-                ✦ Nieuw
-            </motion.div>
+
 
             <div className="section-container relative z-10">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center">
@@ -28,93 +20,102 @@ export default function Hero() {
                     {/* LEFT - Emotional, Customer-Focused Copy */}
                     <div className="max-w-2xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left">
 
-                        {/* TRUST - Social proof first (small, subtle) */}
+                        {/* TRUSTPILOT BADGE - Compact pill */}
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.05 }}
-                            className="flex items-center gap-3 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 mb-6"
+                            className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-[#E8E4DF] mb-6"
                         >
-                            {/* Trustpilot */}
-                            <div className="flex items-center gap-1.5">
-                                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                            <div className="flex items-center gap-1">
+                                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
                                     <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#00B67A" />
                                 </svg>
-                                <span className="text-sm font-semibold text-[#1a1a1a]">Trustpilot</span>
+                                <span className="text-xs font-semibold text-[#1a1a1a]">Trustpilot</span>
                             </div>
-                            <div className="w-px h-4 bg-gray-200" />
-                            <div className="flex">
+                            <div className="w-px h-3 bg-[#E8E4DF]" />
+                            <div className="flex gap-0.5">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 fill-[#00B67A] text-[#00B67A]" />
+                                    <svg key={i} className="w-3 h-3" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#00B67A" />
+                                    </svg>
                                 ))}
                             </div>
-                            <span className="text-sm font-bold text-gray-900">4.8</span>
+                            <span className="text-xs font-bold text-[#1a1a1a]">4.8</span>
                         </motion.div>
 
-                        {/* HEADLINE - Result first */}
-                        <motion.h1
+                        {/* MOBILE: Product Image */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.1 }}
+                            className="relative w-44 h-auto mx-auto mb-4 lg:hidden"
+                        >
+                            <Image
+                                src="/images/revive-hero-bottle.png"
+                                alt="REVIVE Hair Growth Serum"
+                                width={176}
+                                height={220}
+                                className="object-contain drop-shadow-2xl"
+                                priority
+                            />
+                        </motion.div>
+
+                        {/* HEADLINE - Proper hierarchy */}
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-[1.15] mb-4"
+                            className="mb-3"
                         >
-                            Stop haaruitval in 90 dagen.
-                            <br className="hidden sm:block" />
-                            <span className="text-[#D4A574]">Of je geld terug.</span>
-                        </motion.h1>
+                            <h1 
+                                className="text-[2rem] sm:text-4xl lg:text-5xl font-bold text-[#1a1a1a] tracking-tight leading-[1.1]"
+                                style={{ hyphens: 'none', wordBreak: 'keep-all' }}
+                            >
+                                Stop haaruitval in 90 dagen.
+                            </h1>
+                            <p className="text-[1.625rem] sm:text-3xl lg:text-4xl font-medium text-[#C4956A] mt-1 tracking-tight">
+                                Of je geld terug.
+                            </p>
+                        </motion.div>
 
-                        {/* SUBHEADLINE - Mechanism comes after promise */}
-                        <motion.p
+                        {/* SUBHEADLINE - Larger, darker */}
+                        <motion.div
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
-                            className="text-lg text-gray-600 mb-6 max-w-md"
+                            className="mb-4"
                         >
-                            REVIVE bevat 6 klinisch onderbouwde ingrediënten in concentraties die daadwerkelijk werken — niet de symbolische doses van standaard serums.
-                        </motion.p>
+                            {/* Desktop: long */}
+                            <p className="hidden md:block text-lg text-[#4A4540] max-w-md leading-relaxed">
+                                REVIVE bevat 6 klinisch onderbouwde ingrediënten in concentraties die daadwerkelijk werken.
+                            </p>
+                            {/* Mobile: short, larger */}
+                            <p className="md:hidden text-[1.0625rem] text-[#4A4540] leading-relaxed">
+                                6 klinische ingrediënten. Gebaseerd op 24 studies.
+                            </p>
+                        </motion.div>
 
                         {/* PRIMARY CTA */}
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="w-full sm:w-auto mb-6"
+                            className="w-full sm:w-auto"
                         >
-                            <div className="flex flex-col sm:flex-row items-center gap-3">
-                                <Button
-                                    size="lg"
-                                    className="w-full sm:w-auto px-10 py-7 text-lg font-bold bg-[#C4956A] hover:bg-[#B38559] text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-xl group"
-                                    asChild
-                                >
-                                    <Link href="#prijzen">
-                                        START MET REVIVE
-                                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                    </Link>
-                                </Button>
-                            </div>
-
-                            {/* Guarantee - prominent */}
-                            <p className="text-sm text-gray-500 mt-4 font-medium flex items-center justify-center lg:justify-start gap-2">
-                                <Check className="w-4 h-4 text-[#D4A574]" />
-                                180 dagen niet tevreden? Volledige terugbetaling.
-                            </p>
+                            <Button
+                                size="lg"
+                                className="w-full sm:w-auto h-14 px-10 text-[1.125rem] font-semibold bg-[#C4956A] hover:bg-[#B38559] text-white shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 rounded-2xl group"
+                                asChild
+                            >
+                                <Link href="#prijzen">
+                                    Start je behandeling
+                                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </Button>
                         </motion.div>
 
-                        {/* Mobile Product Visual */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2 }}
-                            className="relative w-full max-w-[240px] mx-auto aspect-[4/5] mb-8 lg:hidden rounded-2xl overflow-hidden shadow-2xl"
-                        >
-                            <Image
-                                src="/images/revive-hero-bottle.png"
-                                alt="REVIVE Hair Growth Serum"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </motion.div>
+                        {/* Mobile product image is now after Trustpilot */}
                     </div>
 
                     {/* RIGHT - Product Visual - Desktop Only */}

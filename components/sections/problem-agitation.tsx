@@ -1,107 +1,106 @@
 "use client"
 
-import { Check, X, Star } from 'lucide-react'
+import { Check, Minus } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function ProblemAgitation() {
     return (
-        <section className="py-16 sm:py-20 bg-white">
-            <div className="max-w-3xl mx-auto px-6">
+        <section className="py-16 sm:py-20 bg-white overflow-hidden">
+            <div className="max-w-2xl mx-auto px-4 sm:px-6">
 
-                {/* Header */}
+                {/* Header - Clean */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-center mb-10"
                 >
-                    <p className="text-sm text-[#C4956A] font-medium mb-2">De feiten</p>
-                    <h2 className="text-2xl sm:text-3xl font-light text-[#1a1a1a] tracking-tight">
-                        Vergelijk en kies slim
+                    <h2 className="text-2xl sm:text-3xl font-bold text-[#1a1a1a] tracking-tight">
+                        Waarom REVIVE?
                     </h2>
                 </motion.div>
 
-                {/* Compact Table */}
+                {/* Clean Table */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="overflow-x-auto"
+                    className="bg-white border border-[#E8E4DF] rounded-2xl overflow-hidden"
                 >
                     <table className="w-full text-center text-sm">
                         <thead>
-                            <tr className="border-b border-[#eee]">
-                                <th className="py-3 px-2 text-left text-[#999] font-normal w-[120px]"></th>
-                                <th className="py-3 px-2 bg-[#FFFBF7] text-[#C4956A] font-semibold rounded-t-lg">REVIVE</th>
-                                <th className="py-3 px-2 text-[#888] font-normal">Minoxidil</th>
-                                <th className="py-3 px-2 text-[#888] font-normal">Finasteride</th>
-                                <th className="py-3 px-2 text-[#888] font-normal hidden sm:table-cell">Transplant</th>
+                            <tr className="border-b border-[#E8E4DF]">
+                                <th className="py-3 sm:py-4 px-2 sm:px-3 text-left text-[#6B6560] font-medium text-[9px] sm:text-xs uppercase tracking-wider w-[26%] sm:w-auto whitespace-nowrap"></th>
+                                <th className="py-3 sm:py-4 px-2 sm:px-3 text-[#C4956A] font-bold border-l-[3px] border-l-[#C4956A] bg-[#FDFCFA] text-[11px] sm:text-sm w-[24.6%] sm:w-auto tracking-tight whitespace-nowrap">REVIVE</th>
+                                <th className="py-3 sm:py-4 px-2 sm:px-3 text-[#888] font-medium text-[11px] sm:text-sm w-[24.6%] sm:w-auto tracking-tight whitespace-nowrap">Minoxidil</th>
+                                <th className="py-3 sm:py-4 px-2 sm:px-3 text-[#888] font-medium text-[11px] sm:text-sm w-[24.6%] sm:w-auto tracking-tight whitespace-nowrap">Finasteride</th>
                             </tr>
                         </thead>
-                        <tbody className="text-[#666]">
-                            {/* Prijs */}
-                            <tr className="border-b border-[#f5f5f5]">
-                                <td className="py-3 px-2 text-left text-[#555]">Prijs</td>
-                                <td className="py-3 px-2 bg-[#FFFBF7] text-[#C4956A] font-semibold">€0,66/dag</td>
-                                <td className="py-3 px-2">€45/mnd</td>
-                                <td className="py-3 px-2">€30/mnd</td>
-                                <td className="py-3 px-2 hidden sm:table-cell">€3.000+</td>
+                        <tbody className="text-[#4A4540]">
+                            {/* Prijs - Consistent format */}
+                            <tr className="border-b border-[#F0EDE9]">
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-left text-[#6B6560] font-medium text-[11px] sm:text-sm whitespace-nowrap">Prijs</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 border-l-[3px] border-l-[#C4956A] bg-[#FDFCFA] text-[#C4956A] font-semibold text-[11px] sm:text-sm whitespace-nowrap">€29/mnd</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-[11px] sm:text-sm whitespace-nowrap">€45/mnd</td>
+                                <td className="py-4 px-2 sm:px-3 text-[11px] sm:text-sm whitespace-nowrap">€30/mnd</td>
                             </tr>
 
                             {/* Hormoonvrij */}
-                            <tr className="border-b border-[#f5f5f5] bg-[#FAFAFA]">
-                                <td className="py-3 px-2 text-left text-[#555]">Hormoonvrij</td>
-                                <td className="py-3 px-2 bg-[#FFFBF7]"><Check className="w-4 h-4 text-green-500 mx-auto" /></td>
-                                <td className="py-3 px-2"><Check className="w-4 h-4 text-green-500 mx-auto" /></td>
-                                <td className="py-3 px-2"><X className="w-4 h-4 text-red-400 mx-auto" /></td>
-                                <td className="py-3 px-2 hidden sm:table-cell"><Check className="w-4 h-4 text-green-500 mx-auto" /></td>
+                            <tr className="border-b border-[#F0EDE9]">
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-left text-[#6B6560] font-medium text-[11px] sm:text-sm whitespace-nowrap tracking-tight">Hormoonvrij</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 border-l-[3px] border-l-[#C4956A] bg-[#FDFCFA]">
+                                    <Check className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#C4956A] mx-auto" />
+                                </td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3">
+                                    <Check className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#C4956A] mx-auto" />
+                                </td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3">
+                                    <Minus className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#D4D0CC] mx-auto" />
+                                </td>
+                            </tr>
+
+                            {/* Receptvrij */}
+                            <tr className="border-b border-[#F0EDE9]">
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-left text-[#6B6560] font-medium text-[11px] sm:text-sm whitespace-nowrap tracking-tight">Receptvrij</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 border-l-[3px] border-l-[#C4956A] bg-[#FDFCFA]">
+                                    <Check className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#C4956A] mx-auto" />
+                                </td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3">
+                                    <Check className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#C4956A] mx-auto" />
+                                </td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3">
+                                    <Minus className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#D4D0CC] mx-auto" />
+                                </td>
                             </tr>
 
                             {/* Bijwerkingen */}
-                            <tr className="border-b border-[#f5f5f5]">
-                                <td className="py-3 px-2 text-left text-[#555]">Bijwerkingen</td>
-                                <td className="py-3 px-2 bg-[#FFFBF7] text-green-600 font-medium">Geen</td>
-                                <td className="py-3 px-2 text-orange-500">Hoofdpijn</td>
-                                <td className="py-3 px-2 text-red-500">Libido verlies</td>
-                                <td className="py-3 px-2 hidden sm:table-cell text-orange-500">Pijn & Herstel</td>
+                            <tr className="border-b border-[#F0EDE9]">
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-left text-[#6B6560] font-medium text-[11px] sm:text-sm whitespace-nowrap tracking-tight">Bijwerkingen</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 border-l-[3px] border-l-[#C4956A] bg-[#FDFCFA] text-green-600 font-medium text-[11px] sm:text-sm whitespace-nowrap">Geen</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-red-500 text-[11px] sm:text-sm whitespace-nowrap">Hoofdpijn</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-red-500 text-[11px] sm:text-sm whitespace-nowrap">Libido</td>
                             </tr>
 
                             {/* Garantie */}
-                            <tr className="border-b border-[#f5f5f5] bg-[#FAFAFA]">
-                                <td className="py-3 px-2 text-left text-[#555]">Garantie</td>
-                                <td className="py-3 px-2 bg-[#FFFBF7] text-[#C4956A] font-medium">180 dagen</td>
-                                <td className="py-3 px-2"><X className="w-4 h-4 text-red-400 mx-auto" /></td>
-                                <td className="py-3 px-2"><X className="w-4 h-4 text-red-400 mx-auto" /></td>
-                                <td className="py-3 px-2 hidden sm:table-cell"><X className="w-4 h-4 text-red-400 mx-auto" /></td>
-                            </tr>
-
-                            {/* Score */}
                             <tr>
-                                <td className="py-3 px-2 text-left text-[#555]">Score</td>
-                                <td className="py-3 px-2 bg-[#FFFBF7] rounded-b-lg">
-                                    <div className="flex justify-center gap-0.5">
-                                        {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#C4956A] text-[#C4956A]" />)}
-                                    </div>
-                                </td>
-                                <td className="py-3 px-2">
-                                    <div className="flex justify-center gap-0.5">
-                                        {[...Array(3)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#ccc] text-[#ccc]" />)}
-                                    </div>
-                                </td>
-                                <td className="py-3 px-2">
-                                    <div className="flex justify-center gap-0.5">
-                                        {[...Array(2)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#ccc] text-[#ccc]" />)}
-                                    </div>
-                                </td>
-                                <td className="py-3 px-2 hidden sm:table-cell">
-                                    <div className="flex justify-center gap-0.5">
-                                        {[...Array(3)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#ccc] text-[#ccc]" />)}
-                                    </div>
-                                </td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-left text-[#6B6560] font-medium text-[11px] sm:text-sm whitespace-nowrap tracking-tight">Garantie</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 border-l-[3px] border-l-[#C4956A] bg-[#FDFCFA] text-[#C4956A] font-semibold text-[11px] sm:text-sm whitespace-nowrap">180 dagen</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-[#D4D0CC] text-[11px] sm:text-sm whitespace-nowrap">—</td>
+                                <td className="py-3 sm:py-4 px-2 sm:px-3 text-[#D4D0CC] text-[11px] sm:text-sm whitespace-nowrap">—</td>
                             </tr>
                         </tbody>
                     </table>
                 </motion.div>
+
+                {/* Disclaimer */}
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="text-xs text-[#999] text-center mt-6"
+                >
+                    * Resultaten kunnen per persoon variëren
+                </motion.p>
 
             </div>
         </section>

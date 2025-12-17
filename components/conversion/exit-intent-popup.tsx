@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from 'react'
-import { Gift } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export default function ExitIntentPopup() {
@@ -58,67 +57,55 @@ export default function ExitIntentPopup() {
             {/* Slide-in panel from right */}
             <div className="fixed top-0 right-0 h-full w-full md:w-[40%] bg-white z-50 shadow-2xl transform transition-transform duration-500 ease-out animate-slide-in-right overflow-y-auto">
                 <div className="p-8 md:p-12 flex flex-col h-full bg-white relative overflow-hidden">
-                    {/* Background Pattern */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-50 pointer-events-none" />
+                    {/* Close X button */}
+                    <button
+                        onClick={() => setIsVisible(false)}
+                        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
+                        aria-label="Sluiten"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
 
-                    {/* Header */}
-                    <div className="mb-8 relative z-10">
-                        <span className="inline-block py-1 px-3 rounded-full bg-[#D4A574]/10 text-[#D4A574] text-xs font-bold tracking-wider uppercase mb-6">
-                            Exclusief Aanbod
-                        </span>
-
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                            Wacht! Vergeet je <span className="text-emerald-600">20% voordeel</span> niet.
+                    {/* Header - Clean, no manipulation */}
+                    <div className="mb-8 relative z-10 mt-4">
+                        <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-3 leading-tight">
+                            Nog 20% korting meenemen?
                         </h2>
 
-                        <p className="text-gray-600 leading-relaxed">
-                            Sluit je aan bij de Revive community. Ontvang direct je kortingscode en ons wetenschappelijk <span className="font-semibold text-gray-900">Haargroei Handboek</span>.
+                        <p className="text-gray-600 text-base">
+                            + Gratis Haargroei Handboek
                         </p>
                     </div>
 
-                    {/* Form */}
-                    <form onSubmit={handleSubmit} className="space-y-4 mb-8 relative z-10">
+                    {/* Form - Simple */}
+                    <form onSubmit={handleSubmit} className="space-y-4 mb-6 relative z-10">
                         <div>
                             <input
                                 type="email"
                                 placeholder="Jouw e-mailadres"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full px-6 py-4 text-base bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A574] focus:bg-white focus:outline-none transition-all placeholder:text-gray-400"
+                                className="w-full px-5 py-4 text-base bg-gray-50 border border-[#E8E4DF] rounded-xl focus:border-[#C4956A] focus:bg-white focus:outline-none transition-all placeholder:text-gray-400"
                                 required
                             />
                         </div>
 
                         <Button
                             type="submit"
-                            className="w-full py-6 text-lg font-bold bg-[#D4A574] hover:bg-[#C69563] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+                            className="w-full py-6 text-lg font-semibold bg-[#C4956A] hover:bg-[#B38559] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 rounded-xl"
                         >
-                            CLAIM 20% KORTING
+                            Stuur mijn korting →
                         </Button>
-                        <p className="text-xs text-center text-gray-400 mt-3">
-                            *Code wordt direct naar je inbox verstuurd
-                        </p>
                     </form>
 
-                    {/* Benefits */}
-                    <div className="space-y-4 mb-8 relative z-10">
-                        <div className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
-                            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-emerald-600">
-                                <Gift className="w-5 h-5" />
-                            </div>
-                            <div>
-                                <p className="font-bold text-gray-900 text-sm">Direct resultaat</p>
-                                <p className="text-xs text-gray-500">Code is 48 uur geldig</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Close button - positioned right after content */}
+                    {/* Decline - Respectful */}
                     <button
                         onClick={() => setIsVisible(false)}
-                        className="mt-8 text-xs text-gray-400 hover:text-gray-600 transition-colors text-center font-medium tracking-wide uppercase hover:underline"
+                        className="text-sm text-gray-400 hover:text-gray-600 transition-colors text-center underline"
                     >
-                        Nee bedankt, ik betaal de volle prijs
+                        Nee, bedankt
                     </button>
                 </div>
             </div>

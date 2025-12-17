@@ -20,20 +20,8 @@ export default function Header() {
 
     return (
         <>
-            {/* --- MOBILE HEADER (Floating Island) --- */}
+            {/* --- MOBILE HEADER (Clean) --- */}
             <div className="lg:hidden fixed top-0 left-0 right-0 z-50">
-                {/* Top Bar - Black with Stars */}
-                <div className="bg-black text-white py-2 text-center text-[10px] font-medium tracking-wide">
-                    <div className="flex items-center justify-center gap-1.5">
-                        <div className="flex">
-                            {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="w-3 h-3 fill-[#D4A574] text-[#D4A574]" />
-                            ))}
-                        </div>
-                        <span className="opacity-90">4,8 gebaseerd op 47 beoordelingen</span>
-                    </div>
-                </div>
-
                 {/* Floating Island Container */}
                 <div className="px-4 pt-3 pb-2">
                     <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
