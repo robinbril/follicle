@@ -200,12 +200,32 @@ export default function Ingredients() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.7, duration: 0.5 }}
-                        className="inline-flex items-center gap-3 mt-6 px-5 py-3 bg-[#1a1a1a] text-white rounded-full text-sm"
+                        className="relative mt-8 inline-flex p-[1px] rounded-full overflow-hidden group shadow-2xl"
                     >
-                        <span className="font-semibold">20.5%</span>
-                        <span className="text-white/60">actieve stoffen</span>
-                        <span className="w-1 h-1 rounded-full bg-white/30" />
-                        <span className="text-white/60">24 studies</span>
+                        {/* Animated "Flowing Water" Gradient - 7 Colors */}
+                        <motion.div 
+                            animate={{ 
+                                rotate: [0, 360]
+                            }}
+                            transition={{ 
+                                duration: 10, 
+                                repeat: Infinity, 
+                                ease: "linear" 
+                            }}
+                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,#C4956A_0%,#3B82F6_14%,#10B981_28%,#8B5CF6_42%,#F59E0B_56%,#EC4899_70%,#06B6D4_84%,#C4956A_100%)] opacity-90 blur-[1px]"
+                        />
+                        
+                        {/* Inner Black Badge */}
+                        <div className="relative flex items-center gap-3 px-7 py-3.5 bg-[#0a0a0a] text-white rounded-full text-sm">
+                            <span className="font-bold text-base tracking-tight text-[#C4956A]">20.5%</span>
+                            <span className="text-white/60 font-medium">actieve stoffen</span>
+                            <span className="w-1 h-1 rounded-full bg-white/20" />
+                            <span className="text-white/60 font-medium whitespace-nowrap">24 klinische studies</span>
+                        </div>
+
+                        {/* Tube Reflection/Glass effect */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-white/10 via-transparent to-transparent pointer-events-none" />
+                        <div className="absolute top-0 left-0 right-0 h-[40%] bg-gradient-to-b from-white/10 to-transparent rounded-t-full pointer-events-none" />
                     </motion.div>
                 </motion.div>
 
