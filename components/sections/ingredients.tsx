@@ -200,28 +200,33 @@ export default function Ingredients() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.7, duration: 0.5 }}
-                        className="relative mt-8 inline-flex p-[1px] rounded-full overflow-hidden"
+                        className="relative mt-8 inline-flex p-[1.5px] rounded-full overflow-hidden shadow-lg group"
                     >
-                        {/* 7-Color Liquid Border - Ultra Thin & Muted */}
+                        {/* Layer 1: 7 Muted Ingredient Colors (Copper, Peptide, Herbal, etc.) */}
                         <motion.div 
-                            animate={{ 
-                                rotate: [0, 360]
-                            }}
-                            transition={{ 
-                                duration: 15, 
-                                repeat: Infinity, 
-                                ease: "linear" 
-                            }}
-                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,#C4956A_0%,#7C8BA1_14%,#849E8D_28%,#948BA1_42%,#A1947C_56%,#A17C8B_70%,#7CA19F_84%,#C4956A_100%)] opacity-40"
+                            animate={{ rotate: [0, 360] }}
+                            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,#C4956A_0%,#4F6B8A_14%,#849E8D_28%,#A1947C_42%,#6B8A84_56%,#A17C8B_70%,#7CA19F_84%,#C4956A_100%)] opacity-80"
+                        />
+                        
+                        {/* Layer 2: Liquid Turbulence/Shimmer Overlay */}
+                        <motion.div 
+                            animate={{ rotate: [360, 0] }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0%,rgba(255,255,255,0.4)_50%,transparent_100%)] mix-blend-soft-light"
                         />
                         
                         {/* Compact Luxury Badge */}
-                        <div className="relative flex items-center gap-3 px-5 py-2 bg-[#0a0a0a] text-white rounded-full text-[11px] font-medium tracking-tight">
+                        <div className="relative flex items-center gap-3 px-5 py-2.5 bg-[#0a0a0a] text-white rounded-full text-[11px] font-medium tracking-tight">
                             <span className="text-[#C4956A] font-bold">20.5%</span>
                             <span className="text-white/50">actieve stoffen</span>
                             <span className="w-[3px] h-[3px] rounded-full bg-white/10" />
                             <span className="text-white/50">24 studies</span>
                         </div>
+
+                        {/* Glass Tube Highlight (3D rim effect) */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-white/10 via-transparent to-white/20 pointer-events-none" />
+                        <div className="absolute inset-0 rounded-full border border-white/5 pointer-events-none" />
                     </motion.div>
                 </motion.div>
 
