@@ -2,6 +2,7 @@
 
 import { ShieldCheck, RotateCcw, MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { PaymentTrust } from '@/components/ui/payment-trust'
 
 export default function Guarantee() {
     return (
@@ -11,55 +12,65 @@ export default function Guarantee() {
 
             <div className="max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex flex-col items-center"
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                    className="flex flex-col items-center w-full"
                 >
                     {/* The "Jewel" - Ultra premium 180-day pill */}
-                    <div className="relative p-[1px] rounded-full overflow-hidden mb-8 shadow-2xl group">
-                        {/* 7-Color Liquid Border (Inherited from Ingredients) */}
+                    <div className="relative p-[1px] rounded-full overflow-hidden mb-12 group">
+                        {/* 7-Color Liquid Border - Subtler, slower */}
                         <motion.div 
                             animate={{ rotate: [0, 360] }}
-                            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,#C4956A_0%,#3B82F6_14%,#10B981_28%,#8B5CF6_42%,#F59E0B_56%,#EC4899_70%,#06B6D4_84%,#C4956A_100%)]"
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0%,#C4956A_15%,transparent_30%,#3B82F6_45%,transparent_60%,#EC4899_75%,transparent_90%)] opacity-40"
                         />
                         
-                        <div className="relative px-6 py-2 bg-[#0A0A0A] rounded-full flex items-center gap-3">
-                            <ShieldCheck className="w-3.5 h-3.5 text-[#C4956A]" />
-                            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.25em] text-white">
-                                180 Dagen Tevredenheidsgarantie
+                        <div className="relative px-8 py-2.5 bg-[#0A0A0A] rounded-full flex items-center gap-3 border border-white/5">
+                            <ShieldCheck className="w-4 h-4 text-[#C4956A]" />
+                            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] text-white/90">
+                                180 DAGEN GARANTIE
                             </span>
                         </div>
                     </div>
 
-                    {/* Minimal Copy */}
-                    <div className="text-center mb-10">
-                        <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-tight">
-                            Geld terug. <span className="text-white/40">Zelfs als de fles leeg is.</span>
+                    {/* Minimal Copy with refined spacing */}
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">
+                            Geen risico. <span className="text-white/30 italic font-light">Echt.</span>
                         </h2>
-                        <p className="text-[11px] font-medium text-white/30 uppercase tracking-[0.1em]">
-                            Geen vragen · Geen kleine lettertjes · Directe verwerking
+                        <p className="text-[12px] sm:text-[13px] font-medium text-white/60 tracking-[0.05em] leading-relaxed max-w-md mx-auto">
+                            Zichtbaar resultaat of je geld terug. We geven je <span className="text-white font-bold">180 dagen</span> de tijd om REVIVE te proberen. <br className="hidden sm:block" />
+                            <span className="text-[#C4956A] font-bold">Zelfs als de fles volledig leeg is.</span>
                         </p>
                     </div>
 
-                    {/* Slim Horizontal Service Bar */}
-                    <div className="flex items-center gap-6 sm:gap-10 opacity-30">
-                        <div className="flex items-center gap-2">
-                            <RotateCcw className="w-3 h-3" />
-                            <span className="text-[9px] font-bold uppercase tracking-widest text-white">Gratis retour</span>
+                    {/* Refined Service Bar - Higher visibility, better spacing */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-16 items-center mb-16">
+                        <div className="flex flex-col items-center gap-3 group">
+                            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5 group-hover:bg-[#C4956A]/10 group-hover:border-[#C4956A]/20 transition-all duration-500">
+                                <RotateCcw className="w-4 h-4 text-[#C4956A]" />
+                            </div>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Gratis retour</span>
                         </div>
-                        <div className="w-[1px] h-3 bg-white/20" />
-                        <div className="flex items-center gap-2">
-                            <MessageCircle className="w-3 h-3" />
-                            <span className="text-[9px] font-bold uppercase tracking-widest text-white">Geen gedoe</span>
+                        <div className="flex flex-col items-center gap-3 group">
+                            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5 group-hover:bg-[#C4956A]/10 group-hover:border-[#C4956A]/20 transition-all duration-500">
+                                <MessageCircle className="w-4 h-4 text-[#C4956A]" />
+                            </div>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Geen gedoe</span>
                         </div>
-                        <div className="w-[1px] h-3 bg-white/20" />
-                        <div className="flex items-center gap-2">
-                            <ShieldCheck className="w-3 h-3" />
-                            <span className="text-[9px] font-bold uppercase tracking-widest text-white">Bewezen</span>
+                        <div className="flex flex-col items-center gap-3 group">
+                            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5 group-hover:bg-[#C4956A]/10 group-hover:border-[#C4956A]/20 transition-all duration-500">
+                                <ShieldCheck className="w-4 h-4 text-[#C4956A]" />
+                            </div>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Bewezen</span>
                         </div>
+                    </div>
+
+                    {/* Integrated Trust Bar */}
+                    <div className="w-full pt-12 border-t border-white/[0.05]">
+                        <PaymentTrust variant="dark" />
                     </div>
                 </motion.div>
             </div>

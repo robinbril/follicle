@@ -176,7 +176,7 @@ export default function Pricing() {
                                 {/* CTA Button */}
                                 <div className="mt-auto">
                                     <Link href="/checkout" className="block w-full">
-                                        <button className={`w-full py-5 rounded-2xl font-bold text-[11px] tracking-[0.2em] transition-all duration-500 uppercase ${
+                                        <button className={`w-full py-4 rounded-2xl font-bold text-[11px] tracking-[0.2em] transition-all duration-500 uppercase ${
                                             plan.featured
                                             ? 'bg-gradient-to-r from-[#C4956A] to-[#D4A57A] text-white hover:shadow-[0_20px_40px_rgba(196,149,106,0.4)] hover:-translate-y-1'
                                             : 'bg-[#1a1a1a] text-white hover:bg-black shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:-translate-y-1'

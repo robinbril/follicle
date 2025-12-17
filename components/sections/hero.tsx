@@ -1,14 +1,15 @@
 "use client"
 
-import { ArrowRight, Check, Star, Sparkles } from 'lucide-react'
+import { ArrowRight, Check, Star, Sparkles, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { PaymentTrust } from '@/components/ui/payment-trust'
 
 export default function Hero() {
     return (
-        <section className="relative pt-32 pb-8 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
+        <section className="relative pt-32 pb-14 lg:pt-40 lg:pb-28 bg-white overflow-hidden">
             {/* Subtle background gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#D4A574]/5 via-transparent to-transparent pointer-events-none" />
 
@@ -25,7 +26,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.05 }}
-                            className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-[#E8E4DF] mb-6"
+                            className="flex items-center gap-2 bg-white px-4 py-1.5 rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-[#E8E4DF] mb-6 mt-4 md:mt-0 lg:mb-8"
                         >
                             <div className="flex items-center gap-1">
                                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
@@ -49,7 +50,7 @@ export default function Hero() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.1 }}
-                            className="relative w-44 h-auto mx-auto mb-4 lg:hidden"
+                            className="relative w-44 h-auto mx-auto mb-6 lg:hidden"
                         >
                             <Image
                                 src="/images/revive-hero-bottle.png"
@@ -84,14 +85,14 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.15 }}
-                            className="mb-4"
+                            className="mb-8"
                         >
                             {/* Desktop: long */}
-                            <p className="hidden md:block text-lg text-[#4A4540] max-w-md leading-relaxed">
+                            <p className="hidden md:block text-lg text-[#4A4540] max-w-md leading-relaxed mb-6">
                                 REVIVE bevat 6 klinisch onderbouwde ingrediënten in concentraties die daadwerkelijk werken.
                             </p>
-                            {/* Mobile: short, larger */}
-                            <p className="md:hidden text-[1.0625rem] text-[#4A4540] leading-relaxed">
+                            {/* Mobile: short, more subtle */}
+                            <p className="md:hidden text-[1rem] text-[#4A4540]/60 font-medium tracking-tight">
                                 6 klinische ingrediënten. Gebaseerd op 24 studies.
                             </p>
                         </motion.div>
@@ -105,7 +106,7 @@ export default function Hero() {
                         >
                             <Button
                                 size="lg"
-                                className="w-full sm:w-auto h-14 px-10 text-[1.125rem] font-semibold bg-[#C4956A] hover:bg-[#B38559] text-white shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 rounded-2xl group"
+                                className="w-full sm:w-auto h-12 px-10 text-base font-semibold bg-[#C4956A] hover:bg-[#B38559] text-white shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 rounded-2xl group"
                                 asChild
                             >
                                 <Link href="#prijzen">
