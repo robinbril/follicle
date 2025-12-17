@@ -5,55 +5,60 @@ import { motion } from 'framer-motion'
 
 export default function Guarantee() {
     return (
-        <section id="garantie" className="py-24 sm:py-32 bg-[#0A0A0A] overflow-hidden relative">
-            {/* Ethereal mesh glow for premium depth */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C4956A]/5 blur-[100px] rounded-full pointer-events-none" />
+        <section id="garantie" className="py-16 sm:py-20 bg-[#080808] relative overflow-hidden">
+            {/* Soft ambient glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-[#C4956A]/5 blur-[80px] rounded-full pointer-events-none" />
 
-            <div className="max-w-4xl mx-auto px-6 relative z-10">
+            <div className="max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-center"
+                    className="flex flex-col items-center"
                 >
-                    {/* Minimal Shield Icon */}
-                    <div className="inline-flex items-center justify-center mb-8">
-                        <div className="relative w-14 h-14 rounded-full border border-white/5 flex items-center justify-center bg-gradient-to-b from-[#141414] to-[#0A0A0A] shadow-2xl">
-                            <ShieldCheck className="w-6 h-6 text-[#C4956A] stroke-[1.2]" />
+                    {/* The "Jewel" - Ultra premium 180-day pill */}
+                    <div className="relative p-[1px] rounded-full overflow-hidden mb-8 shadow-2xl group">
+                        {/* 7-Color Liquid Border (Inherited from Ingredients) */}
+                        <motion.div 
+                            animate={{ rotate: [0, 360] }}
+                            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,#C4956A_0%,#3B82F6_14%,#10B981_28%,#8B5CF6_42%,#F59E0B_56%,#EC4899_70%,#06B6D4_84%,#C4956A_100%)]"
+                        />
+                        
+                        <div className="relative px-6 py-2 bg-[#0A0A0A] rounded-full flex items-center gap-3">
+                            <ShieldCheck className="w-3.5 h-3.5 text-[#C4956A]" />
+                            <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.25em] text-white">
+                                180 Dagen Tevredenheidsgarantie
+                            </span>
                         </div>
                     </div>
 
-                    {/* Refined Header Hierarchy */}
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-                        De REVIVE Garantie
-                    </h2>
-
-                    <div className="flex flex-col items-center gap-3 mb-16">
-                        <span className="text-lg sm:text-xl text-[#C4956A] font-medium tracking-tight">
-                            180 Dagen Risicovrij Proberen
-                        </span>
-                        <p className="text-base text-white/40 max-w-sm mx-auto leading-relaxed" style={{ hyphens: 'none' }}>
-                            Niet tevreden? <span className="text-white font-semibold">Geld terug.</span><br />
-                            Zelfs als de fles leeg is.
+                    {/* Minimal Copy */}
+                    <div className="text-center mb-10">
+                        <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-tight">
+                            Geld terug. <span className="text-white/40">Zelfs als de fles leeg is.</span>
+                        </h2>
+                        <p className="text-[11px] font-medium text-white/30 uppercase tracking-[0.1em]">
+                            Geen vragen · Geen kleine lettertjes · Directe verwerking
                         </p>
                     </div>
 
-                    {/* Ultra-Slim Trust Bar */}
-                    <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 pt-10 border-t border-white/[0.03]">
-                        <div className="flex items-center gap-2.5 opacity-40 hover:opacity-100 transition-opacity">
-                            <RotateCcw className="w-3.5 h-3.5 text-[#C4956A]" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white">Gratis retour</span>
+                    {/* Slim Horizontal Service Bar */}
+                    <div className="flex items-center gap-6 sm:gap-10 opacity-30">
+                        <div className="flex items-center gap-2">
+                            <RotateCcw className="w-3 h-3" />
+                            <span className="text-[9px] font-bold uppercase tracking-widest text-white">Gratis retour</span>
                         </div>
-                        <div className="w-[1px] h-3 bg-white/5 hidden sm:block" />
-                        <div className="flex items-center gap-2.5 opacity-40 hover:opacity-100 transition-opacity">
-                            <MessageCircle className="w-3.5 h-3.5 text-[#C4956A]" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white">Geen gedoe</span>
+                        <div className="w-[1px] h-3 bg-white/20" />
+                        <div className="flex items-center gap-2">
+                            <MessageCircle className="w-3 h-3" />
+                            <span className="text-[9px] font-bold uppercase tracking-widest text-white">Geen gedoe</span>
                         </div>
-                        <div className="w-[1px] h-3 bg-white/5 hidden sm:block" />
-                        <div className="flex items-center gap-2.5 opacity-40 hover:opacity-100 transition-opacity">
-                            <ShieldCheck className="w-3.5 h-3.5 text-[#C4956A]" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white">Garantie</span>
+                        <div className="w-[1px] h-3 bg-white/20" />
+                        <div className="flex items-center gap-2">
+                            <ShieldCheck className="w-3 h-3" />
+                            <span className="text-[9px] font-bold uppercase tracking-widest text-white">Bewezen</span>
                         </div>
                     </div>
                 </motion.div>
