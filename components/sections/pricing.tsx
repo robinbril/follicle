@@ -84,6 +84,7 @@ export default function Pricing() {
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
                                     onClick={() => setSelectedPlan(i)}
+                                    id={plan.id === 'best' ? 'resultaatpakket' : undefined}
                                     className={`relative flex flex-col cursor-pointer transition-all duration-500 overflow-hidden ${
                                         isFeatured 
                                         ? 'bg-[#0A0A0A] border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.15)] md:scale-[1.03] md:z-20 md:rounded-[2.5rem]' 

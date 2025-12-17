@@ -54,12 +54,12 @@ export default function StickyMobileCTA() {
                                 {/* Price / Save */}
                                 <div className="flex items-center gap-2">
                                     <span className="text-lg font-black text-gray-900 tracking-tighter">€19</span>
-                                    <span className="px-1.5 py-0.5 rounded-md bg-[#C4956A]/10 text-[#C4956A] text-[7px] font-black uppercase tracking-widest">Bespaar 41%</span>
+                                    <span className="px-1.5 py-0.5 rounded-md bg-[#C4956A]/10 text-[#C4956A] text-[7px] font-black uppercase tracking-widest">Bespaar €180</span>
                                 </div>
                             </div>
 
                             {/* Right: Action */}
-                            <Link href="#prijzen" className="relative">
+                            <Link href="#resultaatpakket" className="relative">
                                 <motion.div
                                     animate={{ opacity: [0.1, 0.2, 0.1] }}
                                     transition={{ duration: 2, repeat: Infinity }}
