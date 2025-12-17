@@ -268,7 +268,7 @@ export default function Ingredients() {
                         <div className="p-6">
                             <div className="flex items-start justify-between mb-4">
                                 <div className="flex items-center gap-3">
-                                    <span className="text-3xl font-black text-[#C4956A]">5%</span>
+                                    <span className="text-3xl font-black text-white">5%</span>
                                     <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-white/40">
                                         GHK-Cu Peptide
                                     </span>
@@ -281,7 +281,7 @@ export default function Ingredients() {
                                 </motion.div>
                             </div>
                             <h3 className="text-xl font-bold text-white mb-1">GHK-Cu</h3>
-                            <p className="text-sm text-[#C4956A] font-medium opacity-90">{ingredients[0].subheader}</p>
+                            <p className="text-sm text-white/40 font-medium tracking-tight">{ingredients[0].subheader}</p>
                         </div>
 
                         <AnimatePresence>
@@ -349,18 +349,17 @@ export default function Ingredients() {
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 + i * 0.05, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                                     onClick={() => setExpanded(expanded === ing.id ? null : ing.id)}
-                                    whileHover={{ y: -3, borderColor: `${accentColor}40` }}
+                                    whileHover={{ y: -3, borderColor: `${accentColor}30` }}
                                     whileTap={{ scale: 0.98 }}
                                     className={`group relative cursor-pointer rounded-2xl overflow-hidden transition-all duration-500 bg-white border hover:shadow-2xl ${expanded === ing.id ? 'border-[#C4956A] shadow-xl col-span-2 lg:col-span-3' : 'border-[#F2F0ED] hover:border-[#F2F0ED]'
                                         }`}
                                 >
-                                    {/* Subtiel kleur accentje */}
-                                    <div className="absolute top-0 left-0 w-full h-[3px] opacity-20" style={{ background: accentColor }} />
-                                    <div className="absolute top-4 left-4 w-1.5 h-1.5 rounded-full" style={{ background: accentColor }} />
+                                    {/* Uiterst subtiel mini-accentje */}
+                                    <div className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full" style={{ background: accentColor }} />
 
                                     <div className="p-6">
                                         <div className="flex items-start justify-between mb-4">
-                                            <span className="text-2xl font-black" style={{ color: accentColor }}>{ing.percentage}</span>
+                                            <span className="text-2xl font-black text-[#1a1a1a]">{ing.percentage}</span>
                                             <motion.div
                                                 animate={{ rotate: expanded === ing.id ? 180 : 0 }}
                                                 transition={{ duration: 0.3 }}
@@ -369,7 +368,7 @@ export default function Ingredients() {
                                             </motion.div>
                                         </div>
                                         <h3 className="text-[16px] font-bold text-[#1a1a1a] mb-1 tracking-tight">{ing.name}</h3>
-                                        <p className="text-[12px] font-medium leading-relaxed" style={{ color: accentColor }}>{ing.subheader}</p>
+                                        <p className="text-[12px] font-medium leading-relaxed text-[#888]">{ing.subheader}</p>
                                     </div>
 
                                     <AnimatePresence>
