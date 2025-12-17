@@ -61,7 +61,7 @@ export default function ProblemAgitation() {
                             <tr className="border-b border-[#f5f5f5]">
                                 <td className="py-3 px-2 text-left text-[#555]">Bijwerkingen</td>
                                 <td className="py-3 px-2 bg-[#FFFBF7] text-green-600 font-medium">Geen</td>
-                                <td className="py-3 px-2 text-orange-500">Vettig haar</td>
+                                <td className="py-3 px-2 text-orange-500">Hoofdpijn</td>
                                 <td className="py-3 px-2 text-red-500">Libido verlies</td>
                                 <td className="py-3 px-2 hidden sm:table-cell text-orange-500">Pijn & Herstel</td>
                             </tr>
