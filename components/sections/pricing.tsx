@@ -1,8 +1,8 @@
 "use client"
 
-import { Check, Truck, Shield, Sparkles } from 'lucide-react'
+import { Check, Truck, Shield, Sparkles, ArrowRight, Zap } from 'lucide-react'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 
 export default function Pricing() {
@@ -13,212 +13,174 @@ export default function Pricing() {
             id: "trial",
             label: "Proberen",
             months: 1,
-            bottles: 1,
-            perMonth: 49,
             totalPrice: 49,
-            perDay: "1.63",
+            perMonth: 49,
+            savings: 0,
             featured: false,
-            bgClass: "bg-white border-[#F0EDE9]",
-            textColor: "text-[#1a1a1a]",
-            subColor: "text-[#6B6560]",
-            benefits: [
-                "1× REVIVE Serum (30ml)",
-                "30 dagen haargroei kuur",
-                "180 dagen garantie",
-                "Morgen al in huis"
-            ],
+            benefits: ["1× REVIVE (30ml)", "30 dagen kuur", "180 dgn garantie"],
             cta: "PROBEER 1 FLES"
         },
         {
             id: "popular",
             label: "Startpakket",
             months: 3,
-            bottles: 3,
-            perMonth: 29,
             totalPrice: 87,
-            perDay: "0.96",
+            perMonth: 29,
+            savings: 60,
             featured: false,
-            badge: "Snelste resultaat",
-            bgClass: "bg-white border-[#E8DCCF]",
-            textColor: "text-[#1a1a1a]",
-            subColor: "text-[#6B6560]",
-            benefits: [
-                "3× REVIVE Serum (90ml)",
-                "90 dagen haargroei kuur",
-                "180 dagen garantie",
-                "Gratis verzending"
-            ],
+            badge: "Snel resultaat",
+            benefits: ["3× REVIVE (90ml)", "90 dagen kuur", "Gratis verzending"],
             cta: "BESTEL STARTPAKKET"
         },
         {
             id: "best",
             label: "Resultaatpakket",
             months: 6,
-            bottles: 6,
-            perMonth: 19,
             totalPrice: 114,
-            perDay: "0.62",
+            perMonth: 19,
+            savings: 180,
             featured: true,
             badge: "Meest gekozen",
-            bgClass: "bg-[#111] border-[#C4956A]",
-            textColor: "text-white",
-            subColor: "text-white/60",
-            benefits: [
-                "6× REVIVE Serum (180ml)",
-                "180 dagen haargroei kuur",
-                "Gratis dermaroller t.w.v. €19",
-                "180 dagen garantie",
-                "Gratis verzending"
-            ],
+            benefits: ["6× REVIVE (180ml)", "180 dagen kuur", "Gratis Dermaroller"],
             cta: "BESTEL RESULTAATPAKKET"
         }
     ]
 
     return (
-        <section id="prijzen" className="py-20 sm:py-32 bg-[#FDFCFA]">
+        <section id="prijzen" className="py-12 sm:py-20 bg-white overflow-hidden">
             <div className="max-w-6xl mx-auto px-6">
-
-                {/* Header */}
+                
+                {/* Header - Ultra Compact */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="flex flex-col items-center mb-12"
                 >
-                    <p className="text-sm text-[#C4956A] font-medium mb-3 uppercase tracking-[0.2em]">
-                        Start direct
-                    </p>
-                    <h2 className="text-3xl sm:text-5xl font-bold text-[#1a1a1a] tracking-tight mb-8">
-                        Kies je behandeling
-                    </h2>
-                    
-                    {/* Compact Trust Summary */}
-                    <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-[#6B6560] font-medium opacity-80">
-                        <span className="flex items-center gap-2">
-                            <Truck className="w-4 h-4 text-[#C4956A]" /> Gratis verzending
-                        </span>
-                        <span className="flex items-center gap-2">
-                            <Shield className="w-4 h-4 text-[#C4956A]" /> 180 dagen garantie
-                        </span>
-                        <span className="flex items-center gap-2">
-                            <Check className="w-4 h-4 text-[#C4956A]" /> Geen abonnement
-                        </span>
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05] mb-4">
+                        <Zap className="w-3 h-3 text-[#C4956A]" />
+                        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500">Tijdelijke Actie</span>
                     </div>
+                    <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight text-center">
+                        Kies je transformatie.
+                    </h2>
                 </motion.div>
 
-                {/* 3-Tier Pricing Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch max-w-6xl mx-auto">
-                    {plans.map((plan, i) => (
-                        <motion.div
-                            key={plan.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                            onClick={() => setSelectedPlan(i)}
-                            className={`relative flex flex-col cursor-pointer rounded-[2.5rem] transition-all duration-500 border-[1.5px] group ${
-                                plan.featured 
-                                ? 'bg-[#111] border-[#C4956A] shadow-[0_40px_80px_rgba(0,0,0,0.3)] md:scale-[1.05] z-10' 
-                                : selectedPlan === i
-                                    ? 'bg-white border-[#C4956A] shadow-2xl'
-                                    : 'bg-white border-[#E8E4DF] hover:border-[#C4956A]/50 hover:shadow-xl'
-                            }`}
-                        >
-                            {/* Featured Badge */}
-                            {plan.badge && (
-                                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#C4956A] text-white text-[9px] tracking-[0.15em] font-bold py-1.5 px-5 rounded-full uppercase shadow-lg z-20">
-                                    {plan.badge}
-                                </div>
-                            )}
+                {/* Triple Pricing Ribbon - Desktop Horizontal / Mobile Compact */}
+                <div className="relative max-w-5xl mx-auto">
+                    {/* Background Glows */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(196,149,106,0.05)_0%,transparent_70%)] blur-3xl pointer-events-none" />
 
-                            <div className="p-8 sm:p-10 flex flex-col flex-grow">
-                                {/* Plan Identity */}
-                                <div className="mb-8">
-                                    <span className={`text-[10px] font-bold tracking-[0.2em] uppercase ${plan.featured ? 'text-[#C4956A]' : 'text-[#888]'}`}>
-                                        {plan.label}
-                                    </span>
-                                    <h3 className={`text-2xl sm:text-3xl font-bold mt-1 ${plan.textColor}`}>
-                                        {plan.months} Maand{plan.months > 1 ? 'en' : ''}
-                                    </h3>
-                                </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-2 relative z-10">
+                        {plans.map((plan, i) => {
+                            const isSelected = selectedPlan === i
+                            const isFeatured = plan.featured
 
-                                {/* Pricing */}
-                                <div className="mb-8">
-                                    <div className="flex items-baseline gap-1">
-                                        <span className={`text-5xl font-bold ${plan.textColor}`}>€{plan.totalPrice}</span>
-                                        <span className={`text-sm ${plan.subColor}`}>totaal</span>
-                                    </div>
-                                    <div className="mt-2 flex items-center gap-2 text-sm">
-                                        {plan.months > 1 && (
-                                            <>
-                                                <span className="text-[#888] line-through opacity-50">€{plan.months * 49}</span>
-                                                <span className="font-bold text-[#C4956A]">€{plan.perMonth}/mnd</span>
-                                            </>
-                                        )}
-                                        {plan.months === 1 && (
-                                            <span className="font-bold text-[#C4956A]">€{plan.perDay}/dag</span>
+                            return (
+                                <motion.div
+                                    key={plan.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    onClick={() => setSelectedPlan(i)}
+                                    className={`relative flex flex-col cursor-pointer transition-all duration-500 overflow-hidden ${
+                                        isFeatured 
+                                        ? 'bg-[#0A0A0A] border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.15)] md:scale-[1.03] md:z-20 md:rounded-[2.5rem]' 
+                                        : 'bg-white border-gray-100 hover:border-[#C4956A]/30 md:z-10 md:rounded-[2rem]'
+                                    } border-[1.5px] p-6 sm:p-8 flex-grow`}
+                                >
+                                    {/* Internal Glow for Featured */}
+                                    {isFeatured && (
+                                        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(196,149,106,0.15)_0%,transparent_50%)] pointer-events-none" />
+                                    )}
+
+                                    {/* Badge */}
+                                    <div className="h-6 mb-6">
+                                        {plan.badge && (
+                                            <span className={`text-[8px] font-black tracking-[0.15em] uppercase px-3 py-1 rounded-full ${isFeatured ? 'bg-[#C4956A] text-white' : 'bg-gray-100 text-gray-500 opacity-60'}`}>
+                                                {plan.badge}
+                                            </span>
                                         )}
                                     </div>
-                                </div>
 
-                                {/* Checkmarks */}
-                                <ul className="space-y-4 mb-10 flex-grow">
-                                    {plan.benefits.map((benefit, idx) => (
-                                        <li key={idx} className={`flex items-start gap-3.5 text-[14px] leading-snug ${plan.featured ? 'text-white/80' : 'text-[#4A4540]'}`}>
-                                            <div className={`mt-0.5 p-0.5 rounded-full ${plan.featured ? 'bg-[#C4956A]/30 text-[#C4956A]' : 'bg-[#C4956A]/10 text-[#C4956A]'}`}>
-                                                <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                                            </div>
-                                            <span className={plan.featured ? 'font-light' : ''}>{benefit}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                {/* CTA Button */}
-                                <div className="mt-auto">
-                                    <Link href="/checkout" className="block w-full">
-                                        <button className={`w-full py-4 rounded-2xl font-bold text-[11px] tracking-[0.2em] transition-all duration-500 uppercase ${
-                                            plan.featured
-                                            ? 'bg-gradient-to-r from-[#C4956A] to-[#D4A57A] text-white hover:shadow-[0_20px_40px_rgba(196,149,106,0.4)] hover:-translate-y-1'
-                                            : 'bg-[#1a1a1a] text-white hover:bg-black shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:-translate-y-1'
-                                        }`}>
-                                            {plan.cta}
-                                        </button>
-                                    </Link>
-                                    
-                                    <div className="mt-5 flex items-center justify-center gap-2 opacity-50">
-                                        <div className="w-1 h-1 rounded-full bg-green-500" />
-                                        <span className={`text-[10px] font-bold tracking-widest uppercase ${plan.featured ? 'text-white' : 'text-[#1a1a1a]'}`}>
-                                            Beperkte voorraad
-                                        </span>
+                                    {/* Plan Info */}
+                                    <div className="mb-6">
+                                        <h3 className={`text-[11px] font-black tracking-[0.2em] uppercase mb-1 ${isFeatured ? 'text-white/40' : 'text-gray-400'}`}>
+                                            {plan.label}
+                                        </h3>
+                                        <div className="flex items-baseline gap-2">
+                                            <span className={`text-4xl font-black tracking-tighter ${isFeatured ? 'text-white' : 'text-gray-900'}`}>
+                                                €{plan.totalPrice}
+                                            </span>
+                                            {plan.savings > 0 && (
+                                                <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded bg-[#C4956A]/10 text-[#C4956A] border border-[#C4956A]/20`}>
+                                                    Bespaar €{plan.savings}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <p className={`text-[11px] font-medium mt-1 ${isFeatured ? 'text-white/60' : 'text-gray-500'}`}>
+                                            €{plan.perMonth} per maand
+                                        </p>
                                     </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+
+                                    {/* Benefits List - Compact */}
+                                    <ul className="space-y-3 mb-8 flex-grow">
+                                        {plan.benefits.map((benefit, idx) => (
+                                            <li key={idx} className="flex items-center gap-3">
+                                                <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${isFeatured ? 'bg-[#C4956A]/20' : 'bg-gray-50'}`}>
+                                                    <Check className={`w-2.5 h-2.5 ${isFeatured ? 'text-[#C4956A]' : 'text-gray-400'}`} strokeWidth={3} />
+                                                </div>
+                                                <span className={`text-[12px] font-bold ${isFeatured ? 'text-white/80' : 'text-gray-600'}`}>
+                                                    {benefit}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/* CTA Area */}
+                                    <div className="mt-auto">
+                                        <Link href="/checkout" className="block outline-none">
+                                            <button className={`w-full py-4 rounded-xl font-black text-[10px] tracking-[0.2em] uppercase transition-all duration-300 ${
+                                                isFeatured
+                                                ? 'bg-[#C4956A] text-white hover:bg-[#D4A57A] shadow-[0_15px_30px_rgba(196,149,106,0.2)] active:scale-95'
+                                                : 'bg-gray-900 text-white hover:bg-black active:scale-95'
+                                            }`}>
+                                                {plan.cta}
+                                            </button>
+                                        </Link>
+                                        
+                                        <div className="mt-4 flex items-center justify-center gap-2 opacity-30">
+                                            <div className="w-1 h-1 rounded-full bg-green-500" />
+                                            <span className={`text-[9px] font-black tracking-widest uppercase ${isFeatured ? 'text-white' : 'text-gray-900'}`}>
+                                                Op voorraad
+                                            </span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )
+                        })}
+                    </div>
                 </div>
 
-                {/* Ultra-Premium Trust Section */}
+                {/* Subtle Trust Footer */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="mt-24 pt-12 border-t border-[#F0EDE9] flex flex-col lg:flex-row items-center justify-between gap-12"
+                    className="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-center"
                 >
-                    <div className="flex items-start gap-6 max-w-lg text-left">
-                        <div className="flex-shrink-0 w-12 h-12 bg-[#FDFCFA] rounded-2xl border border-[#F0EDE9] flex items-center justify-center shadow-sm">
-                            <Sparkles className="w-6 h-6 text-[#C4956A]" />
-                        </div>
-                        <div>
-                            <p className="text-xl font-bold text-[#1a1a1a] mb-1 tracking-tight">Geen risico. Gegarandeerd resultaat.</p>
-                            <p className="text-sm text-[#6B6560] leading-relaxed font-medium opacity-90">
-                                We zijn zo overtuigd van onze formule dat we je 180 dagen de tijd geven. Geen resultaat na een volledige kuur? Dan storten we het volledige bedrag terug.
-                            </p>
-                        </div>
+                    <div className="flex items-center gap-3 text-[11px] font-black text-gray-400 uppercase tracking-widest opacity-60">
+                        <Truck className="w-4 h-4" strokeWidth={1.5} />
+                        Morgen in huis
                     </div>
-                    
-                    {/* Trust Section Footer - Clean */}
-                    <div className="flex flex-col items-center lg:items-end gap-4 opacity-40">
-                         <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Beveiligde afrekening</span>
+                    <div className="flex items-center gap-3 text-[11px] font-black text-gray-400 uppercase tracking-widest opacity-60">
+                        <Shield className="w-4 h-4" strokeWidth={1.5} />
+                        180 dgn garantie
+                    </div>
+                    <div className="flex items-center gap-3 text-[11px] font-black text-gray-400 uppercase tracking-widest opacity-60">
+                        <Sparkles className="w-4 h-4" strokeWidth={1.5} />
+                        Risicovrij resultaat
                     </div>
                 </motion.div>
             </div>

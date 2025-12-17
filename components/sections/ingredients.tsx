@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from 'react'
-import { ChevronDown, Check, ArrowUpRight, MousePointer2 } from 'lucide-react'
+import { ChevronDown, Check, ArrowUpRight, MousePointer2, Zap, Shield } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const ingredients = [
@@ -99,6 +99,7 @@ export default function Ingredients() {
     const [showCursor, setShowCursor] = useState(false)
     const [cursorPos, setCursorPos] = useState({ x: 50, y: 0 })
     const [animationPlayed, setAnimationPlayed] = useState(false)
+    const [isSimulatedPressing, setIsSimulatedPressing] = useState(false)
     const sectionRef = useRef<HTMLElement>(null)
     const cardsRef = useRef<HTMLDivElement>(null)
 
@@ -112,32 +113,37 @@ export default function Ingredients() {
                     const isDesktop = window.innerWidth >= 768
 
                     if (isDesktop) {
-                        // Desktop: show arrow cursor
+                        // Desktop sequence
                         setTimeout(() => {
                             setShowCursor(true)
-                            setCursorPos({ x: 50, y: -30 })
-                        }, 800)
+                            setCursorPos({ x: 50, y: -20 })
+                        }, 600)
 
                         setTimeout(() => {
                             setCursorPos({ x: 15, y: 50 })
-                        }, 1200)
+                        }, 1000)
 
+                        // The "Press"
                         setTimeout(() => {
-                            setExpanded("ghkcu")
-                            setTimeout(() => setShowCursor(false), 400)
-                        }, 1800)
+                            setIsSimulatedPressing(true)
+                            setTimeout(() => {
+                                setIsSimulatedPressing(false)
+                                setExpanded("ghkcu")
+                                setTimeout(() => setShowCursor(false), 300)
+                            }, 150)
+                        }, 1600)
                     } else {
                         // Mobile: just expand after delay
                         setTimeout(() => {
                             setExpanded("ghkcu")
-                        }, 1000)
+                        }, 800)
                     }
                 }
             })
         }
 
         const observer = new IntersectionObserver(handleIntersection, {
-            threshold: 0.5 // Higher threshold - really on section
+            threshold: 0.85 // High threshold for clarity
         })
 
         if (sectionRef.current) {
@@ -241,10 +247,13 @@ export default function Ingredients() {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        animate={{ 
+                            scale: isSimulatedPressing ? 0.98 : 1,
+                            transition: { duration: 0.15 }
+                        }}
                         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         onClick={() => setExpanded(expanded === "ghkcu" ? null : "ghkcu")}
                         whileHover={{ y: -2 }}
-                        whileTap={{ scale: 0.995 }}
                         className="relative group cursor-pointer rounded-2xl overflow-hidden bg-[#111] text-white shadow-xl border border-white/5"
                     >
                         {/* Subtle color indicator */}
@@ -403,19 +412,28 @@ export default function Ingredients() {
                     </div>
                 </div>
 
-                {/* Footer */}
+                {/* Footer - Ultra Polish */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 }}
-                    className="flex justify-center gap-6 mt-14 text-sm text-[#999]"
+                    className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 mt-10 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]"
                 >
-                    <span>Hormoonvrij</span>
-                    <span className="text-[#ddd]">·</span>
-                    <span>Zonder parfum</span>
-                    <span className="text-[#ddd]">·</span>
-                    <span>Gemaakt in NL</span>
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/5">
+                        <Zap className="w-3 h-3 text-[#C4956A]" />
+                        Hormoonvrij
+                    </div>
+                    <div className="hidden sm:block w-1 h-1 rounded-full bg-gray-200" />
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/5">
+                        <Check className="w-3 h-3 text-[#C4956A]" />
+                        Zonder parfum
+                    </div>
+                    <div className="hidden sm:block w-1 h-1 rounded-full bg-gray-200" />
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/5">
+                        <Shield className="w-3 h-3 text-[#C4956A]" />
+                        Gemaakt in NL
+                    </div>
                 </motion.div>
             </div>
         </section>
