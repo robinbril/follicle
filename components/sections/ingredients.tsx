@@ -161,70 +161,56 @@ export default function Ingredients() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-center mb-16"
+                    className="text-center mb-20"
                 >
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
-                        className="text-sm text-[#C4956A] font-medium mb-4"
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="inline-block px-4 py-1.5 rounded-full bg-[#C4956A]/10 text-[#C4956A] text-[10px] font-bold tracking-[0.2em] uppercase mb-6"
                     >
-                        De formule
-                    </motion.p>
+                        De Formule
+                    </motion.div>
 
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                        className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#1a1a1a] tracking-tight mb-5"
-                    >
-                        7 Actieve Ingrediënten
-                    </motion.h2>
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1a1a1a] tracking-tight mb-8 leading-[1.1]">
+                        Wetenschappelijke<br />
+                        <span className="text-[#C4956A]">Perfectie.</span>
+                    </h2>
 
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.5, duration: 0.6 }}
-                        className="text-base sm:text-lg text-[#666] max-w-md mx-auto leading-relaxed"
-                        style={{ hyphens: 'none' }}
-                    >
-                        Klinisch bewezen ingrediënten.<br className="sm:hidden" />
-                        Hoogste concentratie op de markt.
-                    </motion.p>
+                    <p className="text-base sm:text-lg text-[#666] max-w-2xl mx-auto leading-relaxed mb-10 font-medium">
+                        Een synergie van <span className="text-[#1a1a1a] font-bold">7 klinische actieven</span> voor maximale bio-beschikbaarheid en bewezen haargroei-stimulatie.
+                    </p>
 
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.7, duration: 0.5 }}
-                        className="relative mt-8 inline-flex p-[1.5px] rounded-full overflow-hidden shadow-[0_0_20px_rgba(196,149,106,0.15)] group"
+                        className="relative inline-flex p-[1.5px] rounded-full overflow-hidden shadow-[0_15px_40px_rgba(196,149,106,0.25)] group"
                     >
-                        {/* Layer 1: 7 High-Vibrancy Ingredient Colors - Extremely Smooth Flow */}
+                        {/* Layer 1: 7 High-Definition Liquid Colors - Ultra Smooth Flow */}
                         <motion.div 
                             animate={{ rotate: [0, 360] }}
-                            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,#C4956A_0%,#3B82F6_14%,#10B981_28%,#8B5CF6_42%,#F59E0B_56%,#EC4899_70%,#06B6D4_84%,#C4956A_100%)] opacity-100 blur-[0.5px]"
+                            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,#C4956A_0%,#3B82F6_14%,#10B981_28%,#8B5CF6_42%,#F59E0B_56%,#EC4899_70%,#06B6D4_84%,#C4956A_100%)] opacity-100"
                         />
                         
-                        {/* Layer 2: Liquid Turbulence & Gloss */}
+                        {/* Layer 2: Shimmer Turbulence & Depth Overlay */}
                         <motion.div 
                             animate={{ rotate: [360, 0] }}
-                            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0%,rgba(255,255,255,0.5)_50%,transparent_100%)] mix-blend-overlay"
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0%,rgba(255,255,255,0.6)_50%,transparent_100%)] mix-blend-overlay"
                         />
                         
                         {/* Compact Luxury Badge */}
-                        <div className="relative flex items-center gap-3 px-6 py-2.5 bg-[#080808] text-white rounded-full text-[11px] font-bold tracking-tight">
-                            <span className="text-[#C4956A] font-black border-r border-white/10 pr-3">20.5%</span>
-                            <span className="text-white/80 uppercase tracking-widest text-[9px]">actieve stoffen</span>
-                            <span className="w-1 h-1 rounded-full bg-[#C4956A]" />
-                            <span className="text-white/80 uppercase tracking-widest text-[9px]">24 studies</span>
+                        <div className="relative flex items-center gap-4 px-7 py-3 bg-[#080808] text-white rounded-full text-[11px] font-bold tracking-tight">
+                            <span className="text-[#C4956A] font-black text-sm border-r border-white/10 pr-4">20.5%</span>
+                            <div className="flex flex-col items-start leading-tight">
+                                <span className="text-white/90 uppercase tracking-[0.15em] text-[9px] font-black">Actieve stoffen</span>
+                                <span className="text-white/40 text-[8px] font-medium">24 Klinische studies</span>
+                            </div>
                         </div>
 
-                        {/* Ultra-Smooth Glass Rim */}
+                        {/* Gloss Rim Reflection */}
                         <div className="absolute inset-0 rounded-full bg-gradient-to-t from-white/5 via-transparent to-white/20 pointer-events-none" />
                     </motion.div>
                 </motion.div>
