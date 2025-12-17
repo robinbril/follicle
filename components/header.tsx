@@ -55,7 +55,7 @@ export default function Header() {
                             </button>
 
                             {/* Center: Logo */}
-                            <Link href="/" className="font-black text-xl tracking-tighter text-gray-900">
+                            <Link href="#hero" className="font-black text-xl tracking-tighter text-gray-900">
                                 REVIVE<span className="text-[#C4956A]">.</span>
                             </Link>
 
@@ -207,7 +207,7 @@ export default function Header() {
                     <div className="max-w-7xl mx-auto px-8">
                         <div className="flex items-center justify-between">
                             {/* Logo */}
-                            <Link href="/" className="relative z-50">
+                            <Link href="#hero" className="relative z-50">
                                 <h1 className="text-2xl font-black tracking-tighter text-gray-900 border-b-4 border-[#C4956A]">
                                     REVIVE<span className="text-[#C4956A]">.</span>
                                 </h1>

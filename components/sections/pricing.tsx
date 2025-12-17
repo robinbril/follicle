@@ -1,187 +1,226 @@
 "use client"
 
 import { Check, Truck, Shield, Sparkles, ArrowRight, Zap } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 
-export default function Pricing() {
-    const [selectedPlan, setSelectedPlan] = useState(2) // Default to 6 months (Resultaatpakket)
+const plans = [
+    {
+        id: "trial",
+        label: "Proberen",
+        months: 1,
+        totalPrice: 49,
+        perMonth: 49,
+        savings: 0,
+        featured: false,
+        badge: "Testfase",
+        benefits: ["1× REVIVE (30ml)", "30 dagen kuur", "180 dgn garantie"],
+        cta: "PROBEER 1 FLES"
+    },
+    {
+        id: "popular",
+        label: "Startpakket",
+        months: 3,
+        totalPrice: 87,
+        perMonth: 29,
+        savings: 60,
+        featured: false,
+        badge: "Snelle start",
+        benefits: ["3× REVIVE (90ml)", "90 dagen kuur", "Gratis verzending"],
+        cta: "BESTEL STARTPAKKET"
+    },
+    {
+        id: "best",
+        label: "Resultaatpakket",
+        months: 6,
+        totalPrice: 114,
+        perMonth: 19,
+        savings: 180,
+        featured: true,
+        badge: "Meest gekozen",
+        benefits: ["6× REVIVE (180ml)", "180 dagen kuur", "Gratis Dermaroller"],
+        cta: "BESTEL RESULTAATPAKKET"
+    }
+]
 
-    const plans = [
-        {
-            id: "trial",
-            label: "Proberen",
-            months: 1,
-            totalPrice: 49,
-            perMonth: 49,
-            savings: 0,
-            featured: false,
-            benefits: ["1× REVIVE (30ml)", "30 dagen kuur", "180 dgn garantie"],
-            cta: "PROBEER 1 FLES"
-        },
-        {
-            id: "popular",
-            label: "Startpakket",
-            months: 3,
-            totalPrice: 87,
-            perMonth: 29,
-            savings: 60,
-            featured: false,
-            badge: "Snel resultaat",
-            benefits: ["3× REVIVE (90ml)", "90 dagen kuur", "Gratis verzending"],
-            cta: "BESTEL STARTPAKKET"
-        },
-        {
-            id: "best",
-            label: "Resultaatpakket",
-            months: 6,
-            totalPrice: 114,
-            perMonth: 19,
-            savings: 180,
-            featured: true,
-            badge: "Meest gekozen",
-            benefits: ["6× REVIVE (180ml)", "180 dagen kuur", "Gratis Dermaroller"],
-            cta: "BESTEL RESULTAATPAKKET"
+export default function Pricing() {
+    const [selectedPlan, setSelectedPlan] = useState(2) // Default to 6 months
+
+    useEffect(() => {
+        if (window.location.hash === '#resultaatpakket') {
+            setSelectedPlan(2)
         }
-    ]
+    }, [])
+
+    const activePlan = plans[selectedPlan]
 
     return (
-        <section id="prijzen" className="py-12 sm:py-20 bg-white overflow-hidden">
-            <div className="max-w-6xl mx-auto px-6">
+        <section id="prijzen" className="py-16 sm:py-24 bg-white overflow-hidden relative">
+            {/* Background Decor */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-[radial-gradient(circle_at_50%_0%,rgba(196,149,106,0.03)_0%,transparent_70%)] pointer-events-none" />
+
+            <div className="max-w-4xl mx-auto px-6 relative z-10">
                 
-                {/* Header - Ultra Compact */}
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex flex-col items-center mb-12"
+                    className="flex flex-col items-center mb-12 text-center"
                 >
-                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/[0.03] border border-black/[0.05] mb-4">
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/[0.03] border border-black/[0.05] mb-6">
                         <Zap className="w-3 h-3 text-[#C4956A]" />
-                        <span className="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500">Tijdelijke Actie</span>
+                        <span className="text-[9px] font-black uppercase tracking-[0.25em] text-gray-500">Kies je transformatie</span>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight text-center">
-                        Kies je transformatie.
+                    <h2 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight leading-[1.1]">
+                        Prijzen & Pakketten.
                     </h2>
                 </motion.div>
 
-                {/* Triple Pricing Ribbon - Desktop Horizontal / Mobile Compact */}
-                <div className="relative max-w-5xl mx-auto">
-                    {/* Background Glows */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle,rgba(196,149,106,0.05)_0%,transparent_70%)] blur-3xl pointer-events-none" />
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-2 relative z-10">
-                        {plans.map((plan, i) => {
-                            const isSelected = selectedPlan === i
-                            const isFeatured = plan.featured
-
-                            return (
-                                <motion.div
-                                    key={plan.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    onClick={() => setSelectedPlan(i)}
-                                    id={plan.id === 'best' ? 'resultaatpakket' : undefined}
-                                    className={`relative flex flex-col cursor-pointer transition-all duration-500 overflow-hidden ${
-                                        isFeatured 
-                                        ? 'bg-[#0A0A0A] border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.15)] md:scale-[1.03] md:z-20 md:rounded-[2.5rem]' 
-                                        : 'bg-white border-gray-100 hover:border-[#C4956A]/30 md:z-10 md:rounded-[2rem]'
-                                    } border-[1.5px] p-6 sm:p-8 flex-grow`}
-                                >
-                                    {/* Internal Glow for Featured */}
-                                    {isFeatured && (
-                                        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(196,149,106,0.15)_0%,transparent_50%)] pointer-events-none" />
-                                    )}
-
-                                    {/* Badge */}
-                                    <div className="h-6 mb-6">
-                                        {plan.badge && (
-                                            <span className={`text-[8px] font-black tracking-[0.15em] uppercase px-3 py-1 rounded-full ${isFeatured ? 'bg-[#C4956A] text-white' : 'bg-gray-100 text-gray-500 opacity-60'}`}>
-                                                {plan.badge}
-                                            </span>
-                                        )}
-                                    </div>
-
-                                    {/* Plan Info */}
-                                    <div className="mb-6">
-                                        <h3 className={`text-[11px] font-black tracking-[0.2em] uppercase mb-1 ${isFeatured ? 'text-white/40' : 'text-gray-400'}`}>
-                                            {plan.label}
-                                        </h3>
-                                        <div className="flex items-baseline gap-2">
-                                            <span className={`text-4xl font-black tracking-tighter ${isFeatured ? 'text-white' : 'text-gray-900'}`}>
-                                                €{plan.totalPrice}
-                                            </span>
-                                            {plan.savings > 0 && (
-                                                <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded bg-[#C4956A]/10 text-[#C4956A] border border-[#C4956A]/20`}>
-                                                    Bespaar €{plan.savings}
-                                                </span>
-                                            )}
-                                        </div>
-                                        <p className={`text-[11px] font-medium mt-1 ${isFeatured ? 'text-white/60' : 'text-gray-500'}`}>
-                                            €{plan.perMonth} per maand
-                                        </p>
-                                    </div>
-
-                                    {/* Benefits List - Compact */}
-                                    <ul className="space-y-3 mb-8 flex-grow">
-                                        {plan.benefits.map((benefit, idx) => (
-                                            <li key={idx} className="flex items-center gap-3">
-                                                <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${isFeatured ? 'bg-[#C4956A]/20' : 'bg-gray-50'}`}>
-                                                    <Check className={`w-2.5 h-2.5 ${isFeatured ? 'text-[#C4956A]' : 'text-gray-400'}`} strokeWidth={3} />
-                                                </div>
-                                                <span className={`text-[12px] font-bold ${isFeatured ? 'text-white/80' : 'text-gray-600'}`}>
-                                                    {benefit}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
-
-                                    {/* CTA Area */}
-                                    <div className="mt-auto">
-                                        <Link href="/checkout" className="block outline-none">
-                                            <button className={`w-full py-4 rounded-xl font-black text-[10px] tracking-[0.2em] uppercase transition-all duration-300 ${
-                                                isFeatured
-                                                ? 'bg-[#C4956A] text-white hover:bg-[#D4A57A] shadow-[0_15px_30px_rgba(196,149,106,0.2)] active:scale-95'
-                                                : 'bg-gray-900 text-white hover:bg-black active:scale-95'
-                                            }`}>
-                                                {plan.cta}
-                                            </button>
-                                        </Link>
-                                        
-                                        <div className="mt-4 flex items-center justify-center gap-2 opacity-30">
-                                            <div className="w-1 h-1 rounded-full bg-green-500" />
-                                            <span className={`text-[9px] font-black tracking-widest uppercase ${isFeatured ? 'text-white' : 'text-gray-900'}`}>
-                                                Op voorraad
-                                            </span>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            )
-                        })}
+                {/* Segmented Control - Award Winning Switcher */}
+                <div className="flex justify-center mb-10">
+                    <div className="relative flex p-1.5 bg-gray-100/80 backdrop-blur-sm rounded-2xl w-full max-w-lg border border-gray-200/50">
+                        {/* Shifting Indicator */}
+                        <motion.div
+                            className="absolute inset-y-1.5 bg-white rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.08)] z-0"
+                            initial={false}
+                            animate={{
+                                width: `calc((100% - 12px) / 3)`,
+                                x: `calc((100% - 12px) / 3 * ${selectedPlan})`
+                            }}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                        
+                        {plans.map((plan, i) => (
+                            <button
+                                key={plan.id}
+                                onClick={() => setSelectedPlan(i)}
+                                className={`relative z-10 flex-1 px-2 py-3.5 text-[10px] sm:text-[11px] font-black uppercase tracking-widest transition-colors duration-300 ${
+                                    selectedPlan === i ? 'text-[#C4956A]' : 'text-gray-400 hover:text-gray-600'
+                                }`}
+                            >
+                                {plan.label}
+                                {plan.savings > 0 && (
+                                    <span className="hidden sm:block absolute -top-1 -right-1 px-1.5 py-0.5 rounded-md bg-[#C4956A] text-white text-[7px] font-black tracking-normal">
+                                        -{Math.round((plan.savings / (plan.totalPrice + plan.savings)) * 100)}%
+                                    </span>
+                                )}
+                            </button>
+                        ))}
                     </div>
                 </div>
 
-                {/* Subtle Trust Footer */}
+                {/* Dynamic Morphing Card */}
+                <div className="relative">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={selectedPlan}
+                            initial={{ opacity: 0, scale: 0.98, y: 10 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.98, y: -10 }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                            id={activePlan.id === 'best' ? 'resultaatpakket' : undefined}
+                            className={`relative bg-white/70 backdrop-blur-2xl border ${
+                                activePlan.featured ? 'border-[#C4956A]/20 shadow-[0_40px_100px_rgba(196,149,106,0.12)]' : 'border-gray-100 shadow-[0_30px_80px_rgba(0,0,0,0.05)]'
+                            } rounded-[3rem] p-8 sm:p-12 overflow-hidden`}
+                        >
+                            {/* Accent Glow for Best Choice */}
+                            {activePlan.featured && (
+                                <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#C4956A]/5 blur-[100px] rounded-full pointer-events-none" />
+                            )}
+
+                            <div className="flex flex-col md:flex-row gap-10 items-start md:items-center">
+                                {/* Left: Pricing Details */}
+                                <div className="flex-grow w-full md:w-auto">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 border border-gray-100 mb-6">
+                                        <div className={`w-1.5 h-1.5 rounded-full ${activePlan.featured ? 'bg-[#C4956A] animate-pulse' : 'bg-gray-300'}`} />
+                                        <span className="text-[9px] font-black uppercase tracking-widest text-gray-500">
+                                            {activePlan.badge}
+                                        </span>
+                                    </div>
+
+                                    <div className="flex items-baseline gap-3 mb-2">
+                                        <motion.span 
+                                            key={activePlan.totalPrice}
+                                            initial={{ y: 20, opacity: 0 }}
+                                            animate={{ y: 0, opacity: 1 }}
+                                            className="text-6xl sm:text-7xl font-black text-gray-900 tracking-tighter"
+                                        >
+                                            €{activePlan.totalPrice}
+                                        </motion.span>
+                                        {activePlan.savings > 0 && (
+                                            <div className="flex flex-col gap-1">
+                                                <span className="text-[10px] font-black uppercase text-[#C4956A] tracking-[0.2em] bg-[#C4956A]/5 px-2 py-0.5 rounded">
+                                                    Bespaar €{activePlan.savings}
+                                                </span>
+                                                <span className="text-[12px] font-bold text-gray-400 line-through">
+                                                    €{activePlan.totalPrice + activePlan.savings}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">
+                                        €{activePlan.perMonth} per maand voor {activePlan.months} {activePlan.months === 1 ? 'maand' : 'maanden'}
+                                    </p>
+                                </div>
+
+                                {/* Right: Benefits & Action */}
+                                <div className="w-full md:w-[320px] shrink-0 space-y-8">
+                                    <div className="space-y-4">
+                                        {activePlan.benefits.map((benefit, idx) => (
+                                            <div key={idx} className="flex items-center gap-3">
+                                                <div className="w-5 h-5 rounded-full bg-black/5 flex items-center justify-center shrink-0">
+                                                    <Check className="w-3 h-3 text-[#C4956A]" strokeWidth={4} />
+                                                </div>
+                                                <span className="text-sm font-bold text-gray-700">{benefit}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <Link href="/checkout" className="block outline-none group">
+                                        <button className={`w-full py-5 rounded-2xl font-black text-[11px] tracking-[0.25em] uppercase transition-all duration-300 relative overflow-hidden ${
+                                            activePlan.featured
+                                            ? 'bg-gray-900 text-white hover:bg-black shadow-[0_20px_40px_rgba(0,0,0,0.15)] active:scale-95'
+                                            : 'bg-gray-100 text-gray-900 hover:bg-gray-200 active:scale-95'
+                                        }`}>
+                                            <span className="relative z-10 flex items-center justify-center gap-2">
+                                                {activePlan.cta}
+                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                            </span>
+                                        </button>
+                                    </Link>
+                                    
+                                    <div className="flex items-center justify-center gap-3 opacity-30 group cursor-default">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                                        <span className="text-[9px] font-black tracking-[0.3em] uppercase text-gray-900">
+                                            Direct leverbaar
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
+                {/* Micro-Trust Footer */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-center"
+                    className="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 pt-12 border-t border-gray-100"
                 >
-                    <div className="flex items-center gap-3 text-[11px] font-black text-gray-400 uppercase tracking-widest opacity-60">
+                    <div className="flex items-center gap-3 text-[10px] font-black text-gray-400 hover:text-[#C4956A] transition-colors uppercase tracking-[0.2em]">
                         <Truck className="w-4 h-4" strokeWidth={1.5} />
-                        Morgen in huis
+                        Gratis verzending
                     </div>
-                    <div className="flex items-center gap-3 text-[11px] font-black text-gray-400 uppercase tracking-widest opacity-60">
+                    <div className="flex items-center gap-3 text-[10px] font-black text-gray-400 hover:text-[#C4956A] transition-colors uppercase tracking-[0.2em]">
                         <Shield className="w-4 h-4" strokeWidth={1.5} />
                         180 dgn garantie
                     </div>
-                    <div className="flex items-center gap-3 text-[11px] font-black text-gray-400 uppercase tracking-widest opacity-60">
+                    <div className="flex items-center gap-3 text-[10px] font-black text-gray-400 hover:text-[#C4956A] transition-colors uppercase tracking-[0.2em]">
                         <Sparkles className="w-4 h-4" strokeWidth={1.5} />
-                        Risicovrij resultaat
+                        Klinische studies
                     </div>
                 </motion.div>
             </div>

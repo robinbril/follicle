@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 
 export default function Hero() {
     return (
-        <section className="relative pt-24 pb-14 lg:pt-32 lg:pb-28 bg-white overflow-hidden">
+        <section id="hero" className="relative pt-24 pb-14 lg:pt-32 lg:pb-28 bg-white overflow-hidden">
             {/* Premium multi-layer mesh gradient background */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(196,149,106,0.12)_0%,transparent_60%)]" />
