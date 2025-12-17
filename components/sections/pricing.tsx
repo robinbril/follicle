@@ -73,36 +73,40 @@ export default function Pricing() {
                         <Zap className="w-3 h-3 text-[#C4956A]" />
                         <span className="text-[9px] font-black uppercase tracking-[0.25em] text-gray-500">Kies je transformatie</span>
                     </div>
-                    <h2 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight leading-[1.1]">
+                    <h2 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight leading-[1.15] sm:leading-[1.1]">
                         Prijzen & Pakketten.
                     </h2>
                 </motion.div>
 
                 {/* Segmented Control - Award Winning Switcher */}
                 <div className="flex justify-center mb-10">
-                    <div className="relative flex p-1.5 bg-gray-100/80 backdrop-blur-sm rounded-2xl w-full max-w-lg border border-gray-200/50">
-                        {/* Shifting Indicator */}
-                        <motion.div
-                            className="absolute inset-y-1.5 bg-white rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.08)] z-0"
-                            initial={false}
-                            animate={{
-                                width: `calc((100% - 12px) / 3)`,
-                                x: `calc((100% - 12px) / 3 * ${selectedPlan})`
-                            }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        />
-                        
+                    <div className="relative flex p-1.5 bg-gray-100/50 backdrop-blur-md rounded-2xl w-full max-w-2xl border border-gray-200/40 shadow-inner">
                         {plans.map((plan, i) => (
                             <button
                                 key={plan.id}
                                 onClick={() => setSelectedPlan(i)}
-                                className={`relative z-10 flex-1 px-2 py-3.5 text-[10px] sm:text-[11px] font-black uppercase tracking-widest transition-colors duration-300 ${
-                                    selectedPlan === i ? 'text-[#C4956A]' : 'text-gray-400 hover:text-gray-600'
-                                }`}
+                                className="relative z-10 flex-1 px-1 sm:px-4 py-3 sm:py-4 transition-all duration-300 group outline-none"
                             >
-                                {plan.label}
+                                <span className={`relative z-20 text-[9px] sm:text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-500 whitespace-nowrap block ${
+                                    selectedPlan === i ? 'text-[#C4956A]' : 'text-gray-400 group-hover:text-gray-600'
+                                }`}>
+                                    {plan.label}
+                                </span>
+                                
+                                {selectedPlan === i && (
+                                    <motion.div
+                                        layoutId="activeTab"
+                                        className="absolute inset-0 bg-white rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] z-10 border border-black/[0.02]"
+                                        transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
+                                    >
+                                        <div className="absolute inset-0 bg-gradient-to-tr from-white to-transparent opacity-50 rounded-xl" />
+                                    </motion.div>
+                                )}
+
                                 {plan.savings > 0 && (
-                                    <span className="hidden sm:block absolute -top-1 -right-1 px-1.5 py-0.5 rounded-md bg-[#C4956A] text-white text-[7px] font-black tracking-normal">
+                                    <span className={`hidden sm:block absolute -top-1 -right-1 px-2 py-0.5 rounded-md text-[7px] font-black transition-colors duration-300 z-30 ${
+                                        selectedPlan === i ? 'bg-[#C4956A] text-white' : 'bg-gray-200 text-gray-500'
+                                    }`}>
                                         -{Math.round((plan.savings / (plan.totalPrice + plan.savings)) * 100)}%
                                     </span>
                                 )}
@@ -140,29 +144,40 @@ export default function Pricing() {
                                         </span>
                                     </div>
 
-                                    <div className="flex items-baseline gap-3 mb-2">
-                                        <motion.span 
-                                            key={activePlan.totalPrice}
-                                            initial={{ y: 20, opacity: 0 }}
-                                            animate={{ y: 0, opacity: 1 }}
-                                            className="text-6xl sm:text-7xl font-black text-gray-900 tracking-tighter"
-                                        >
-                                            €{activePlan.totalPrice}
-                                        </motion.span>
-                                        {activePlan.savings > 0 && (
-                                            <div className="flex flex-col gap-1">
-                                                <span className="text-[10px] font-black uppercase text-[#C4956A] tracking-[0.2em] bg-[#C4956A]/5 px-2 py-0.5 rounded">
-                                                    Bespaar €{activePlan.savings}
-                                                </span>
-                                                <span className="text-[12px] font-bold text-gray-400 line-through">
-                                                    €{activePlan.totalPrice + activePlan.savings}
-                                                </span>
-                                            </div>
-                                        )}
+                                    <div className="flex flex-col mb-4">
+                                        <div className="flex items-baseline gap-4">
+                                            <motion.span 
+                                                key={activePlan.totalPrice}
+                                                initial={{ y: 20, opacity: 0 }}
+                                                animate={{ y: 0, opacity: 1 }}
+                                                className="text-6xl sm:text-7xl font-black text-gray-900 tracking-tighter"
+                                            >
+                                                €{activePlan.totalPrice}
+                                            </motion.span>
+                                            
+                                            {activePlan.savings > 0 && (
+                                                <div className="flex flex-col justify-center">
+                                                    <span className="text-[12px] font-bold text-gray-300 line-through mb-1">
+                                                        €{activePlan.totalPrice + activePlan.savings}
+                                                    </span>
+                                                    <div className="inline-flex items-center px-2 py-1 rounded-md bg-[#C4956A] shadow-[0_4px_12px_rgba(196,149,106,0.2)]">
+                                                        <span className="text-[9px] font-black uppercase text-white tracking-widest whitespace-nowrap">
+                                                            Bespaar €{activePlan.savings}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
-                                    <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">
-                                        €{activePlan.perMonth} per maand voor {activePlan.months} {activePlan.months === 1 ? 'maand' : 'maanden'}
-                                    </p>
+
+                                    <div className="flex flex-col gap-1">
+                                        <p className="text-[11px] sm:text-[13px] font-black text-gray-900 uppercase tracking-[0.15em] leading-none">
+                                            €{activePlan.perMonth} per maand
+                                        </p>
+                                        <p className="text-[9px] sm:text-[11px] font-medium text-gray-400 uppercase tracking-[0.2em]">
+                                            voor {activePlan.months} {activePlan.months === 1 ? 'maand' : 'maanden'} behandeling
+                                        </p>
+                                    </div>
                                 </div>
 
                                 {/* Right: Benefits & Action */}

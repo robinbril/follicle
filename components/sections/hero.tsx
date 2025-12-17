@@ -95,12 +95,12 @@ export default function Hero() {
                             className="mb-3"
                         >
                             <h1 
-                                className="text-[2.5rem] sm:text-5xl lg:text-6xl font-black text-[#1a1a1a] tracking-tight leading-[1.05]"
+                                className="text-[2.5rem] sm:text-5xl lg:text-7xl font-black text-[#1a1a1a] tracking-tight leading-[1.1] sm:leading-[1.05]"
                                 style={{ hyphens: 'none', wordBreak: 'keep-all' }}
                             >
                                 Stop haaruitval<br className="sm:hidden" /> in 90 dagen.
                             </h1>
-                            <p className="text-[1.75rem] sm:text-3xl lg:text-4xl font-semibold text-[#C4956A] mt-2 tracking-tight">
+                            <p className="text-[1.75rem] sm:text-3xl lg:text-5xl font-semibold text-[#C4956A] mt-2 tracking-tighter leading-none">
                                 Of je geld terug.
                             </p>
                         </motion.div>
@@ -114,12 +114,15 @@ export default function Hero() {
                         >
                             <Button
                                 size="lg"
-                                className="w-full sm:w-auto h-16 px-14 text-base font-bold bg-[#C4956A] hover:bg-[#B38559] text-white shadow-[0_15px_40px_rgba(196,149,106,0.25)] hover:shadow-[0_20px_50px_rgba(196,149,106,0.35)] hover:scale-[1.02] transition-all duration-300 rounded-full group"
+                                className="w-full sm:w-auto h-16 px-14 text-base font-black bg-[#C4956A] hover:bg-[#B38559] text-white shadow-[0_15px_40px_rgba(196,149,106,0.25)] hover:shadow-[0_20px_50px_rgba(196,149,106,0.4)] hover:scale-[1.03] transition-all duration-500 rounded-full group relative overflow-hidden"
                                 asChild
                             >
                                 <Link href="#prijzen">
-                                    Start je behandeling
-                                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                    <span className="relative z-10 flex items-center justify-center gap-2 tracking-widest uppercase">
+                                        Start je behandeling
+                                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    </span>
                                 </Link>
                             </Button>
                         </motion.div>
@@ -135,7 +138,7 @@ export default function Hero() {
                                 REVIVE bevat 6 klinisch onderbouwde ingrediënten in concentraties die daadwerkelijk werken.
                             </p>
                             {/* Mobile: concise */}
-                            <p className="md:hidden text-[15px] text-[#4A4540]/70 font-medium">
+                            <p className="md:hidden text-[15px] text-[#4A4540]/80 font-bold tracking-tight">
                                 6 klinische ingrediënten · 24 studies
                             </p>
                         </motion.div>
