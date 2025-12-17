@@ -196,36 +196,32 @@ export default function Ingredients() {
                     </motion.p>
 
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.7, duration: 0.5 }}
-                        className="relative mt-8 inline-flex p-[1px] rounded-full overflow-hidden group shadow-2xl"
+                        className="relative mt-8 inline-flex p-[1px] rounded-full overflow-hidden"
                     >
-                        {/* Animated "Flowing Water" Gradient - 7 Colors */}
+                        {/* 7-Color Liquid Border - Ultra Thin & Muted */}
                         <motion.div 
                             animate={{ 
                                 rotate: [0, 360]
                             }}
                             transition={{ 
-                                duration: 10, 
+                                duration: 15, 
                                 repeat: Infinity, 
                                 ease: "linear" 
                             }}
-                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,#C4956A_0%,#3B82F6_14%,#10B981_28%,#8B5CF6_42%,#F59E0B_56%,#EC4899_70%,#06B6D4_84%,#C4956A_100%)] opacity-90 blur-[1px]"
+                            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,#C4956A_0%,#7C8BA1_14%,#849E8D_28%,#948BA1_42%,#A1947C_56%,#A17C8B_70%,#7CA19F_84%,#C4956A_100%)] opacity-40"
                         />
                         
-                        {/* Inner Black Badge */}
-                        <div className="relative flex items-center gap-3 px-7 py-3.5 bg-[#0a0a0a] text-white rounded-full text-sm">
-                            <span className="font-bold text-base tracking-tight text-[#C4956A]">20.5%</span>
-                            <span className="text-white/60 font-medium">actieve stoffen</span>
-                            <span className="w-1 h-1 rounded-full bg-white/20" />
-                            <span className="text-white/60 font-medium whitespace-nowrap">24 klinische studies</span>
+                        {/* Compact Luxury Badge */}
+                        <div className="relative flex items-center gap-3 px-5 py-2 bg-[#0a0a0a] text-white rounded-full text-[11px] font-medium tracking-tight">
+                            <span className="text-[#C4956A] font-bold">20.5%</span>
+                            <span className="text-white/50">actieve stoffen</span>
+                            <span className="w-[3px] h-[3px] rounded-full bg-white/10" />
+                            <span className="text-white/50">24 studies</span>
                         </div>
-
-                        {/* Tube Reflection/Glass effect */}
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-white/10 via-transparent to-transparent pointer-events-none" />
-                        <div className="absolute top-0 left-0 right-0 h-[40%] bg-gradient-to-b from-white/10 to-transparent rounded-t-full pointer-events-none" />
                     </motion.div>
                 </motion.div>
 
