@@ -415,7 +415,7 @@ export default function Ingredients() {
                     <span className="text-[#ddd]">·</span>
                     <span>Zonder parfum</span>
                     <span className="text-[#ddd]">·</span>
-                    <span>Made in NL</span>
+                    <span>Gemaakt in NL</span>
                 </motion.div>
             </div>
         </section>

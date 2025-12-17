@@ -2,7 +2,6 @@
 
 import { ShieldCheck, RotateCcw, MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { PaymentTrust } from '@/components/ui/payment-trust'
 
 export default function Guarantee() {
     return (
@@ -46,31 +45,26 @@ export default function Guarantee() {
                         </p>
                     </div>
 
-                    {/* Refined Service Bar - Higher visibility, better spacing */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-16 items-center mb-16">
-                        <div className="flex flex-col items-center gap-3 group">
-                            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5 group-hover:bg-[#C4956A]/10 group-hover:border-[#C4956A]/20 transition-all duration-500">
-                                <RotateCcw className="w-4 h-4 text-[#C4956A]" />
+                    {/* Refined Service Bar - Always horizontal */}
+                    <div className="flex items-center justify-center gap-8 sm:gap-16">
+                        <div className="flex flex-col items-center gap-2 group">
+                            <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/5 group-hover:bg-[#C4956A]/10 group-hover:border-[#C4956A]/20 transition-all duration-500">
+                                <RotateCcw className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C4956A]" />
                             </div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Gratis retour</span>
+                            <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/60">Retour</span>
                         </div>
-                        <div className="flex flex-col items-center gap-3 group">
-                            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5 group-hover:bg-[#C4956A]/10 group-hover:border-[#C4956A]/20 transition-all duration-500">
-                                <MessageCircle className="w-4 h-4 text-[#C4956A]" />
+                        <div className="flex flex-col items-center gap-2 group">
+                            <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/5 group-hover:bg-[#C4956A]/10 group-hover:border-[#C4956A]/20 transition-all duration-500">
+                                <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C4956A]" />
                             </div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Geen gedoe</span>
+                            <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/60">Simpel</span>
                         </div>
-                        <div className="flex flex-col items-center gap-3 group">
-                            <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5 group-hover:bg-[#C4956A]/10 group-hover:border-[#C4956A]/20 transition-all duration-500">
-                                <ShieldCheck className="w-4 h-4 text-[#C4956A]" />
+                        <div className="flex flex-col items-center gap-2 group">
+                            <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/5 group-hover:bg-[#C4956A]/10 group-hover:border-[#C4956A]/20 transition-all duration-500">
+                                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C4956A]" />
                             </div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Bewezen</span>
+                            <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-white/60">Bewezen</span>
                         </div>
-                    </div>
-
-                    {/* Integrated Trust Bar */}
-                    <div className="w-full pt-12 border-t border-white/[0.05]">
-                        <PaymentTrust variant="dark" />
                     </div>
                 </motion.div>
             </div>

@@ -15,11 +15,18 @@ const menuItems = [
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
+    const [showDeliveryBar, setShowDeliveryBar] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10)
+            const scrollPos = window.scrollY
+            const windowHeight = window.innerHeight
+            const totalHeight = document.body.scrollHeight
+            
+            // Show delivery bar after 1/3 of the page scroll
+            setIsScrolled(scrollPos > 10)
+            setShowDeliveryBar(scrollPos > (totalHeight / 3))
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
@@ -59,16 +66,25 @@ export default function Header() {
                             </button>
                         </div>
 
-                        {/* Animated Delivery Bar */}
-                        <div className="bg-[#fcfcfc] border-t border-gray-50 py-2 text-center overflow-hidden">
-                            <motion.span 
-                                animate={{ opacity: [0.7, 1, 0.7] }}
-                                transition={{ duration: 3, repeat: Infinity }}
-                                className="text-[10px] font-black text-gray-400 tracking-[0.15em] uppercase"
-                            >
-                                Bestel voor 23:59 → Morgen in huis
-                            </motion.span>
-                        </div>
+                        {/* Animated Delivery Bar - Visible after 1/3 scroll */}
+                        <AnimatePresence>
+                            {showDeliveryBar && (
+                                <motion.div 
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    className="bg-[#fcfcfc] border-t border-gray-50 py-2 text-center overflow-hidden"
+                                >
+                                    <motion.span 
+                                        animate={{ opacity: [0.7, 1, 0.7] }}
+                                        transition={{ duration: 3, repeat: Infinity }}
+                                        className="text-[10px] font-black text-gray-400 tracking-[0.15em] uppercase"
+                                    >
+                                        Bestel voor 23:59 → Morgen in huis
+                                    </motion.span>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </motion.div>
                 </div>
             </div>
@@ -173,10 +189,19 @@ export default function Header() {
 
             {/* --- DESKTOP HEADER (Premium & Minimal) --- */}
             <header className="hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-                {/* Delivery Bar */}
-                <div className="bg-[#111] text-white/90 py-2 text-center text-[10px] font-black tracking-[0.25em] uppercase">
-                    Bestel voor 23:59 → Morgen in huis
-                </div>
+                {/* Delivery Bar - Visible after 1/3 scroll */}
+                <AnimatePresence>
+                    {showDeliveryBar && (
+                        <motion.div 
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="bg-[#111] text-white/90 py-2 text-center text-[10px] font-black tracking-[0.25em] uppercase"
+                        >
+                            Bestel voor 23:59 → Morgen in huis
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 <div className={`bg-white transition-all duration-500 ${isScrolled ? 'py-3 shadow-xl' : 'py-5'}`}>
                     <div className="max-w-7xl mx-auto px-8">

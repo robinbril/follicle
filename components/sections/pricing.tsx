@@ -216,19 +216,9 @@ export default function Pricing() {
                         </div>
                     </div>
                     
-                    {/* Clean Payment Indicators */}
-                    <div className="flex flex-col items-center lg:items-end gap-4">
-                         <div className="flex items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-700 pointer-events-none">
-                             <span className="text-2xl font-black italic text-[#1a1a1a] tracking-tight">iDEAL</span>
-                             <span className="text-2xl font-black italic text-[#1a1a1a] tracking-tight">Klarna.</span>
-                             <div className="flex flex-col items-end leading-none">
-                                 <span className="text-[10px] font-bold tracking-widest uppercase mb-1">Veilig betalen met</span>
-                                 <span className="text-xs font-black italic">MASTERCARD VISA</span>
-                             </div>
-                         </div>
-                         <div className="flex items-center gap-2 px-3 py-1 bg-[#FDFCFA] rounded-full border border-[#F0EDE9] text-[9px] font-bold tracking-[0.1em] text-[#A8A29E] uppercase">
-                             <Shield className="w-3 h-3 text-[#C4956A]" /> 256-bit SSL Beveiligde Verbinding
-                         </div>
+                    {/* Trust Section Footer - Clean */}
+                    <div className="flex flex-col items-center lg:items-end gap-4 opacity-40">
+                         <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Beveiligde afrekening</span>
                     </div>
                 </motion.div>
             </div>

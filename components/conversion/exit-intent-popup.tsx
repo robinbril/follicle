@@ -90,8 +90,8 @@ export default function ExitIntentPopup() {
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C4956A] to-[#8C6A4C]">20% Korting.</span>
                                 </h2>
                                 
-                                <p className="text-gray-500 text-[13px] font-medium mb-8 max-w-[260px] mx-auto leading-tight">
-                                    Code + Gratis <span className="text-gray-900 font-bold">Derma Roller</span> & <br/><span className="text-gray-900 font-bold italic underline">Haargroei Handboek</span> bij je bestelling.
+                                <p className="text-gray-500 text-[13px] font-medium mb-8 max-w-[260px] mx-auto leading-relaxed">
+                                    Ontvang je kortingscode, gratis Derma Roller én het Haargroei Handboek.
                                 </p>
 
                                 {/* Form */}
