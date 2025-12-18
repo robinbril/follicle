@@ -71,7 +71,7 @@ export default function Pricing() {
     const activePlan = plans[selectedPlan]
 
     return (
-        <section id="prijzen" className="py-12 sm:py-24 bg-gradient-to-b from-white via-gray-50/30 to-white overflow-hidden relative">
+        <section id="prijzen" className="py-8 sm:py-24 bg-gradient-to-b from-white via-gray-50/30 to-white overflow-hidden relative">
             {/* Premium Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_50%_0%,rgba(196,149,106,0.06)_0%,transparent_60%)]" />
@@ -85,13 +85,9 @@ export default function Pricing() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="flex flex-col items-center mb-6 sm:mb-12 text-center"
+                    className="flex flex-col items-center mb-4 sm:mb-12 text-center"
                 >
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900/[0.04] border border-gray-900/[0.06] mb-4 sm:mb-6">
-                        <Zap className="w-3 h-3 text-[#C4956A]" />
-                        <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-gray-600">Kies je transformatie</span>
-                    </div>
-                    <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tighter leading-none">
+                    <h2 className="text-2xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tighter leading-none">
                         Prijzen & Pakketten
                     </h2>
                 </motion.div>
@@ -133,7 +129,7 @@ export default function Pricing() {
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.3 }}
                             id={activePlan.id === 'best' ? 'resultaatpakket' : undefined}
-                            className={`relative bg-white border rounded-2xl sm:rounded-3xl p-5 sm:p-8 overflow-hidden ${
+                            className={`relative bg-white border rounded-2xl p-4 sm:p-8 overflow-hidden ${
                                 activePlan.featured 
                                 ? 'border-[#C4956A]/20 shadow-lg' 
                                 : 'border-gray-200 shadow-md'
@@ -141,44 +137,39 @@ export default function Pricing() {
                         >
                             {/* Badge - Compact */}
                             {activePlan.featured ? (
-                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900 text-white text-[10px] font-bold uppercase tracking-[0.1em] w-fit mb-4">
+                                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gray-900 text-white text-[9px] font-bold uppercase tracking-[0.1em] w-fit mb-3">
                                     <span className="text-[#C4956A]">★</span>
                                     Meest Gekozen
                                 </div>
                             ) : (
-                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-100 text-[10px] font-bold uppercase tracking-[0.1em] text-gray-500 w-fit mb-4">
+                                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gray-100 text-[9px] font-bold uppercase tracking-[0.1em] text-gray-500 w-fit mb-3">
                                     {activePlan.badge}
                                 </div>
                             )}
 
-                            {/* Price Section - Compact */}
-                            <div className="mb-5">
-                                {/* Original Price (Anchor) */}
-                                {activePlan.savings > 0 && (
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <span className="text-sm font-medium text-gray-400">Was</span>
-                                        <span className="text-lg font-bold text-gray-300 line-through">€{activePlan.originalPrice}</span>
-                                    </div>
-                                )}
-
-                                {/* Main Price */}
-                                <div className="flex items-baseline gap-1 mb-3">
-                                    <span className="text-2xl font-bold text-gray-900">€</span>
+                            {/* Price Section - Ultra Compact */}
+                            <div className="mb-4">
+                                {/* Price Row */}
+                                <div className="flex items-baseline gap-2 mb-2">
+                                    {activePlan.savings > 0 && (
+                                        <span className="text-base font-medium text-gray-300 line-through">€{activePlan.originalPrice}</span>
+                                    )}
+                                    <span className="text-lg font-bold text-gray-900">€</span>
                                     <motion.span 
                                         key={activePlan.totalPrice}
-                                        initial={{ y: 20, opacity: 0 }}
+                                        initial={{ y: 10, opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         transition={{ type: "spring", bounce: 0.3 }}
-                                        className="text-6xl sm:text-7xl font-black text-gray-900 tracking-tighter leading-none"
+                                        className="text-5xl font-black text-gray-900 tracking-tighter leading-none"
                                     >
                                         {activePlan.totalPrice}
                                     </motion.span>
                                 </div>
 
-                                {/* Savings + Monthly in one row */}
-                                <div className="flex flex-wrap items-center gap-3">
+                                {/* Savings + Monthly */}
+                                <div className="flex flex-wrap items-center gap-2">
                                     {activePlan.savings > 0 && (
-                                        <span className="px-3 py-1.5 rounded-full bg-[#C4956A] text-white text-[12px] font-bold">
+                                        <span className="px-2 py-1 rounded-md bg-[#C4956A] text-white text-[11px] font-bold">
                                             Bespaar €{activePlan.savings}
                                         </span>
                                     )}
@@ -188,23 +179,20 @@ export default function Pricing() {
                                 </div>
                             </div>
 
-                            {/* Features - Compact */}
-                            <div className="space-y-2.5 mb-5">
+                            {/* Features - Ultra Compact */}
+                            <div className="space-y-1.5 mb-4">
                                 {activePlan.benefits.map((benefit, idx) => (
                                     <motion.div 
                                         key={idx}
-                                        initial={{ opacity: 0, x: 10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.05 + idx * 0.05 }}
-                                        className="flex items-start gap-3 p-3 rounded-xl bg-gray-50/80 border border-gray-100"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.05 + idx * 0.03 }}
+                                        className="flex items-center gap-2 py-2 px-2.5 rounded-lg bg-gray-50/80"
                                     >
-                                        <div className="w-5 h-5 rounded-full bg-[#C4956A] flex items-center justify-center shrink-0 mt-0.5">
-                                            <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                                        <div className="w-4 h-4 rounded-full bg-[#C4956A] flex items-center justify-center shrink-0">
+                                            <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
                                         </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-[14px] font-bold text-gray-900 leading-tight">{benefit.title}</span>
-                                            <span className="text-[12px] text-gray-500">{benefit.subtitle}</span>
-                                        </div>
+                                        <span className="text-[13px] font-semibold text-gray-900">{benefit.title}</span>
                                     </motion.div>
                                 ))}
                             </div>

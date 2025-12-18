@@ -10,10 +10,22 @@ export default function StickyMobileCTA() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsVisible(window.scrollY > 600)
+            // Get the pricing section
+            const pricingSection = document.getElementById('prijzen')
+            
+            if (pricingSection) {
+                const rect = pricingSection.getBoundingClientRect()
+                const isInPricingSection = rect.top < window.innerHeight && rect.bottom > 0
+                
+                // Hide when in pricing section, show when scrolled past 600px and NOT in pricing section
+                setIsVisible(window.scrollY > 600 && !isInPricingSection)
+            } else {
+                setIsVisible(window.scrollY > 600)
+            }
         }
 
         window.addEventListener('scroll', handleScroll, { passive: true })
+        handleScroll() // Check initial state
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
