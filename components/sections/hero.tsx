@@ -46,44 +46,71 @@ export default function Hero() {
                             <span className="text-xs font-bold text-[#1a1a1a]">4.8</span>
                         </motion.div>
 
-                        {/* MOBILE: Massive Product with Animated Orb */}
+                        {/* MOBILE: Organic Blob Product Container */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.1, duration: 0.6 }}
-                            className="relative w-72 h-auto mx-auto mb-6 lg:hidden"
+                            className="relative w-64 h-64 mx-auto mb-6 lg:hidden"
                         >
-                            {/* Animated Copper Orb - Pulsing glow */}
+                            {/* Ambient Glow Effect */}
                             <motion.div 
                                 animate={{ 
-                                    scale: [1, 1.1, 1],
-                                    opacity: [0.4, 0.6, 0.4]
+                                    scale: [1, 1.05, 1],
+                                    opacity: [0.6, 1, 0.6]
                                 }}
                                 transition={{ 
                                     duration: 4, 
                                     repeat: Infinity,
                                     ease: "easeInOut"
                                 }}
-                                className="absolute inset-0 bg-[radial-gradient(circle,rgba(196,149,106,0.35)_0%,transparent_50%)] blur-3xl scale-150"
+                                className="absolute -inset-8 bg-[radial-gradient(circle,rgba(201,145,86,0.15)_0%,rgba(201,145,86,0.08)_30%,transparent_70%)] blur-xl"
                             />
                             
-                            {/* Floating Product Animation */}
+                            {/* Organic Blob Container with Morphing */}
                             <motion.div
-                                animate={{ y: [0, -10, 0] }}
+                                animate={{ 
+                                    borderRadius: [
+                                        "38% 62% 62% 38% / 45% 55% 45% 55%",
+                                        "42% 58% 55% 45% / 48% 52% 48% 52%",
+                                        "45% 55% 62% 38% / 52% 48% 52% 48%",
+                                        "40% 60% 58% 42% / 50% 50% 50% 50%",
+                                        "38% 62% 62% 38% / 45% 55% 45% 55%"
+                                    ]
+                                }}
                                 transition={{ 
-                                    duration: 5, 
+                                    duration: 20, 
                                     repeat: Infinity,
                                     ease: "easeInOut"
                                 }}
+                                className="relative w-full h-full bg-gradient-to-br from-white via-white to-[#f9f6f3] flex items-center justify-center"
+                                style={{
+                                    borderRadius: "38% 62% 62% 38% / 45% 55% 45% 55%",
+                                    boxShadow: "0 30px 80px -20px rgba(0,0,0,0.12), 0 60px 120px -30px rgba(201,145,86,0.15), 0 0 200px rgba(201,145,86,0.08)",
+                                    filter: "drop-shadow(0 0 60px rgba(201,145,86,0.1))"
+                                }}
                             >
-                                <Image
-                                    src="/images/revive-hero-bottle.png"
-                                    alt="REVIVE Hair Growth Serum"
-                                    width={288}
-                                    height={360}
-                                    className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.2)] relative z-10"
-                                    priority
-                                />
+                                {/* Floating Product Animation */}
+                                <motion.div
+                                    animate={{ 
+                                        y: [0, -15, 0],
+                                        rotate: [0, -1, 0, 1, 0]
+                                    }}
+                                    transition={{ 
+                                        duration: 8, 
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    <Image
+                                        src="/images/revive-hero-bottle.png"
+                                        alt="REVIVE Hair Growth Serum"
+                                        width={180}
+                                        height={225}
+                                        className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] relative z-10"
+                                        priority
+                                    />
+                                </motion.div>
                             </motion.div>
                         </motion.div>
 
