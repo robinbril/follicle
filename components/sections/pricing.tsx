@@ -75,7 +75,7 @@ export default function Pricing() {
             {/* Premium Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_50%_0%,rgba(196,149,106,0.06)_0%,transparent_60%)]" />
-                <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(16,185,129,0.03)_0%,transparent_60%)]" />
+                <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(196,149,106,0.04)_0%,transparent_60%)]" />
             </div>
 
             <div className="max-w-5xl mx-auto px-6 relative z-10">
@@ -103,7 +103,7 @@ export default function Pricing() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="flex justify-center mb-12"
+                    className="flex justify-center mb-16"
                 >
                     <div className="relative flex p-2 bg-gradient-to-br from-gray-100/80 to-gray-50/60 backdrop-blur-xl rounded-2xl w-full max-w-2xl border border-gray-200/60 shadow-[0_8px_32px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.8)]">
                         {plans.map((plan, i) => (
@@ -132,9 +132,9 @@ export default function Pricing() {
                                     <motion.span 
                                         initial={{ scale: 0.8, opacity: 0 }}
                                         animate={{ scale: 1, opacity: 1 }}
-                                        className={`hidden sm:flex absolute -top-2 -right-2 px-2.5 py-1 rounded-full text-[8px] font-black items-center gap-1 z-30 shadow-lg ${
+                                        className={`hidden sm:flex absolute -top-3 -right-3 px-2.5 py-1 rounded-full text-[8px] font-black items-center gap-1 z-30 shadow-lg ${
                                             selectedPlan === i 
-                                            ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-emerald-500/25' 
+                                            ? 'bg-gradient-to-r from-[#C4956A] to-[#B08559] text-white shadow-[#C4956A]/25' 
                                             : 'bg-gray-200 text-gray-500'
                                         }`}
                                     >
@@ -148,7 +148,7 @@ export default function Pricing() {
                 </motion.div>
 
                 {/* Ultra Premium Morphing Card */}
-                <div className="relative">
+                <div className="relative mt-8">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={selectedPlan}
@@ -174,7 +174,7 @@ export default function Pricing() {
                                     <motion.div 
                                         animate={{ opacity: [0.2, 0.4, 0.2] }}
                                         transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-                                        className="absolute -bottom-20 -left-20 w-60 h-60 bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none" 
+                                        className="absolute -bottom-20 -left-20 w-60 h-60 bg-[#C4956A]/5 blur-[100px] rounded-full pointer-events-none" 
                                     />
                                 </>
                             )}
@@ -241,7 +241,7 @@ export default function Pricing() {
                                                 initial={{ scale: 0.9, opacity: 0 }}
                                                 animate={{ scale: 1, opacity: 1 }}
                                                 transition={{ delay: 0.2 }}
-                                                className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-[0_8px_24px_-4px_rgba(16,185,129,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                                                className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-gradient-to-r from-[#C4956A] to-[#B08559] shadow-[0_8px_24px_-4px_rgba(196,149,106,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
                                             >
                                                 <Sparkles className="w-4 h-4 text-white" />
                                                 <span className="text-sm font-black text-white tracking-wide">
@@ -273,9 +273,9 @@ export default function Pricing() {
                                                 initial={{ opacity: 0, x: 20 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: 0.1 + idx * 0.1 }}
-                                                className="flex items-start gap-4 p-4 rounded-2xl bg-gradient-to-r from-emerald-500/[0.03] to-transparent border border-emerald-500/10 hover:border-emerald-500/20 hover:translate-x-1 transition-all duration-300"
+                                                className="flex items-start gap-4 p-4 rounded-2xl bg-gradient-to-r from-[#C4956A]/[0.04] to-transparent border border-[#C4956A]/10 hover:border-[#C4956A]/20 hover:translate-x-1 transition-all duration-300"
                                             >
-                                                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shrink-0 shadow-[0_4px_12px_rgba(16,185,129,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]">
+                                                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#C4956A] to-[#B08559] flex items-center justify-center shrink-0 shadow-[0_4px_12px_rgba(196,149,106,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]">
                                                     <Check className="w-4 h-4 text-white" strokeWidth={3} />
                                                 </div>
                                                 <div className="flex flex-col gap-0.5">
@@ -312,15 +312,11 @@ export default function Pricing() {
                                         </motion.button>
                                     </Link>
                                     
-                                    {/* Live Social Proof */}
-                                    <div className="flex items-center justify-center gap-3 py-3 px-4 rounded-xl bg-emerald-500/[0.04] border border-emerald-500/10">
-                                        <motion.div 
-                                            animate={{ scale: [1, 1.3, 1] }}
-                                            transition={{ duration: 2, repeat: Infinity }}
-                                            className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" 
-                                        />
+                                    {/* Availability Badge */}
+                                    <div className="flex items-center justify-center gap-3 py-3 px-4 rounded-xl bg-gray-50 border border-gray-100">
+                                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                                         <span className="text-[11px] font-bold text-gray-600 tracking-wide">
-                                            23 mensen bekijken dit pakket
+                                            Direct leverbaar
                                         </span>
                                     </div>
                                 </div>
@@ -348,7 +344,7 @@ export default function Pricing() {
                             whileHover={{ y: -2, scale: 1.05 }}
                             className="flex items-center gap-3 text-[11px] font-bold text-gray-500 hover:text-gray-900 transition-all duration-300 cursor-default"
                         >
-                            <item.icon className="w-5 h-5 text-emerald-500" strokeWidth={1.5} />
+                            <item.icon className="w-5 h-5 text-[#C4956A]" strokeWidth={1.5} />
                             <span className="uppercase tracking-[0.15em]">{item.label}</span>
                         </motion.div>
                     ))}
