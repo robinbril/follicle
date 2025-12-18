@@ -128,20 +128,6 @@ export default function Pricing() {
                                     </motion.div>
                                 )}
 
-                                {plan.savings > 0 && (
-                                    <motion.span 
-                                        initial={{ scale: 0.8, opacity: 0 }}
-                                        animate={{ scale: 1, opacity: 1 }}
-                                        className={`hidden sm:flex absolute -top-3 -right-3 px-2.5 py-1 rounded-full text-[8px] font-black items-center gap-1 z-30 shadow-lg ${
-                                            selectedPlan === i 
-                                            ? 'bg-gradient-to-r from-[#C4956A] to-[#B08559] text-white shadow-[#C4956A]/25' 
-                                            : 'bg-gray-200 text-gray-500'
-                                        }`}
-                                    >
-                                        <Sparkles className="w-2.5 h-2.5" />
-                                        -{Math.round((plan.savings / plan.originalPrice) * 100)}%
-                                    </motion.span>
-                                )}
                             </button>
                         ))}
                     </div>
@@ -179,21 +165,18 @@ export default function Pricing() {
                                 </>
                             )}
 
-                            {/* "Meest Gekozen" Floating Badge */}
+                            {/* "Meest Gekozen" Badge - Top Left Inside Card */}
                             {activePlan.featured && (
                                 <motion.div 
-                                    initial={{ y: -10, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: 0.2 }}
-                                    className="absolute -top-5 left-1/2 -translate-x-1/2 z-20"
+                                    initial={{ x: -10, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.15 }}
+                                    className="absolute top-6 left-6 sm:top-8 sm:left-8 z-20"
                                 >
-                                    <motion.div 
-                                        animate={{ scale: [1, 1.03, 1] }}
-                                        transition={{ duration: 3, repeat: Infinity }}
-                                        className="px-6 py-2.5 rounded-full bg-gradient-to-r from-gray-900 to-gray-800 text-white text-[11px] font-black uppercase tracking-[0.2em] shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4),0_4px_8px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]"
-                                    >
-                                        ⭐ Meest Gekozen
-                                    </motion.div>
+                                    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900 text-white text-[10px] sm:text-[11px] font-black uppercase tracking-[0.15em] shadow-lg">
+                                        <span className="text-[#C4956A]">★</span>
+                                        Meest Gekozen
+                                    </div>
                                 </motion.div>
                             )}
 
