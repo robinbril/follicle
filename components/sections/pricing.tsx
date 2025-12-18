@@ -166,17 +166,17 @@ export default function Pricing() {
                                     </motion.span>
                                 </div>
 
-                                {/* Savings + Monthly */}
-                                <div className="flex flex-wrap items-center gap-2">
-                                    {activePlan.savings > 0 && (
+                                {/* Savings + Monthly (only show when there ARE savings) */}
+                                {activePlan.savings > 0 && (
+                                    <div className="flex flex-wrap items-center gap-2">
                                         <span className="px-2 py-1 rounded-md bg-[#C4956A] text-white text-[11px] font-bold">
                                             Bespaar €{activePlan.savings}
                                         </span>
-                                    )}
-                                    <span className="text-sm text-gray-500">
-                                        <span className="font-bold text-gray-900">€{activePlan.perMonth}</span>/maand
-                                    </span>
-                                </div>
+                                        <span className="text-sm text-gray-500">
+                                            <span className="font-bold text-gray-900">€{activePlan.perMonth}</span>/maand
+                                        </span>
+                                    </div>
+                                )}
                             </div>
 
                             {/* Features - Ultra Compact */}
