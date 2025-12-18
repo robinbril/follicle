@@ -53,7 +53,7 @@ const plans = [
         benefits: [
             { title: "6× REVIVE (180ml)", subtitle: "6 maanden volledige voorraad" },
             { title: "180 dagen kuur", subtitle: "Complete behandelperiode" },
-            { title: "Gratis Dermaroller", subtitle: "€39 waarde • Verhoogt absorptie 200%" }
+            { title: "Gratis Dermaroller", subtitle: "€39 waarde • Verhoogt absorptie met 200%" }
         ],
         cta: "BESTEL RESULTAATPAKKET"
     }
@@ -157,7 +157,7 @@ export default function Pricing() {
                             exit={{ opacity: 0, scale: 0.96, y: -20 }}
                             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                             id={activePlan.id === 'best' ? 'resultaatpakket' : undefined}
-                            className={`relative bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-2xl border rounded-[2.5rem] p-8 sm:p-14 overflow-hidden transition-all duration-500 ${
+                            className={`relative bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-2xl border rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-14 overflow-hidden transition-all duration-500 ${
                                 activePlan.featured 
                                 ? 'border-[#C4956A]/20 shadow-[0_50px_100px_-20px_rgba(196,149,106,0.15),0_30px_60px_-15px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.9)]' 
                                 : 'border-gray-200/60 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08),0_20px_40px_-10px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.9)]'
@@ -241,9 +241,8 @@ export default function Pricing() {
                                                 initial={{ scale: 0.9, opacity: 0 }}
                                                 animate={{ scale: 1, opacity: 1 }}
                                                 transition={{ delay: 0.2 }}
-                                                className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-gradient-to-r from-[#C4956A] to-[#B08559] shadow-[0_8px_24px_-4px_rgba(196,149,106,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                                                className="inline-flex items-center mt-4 px-4 py-2 rounded-full bg-gradient-to-r from-[#C4956A] to-[#B08559] shadow-[0_8px_24px_-4px_rgba(196,149,106,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
                                             >
-                                                <Sparkles className="w-4 h-4 text-white" />
                                                 <span className="text-sm font-black text-white tracking-wide">
                                                     Bespaar €{activePlan.savings} ({Math.round((activePlan.savings / activePlan.originalPrice) * 100)}%)
                                                 </span>
