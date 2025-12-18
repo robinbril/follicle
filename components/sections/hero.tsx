@@ -67,7 +67,7 @@ export default function Hero() {
                                 className="absolute -inset-8 bg-[radial-gradient(circle,rgba(201,145,86,0.15)_0%,rgba(201,145,86,0.08)_30%,transparent_70%)] blur-xl"
                             />
                             
-                            {/* Organic Blob Container with Morphing */}
+                            {/* Organic Blob Container - clips the image */}
                             <motion.div
                                 animate={{ 
                                     borderRadius: [
@@ -83,34 +83,20 @@ export default function Hero() {
                                     repeat: Infinity,
                                     ease: "easeInOut"
                                 }}
-                                className="relative w-full h-full bg-gradient-to-br from-white via-white to-[#f9f6f3] flex items-center justify-center"
+                                className="relative w-full h-full overflow-hidden"
                                 style={{
                                     borderRadius: "38% 62% 62% 38% / 45% 55% 45% 55%",
-                                    boxShadow: "0 30px 80px -20px rgba(0,0,0,0.12), 0 60px 120px -30px rgba(201,145,86,0.15), 0 0 200px rgba(201,145,86,0.08)",
-                                    filter: "drop-shadow(0 0 60px rgba(201,145,86,0.1))"
+                                    boxShadow: "0 30px 80px -20px rgba(0,0,0,0.12), 0 60px 120px -30px rgba(201,145,86,0.15)"
                                 }}
                             >
-                                {/* Floating Product Animation */}
-                                <motion.div
-                                    animate={{ 
-                                        y: [0, -15, 0],
-                                        rotate: [0, -1, 0, 1, 0]
-                                    }}
-                                    transition={{ 
-                                        duration: 8, 
-                                        repeat: Infinity,
-                                        ease: "easeInOut"
-                                    }}
-                                >
-                                    <Image
-                                        src="/images/revive-hero-bottle.png"
-                                        alt="REVIVE Hair Growth Serum"
-                                        width={180}
-                                        height={225}
-                                        className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)] relative z-10"
-                                        priority
-                                    />
-                                </motion.div>
+                                {/* Image fills container and gets clipped */}
+                                <Image
+                                    src="/images/revive-hero-bottle.png"
+                                    alt="REVIVE Hair Growth Serum"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
                             </motion.div>
                         </motion.div>
 
